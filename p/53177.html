@@ -19,10 +19,10 @@
     <link rel="dns-prefetch" href="http://k8gege.org">
     <!--SEO-->
 
-<meta name="keywords" content="Exp,Tool,GetShell,Struts2">
+<meta name="keywords" content="Ladon">
 
 
-<meta name="description" content="工具:&nbsp;K8&nbsp;Struts2&nbsp;Exploit组织:&nbsp;K8搞基大队[K8team]作者:&nbsp;K8拉登哥哥博客:&nbsp;http://qqhack...">
+<meta name="description" content="前言内置密码爆破模块还不够全面，研发其它协议认证需要时间。还有别人的工具不开源的情况，而且它只能支持单个IP爆破。这时候我们需要批量爆破整个C段、多个网段、或批量列表。批量包括但不限于IP、UR...">
 
 
 <meta name="robots" content="all">
@@ -33,7 +33,7 @@
 
 <title>
     
-    K8 Struts2 EXP 综合漏洞利用工具 |
+    Ladon 6.2自定义密码爆破 |
     
     K8哥哥’s Blog
 </title>
@@ -148,16 +148,16 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="K8 Struts2 EXP 综合漏洞利用工具">
+        <h1 id="Ladon 6.2自定义密码爆破">
             
-            K8 Struts2 EXP 综合漏洞利用工具
+            Ladon 6.2自定义密码爆破
             
         </h1>
         <div class="post-meta">
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/Exp/">Exp</a> <a class="category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+        <a class="category-link" href="/categories/Ladon/">Ladon</a>
     </span>
     
     
@@ -165,7 +165,7 @@
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a class="tag-link" href="/tags/Exp/" rel="tag">Exp</a> <a class="tag-link" href="/tags/GetShell/" rel="tag">GetShell</a> <a class="tag-link" href="/tags/Struts2/" rel="tag">Struts2</a> <a class="tag-link" href="/tags/Tool/" rel="tag">Tool</a>
+            <a class="tag-link" href="/tags/Ladon/" rel="tag">Ladon</a>
             
         </span>
     </span>
@@ -175,7 +175,7 @@
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2019/12/03</span>
+            2020/03/30</span>
     </span>
     
     <span class="fa-wrap">
@@ -190,39 +190,17 @@
     </div>
     
     <div class="post-body post-content">
-        <p>工具:&nbsp;K8&nbsp;Struts2&nbsp;Exploit<br>组织:&nbsp;K8搞基大队[K8team]<br>作者:&nbsp;K8拉登哥哥<br>博客:&nbsp;<a href="http://qqhack8.blog.163.com" target="_blank">http://qqhack8.blog.163.com</a><br>发布:&nbsp;2014/7/31&nbsp;10:24:56<br><br>简介: <br><br>K8 Struts2 综合漏洞利用工具 (Apache Struts Remote Code Execution Exploit)<br>Struts2漏洞检测工具&nbsp;&nbsp; Struts2漏洞测试工具&nbsp; K8 struts2 exploit Test&nbsp; Struts2 GetShell<br>支持漏洞 (S2-045 devMode S2-032&nbsp; s2-020&nbsp; s2-019&nbsp; s2-016&nbsp; s2-013&nbsp; s2-009 S2-005)&nbsp; <br><br>声明:工具仅供安全检测或网络攻防研究,非法用途后果自负.<br>图片: <br><img alt data-original="http://k8gege.org/k8img/posts/S2exp1.png"></p>
-<div>
-<div>&nbsp;</div>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>内置密码爆破模块还不够全面，研发其它协议认证需要时间。<br>还有别人的工具不开源的情况，而且它只能支持单个IP爆破。<br>这时候我们需要批量爆破整个C段、多个网段、或批量列表。<br>批量包括但不限于IP、URL、机器名、CIDR格式、任意XX等。</p>
+<h3 id="INI配置插件"><a href="#INI配置插件" class="headerlink" title="INI配置插件"></a>INI配置插件</h3><p>适用场景，需调用相关命令或第三方工具进行批量操作<br>或者有新的POC，但来不及或无法写成DLL来调用时<br>很多第3方工具不支持批量或者说根本不支持批量网段<br>而Ladon不只限于批量IP、URL、IP段、任意内容等<br>是紧急情况下最适合用于验证内网是否存在漏洞工具<br>新的漏洞来时你能调好POC就不错了，批量更要时间</p>
+<h3 id="自定义密码爆破"><a href="#自定义密码爆破" class="headerlink" title="自定义密码爆破"></a>自定义密码爆破</h3><p>例子：调用修改过的smbexec.exe进行HASH密码验证，原版不退出无法爆破<br>根目录下放4个文件，smbexec.exe、smbhash.ini、user.txt、pass.txt。</p>
+<p>smbhash.ini</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=smbexec.exe</span><br><span class="line">arg=-hashes <span class="variable">$pass</span>$ <span class="variable">$user</span><span class="variable">$@</span><span class="variable">$ip</span>$</span><br><span class="line">isok=Launching semi-interactive shell</span><br><span class="line">port=445</span><br><span class="line"><span class="built_in">log</span>=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="INI插件用法"><a href="#INI插件用法" class="headerlink" title="INI插件用法"></a>INI插件用法</h3><p>命令：Ladon 192.168.1.1/24 smbhash.ini</p>
+<h3 id="INI参数说明"><a href="#INI参数说明" class="headerlink" title="INI参数说明"></a>INI参数说明</h3><p>exe:  程序名称，必填项。不指定路径优先加载SYSTEM32目录或当前目录下程序<br>arg:  程序参数，必填项。其中$ip$、$user$、$pass$变量为字典文件替换变量<br>isok：成功标志，必填项。如smbexec成功时返回”Launching semi-interactive shell”<br>port：对应端口，非必填。如SMB为445，Ladon先检测到端口开放，才进行密码爆破<br>log:  程序日志，非必填。如有些程序返回一堆错误结果，我们不想看，可不显示</p>
+<p>检测内网C段是否使用同一个密码,命令：Ladon 192.168.1.1/24 smbhash.ini<br>截图为6.1，大家记得把ret改成isok就行了。<br><img alt data-original="http://k8gege.org/k8img/Ladon/exe/DiyIniPwd.PNG"></p>
+<h3 id="功能多余？"><a href="#功能多余？" class="headerlink" title="功能多余？"></a>功能多余？</h3><p>有人可能会说，功能用不到，批量用自己的程序就可以了。<br>1.不是所有人都会编程，INI配置的目的主要是给这些人用的。<br>2.据我所知市面上的批量，仅支持批量单一列表，如IP列表、URL列表等，且不支持模块化。</p>
+<p>举个例子：CVE-2019-0708原版漏洞检测批量支持C段扫描，但不支持批量C段甚至批量B段扫描。<br>没错它是开源的，但有几个人去实现修改让它支持更多实战环境的批量需求？<br>C语言的多线程操作可和Python这种小学生都能轻松学会的人随便写的啊。<br>如果别的Poc，用其它你不懂的语言来写，你需要急用，你还会慢慢去学？<br>当然你不觉得麻烦，也可以另外用自己会的语言写个批量调用工具，哈哈</p>
 
-
-
-
-
-<p>新增任意文件上传<br></p>
-<div><img alt data-original="http://k8gege.org/k8img/posts/S2exp2.png"></div>
-
-
-
-
-
-<p>&nbsp;</p></div><p></p>
-<div>
-<div>
-<div>&nbsp;</div>
-
-
-
-
-
-</div>
-
-
-
-
-
-</div>
-<p>
-功能:&nbsp;<br>===========================================================================================<br>[+]新增任意文件上传小马 (解决S2奇葩环境菜刀无法上传文件 &amp; 乱码问题)<br>[+]10 S2-045&nbsp; CVE-2017-5638&nbsp;&nbsp; 支持执行CMD命令<br>[+]9 devMode CVE-xxxx-xxxx&nbsp;&nbsp; 支持GetShell/获取物理路径/执行CMD命令<br>[+]8 S2-037&nbsp; CVE-2016-4438&nbsp;&nbsp; 支持GetShell/获取物理路径/执行CMD命令<br>[+]7 S2-032&nbsp; CVE-2016-3081&nbsp;&nbsp; 支持GetShell/获取物理路径/执行CMD命令<br>[+]6 S2-020&nbsp; CVE-2014-0094&nbsp;&nbsp; 支持GetShell (此洞特殊,EXP集成在飞刀)<br>[+]5 S2-019&nbsp; CVE-2013-4316&nbsp;&nbsp; 支持GetShell/获取物理路径/执行CMD命令<br>[+]4 S2-016&nbsp; CVE-2013-2251&nbsp;&nbsp; 支持GetShell/获取物理路径/执行CMD命令<br>[+]3 S2-013&nbsp; CVE-2013-1966&nbsp;&nbsp; 支持GetShell/获取物理路径/执行CMD命令<br>[+]2 S2-009&nbsp; CVE-2011-3923&nbsp;&nbsp; 支持GetShell/获取物理路径/执行CMD命令<br>[+]1 S2-005&nbsp; CVE-2010-1870&nbsp;&nbsp; 支持GetShell/获取物理路径/执行CMD命令/列文件目录<br>===========================================================================================<br>CVE-2016-4438&nbsp; 影响版本：Struts 2.3.20 - Struts 2.3.28.1&nbsp; 官方公告：http://struts.apache.org/docs/s2-037.html<br>CVE-2016-3081&nbsp; 影响版本：Struts 2.3.18 &ndash; Struts 2.3.28&nbsp;&nbsp; 官方公告：http://struts.apache.org/release/2.3.x/docs/s2-032.html<br>CVE-2014-0094&nbsp; 影响版本：Struts 2.0.0 &ndash; Struts 2.3.16&nbsp;&nbsp;&nbsp; 官方公告：http://struts.apache.org/release/2.3.x/docs/s2-020.html<br>CVE-2013-4316&nbsp; 影响版本：Struts 2.0.0 &ndash; Struts 2.3.15.1&nbsp; 官方公告：http://struts.apache.org/release/2.3.x/docs/s2-019.html<br>CVE-2013-2251&nbsp; 影响版本：Struts 2.0.0 &ndash; Struts 2.3.15&nbsp;&nbsp;&nbsp; 官方公告：http://struts.apache.org/release/2.3.x/docs/s2-016.html<br>CVE-2013-1966&nbsp; 影响版本：Struts 2.0.0 &ndash; Struts 2.3.14&nbsp;&nbsp;&nbsp; 官方公告：http://struts.apache.org/release/2.3.x/docs/s2-013.html<br>CVE-2011-3923&nbsp; 影响版本：Struts 2.0.0 -&nbsp; Struts 2.3.1.1&nbsp;&nbsp; 官方公告：http://struts.apache.org/release/2.3.x/docs/s2-009.html<br>CVE-2010-1870&nbsp; 影响版本：Struts 2.0.0 &ndash; Struts 2.1.8.1&nbsp;&nbsp; 官方公告：http://struts.apache.org/release/2.2.x/docs/s2-005.html<br>===========================================================================================<br><br><span style="color: #ff00ff;">下载地址:</span><br>文件: K8_Struts2_EXP.exe<br>SHA1:3DAF7AD4FB7440C33E66613E6075A0F02EA9DF18<br>平台:&nbsp;XP/Vista/Win7/Win8/2000/2003/2008/2012<br>猛击:<a href="http://pan.baidu.com/s/1cpcQeE" rel="nofollow" target="_blank">http://pan.baidu.com/s/1cpcQeE</a><br><br><a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/k8gege/p/10261217.html" target="_blank" rel="noopener">[原创]Struts2奇葩环境任意文件上传工具(解决菜刀无法传文件或上传乱码等问题)</a><br>https://www.cnblogs.com/k8gege/p/10261217.html</p>
     </div>
     
     <div class="reward" ontouchstart>
@@ -250,17 +228,17 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/p/22e5f4a8.html" class="pre-post btn btn-default" title="Cobalt Strike TeamServer For Windows">
+    <a href="/p/c5430395.html" class="pre-post btn btn-default" title="Ladon 6.2 For Cobalt Strike 4.0">
         <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
         <span class="hidden-xs">
-            Cobalt Strike TeamServer For Windows</span>
+            Ladon 6.2 For Cobalt Strike 4.0</span>
     </a>
     
     
-    <a href="/p/9cffe32c.html" class="next-post btn btn-default" title="CobaltStrike & Metasploit Shellcode一键免杀工具">
+    <a href="/p/648af4b3.html" class="next-post btn btn-default" title="Ladon大型内网渗透扫描器&Cobalt Strike">
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            CobaltStrike & Metasploit Shellcode一键免杀工具</span><i class="fa fa-angle-right fa-fw"></i>
+            Ladon大型内网渗透扫描器&Cobalt Strike</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
@@ -279,7 +257,7 @@
             Table of Contents
         </h3>
         
-        <p>not dir</p>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#INI配置插件"><span class="toc-text">INI配置插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义密码爆破"><span class="toc-text">自定义密码爆破</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#INI插件用法"><span class="toc-text">INI插件用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#INI参数说明"><span class="toc-text">INI参数说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#功能多余？"><span class="toc-text">功能多余？</span></a></li></ol>
         
     </div>
 </aside>

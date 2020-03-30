@@ -19,7 +19,7 @@
     <link rel="dns-prefetch" href="http://k8gege.org">
     <!--SEO-->
 
-<meta name="keywords" content="Exp,Tool,Code,Ladon">
+<meta name="keywords" content="Exp,Ladon,Tool,Code">
 
 
 <meta name="description" content="     
@@ -39,7 +39,7 @@ Ladon...">
 
 <title>
     
-    Ladon大型内网渗透扫描器&amp;Cobalt Strike 4.0 |
+    Ladon大型内网渗透扫描器&amp;Cobalt Strike |
     
     K8哥哥’s Blog
 </title>
@@ -154,9 +154,9 @@ Ladon...">
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Ladon大型内网渗透扫描器&amp;Cobalt Strike 4.0">
+        <h1 id="Ladon大型内网渗透扫描器&amp;Cobalt Strike">
             
-            Ladon大型内网渗透扫描器&amp;Cobalt Strike 4.0
+            Ladon大型内网渗透扫描器&amp;Cobalt Strike
             
         </h1>
         <div class="post-meta">
@@ -844,7 +844,7 @@ Ladon...">
 <h4 id="自定义程序密码爆破"><a href="#自定义程序密码爆破" class="headerlink" title="自定义程序密码爆破"></a>自定义程序密码爆破</h4><p>例子：调用修改过的smbexec.exe进行HASH密码验证，原版不退出无法爆破<br>根目录下放4个文件，smbexec.exe、smbhash.ini、user.txt、pass.txt。</p>
 <p>smbhash.ini<br>[Ladon]<br>exe=smbexec.exe<br>arg=-hashes $pass$ $user$@$ip$<br>isok=Launching semi-interactive shell<br>port=445<br>log=true</p>
 <p>INI参数说明<br>isok：成功标志，必填项。如smbexec成功时返回”Launching semi-interactive shell”<br>port：对应端口，非必填。如SMB为445，Ladon先检测到端口开放，才进行密码爆破<br>log:  程序日志，非必填。如有些程序返回一堆错误结果，我们不想看，可不显示</p>
-<p>检测内网C段是否使用同一个密码,命令：Ladon 192.168.1.1/24 smbhash.ini</p>
+<p>检测内网C段是否使用同一个密码,命令：Ladon 192.168.1.1/24 smbhash.ini<br>详见：<a href="http://localhost:4000/p/53177.html" target="_blank" rel="noopener">http://localhost:4000/p/53177.html</a></p>
 <h3 id="配置端口扫描参数"><a href="#配置端口扫描参数" class="headerlink" title="配置端口扫描参数"></a>配置端口扫描参数</h3><p>使用PortScan模块时，默认扫描常见高危漏洞端口<br>遇到修改了默认端口的，Ladon就无法扫描了吗？<br>使用port.txt<br>格式1:80,21,1433,3306,445<br>格式2:80-88,21-23,5800-5900<br>格式3:<br>21<br>23<br>80<br>格式4:<br>80-88<br>21-23</p>
 <h3 id="配置密码爆破参数"><a href="#配置密码爆破参数" class="headerlink" title="配置密码爆破参数"></a>配置密码爆破参数</h3><p>1  支持标准的user.txt和pass.txt帐密破解，爆破每个用户都需将密码跑完或跑出正确为此<br>2  支持userpass.txt（存放用户名和对应密码）,用于快速验证其它机器是否存在相同帐密<br>3  支持check.txt（存放IP/端口/库名/用户/密码）,不指定端口和数据库名则使用默认</p>
 <h4 id="数据库口令检测"><a href="#数据库口令检测" class="headerlink" title="数据库口令检测"></a>数据库口令检测</h4><p>数据库与其它密码爆破不同，有时数据库做了权限，指定用户只能连指定库，连默认库肯定不行</p>
@@ -898,6 +898,12 @@ Ladon...">
     </div>
 </article>
 <div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/p/53177.html" class="pre-post btn btn-default" title="Ladon 6.2自定义密码爆破">
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            Ladon 6.2自定义密码爆破</span>
+    </a>
     
     
     <a href="/p/61471.html" class="next-post btn btn-default" title="利用SqlDataSourceEnumerator获取局域网SQL主机">
