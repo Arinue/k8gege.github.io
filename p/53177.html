@@ -22,7 +22,7 @@
 <meta name="keywords" content="Ladon">
 
 
-<meta name="description" content="前言内置密码爆破模块还不够全面，研发其它协议认证需要时间。还有别人的工具不开源的情况，而且它只能支持单个IP爆破。这时候我们需要批量爆破整个C段、多个网段、或批量列表。批量包括但不限于IP、UR...">
+<meta name="description" content="前言内置密码爆破模块还不够全面，研发其它协议认证需要时间。先不说功能实现，首先搭建各种协议认证环境就不少时间吧。还有别人的工具不开源的情况，而且它只能支持单个IP爆破。这时候我们需要批量爆破整个...">
 
 
 <meta name="robots" content="all">
@@ -190,7 +190,7 @@
     </div>
     
     <div class="post-body post-content">
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>内置密码爆破模块还不够全面，研发其它协议认证需要时间。<br>还有别人的工具不开源的情况，而且它只能支持单个IP爆破。<br>这时候我们需要批量爆破整个C段、多个网段、或批量列表。<br>批量包括但不限于IP、URL、机器名、CIDR格式、任意XX等。</p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>内置密码爆破模块还不够全面，研发其它协议认证需要时间。<br>先不说功能实现，首先搭建各种协议认证环境就不少时间吧。<br>还有别人的工具不开源的情况，而且它只能支持单个IP爆破。<br>这时候我们需要批量爆破整个C段、多个网段、或批量列表。<br>批量包括但不限于IP、URL、机器名、CIDR格式、任意XX等。</p>
 <h3 id="INI配置插件"><a href="#INI配置插件" class="headerlink" title="INI配置插件"></a>INI配置插件</h3><p>适用场景，需调用相关命令或第三方工具进行批量操作<br>或者有新的POC，但来不及或无法写成DLL来调用时<br>很多第3方工具不支持批量或者说根本不支持批量网段<br>而Ladon不只限于批量IP、URL、IP段、任意内容等<br>是紧急情况下最适合用于验证内网是否存在漏洞工具<br>新的漏洞来时你能调好POC就不错了，批量更要时间</p>
 <h3 id="自定义密码爆破"><a href="#自定义密码爆破" class="headerlink" title="自定义密码爆破"></a>自定义密码爆破</h3><p>例子：调用修改过的smbexec.exe进行HASH密码验证，原版不退出无法爆破<br>根目录下放4个文件，smbexec.exe、smbhash.ini、user.txt、pass.txt。</p>
 <p>smbhash.ini</p>
