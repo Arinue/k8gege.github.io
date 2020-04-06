@@ -686,9 +686,9 @@
 <h3 id="注本页面的教程并不是很全，详情请看WIKI-我会慢慢完善"><a href="#注本页面的教程并不是很全，详情请看WIKI-我会慢慢完善" class="headerlink" title="注本页面的教程并不是很全，详情请看WIKI,我会慢慢完善"></a>注本页面的教程并不是很全，详情请看WIKI,我会慢慢完善</h3><h4 id="Top"><a href="#Top" class="headerlink" title="Top"></a><a href="#readme">Top</a></h4>]]></content>
       <categories>
         <category>工具</category>
-        <category>Ladon</category>
         <category>Cobalt Strike</category>
         <category>内网</category>
+        <category>Ladon</category>
       </categories>
       <tags>
         <tag>Exp</tag>
@@ -1391,8 +1391,8 @@
 <h3 id="28-ActiveMQPoc-ActiveMQ漏洞扫描"><a href="#28-ActiveMQPoc-ActiveMQ漏洞扫描" class="headerlink" title="28.ActiveMQPoc ActiveMQ漏洞扫描"></a>28.ActiveMQPoc ActiveMQ漏洞扫描</h3><p>Example: Ladon 192.168.1.8/24 ActiveMQPoc<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_ActiveMQPoc.gif"></p>
 ]]></content>
       <categories>
-        <category>Ladon</category>
         <category>Cobalt Strike</category>
+        <category>Ladon</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1449,12 +1449,12 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a><br><a href="https://docs.microsoft.com/zh-cn/dotnet/framework/data/adonet/sql/enumerating-instances-of-sql-server" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/dotnet/framework/data/adonet/sql/enumerating-instances-of-sql-server</a></p>
 ]]></content>
       <categories>
-        <category>Ladon</category>
-        <category>.NET</category>
         <category>内网</category>
+        <category>.NET</category>
+        <category>Ladon</category>
+        <category>编程</category>
         <category>源码</category>
         <category>SQL</category>
-        <category>编程</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1590,9 +1590,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
 ]]></content>
       <categories>
         <category>工具</category>
+        <category>内网</category>
         <category>Ladon</category>
         <category>密码</category>
-        <category>内网</category>
         <category>嗅探</category>
       </categories>
       <tags>
@@ -1640,8 +1640,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       <tags>
         <tag>Metasploit</tag>
         <tag>PowerShell</tag>
-        <tag>C#</tag>
         <tag>.NET</tag>
+        <tag>C#</tag>
         <tag>MSF</tag>
         <tag>meterpreter</tag>
       </tags>
@@ -1734,11 +1734,11 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
 <p><a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.directoryservices.directoryentry?view=netframework-4.8" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/dotnet/api/system.directoryservices.directoryentry?view=netframework-4.8</a></p>
 ]]></content>
       <categories>
-        <category>Ladon</category>
-        <category>.NET</category>
         <category>内网</category>
-        <category>源码</category>
+        <category>.NET</category>
+        <category>Ladon</category>
         <category>编程</category>
+        <category>源码</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1795,8 +1795,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       <categories>
         <category>.NET</category>
         <category>ShellCode</category>
-        <category>源码</category>
         <category>编程</category>
+        <category>源码</category>
       </categories>
       <tags>
         <tag>.NET</tag>
@@ -2106,9 +2106,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </categories>
       <tags>
         <tag>Ladon</tag>
+        <tag>Code</tag>
         <tag>Poc</tag>
         <tag>PHP</tag>
-        <tag>Code</tag>
         <tag>Ngnix</tag>
         <tag>CVE-2019-11043</tag>
       </tags>
@@ -2379,10 +2379,10 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Text;</span><br><span class="line">using System.Net;</span><br><span class="line">using System.Text.RegularExpressions;</span><br><span class="line"></span><br><span class="line">namespace LadonDLL</span><br><span class="line">&#123;</span><br><span class="line">    public class scan</span><br><span class="line">    &#123;</span><br><span class="line">        public static string run(string ip)</span><br><span class="line">        &#123;</span><br><span class="line">            if (string.IsNullOrEmpty(ip))</span><br><span class="line">                return &quot;&quot;;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line"></span><br><span class="line">                &#x2F;&#x2F;192.11.22.10    Microsoft-IIS&#x2F;10.0      IIS Windows</span><br><span class="line">                &#x2F;&#x2F;192.11.22.1     H3C-Miniware-Webs       ER3200G2系统管理</span><br><span class="line">                return ip + &quot;\t&quot; + getURLbanner(ip) + &quot;\t&quot; + GetTitle(getHtml(&quot;http:&#x2F;&#x2F;&quot; + ip,2));</span><br><span class="line">            </span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private static string getURLbanner(string url)</span><br><span class="line">        &#123;</span><br><span class="line">            &#x2F;&#x2F;&#x2F;&#x2F;HttpWebResponse res;</span><br><span class="line">            if (!url.ToLower().Contains(&quot;https:&#x2F;&#x2F;&quot;) &amp;&amp; !url.ToLower().Contains(&quot;http:&#x2F;&#x2F;&quot;))</span><br><span class="line">                url &#x3D; &quot;http:&#x2F;&#x2F;&quot; + url;</span><br><span class="line"></span><br><span class="line">            try</span><br><span class="line">            &#123;</span><br><span class="line">                var req &#x3D; (HttpWebRequest)WebRequest.CreateDefault(new Uri(url));</span><br><span class="line">                req.Method &#x3D; &quot;HEAD&quot;;</span><br><span class="line">                req.Timeout &#x3D; 1000;</span><br><span class="line">                var res &#x3D; (HttpWebResponse)req.GetResponse();</span><br><span class="line"></span><br><span class="line">                if (res.StatusCode &#x3D;&#x3D; HttpStatusCode.OK || res.StatusCode &#x3D;&#x3D; HttpStatusCode.Forbidden || res.StatusCode &#x3D;&#x3D; HttpStatusCode.Redirect || res.StatusCode &#x3D;&#x3D; HttpStatusCode.MovedPermanently)</span><br><span class="line">                &#123;</span><br><span class="line">                    return res.Server;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                &#x2F;&#x2F;res.Close();</span><br><span class="line"></span><br><span class="line">                return res.Server;</span><br><span class="line">            &#125;</span><br><span class="line">            catch (WebException ex)</span><br><span class="line">            &#123;</span><br><span class="line">                return &quot;&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private static string GetTitle(string html)</span><br><span class="line">        &#123;</span><br><span class="line">            if (html.Contains(&quot;&lt;hTmlKErRor&gt;&quot;))</span><br><span class="line">            &#123;</span><br><span class="line">                &#x2F;&#x2F;return html.Replace(&quot;&lt;hTmlKErRor&gt;&quot;, &quot;&quot;);</span><br><span class="line">                return &quot;&quot;;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            html &#x3D; html.Replace(&quot;&lt;br&gt;&quot;, &quot;&quot;);</span><br><span class="line">            html &#x3D; html.Replace(&quot;&lt;BR&gt;&quot;, &quot;&quot;);</span><br><span class="line">            html &#x3D; html.Replace(&quot;\r\n&quot;, &quot;&quot;);</span><br><span class="line">            html &#x3D; html.Replace(&quot;&amp;nbsp;&quot;, &quot; &quot;);</span><br><span class="line">            html &#x3D; html.Replace(&quot;\n&quot;, &quot;&quot;).Trim();</span><br><span class="line"></span><br><span class="line">            String regex &#x3D; @&quot;&lt;title.+&lt;&#x2F;title&gt;&quot;;</span><br><span class="line"></span><br><span class="line">            String title &#x3D; Regex.Match(html, regex).ToString();</span><br><span class="line">            title &#x3D; Regex.Replace(title, @&quot;[\&quot;&quot;]+&quot;, &quot;&quot;);</span><br><span class="line"></span><br><span class="line">            title &#x3D; title.TrimStart(&#39;&lt;&#39;);</span><br><span class="line"></span><br><span class="line">            string regex2 &#x3D; @&quot;&gt;.+&lt;&#x2F;title&gt;&quot;;</span><br><span class="line"></span><br><span class="line">            string title2 &#x3D; Regex.Match(title, regex2).ToString();</span><br><span class="line">            title2 &#x3D; title2.TrimStart(&#39;&gt;&#39;).Replace(&quot;&lt;&#x2F;title&gt;&quot;, &quot;&quot;).Trim();</span><br><span class="line"></span><br><span class="line">            if (title2.Length &gt; 50)</span><br><span class="line">                return title2.Substring(0, 50);</span><br><span class="line"></span><br><span class="line">            return title2;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private static string getHtml(string url, int codingType)</span><br><span class="line">        &#123;</span><br><span class="line"></span><br><span class="line">            try</span><br><span class="line">            &#123;</span><br><span class="line">                if (!url.ToLower().Contains(&quot;https:&#x2F;&#x2F;&quot;) &amp;&amp; !url.ToLower().Contains(&quot;http:&#x2F;&#x2F;&quot;))</span><br><span class="line">                    url &#x3D; &quot;http:&#x2F;&#x2F;&quot; + url;</span><br><span class="line">                WebClient myWebClient &#x3D; new WebClient();</span><br><span class="line">                if (url.ToLower().Contains(&quot;https:&#x2F;&#x2F;&quot;))</span><br><span class="line">                &#123;</span><br><span class="line">                    System.Net.ServicePointManager.ServerCertificateValidationCallback +&#x3D;</span><br><span class="line">    delegate(object sender, System.Security.Cryptography.X509Certificates.X509Certificate certificate,</span><br><span class="line">             System.Security.Cryptography.X509Certificates.X509Chain chain,</span><br><span class="line">             System.Net.Security.SslPolicyErrors sslPolicyErrors)</span><br><span class="line">    &#123;</span><br><span class="line">        return true; &#x2F;&#x2F; **** Always accept</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                byte[] myDataBuffer &#x3D; myWebClient.DownloadData(url);</span><br><span class="line">                &#x2F;&#x2F;return Encoding.Default.GetString(myDataBuffer);</span><br><span class="line">                string strWebData &#x3D; System.Text.Encoding.Default.GetString(myDataBuffer);</span><br><span class="line"></span><br><span class="line">                &#x2F;&#x2F;自动识别编码  不一定有&lt;meta  比如 百度开放平台 content&#x3D;&quot;text&#x2F;html; charset&#x3D;gbk&quot;&gt;</span><br><span class="line">                &#x2F;&#x2F;Match charSetMatch &#x3D; Regex.Match(strWebData, &quot;&lt;meta([^&gt;]*)charset&#x3D;(\&quot;)?(.*)?\&quot;&quot;, RegexOptions.IgnoreCase | RegexOptions.Multiline);</span><br><span class="line">                Match charSetMatch &#x3D; Regex.Match(strWebData, &quot;(.*)charset&#x3D;(\&quot;)?(.*)?\&quot;&quot;, RegexOptions.IgnoreCase | RegexOptions.Multiline);</span><br><span class="line"></span><br><span class="line">                string webCharSet &#x3D; charSetMatch.Groups[3].Value.Trim().ToLower();</span><br><span class="line"></span><br><span class="line">                if (webCharSet !&#x3D; &quot;gb2312&quot; &amp;&amp; webCharSet !&#x3D; &quot;gbk&quot;)</span><br><span class="line">                &#123;</span><br><span class="line">                    webCharSet &#x3D; &quot;utf-8&quot;;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                if (System.Text.Encoding.GetEncoding(webCharSet) !&#x3D; System.Text.Encoding.Default)</span><br><span class="line">                &#123;</span><br><span class="line">                    strWebData &#x3D; System.Text.Encoding.GetEncoding(webCharSet).GetString(myDataBuffer);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                &#x2F;&#x2F;if (codingType &#x3D;&#x3D; 1)</span><br><span class="line">                &#x2F;&#x2F;    return Encoding.Unicode.GetString(myDataBuffer);</span><br><span class="line">                &#x2F;&#x2F;else if (codingType &#x3D;&#x3D; 2)</span><br><span class="line">                &#x2F;&#x2F;    return Encoding.Default.GetString(myDataBuffer);&#x2F;&#x2F;GBK 936</span><br><span class="line">                &#x2F;&#x2F;else if (codingType &#x3D;&#x3D; 3)</span><br><span class="line">                &#x2F;&#x2F;    return Encoding.UTF8.GetString(myDataBuffer);&#x2F;&#x2F;65501</span><br><span class="line"></span><br><span class="line">                return strWebData;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            catch (Exception ex)</span><br><span class="line">            &#123;</span><br><span class="line">                &#x2F;&#x2F;Console.WriteLine(url + &quot; &quot; + ex.Message);</span><br><span class="line">                return &quot;&lt;hTmlKErRor&gt;&quot; + ex.Message;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            return &quot;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>工具</category>
-        <category>Ladon</category>
         <category>.NET</category>
-        <category>源码</category>
+        <category>Ladon</category>
         <category>编程</category>
+        <category>源码</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -2400,10 +2400,10 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Text;</span><br><span class="line">using System.Net;</span><br><span class="line">using System.Text.RegularExpressions;</span><br><span class="line">using System.Net.Sockets;</span><br><span class="line">&#x2F;&#x2F;Ladon PortScan Moudle</span><br><span class="line">namespace LadonDLL</span><br><span class="line">&#123;</span><br><span class="line">    public class scan</span><br><span class="line">    &#123;</span><br><span class="line">        public static string run(string ip)</span><br><span class="line">        &#123;</span><br><span class="line">            if (string.IsNullOrEmpty(ip))</span><br><span class="line">                return &quot;&quot;;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                if (K8CheckPort(ip, 21))</span><br><span class="line">                    Console.Write(ip + &quot;\t21 Open\r\n&quot;);</span><br><span class="line">                if (K8CheckPort(ip, 80))</span><br><span class="line">                    Console.Write(ip + &quot;\t80 Open\r\n&quot;);</span><br><span class="line">                if (K8CheckPort(ip, 1433))</span><br><span class="line">                    Console.Write(ip + &quot;\t1433 Open\r\n&quot;);</span><br><span class="line">                if (K8CheckPort(ip, 3306))</span><br><span class="line">                    Console.Write(ip + &quot;\t3306 Open\r\n&quot;);</span><br><span class="line">                if (K8CheckPort(ip, 1521))</span><br><span class="line">                    Console.Write(ip + &quot;\t1521 Open\r\n&quot;);</span><br><span class="line">                if (K8CheckPort(ip, 3389))</span><br><span class="line">                    Console.Write(ip + &quot;\t3389 Open\r\n&quot;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            return &quot;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private static bool K8CheckPort(string ip, int Port)</span><br><span class="line">        &#123;</span><br><span class="line">            &#x2F;&#x2F;int Port &#x3D; 21;</span><br><span class="line">            IPAddress scanip &#x3D; IPAddress.Parse(ip);</span><br><span class="line">            IPEndPoint point &#x3D; new IPEndPoint(scanip, Port);</span><br><span class="line">            try</span><br><span class="line">            &#123;</span><br><span class="line">                TcpClient tcp &#x3D; new TcpClient();</span><br><span class="line">                tcp.Connect(point);</span><br><span class="line">                &#x2F;&#x2F;Console.WriteLine(scanip + &quot;\t&quot; + Port + &quot;\tOpen&quot;);</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">            catch (Exception ex)</span><br><span class="line">            &#123;</span><br><span class="line">                &#x2F;&#x2F;Console.WriteLine(scanip + &quot;\t&quot; + Port + &quot;\tClose&quot;);</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>工具</category>
-        <category>Ladon</category>
         <category>.NET</category>
-        <category>源码</category>
+        <category>Ladon</category>
         <category>编程</category>
+        <category>源码</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -2424,8 +2424,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
 ]]></content>
       <categories>
         <category>Exp</category>
-        <category>Ladon</category>
         <category>内网</category>
+        <category>Ladon</category>
         <category>源码</category>
       </categories>
       <tags>
@@ -2466,76 +2466,6 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <tag>Ladon</tag>
         <tag>Kali</tag>
         <tag>PowerShell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CVE-2019-0803提权工具</title>
-    <url>/p/fa25cc9b.html</url>
-    <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x000 漏洞信息</strong></span><br>CVE-2019-0803 | Win32k 特权提升漏洞<br>发布时间: 2019-04-09<br>当 Win32k 组件无法正确处理内存中的对象时，Windows 中存在特权提升漏洞。成功利用此漏洞的攻击者可以在内核模式中运行任意代码。攻击者可随后安装程序；查看、更改或删除数据；或者创建拥有完全用户权限的新帐户。<br>若要利用此漏洞，攻击者首先必须登录到系统。然后，攻击者可以运行一个为利用此漏洞而经特殊设计的应用程序，从而控制受影响的系统。</p>
-<p><span style="font-size: 18px;"><strong>0x001 影响版本</strong></span></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:csharp;gutter:true;">Microsoft Windows Server 2019 0
-Microsoft Windows Server 2016 0
-Microsoft Windows Server 2012 R2 0
-Microsoft Windows Server 2012 0
-Microsoft Windows Server 2008 R2 for x64-based Systems SP1
-Microsoft Windows Server 2008 R2 for Itanium-based Systems SP1
-Microsoft Windows Server 2008 for x64-based Systems SP2
-Microsoft Windows Server 2008 for Itanium-based Systems SP2
-Microsoft Windows Server 2008 for 32-bit Systems SP2
-Microsoft Windows Server 1803 0
-Microsoft Windows Server 1709 0
-Microsoft Windows RT 8.1
-Microsoft Windows 8.1 for x64-based Systems 0
-Microsoft Windows 8.1 for 32-bit Systems 0
-Microsoft Windows 7 for x64-based Systems SP1
-Microsoft Windows 7 for 32-bit Systems SP1
-Microsoft Windows 10 Version 1809 for x64-based Systems 0
-Microsoft Windows 10 Version 1809 for ARM64-based Systems 0
-Microsoft Windows 10 Version 1809 for 32-bit Systems 0
-Microsoft Windows 10 Version 1803 for x64-based Systems 0
-Microsoft Windows 10 Version 1803 for ARM64-based Systems 0
-Microsoft Windows 10 Version 1803 for 32-bit Systems 0
-Microsoft Windows 10 version 1709 for x64-based Systems 0
-Microsoft Windows 10 Version 1709 for ARM64-based Systems 0
-Microsoft Windows 10 version 1709 for 32-bit Systems 0
-Microsoft Windows 10 version 1703 for x64-based Systems 0
-Microsoft Windows 10 version 1703 for 32-bit Systems 0
-Microsoft Windows 10 Version 1607 for x64-based Systems 0
-Microsoft Windows 10 Version 1607 for 32-bit Systems 0
-Microsoft Windows 10 for x64-based Systems 0
-Microsoft Windows 10 for 32-bit Systems 0
-</pre>
-</div>
-<p><span style="font-size: 18px;"><strong>&nbsp;0x002 EXP用法</strong></span></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:csharp;gutter:true;">Usage:  CVE-2019-0803.exe cmd cmdline
-</pre>
-</div>
-<p>如图：可能需执行3-4次左右才能提权成功,测试系统为Win7 X64,其它未测。</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/CVE-2019-0803.png"></p>
-<p><span style="font-size: 18px;"><strong><span style="color: #ff00ff;">0x003 下载</span></strong></span></p>
-<p>https://github.com/k8gege/K8tools</p>
-<p><span style="font-size: 18px;"><strong>0x004 补丁</strong></span></p>
-<p>补丁号有很多个，不同的系统补丁号不一样，有时新的补丁包含旧洞补丁</p>
-<p>旧的补丁号会被替换掉，所以每次提权都应该先到官方查看下对应补丁号</p>
-<p>不要老是查询有没旧的补丁号，然后再去提权，没有旧的补丁号不代表没补</p>
-<p><a href="https://portal.msrc.microsoft.com/zh-cn/security-guidance/advisory/CVE-2019-0803" target="_blank">https://portal.msrc.microsoft.com/zh-cn/security-guidance/advisory/CVE-2019-0803</a></p>
-<p><span style="font-size: 18px;"><strong>0x005 链接</strong></span></p>
-<p><a href="https://www.exploit-db.com/exploits/46920" target="_blank">https://www.exploit-db.com/exploits/46920</a><br>(steal Security token) <a href="https://github.com/mwrlabs/CVE-2016-7255" target="_blank">https://github.com/mwrlabs/CVE-2016-7255</a><br>EDB Note: Download ~ <a href="https://github.com/offensive-security/exploitdb-bin-sploits/raw/master/bin-sploits/46920.zip" target="_blank">https://github.com/offensive-security/exploitdb-bin-sploits/raw/master/bin-sploits/46920.zip</a></p>
-<p><a title="External url" href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0803" target="_blank">https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0803</a> <br>                    
-
-
-
-<pre><code>&lt;a title=&quot;External url&quot; href=&quot;http://packetstormsecurity.com/files/153034/Microsoft-Windows-Win32k-Privilege-Escalation.html&quot; target=&quot;_blank&quot;&gt;http://packetstormsecurity.com/files/153034/Microsoft-Windows-Win32k-Privilege-Escalation.html&lt;/a&gt;&lt;/p&gt;</code></pre></p>]]></content>
-      <categories>
-        <category>提权</category>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>Exp</tag>
-        <tag>Tool</tag>
-        <tag>LPE</tag>
       </tags>
   </entry>
   <entry>
@@ -2687,6 +2617,125 @@ payload5='\x23\x64\x61\x74\x65\x3A\x20\x32\x30\x31\x39\x30\x36\x32\x36\x20\x23\x
       </tags>
   </entry>
   <entry>
+    <title>CVE-2019-0803提权工具</title>
+    <url>/p/fa25cc9b.html</url>
+    <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x000 漏洞信息</strong></span><br>CVE-2019-0803 | Win32k 特权提升漏洞<br>发布时间: 2019-04-09<br>当 Win32k 组件无法正确处理内存中的对象时，Windows 中存在特权提升漏洞。成功利用此漏洞的攻击者可以在内核模式中运行任意代码。攻击者可随后安装程序；查看、更改或删除数据；或者创建拥有完全用户权限的新帐户。<br>若要利用此漏洞，攻击者首先必须登录到系统。然后，攻击者可以运行一个为利用此漏洞而经特殊设计的应用程序，从而控制受影响的系统。</p>
+<p><span style="font-size: 18px;"><strong>0x001 影响版本</strong></span></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:csharp;gutter:true;">Microsoft Windows Server 2019 0
+Microsoft Windows Server 2016 0
+Microsoft Windows Server 2012 R2 0
+Microsoft Windows Server 2012 0
+Microsoft Windows Server 2008 R2 for x64-based Systems SP1
+Microsoft Windows Server 2008 R2 for Itanium-based Systems SP1
+Microsoft Windows Server 2008 for x64-based Systems SP2
+Microsoft Windows Server 2008 for Itanium-based Systems SP2
+Microsoft Windows Server 2008 for 32-bit Systems SP2
+Microsoft Windows Server 1803 0
+Microsoft Windows Server 1709 0
+Microsoft Windows RT 8.1
+Microsoft Windows 8.1 for x64-based Systems 0
+Microsoft Windows 8.1 for 32-bit Systems 0
+Microsoft Windows 7 for x64-based Systems SP1
+Microsoft Windows 7 for 32-bit Systems SP1
+Microsoft Windows 10 Version 1809 for x64-based Systems 0
+Microsoft Windows 10 Version 1809 for ARM64-based Systems 0
+Microsoft Windows 10 Version 1809 for 32-bit Systems 0
+Microsoft Windows 10 Version 1803 for x64-based Systems 0
+Microsoft Windows 10 Version 1803 for ARM64-based Systems 0
+Microsoft Windows 10 Version 1803 for 32-bit Systems 0
+Microsoft Windows 10 version 1709 for x64-based Systems 0
+Microsoft Windows 10 Version 1709 for ARM64-based Systems 0
+Microsoft Windows 10 version 1709 for 32-bit Systems 0
+Microsoft Windows 10 version 1703 for x64-based Systems 0
+Microsoft Windows 10 version 1703 for 32-bit Systems 0
+Microsoft Windows 10 Version 1607 for x64-based Systems 0
+Microsoft Windows 10 Version 1607 for 32-bit Systems 0
+Microsoft Windows 10 for x64-based Systems 0
+Microsoft Windows 10 for 32-bit Systems 0
+</pre>
+</div>
+<p><span style="font-size: 18px;"><strong>&nbsp;0x002 EXP用法</strong></span></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:csharp;gutter:true;">Usage:  CVE-2019-0803.exe cmd cmdline
+</pre>
+</div>
+<p>如图：可能需执行3-4次左右才能提权成功,测试系统为Win7 X64,其它未测。</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/CVE-2019-0803.png"></p>
+<p><span style="font-size: 18px;"><strong><span style="color: #ff00ff;">0x003 下载</span></strong></span></p>
+<p>https://github.com/k8gege/K8tools</p>
+<p><span style="font-size: 18px;"><strong>0x004 补丁</strong></span></p>
+<p>补丁号有很多个，不同的系统补丁号不一样，有时新的补丁包含旧洞补丁</p>
+<p>旧的补丁号会被替换掉，所以每次提权都应该先到官方查看下对应补丁号</p>
+<p>不要老是查询有没旧的补丁号，然后再去提权，没有旧的补丁号不代表没补</p>
+<p><a href="https://portal.msrc.microsoft.com/zh-cn/security-guidance/advisory/CVE-2019-0803" target="_blank">https://portal.msrc.microsoft.com/zh-cn/security-guidance/advisory/CVE-2019-0803</a></p>
+<p><span style="font-size: 18px;"><strong>0x005 链接</strong></span></p>
+<p><a href="https://www.exploit-db.com/exploits/46920" target="_blank">https://www.exploit-db.com/exploits/46920</a><br>(steal Security token) <a href="https://github.com/mwrlabs/CVE-2016-7255" target="_blank">https://github.com/mwrlabs/CVE-2016-7255</a><br>EDB Note: Download ~ <a href="https://github.com/offensive-security/exploitdb-bin-sploits/raw/master/bin-sploits/46920.zip" target="_blank">https://github.com/offensive-security/exploitdb-bin-sploits/raw/master/bin-sploits/46920.zip</a></p>
+<p><a title="External url" href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0803" target="_blank">https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0803</a> <br>                    
+
+
+
+<pre><code>&lt;a title=&quot;External url&quot; href=&quot;http://packetstormsecurity.com/files/153034/Microsoft-Windows-Win32k-Privilege-Escalation.html&quot; target=&quot;_blank&quot;&gt;http://packetstormsecurity.com/files/153034/Microsoft-Windows-Win32k-Privilege-Escalation.html&lt;/a&gt;&lt;/p&gt;</code></pre></p>]]></content>
+      <categories>
+        <category>提权</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Exp</tag>
+        <tag>Tool</tag>
+        <tag>LPE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Cobalt Strike TeamServer For Windows</title>
+    <url>/p/22e5f4a8.html</url>
+    <content><![CDATA[<p><img alt data-original="http://k8gege.org/k8img/posts/TeamServer.png"></p>
+<p><strong>Cobalt Strike 3.x TeamServer for Windows<br></strong></p>
+<p><strong>0x001 环境</strong><br><br>CS 3.12 或 3.13 </p>
+<p>Kali或Win最好安装jdk1.8.5或之后版本<br><br>设置环境变量,如path=C:\Program Files\Java\jdk1.8.0_05\bin<br><br><strong>0x002 启动中转</strong><br>启动TeamServer.exe(第一次运行Win7后系统需右键管理员)<br><br>TeamServer.exe IP pass</p>
+<p><span style="color: #ff00ff;">20190306编译版无需kali下生成cobaltstrike.store文件</span></p>
+<p><strong>0x003 下载</strong></p>
+<p>TeamServer.exe</p>
+<p><a href="https://github.com/k8gege/K8tools" target="_blank">https://github.com/k8gege/K8tools/raw/master/TeamServer.exe</a></p>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>Cobalt Strike</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>Cobalt Strike</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CobaltStrike &amp; Metasploit Shellcode一键免杀工具</title>
+    <url>/p/9cffe32c.html</url>
+    <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x001 前言</strong></span></p>
+<p>CobaltStrike &amp; Metasploit&nbsp; Shellcode一键免杀工具</p>
+<p>加载器通过AES加密ShellCode，动态编译生成EXE。</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/scencode.png"></p>
+<p>1个月前该工具生成的exe免杀所有杀软，现在未测应该还能过90%的杀软吧。</p>
+<p>可选.net版本为系统安装对应版本，1.0仅支持.net EXE生成。</p>
+<p>后续版本不一定公开，望大家见谅，有兴趣的自行反编译生成的exe就知道怎么弄了。</p>
+<p><strong>注意</strong>: <span style="color: #ff00ff;">一定要使用无后门特征的CS,否则上线1分钟就被个别杀软查杀</span>(因为CS默认每分钟发送流量包,里面包含后门特征信息)</p>
+<p><strong>声明</strong>: 程序<span style="color: #ff00ff;">仅免杀shellcode</span>部分,CS加载的<span style="color: #ff00ff;">其它模块不免杀</span>(比如运行mimikaz读取密码被个别杀软查杀)</p>
+<p>CS其它模块免杀，请自行修改CS客户端资源里对应的DLL，比如mimikaz_x86.dll、mimikaz_x64.dll</p>
+<p>&nbsp;</p>
+<p><span style="font-size: 18px; color: #ff00ff;"><strong>0x002 下载</strong> </span></p>
+<p><span style="font-size: 14px;"><a href="https://github.com/k8gege/K8tools/raw/master/K8_SC_ENCODE(CobaltStrike%20%26%20Metasploit%20Shellcode%E5%85%8D%E6%9D%80%E5%B7%A5%E5%85%B7).rar" target="_blank">https://github.com/k8gege/K8tools/raw/master/K8_SC_ENCODE(CobaltStrike &amp; Metasploit Shellcode免杀工具).rar</a></span></p>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>免杀</category>
+        <category>Metasploit</category>
+        <category>Cobalt Strike</category>
+        <category>ShellCode</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>Cobalt Strike</tag>
+        <tag>Metasploit</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>K8 Struts2 EXP 综合漏洞利用工具</title>
     <url>/p/ab3e87f7.html</url>
     <content><![CDATA[<p>工具:&nbsp;K8&nbsp;Struts2&nbsp;Exploit<br>组织:&nbsp;K8搞基大队[K8team]<br>作者:&nbsp;K8拉登哥哥<br>博客:&nbsp;<a href="http://qqhack8.blog.163.com" target="_blank">http://qqhack8.blog.163.com</a><br>发布:&nbsp;2014/7/31&nbsp;10:24:56<br><br>简介: <br><br>K8 Struts2 综合漏洞利用工具 (Apache Struts Remote Code Execution Exploit)<br>Struts2漏洞检测工具&nbsp;&nbsp; Struts2漏洞测试工具&nbsp; K8 struts2 exploit Test&nbsp; Struts2 GetShell<br>支持漏洞 (S2-045 devMode S2-032&nbsp; s2-020&nbsp; s2-019&nbsp; s2-016&nbsp; s2-013&nbsp; s2-009 S2-005)&nbsp; <br><br>声明:工具仅供安全检测或网络攻防研究,非法用途后果自负.<br>图片: <br><img alt data-original="http://k8gege.org/k8img/posts/S2exp1.png"></p>
@@ -2731,26 +2780,6 @@ payload5='\x23\x64\x61\x74\x65\x3A\x20\x32\x30\x31\x39\x30\x36\x32\x36\x20\x23\x
         <tag>Tool</tag>
         <tag>GetShell</tag>
         <tag>Struts2</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Cobalt Strike TeamServer For Windows</title>
-    <url>/p/22e5f4a8.html</url>
-    <content><![CDATA[<p><img alt data-original="http://k8gege.org/k8img/posts/TeamServer.png"></p>
-<p><strong>Cobalt Strike 3.x TeamServer for Windows<br></strong></p>
-<p><strong>0x001 环境</strong><br><br>CS 3.12 或 3.13 </p>
-<p>Kali或Win最好安装jdk1.8.5或之后版本<br><br>设置环境变量,如path=C:\Program Files\Java\jdk1.8.0_05\bin<br><br><strong>0x002 启动中转</strong><br>启动TeamServer.exe(第一次运行Win7后系统需右键管理员)<br><br>TeamServer.exe IP pass</p>
-<p><span style="color: #ff00ff;">20190306编译版无需kali下生成cobaltstrike.store文件</span></p>
-<p><strong>0x003 下载</strong></p>
-<p>TeamServer.exe</p>
-<p><a href="https://github.com/k8gege/K8tools" target="_blank">https://github.com/k8gege/K8tools/raw/master/TeamServer.exe</a></p>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>Cobalt Strike</category>
-      </categories>
-      <tags>
-        <tag>Tool</tag>
-        <tag>Cobalt Strike</tag>
       </tags>
   </entry>
   <entry>
@@ -2838,9 +2867,9 @@ payload5='\x23\x64\x61\x74\x65\x3A\x20\x32\x30\x31\x39\x30\x36\x32\x36\x20\x23\x
       <categories>
         <category>工具</category>
         <category>Ladon</category>
-        <category>源码</category>
         <category>Python</category>
         <category>编程</category>
+        <category>源码</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -2881,8 +2910,8 @@ PortTranS.exe 8000 338
 <p>&nbsp;</p>]]></content>
       <categories>
         <category>工具</category>
-        <category>.NET</category>
         <category>内网</category>
+        <category>.NET</category>
       </categories>
       <tags>
         <tag>Tool</tag>
@@ -2991,10 +3020,10 @@ ptr = ctypes.windll.kernel32.VirtualAlloc(ctypes.c_int(0),
 <p>基本都是白名单加载DLL，DLL释放各种加密文件，再解密执行，最终加载CS而已。</p>]]></content>
       <categories>
         <category>工具</category>
+        <category>免杀</category>
         <category>Metasploit</category>
         <category>Cobalt Strike</category>
         <category>ShellCode</category>
-        <category>免杀</category>
         <category>Python</category>
       </categories>
       <tags>
@@ -3237,35 +3266,6 @@ xxe_data = r"""&lt;!DOCTYPE Autodiscover [
       </tags>
   </entry>
   <entry>
-    <title>CobaltStrike &amp; Metasploit Shellcode一键免杀工具</title>
-    <url>/p/9cffe32c.html</url>
-    <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x001 前言</strong></span></p>
-<p>CobaltStrike &amp; Metasploit&nbsp; Shellcode一键免杀工具</p>
-<p>加载器通过AES加密ShellCode，动态编译生成EXE。</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/scencode.png"></p>
-<p>1个月前该工具生成的exe免杀所有杀软，现在未测应该还能过90%的杀软吧。</p>
-<p>可选.net版本为系统安装对应版本，1.0仅支持.net EXE生成。</p>
-<p>后续版本不一定公开，望大家见谅，有兴趣的自行反编译生成的exe就知道怎么弄了。</p>
-<p><strong>注意</strong>: <span style="color: #ff00ff;">一定要使用无后门特征的CS,否则上线1分钟就被个别杀软查杀</span>(因为CS默认每分钟发送流量包,里面包含后门特征信息)</p>
-<p><strong>声明</strong>: 程序<span style="color: #ff00ff;">仅免杀shellcode</span>部分,CS加载的<span style="color: #ff00ff;">其它模块不免杀</span>(比如运行mimikaz读取密码被个别杀软查杀)</p>
-<p>CS其它模块免杀，请自行修改CS客户端资源里对应的DLL，比如mimikaz_x86.dll、mimikaz_x64.dll</p>
-<p>&nbsp;</p>
-<p><span style="font-size: 18px; color: #ff00ff;"><strong>0x002 下载</strong> </span></p>
-<p><span style="font-size: 14px;"><a href="https://github.com/k8gege/K8tools/raw/master/K8_SC_ENCODE(CobaltStrike%20%26%20Metasploit%20Shellcode%E5%85%8D%E6%9D%80%E5%B7%A5%E5%85%B7).rar" target="_blank">https://github.com/k8gege/K8tools/raw/master/K8_SC_ENCODE(CobaltStrike &amp; Metasploit Shellcode免杀工具).rar</a></span></p>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>Metasploit</category>
-        <category>Cobalt Strike</category>
-        <category>ShellCode</category>
-        <category>免杀</category>
-      </categories>
-      <tags>
-        <tag>Tool</tag>
-        <tag>Cobalt Strike</tag>
-        <tag>Metasploit</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>全版本IIS提权工具iislpe</title>
     <url>/p/6b9b3afe.html</url>
     <content><![CDATA[<p><strong>工具: </strong>iislpe.exe<strong><br></strong></p>
@@ -3356,10 +3356,10 @@ from pprint import pprint
       <categories>
         <category>工具</category>
         <category>内网</category>
-        <category>源码</category>
-        <category>嗅探</category>
         <category>Python</category>
+        <category>嗅探</category>
         <category>编程</category>
+        <category>源码</category>
       </categories>
       <tags>
         <tag>Tool</tag>
