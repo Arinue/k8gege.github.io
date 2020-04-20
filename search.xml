@@ -916,7 +916,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Ladon 6.4新增Linux系统探测、管理员/System权限切换</title>
+    <title>Ladon 6.4新增Linux系统探测、管理员提权System降权</title>
     <url>/p/55476.html</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>你还在为权限切换的问题而烦恼吗？SYSTEM权限下浏览器密码读取工具失效？SYS权限下系统自带NET USE命令连接IPC失效？<br>SYSTEM权限下截取不到目标桌面？ADMIN权限下打不开SYSTEM权限进程？如何切换各种权限测试工具？等这些都是权限问题，在XP和03用户权限和SYS权限都是同一个会话，所以远控可直接记录到，很多功能我们也没发现影响，直到WIN7微软为了这全，将会话进行隔离，我们会发现SYS权限会话为0，用户为1，这就是为什么以前sys权限控制WIN7机器远程桌面会黑屏的原因?Firefxo和Chrome采用了DBAPI加密，该加密需要对应用户会话信息才能解密，直接以SYSTEM权限启动发现解密失败。所以我们需要切换权限</p>
 <h3 id="Ladon-6-4更新功能"><a href="#Ladon-6-4更新功能" class="headerlink" title="Ladon 6.4更新功能"></a>Ladon 6.4更新功能</h3><p>[+] GetSystem 管理员/SYSTEM权限切换<br>[+] DumpLsass 导出Lsass内存文件<br>[u] OsScan新增SSH识别操作系统<br>[u] WebScan、SameWeb新增WebBanner<br>[+] WhatCms新增Banner、TP-Link WDR7300识别<br>[u] 修复6.3漏扫10、20等含0的C段</p>
