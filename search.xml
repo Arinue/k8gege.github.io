@@ -696,8 +696,8 @@
       </categories>
       <tags>
         <tag>Exp</tag>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Code</tag>
       </tags>
   </entry>
@@ -922,8 +922,9 @@
   <entry>
     <title>持久化后门之微软Visual Studio开发工具DLL却持</title>
     <url>/p/28288.html</url>
-    <content><![CDATA[<h3 id="DLL却持"><a href="#DLL却持" class="headerlink" title="DLL却持"></a>DLL却持</h3><p>目前还不能完全避免此“漏洞”（其实算不上漏洞，只能说是规则），特别是应用软件们的，通过DLL劫持来绕过安全软件主动防御的保护被称为“白加黑”，因为加载的主程序是正常的软件，主动防御可能会放过它，允许它启动，而恶意DLL则通过该软件的漏洞或替换正常的同名文件（对应用软件的文件保护似乎并不象对系统文件保护那样严密，而且并不是一直运行状态，被替换还是比较容易的）， 甚至有的还会冒用合法软件的数字签字等方式，由正常程序加载，从而躲开安全软件的拦截。</p>
-<h3 id="白加黑"><a href="#白加黑" class="headerlink" title="白加黑"></a>白加黑</h3><p>DLL却持在”白加黑“里最常见，07、08年开始在国内才开始起步，但主要是写病毒用到的较多，什么LPK.DLL、USP10.DLL都是当时流行的U盘病毒木马最喜欢用的却持方式，因为它们可以却持99%的EXE，10年后渗透圈才开始懂利用，常见的只是单纯用于提权而已。很多人在很多方面不懂举一反三，能执行添加用户命令，你就不懂让它执行远控上线了吗？一定要登3389?</p>
+    <content><![CDATA[<h3 id="DLL却持"><a href="#DLL却持" class="headerlink" title="DLL却持"></a>DLL却持</h3><p>DLL却持在”白加黑“里最常见，07、08年开始在国内才开始起步，但主要是写病毒用到的较多，什么LPK.DLL、USP10.DLL都是当时流行的U盘病毒木马最喜欢用的却持方式，因为它们可以却持99%的EXE，10年后渗透圈才开始懂利用，常见的只是单纯用于提权而已。很多人在很多方面不懂举一反三，能执行添加用户命令，你就不懂让它执行远控上线了吗？一定要登3389?</p>
+<p>目前还不能完全避免此“漏洞”（其实算不上漏洞，只能说是规则），特别是应用软件们的，通过DLL劫持来绕过安全软件主动防御的保护被称为“白加黑”，因为加载的主程序是正常的软件，主动防御可能会放过它，允许它启动，而恶意DLL则通过该软件的漏洞或替换正常的同名文件（对应用软件的文件保护似乎并不象对系统文件保护那样严密，而且并不是一直运行状态，被替换还是比较容易的）， 甚至有的还会冒用合法软件的数字签字等方式，由正常程序加载，从而躲开安全软件的拦截。</p>
+<p>当然可能有些人对“白加黑”有误解，以为非要却持系统的才叫白加黑，实际APT里最常用的一些方法是，却持第3方程序。比如360、讯雷、WinRar、Chrome、Office系列等存在DLL却持，人家给你发送的马包含被却持程序和对应DLL，运行正常的程序即可绕过主防上线。如海莲花等APT常用WINWORD.EXE加wwwlib.dll方式上线，因为EXE是WORD里的原版程序，有签名又合法它启动，杀软不拦，由于启动时会加载wwwlib.dll（什么C2或CS啊加密存在DLL里，海莲花常用的是CS），它就上线了，这也是白加黑利用。因为并不是所有人都安装WORD，而且安装的版本不定存在这个却持，所以它必须捆绑合法的EXE在里面，因此说非要系统自带的才叫白加黑，这是不对的，也是还不够理解的表现。</p>
 <h3 id="VS却持"><a href="#VS却持" class="headerlink" title="VS却持"></a>VS却持</h3><p>将K8测试专用DLL却持工具里的DLL改名成SspiCli.dll后放入VS目录<br>运行VS即可，却持对象VS2008-VS2015主程序devenv，VS2019已修复<br>其它不只主程序，只是时间太久了，我忘了懒得测，大家自行测试</p>
 <h4 id="却持VS2015"><a href="#却持VS2015" class="headerlink" title="却持VS2015"></a>却持VS2015</h4><p><img alt="image" data-original="http://k8gege.org/k8img/dllhijack/vs2015_ssp.jpg"></p>
 <h4 id="却持VS2012"><a href="#却持VS2012" class="headerlink" title="却持VS2012"></a>却持VS2012</h4><p><img alt="image" data-original="http://k8gege.org/k8img/dllhijack/vs2012_ssp.jpg"></p>
@@ -944,7 +945,7 @@
       </tags>
   </entry>
   <entry>
-    <title>加密工具TrueCrypt DLL却持</title>
+    <title>持久化后门之加密工具TrueCrypt DLL却持</title>
     <url>/p/26141.html</url>
     <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>TrueCrypt，是一款免费开源的加密软件，同时支持Windows Vista,7/XP, Mac OS X, Linux 等操作系统。TrueCrypt不需要生成任何文件即可在硬盘上建立虚拟磁盘，用户可以按照盘符进行访问，所有虚拟磁盘上的文件都被自动加密，需要通过密码来进行访问。TrueCrypt 提供多种加密算法，包括：AES-256, Blowfish (448-bit key), CAST5, Serpent, Triple DES, and Twofish，其他特性还有支持FAT32和NTFS分区、隐藏卷标、热键启动等。 </p>
 <h3 id="软件荣誉"><a href="#软件荣誉" class="headerlink" title="软件荣誉"></a>软件荣誉</h3><p>FBI在经过一年的尝试后，还是未能破译被巴西执法机构指控金融犯罪的巴西银行家的加密文件。巴西一家葡萄牙语报纸报道（葡萄牙语），巴西联邦警察在2008年7月展开的Satyagraha行动中，在银行家Daniel Dantas位于里约热内卢的公寓内收缴了5个硬盘。文章提到硬盘使用了两种加密程序，一种是TrueCrypt，另一种是不知名的256位AES加密软件。在专家未能破解密码后，巴西政府在2009年初请求美国提供帮助，然而美国联邦警察在一年不成功的尝试后，退还了硬盘。巴西现有的法律中不存在强制要求Dantas交出密码的规定。</p>
@@ -979,8 +980,8 @@
         <category>Ladon</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
       </tags>
   </entry>
   <entry>
@@ -1237,8 +1238,8 @@
         <category>Ladon</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Kali</tag>
         <tag>Scanner</tag>
       </tags>
@@ -1416,8 +1417,8 @@
         <category>Ladon</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Kali</tag>
         <tag>Scanner</tag>
       </tags>
@@ -1465,8 +1466,8 @@
         <category>Ladon</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Cobalt Strike</tag>
       </tags>
   </entry>
@@ -1523,8 +1524,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <category>.NET</category>
         <category>内网</category>
         <category>源码</category>
-        <category>编程</category>
         <category>SQL</category>
+        <category>编程</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1666,8 +1667,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <category>嗅探</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Sniffer</tag>
         <tag>FtpSniffer</tag>
         <tag>HttpSniffer</tag>
@@ -1934,9 +1935,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </categories>
       <tags>
         <tag>Exp</tag>
+        <tag>Ladon</tag>
         <tag>Tool</tag>
         <tag>GetShell</tag>
-        <tag>Ladon</tag>
         <tag>ActiveMQ</tag>
         <tag>CVE-2016-3088</tag>
       </tags>
@@ -1958,9 +1959,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </categories>
       <tags>
         <tag>Exp</tag>
+        <tag>Ladon</tag>
         <tag>Tool</tag>
         <tag>GetShell</tag>
-        <tag>Ladon</tag>
         <tag>ThinkPHP</tag>
       </tags>
   </entry>
@@ -1983,9 +1984,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </categories>
       <tags>
         <tag>Exp</tag>
+        <tag>Ladon</tag>
         <tag>Tool</tag>
         <tag>GetShell</tag>
-        <tag>Ladon</tag>
         <tag>PhpStudy</tag>
       </tags>
   </entry>
@@ -2014,9 +2015,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </categories>
       <tags>
         <tag>Exp</tag>
+        <tag>Ladon</tag>
         <tag>Tool</tag>
         <tag>GetShell</tag>
-        <tag>Ladon</tag>
         <tag>PhpStudy</tag>
       </tags>
   </entry>
@@ -2106,8 +2107,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <category>PowerShell</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>PowerShell</tag>
       </tags>
   </entry>
@@ -2149,9 +2150,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <category>工具</category>
       </categories>
       <tags>
-        <tag>Exp</tag>
         <tag>Apache</tag>
         <tag>Solr</tag>
+        <tag>Exp</tag>
         <tag>Ladon</tag>
         <tag>0day</tag>
       </tags>
@@ -2435,8 +2436,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <category>Ladon</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Kali</tag>
         <tag>Scanner</tag>
       </tags>
@@ -2500,8 +2501,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </categories>
       <tags>
         <tag>Exp</tag>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Kali</tag>
         <tag>PowerShell</tag>
       </tags>
@@ -2585,26 +2586,6 @@ exploit(dip, dport, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;)</cod
         <tag>Tool</tag>
         <tag>Weblogic</tag>
         <tag>GetShell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Cobalt Strike TeamServer For Windows</title>
-    <url>/p/22e5f4a8.html</url>
-    <content><![CDATA[<p><img alt data-original="http://k8gege.org/k8img/posts/TeamServer.png"></p>
-<p><strong>Cobalt Strike 3.x TeamServer for Windows<br></strong></p>
-<p><strong>0x001 环境</strong><br><br>CS 3.12 或 3.13 </p>
-<p>Kali或Win最好安装jdk1.8.5或之后版本<br><br>设置环境变量,如path=C:\Program Files\Java\jdk1.8.0_05\bin<br><br><strong>0x002 启动中转</strong><br>启动TeamServer.exe(第一次运行Win7后系统需右键管理员)<br><br>TeamServer.exe IP pass</p>
-<p><span style="color: #ff00ff;">20190306编译版无需kali下生成cobaltstrike.store文件</span></p>
-<p><strong>0x003 下载</strong></p>
-<p>TeamServer.exe</p>
-<p><a href="https://github.com/k8gege/K8tools" target="_blank">https://github.com/k8gege/K8tools/raw/master/TeamServer.exe</a></p>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>Cobalt Strike</category>
-      </categories>
-      <tags>
-        <tag>Tool</tag>
-        <tag>Cobalt Strike</tag>
       </tags>
   </entry>
   <entry>
@@ -2767,13 +2748,33 @@ Microsoft Windows 10 for 32-bit Systems 0
 
 <pre><code>&lt;a title=&quot;External url&quot; href=&quot;http://packetstormsecurity.com/files/153034/Microsoft-Windows-Win32k-Privilege-Escalation.html&quot; target=&quot;_blank&quot;&gt;http://packetstormsecurity.com/files/153034/Microsoft-Windows-Win32k-Privilege-Escalation.html&lt;/a&gt;&lt;/p&gt;</code></pre></p>]]></content>
       <categories>
-        <category>工具</category>
         <category>提权</category>
+        <category>工具</category>
       </categories>
       <tags>
         <tag>Exp</tag>
         <tag>Tool</tag>
         <tag>LPE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Cobalt Strike TeamServer For Windows</title>
+    <url>/p/22e5f4a8.html</url>
+    <content><![CDATA[<p><img alt data-original="http://k8gege.org/k8img/posts/TeamServer.png"></p>
+<p><strong>Cobalt Strike 3.x TeamServer for Windows<br></strong></p>
+<p><strong>0x001 环境</strong><br><br>CS 3.12 或 3.13 </p>
+<p>Kali或Win最好安装jdk1.8.5或之后版本<br><br>设置环境变量,如path=C:\Program Files\Java\jdk1.8.0_05\bin<br><br><strong>0x002 启动中转</strong><br>启动TeamServer.exe(第一次运行Win7后系统需右键管理员)<br><br>TeamServer.exe IP pass</p>
+<p><span style="color: #ff00ff;">20190306编译版无需kali下生成cobaltstrike.store文件</span></p>
+<p><strong>0x003 下载</strong></p>
+<p>TeamServer.exe</p>
+<p><a href="https://github.com/k8gege/K8tools" target="_blank">https://github.com/k8gege/K8tools/raw/master/TeamServer.exe</a></p>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>Cobalt Strike</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>Cobalt Strike</tag>
       </tags>
   </entry>
   <entry>
@@ -2942,8 +2943,8 @@ Microsoft Windows 10 for 32-bit Systems 0
         <category>编程</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Python</tag>
       </tags>
   </entry>
@@ -3132,29 +3133,6 @@ ptr = ctypes.windll.kernel32.VirtualAlloc(ctypes.c_int(0),
       </tags>
   </entry>
   <entry>
-    <title>mimikatz 2.1.1一键版 &amp; PowerShell</title>
-    <url>/p/77429fa6.html</url>
-    <content><![CDATA[<p>无需任何参数,运行EXE即可自动读取Windows系统密码</p>
-<p>EXE版需要其它功能请使用原版 (参数已写死仅读密码)</p>
-<p>结果保存于当前目录mz.log</p>
-<p>EXE</p>
-<p><a href="https://github.com/k8gege/K8tools/blob/master/mz.exe" target="_blank">https://github.com/k8gege/K8tools/blob/master/mz.exe</a></p>
-<p><a href="https://github.com/k8gege/K8tools/blob/master/mz64.exe" target="_blank">https://github.com/k8gege/K8tools/blob/master/mz64.exe</a></p>
-<p>PowerShell</p>
-<p><a href="https://github.com/k8gege/K8tools/blob/master/Invoke-Mimikatz.ps1" target="_blank">https://github.com/k8gege/K8tools/blob/master/Invoke-Mimikatz.ps1</a></p>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>提权</category>
-        <category>密码</category>
-        <category>PowerShell</category>
-      </categories>
-      <tags>
-        <tag>Tool</tag>
-        <tag>PowerShell</tag>
-        <tag>mimikatz</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CVE-2019-9621 Zimbra&lt;8.8.11 GetShell Exploit</title>
     <url>/p/19452dd9.html</url>
     <content><![CDATA[<table style="margin: 0px; padding: 0px; font-stretch: normal; font-size: 12px; line-height: 1.5; font-family: 宋体, sans-serif, microsoft yahei, 微软雅黑, tahoma, arial; width: 567px;">
@@ -3326,13 +3304,36 @@ xxe_data = r"""&lt;!DOCTYPE Autodiscover [
 <p><img alt data-original="http://k8gege.org/k8img/posts/k8uac.png"></p>
 <p>&nbsp;下载：<a href="https://files.cnblogs.com/files/k8gege/k8uac_20181125%5BK8%5D.rar" target="_blank">https://files.cnblogs.com/files/k8gege/k8uac_20181125%5BK8%5D.rar</a></p>]]></content>
       <categories>
-        <category>工具</category>
         <category>提权</category>
+        <category>工具</category>
       </categories>
       <tags>
         <tag>Exp</tag>
         <tag>Tool</tag>
         <tag>BypassUAC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mimikatz 2.1.1一键版 &amp; PowerShell</title>
+    <url>/p/77429fa6.html</url>
+    <content><![CDATA[<p>无需任何参数,运行EXE即可自动读取Windows系统密码</p>
+<p>EXE版需要其它功能请使用原版 (参数已写死仅读密码)</p>
+<p>结果保存于当前目录mz.log</p>
+<p>EXE</p>
+<p><a href="https://github.com/k8gege/K8tools/blob/master/mz.exe" target="_blank">https://github.com/k8gege/K8tools/blob/master/mz.exe</a></p>
+<p><a href="https://github.com/k8gege/K8tools/blob/master/mz64.exe" target="_blank">https://github.com/k8gege/K8tools/blob/master/mz64.exe</a></p>
+<p>PowerShell</p>
+<p><a href="https://github.com/k8gege/K8tools/blob/master/Invoke-Mimikatz.ps1" target="_blank">https://github.com/k8gege/K8tools/blob/master/Invoke-Mimikatz.ps1</a></p>]]></content>
+      <categories>
+        <category>提权</category>
+        <category>工具</category>
+        <category>密码</category>
+        <category>PowerShell</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>PowerShell</tag>
+        <tag>mimikatz</tag>
       </tags>
   </entry>
   <entry>
@@ -3352,8 +3353,8 @@ xxe_data = r"""&lt;!DOCTYPE Autodiscover [
 <p>&nbsp;</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp; </p>]]></content>
       <categories>
-        <category>工具</category>
         <category>提权</category>
+        <category>工具</category>
       </categories>
       <tags>
         <tag>Exp</tag>
@@ -3428,8 +3429,8 @@ from pprint import pprint
         <category>内网</category>
         <category>Python</category>
         <category>源码</category>
-        <category>编程</category>
         <category>嗅探</category>
+        <category>编程</category>
       </categories>
       <tags>
         <tag>Tool</tag>
