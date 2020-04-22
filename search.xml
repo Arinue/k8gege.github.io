@@ -83,7 +83,7 @@
 <h3 id="成品下载"><a href="#成品下载" class="headerlink" title="成品下载"></a>成品下载</h3><p><a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a><br>Win7/2008或安装.net 2.x 3.x系统可使用Ladon.exe<br>Win8-win10或安装.net 4.x系统可使用Ladon40.exe</p>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>无论内网还是外网渗透信息收集都是非常关键，信息收集越多越准确渗透的成功率就越高。<br>但成功率还受到漏洞影响，漏洞受时效性影响，对于大型内网扫描速度直接影响着成功率。<br>漏洞时效性1-2天，扫描内网或外网需1周时间，是否会因此错过很多或许可成功的漏洞？<br>对于那些拥有几百上千域名的大站来说，你发现越快成功率就越高，慢管理员就打补丁了。<br>因此我们需要一个支持批量C段/B段甚至A段的扫描器，添加自定义模块快速检测新出漏洞。</p>
 <h3 id="关于Ladon-拉冬"><a href="#关于Ladon-拉冬" class="headerlink" title="关于Ladon(拉冬)"></a>关于Ladon(拉冬)</h3><p>Ladon音译: 拉登或拉冬。因集成了很多模块，每个模块又可独立成为一个工具，和百头巨龙有很多头类似。<br>Ladon是希腊神话中的神兽，看守金苹果的百头巨龙。它从不睡觉，被赫拉克勒斯借扛天巨人之手诱巨龙睡着<br>杀死巨龙并偷得了金苹果。巨龙死前将自己的魂魄封印在金苹果中，偷盗者将金苹果送给了白雪公主，公主<br>为了报恩将金苹果分给了七个小矮人，吃下以后他们变成了龙珠散落到世界各地，龙珠分为七颗，它蕴含着<br>可以令奇迹发生的力量。当集齐7颗龙珠念出咒语，就能召唤神龙，而神龙则会实现召唤者提出的一个愿望。</p>
-<h3 id="程序简介"><a href="#程序简介" class="headerlink" title="程序简介"></a>程序简介</h3><p>Ladon一款用于大型网络渗透的多线程插件化综合扫描神器，含端口扫描、服务识别、网络资产、密码爆破、高危漏洞检测以及一键GetShell，支持批量A段/B段/C段以及跨网段扫描，支持URL、主机、域名列表扫描。6.2版本内置58个功能模块,通过多种协议以及方法快速获取目标网络存活主机IP、计算机名、工作组、共享资源、网卡地址、操作系统版本、网站、子域名、中间件、开放服务、路由器、数据库等信息，漏洞检测包含MS17010、Weblogic、ActiveMQ、Tomcat、Struts2系列等，密码爆破12种含数据库(Mysql、Oracle、MSSQL)、FTP、SSH、VNC、Windows(LDAP、SMB/IPC、WMI、SmbHash、WmiHash)、Weblogic后台、Rar压缩包密码等，Web指纹识别模块可识别75种（Web应用、中间件、脚本类型、页面类型）等，可高度自定义插件POC支持.NET程序集、DLL(C#/Delphi/VC)、PowerShell等语言编写的插件,支持通过配置INI批量调用任意外部程序或命令，EXP生成器可一键生成漏洞POC快速扩展扫描能力。Ladon支持Cobalt Strike插件化扫描快速拓展内网进行横向移动。</p>
+<h3 id="程序简介"><a href="#程序简介" class="headerlink" title="程序简介"></a>程序简介</h3><p>Ladon一款用于大型网络渗透的多线程插件化综合扫描神器，含端口扫描、服务识别、网络资产、密码爆破、高危漏洞检测以及一键GetShell，支持批量A段/B段/C段以及跨网段扫描，支持URL、主机、域名列表扫描。6.4版本内置60个功能模块,通过多种协议以及方法快速获取目标网络存活主机IP、计算机名、工作组、共享资源、网卡地址、操作系统版本、网站、子域名、中间件、开放服务、路由器、数据库等信息，漏洞检测包含MS17010、Weblogic、ActiveMQ、Tomcat、Struts2系列等，密码爆破12种含数据库(Mysql、Oracle、MSSQL)、FTP、SSH、VNC、Windows(LDAP、SMB/IPC、WMI、SmbHash、WmiHash)、Weblogic后台、Rar压缩包密码等，Web指纹识别模块可识别75种（Web应用、中间件、脚本类型、页面类型）等，可高度自定义插件POC支持.NET程序集、DLL(C#/Delphi/VC)、PowerShell等语言编写的插件,支持通过配置INI批量调用任意外部程序或命令，EXP生成器可一键生成漏洞POC快速扩展扫描能力。Ladon支持Cobalt Strike插件化扫描快速拓展内网进行横向移动。</p>
 <h3 id="使用简单"><a href="#使用简单" class="headerlink" title="使用简单"></a>使用简单</h3><p>虽然Ladon功能丰富多样,但使用却非常简单,任何人都能轻易上手<br>只需一或两个参数就可用90%的功能,一个模块相当于一个新工具</p>
 <h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><p>Ladon.exe可在安装有.net 2.0及以上版本Win系统中使用(Win7后系统自带.net)<br>如Cmd、PowerShell、远控Cmd、WebShell等，以及Cobalt Strike内存加载使用<br>Ladon.ps1完美兼容win7-win10 PowerShell，不看版本可远程加载实现无文件渗透</p>
 <h4 id="Linux、Mac"><a href="#Linux、Mac" class="headerlink" title="Linux、Mac"></a>Linux、Mac</h4><p>安装Mono运行时,将KaliLodan改名为Ladon,通过mono执行Ladon即可。</p>
@@ -687,8 +687,8 @@
 <h3 id="注本页面的教程并不是很全，详情请看WIKI-我会慢慢完善"><a href="#注本页面的教程并不是很全，详情请看WIKI-我会慢慢完善" class="headerlink" title="注本页面的教程并不是很全，详情请看WIKI,我会慢慢完善"></a>注本页面的教程并不是很全，详情请看WIKI,我会慢慢完善</h3><h4 id="Top"><a href="#Top" class="headerlink" title="Top"></a><a href="#readme">Top</a></h4>]]></content>
       <categories>
         <category>工具</category>
-        <category>Ladon</category>
         <category>Cobalt Strike</category>
+        <category>Ladon</category>
         <category>内网</category>
       </categories>
       <tags>
@@ -921,13 +921,12 @@
     <url>/p/55476.html</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>你还在为权限切换的问题而烦恼吗？SYSTEM权限下浏览器密码读取工具失效？SYS权限下系统自带NET USE命令连接IPC失效？<br>SYSTEM权限下截取不到目标桌面？ADMIN权限下打不开SYSTEM权限进程？如何切换各种权限测试工具？等这些都是权限问题，在XP和03用户权限和SYS权限都是同一个会话，所以远控可直接记录到，很多功能我们也没发现影响，直到WIN7微软为了这全，将会话进行隔离，我们会发现SYS权限会话为0，用户为1，这就是为什么以前sys权限控制WIN7机器远程桌面会黑屏的原因?Firefxo和Chrome采用了DBAPI加密，该加密需要对应用户会话信息才能解密，直接以SYSTEM权限启动发现解密失败。所以我们需要切换权限</p>
 <h3 id="Ladon-6-4更新功能"><a href="#Ladon-6-4更新功能" class="headerlink" title="Ladon 6.4更新功能"></a>Ladon 6.4更新功能</h3><p>[+] GetSystem 管理员/SYSTEM权限切换<br>[+] DumpLsass 导出Lsass内存文件<br>[u] OsScan新增SSH识别操作系统<br>[u] WebScan、SameWeb新增WebBanner<br>[+] WhatCms新增Banner、TP-Link WDR7300识别<br>[u] 修复6.3漏扫10、20等含0的C段</p>
-<h3 id="提权-以SYSTEM权限执行"><a href="#提权-以SYSTEM权限执行" class="headerlink" title="提权 以SYSTEM权限执行"></a>提权 以SYSTEM权限执行</h3><p>命令：Ladon GetSystem cmd.exe<br>命令：Ladon GetSystem cmd.exe /system<br>命令：Ladon GetSystem cmd.exe lsass<br>可指定EXE或BAT，将以SYSTEM权限运行，如下图弹个CMD<br><img alt data-original="http://k8gege.org/k8img/Ladon/exe/GetSystem.PNG"></p>
+<h3 id="提权-以SYSTEM权限执行"><a href="#提权-以SYSTEM权限执行" class="headerlink" title="提权 以SYSTEM权限执行"></a>提权 以SYSTEM权限执行</h3><p>命令：Ladon GetSystem cmd.exe<br>命令：Ladon GetSystem cmd.exe /system<br>命令：Ladon GetSystem cmd.exe lsass<br>可指定EXE或BAT，将以SYSTEM权限运行，如下图弹个CMD<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/GetSystem.PNG"></p>
 <p>注意：需管理员权限，若存在UAC可使用BypassUac获取管理员</p>
 <p>当然也可以使用系统AT、SCHTASKS等命令获取SYSTEM权限，不担心被杀，只是麻烦点，看Ladom多简单</p>
-<h3 id="降权-以用户权限执行"><a href="#降权-以用户权限执行" class="headerlink" title="降权 以用户权限执行"></a>降权 以用户权限执行</h3><p>SYSTEM权限下并不是什么都可以做，比如大家用Ladon或其它工具弹出个SYS权限CMD，再试一下系统自带的NET USE命令连接IPC看提示什么，你会发现明明密码是正确的但是却提示错误。为何需提权、降权我在14年已发布<br>命令：Ladon GetSystem cmd.exe /user<br>命令：Ladon GetSystem cmd.exe explorer<br><img alt data-original="http://k8gege.org/k8img/Ladon/exe/GetSystem2.PNG"></p>
+<h3 id="降权-以用户权限执行"><a href="#降权-以用户权限执行" class="headerlink" title="降权 以用户权限执行"></a>降权 以用户权限执行</h3><p>SYSTEM权限下并不是什么都可以做，比如大家用Ladon或其它工具弹出个SYS权限CMD，再试一下系统自带的NET USE命令连接IPC看提示什么，你会发现明明密码是正确的但是却提示错误。为何需提权、降权我在14年已发布<br>命令：Ladon GetSystem cmd.exe /user<br>命令：Ladon GetSystem cmd.exe explorer<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/GetSystem2.PNG"></p>
 <p>PS: 当然也可以切换至任意权限，指定对应进程即可，如降权到服务权限等</p>
-<h3 id="DumpLsass内存密码"><a href="#DumpLsass内存密码" class="headerlink" title="DumpLsass内存密码"></a>DumpLsass内存密码</h3><p>Dump Lsass内存文件，取回本地读取密码，无需免杀MIMI<br><img alt data-original="http://k8gege.org/k8img/Ladon/exe/DumpLsass.PNG"></p>
-<h3 id="扯淡"><a href="#扯淡" class="headerlink" title="扯淡"></a>扯淡</h3><p>以上的提权或降权，可能有些人发明一些名词叫会话穿透，别太在意表面高大上的名词，<br>很多东西我玩的时候你在喝奶，不是说套用了一些名词就很历害，也不要乱吹所谓原理<br>问又说不出来，叫人家看百科？实战你又写不出程序，又说别人有问题，这类人真好笑。<br>很久没关注国外如何定义，可能哪天发明了个新说法，又有新人来说这文章哪里错了…</p>
+<h3 id="DumpLsass内存密码"><a href="#DumpLsass内存密码" class="headerlink" title="DumpLsass内存密码"></a>DumpLsass内存密码</h3><p>Dump Lsass内存文件，取回本地读取密码，无需免杀MIMI<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/DumpLsass.PNG"></p>
 ]]></content>
       <categories>
         <category>提权</category>
@@ -1416,8 +1415,8 @@
 <h3 id="28-ActiveMQPoc-ActiveMQ漏洞扫描"><a href="#28-ActiveMQPoc-ActiveMQ漏洞扫描" class="headerlink" title="28.ActiveMQPoc ActiveMQ漏洞扫描"></a>28.ActiveMQPoc ActiveMQ漏洞扫描</h3><p>Example: Ladon 192.168.1.8/24 ActiveMQPoc<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_ActiveMQPoc.gif"></p>
 ]]></content>
       <categories>
-        <category>Ladon</category>
         <category>Cobalt Strike</category>
+        <category>Ladon</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1672,6 +1671,45 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </tags>
   </entry>
   <entry>
+    <title>看我如何模拟Cobalt Strike上线欺骗入侵者</title>
+    <url>/p/40523.html</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>不知道你有没有遇到过马上线却不能操作的情况，我猜当你网络卡或马写得不好时会出现这个问题<br>但是人为的你可能没遇到过，首先要欺骗你的远控，得分析你的协议，如果你的马根本不是公开的<br>网络又是好的，你刚往人家机器里种马，发现马只能上线不能操作，绝对是马有问题，不能甩锅我<br>人家都不知道你的马的通信原理，流量特征，不可能事先准备好一个程序，让你一发就欺骗你的马<br>本文主要研究CS这个APT很喜欢用的马，当然TCP的也一样原理，只要构造对应的数据包就可欺骗</p>
+<h3 id="远控术语"><a href="#远控术语" class="headerlink" title="远控术语"></a>远控术语</h3><p>Cobalt Strike采用的是B/S架构，也就是常说的HTTP协议（HTTPS加密的http，记住都是WEB就不会错了）<br>Client：客户是上帝，我们想买什么告诉服务员。就是控制端，即通过它来控制对方电脑。不叫服务端哦<br>Server：服务员，即服务端。以前常说的肉鸡，这个叫被控端不是控制端，叫做什么就做什么不就是服务？<br>中转：放在VPS，好比现在的快递，可有可无，买家直接见卖家就不需要。CS中转Teamserve就是一个WEB</p>
+<p>就是说如果你用IIS或Tomcat搭建的ASP、JSP、PHP、.NET等网站也可以做为中转，即可实现HTTP远控<br>如果CS不搞客户端，我们便可直接在浏览器上操作和控制目标机器，这就是08年这类码称为B/S架构的原因<br>CS的客户端就像我们用PY或其它语言实现模拟WEB登陆网站来操作一样，中转是WEB，那么肉鸡上线，它也<br>一样是HTTP请求来实现，WEB发包、POST提交不管怎么表达都可以，这是渗透基础，即是CS通信采用HTTP</p>
+<p>C/S架构：Clinet/Server,主要指的是TCP，客户端和服务端，即便带个中转它也还是叫CS架构<br>B/S架构: Browser/Server,主要是HTTP，无论直接通过浏览器操作，还是像CS加个中转再用客户端访问<br>RAT：Remote Admin Tools，远程管理工具，长期以来国内外通用叫法。<br>C2: 老外的新名词，command&amp;control，从字面上就很好理解命令和控制，不管任何协议马都可这样叫<br>这种叫法对于不够专业的人来说不会错，因为他根本不需要了解远控到底用什么协议实现，反正都叫C2</p>
+<p>当然无论是以前还是现在叫RAT也绝对不会错，叫RAT可能更专业一点，RAT像老戏骨，C2像小鲜肉<br>看看现在好多远控基本都有CMD和文件管理，甚至只是一个SHELL而已了，我猜这就是C2的由来吧<br>以前像这样一般只称为后门，随便找一个远控都有CMD、文件管理、屏幕控制、键盘记录等功能<br>而现在一个CMD和文件管理，在10几年前也很难称为马叫炮灰，现在搞个炮灰一堆BUG还以为很吊<br>以前只能称为后门，连远控都称不上的，现在只实现了一个CMD执行命令，就说成自己写个远控了<br>多台机器管理实现不了先不说，只能一对一，断以后就无法控制，连后门都不合格，还TM说成远控</p>
+<p>PS：之所以写这一段话，主要是发现不少写马的或渗透的，竟然都分不清楚服务端和控制端</p>
+<h4 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h4><p>还有我说HTTP协议(含HTTP/S)，还有人说不是HTTP还有HTTPS（首先搞清楚HTTPS是什么，加密的HTTP）<br>比方说你设计一个HTTP经过特定格式加密，单纯HTTP访问得不到真实数据而已，解不了就不属于HTTP了？<br>当有一天大家都觉得这个加密好用或安全，给它起个名叫KTTPS，或许可称为新协议，但本质还是HTTP协议。<br>当然可能有些人要说HTTP也属于TCP，虽说HTTP可通过TCP实现，但是两者有很大区别，通过TCP实现叫伪<br>为什么因为它不是真正的HTTP，目标WAF禁TCP的时候，TCP实现的就出不来，HTTP只要会操作WEB就行<br>HTTP比TCP多了一个，允许通过WEB操作来访问，HTTP虽是特殊的TCP，但已经完全变异成了一个新协议。</p>
+<p>就像猩猩和人，我们几乎不会说人是猩猩，只会说人是猩猩进化而来的，因为变异太多，可以以新物种定义。<br>而HTTPS和HTTP，就像戴不戴口罩，戴个口罩就TM不是人了？除了戴个口罩，你的衣食住行哪一样不是人。<br>你不戴口罩进不了小区，那你就戴口罩就能进去了啊，就像HTTPS(HTTP基础上加SSL协议就可以访问了啊)<br>HTTP不加SSL访问不了HTTPS，你就说HTTPS不属于HTTP，这和不戴口罩不让进小区，就说你不是人一样<br>本质是因为你不是人而不让你进吗？而是你不戴口罩，并不是说你不是人所以不让你出入，概念不一样。<br>所以说我们通常只说TCP协议、HTTP协议(因为已包含HTTPS在内)，至少10几年来很少听到有人说HTTPS马<br>最多只是听说这款http马也支持https，或这个webshell工具支持https站点，这个EXP支持HTTPS站点等</p>
+<h3 id="CS心跳包"><a href="#CS心跳包" class="headerlink" title="CS心跳包"></a>CS心跳包</h3><p>一般在设计远控时，我们都会对机器进行标记，比如上线特征为A<br>A对应信息已保存在本地数据库，因此想要确认机器是否还在控<br>我们只需要发送A标识给客户端，告诉它机器还在控制,即心跳包<br>而没实战过的人是每次都发送目标信息，这样很容易被目标发现</p>
+<p>下面配置好CS让其上线后，我们对服务端进行抓包，其心跳包如下<br>CS也是一样，因为是BS模式HTTP协议，它的心跳特征存在Cookie里<br>非正常cookie写法，一段很长的加密数据，可以止来判断是否中招</p>
+<p><img alt="img" data-original="http://k8gege.org/k8img/csonline/cscheat1.PNG"></p>
+<h3 id="上线验证"><a href="#上线验证" class="headerlink" title="上线验证"></a>上线验证</h3><p>使用Ladon Exp生成器可以提交WEB数据包，类似Firefox上的HackBar但更高级<br>区别在于可生成Ladon插件或独立EXE，对于不懂编程的人来说也可“编写”EXP<br><img alt="img" data-original="http://k8gege.org/k8img/csonline/cscheat2.PNG"></p>
+<p>运行LadonPoc.exe发现CS上线，执行一次就上线一次，说明思路没错<br><img alt="img" data-original="http://k8gege.org/k8img/csonline/cscheat3.gif"></p>
+<h3 id="欺骗入侵者"><a href="#欺骗入侵者" class="headerlink" title="欺骗入侵者"></a>欺骗入侵者</h3><p>假设我们在内网中发现别人的CS流量或者抓到样本，给他模拟上线，让他有得看没得吃<br>他在客户端那边只会看到机器在线，就是死活控不了，然后他就想是不是目标环境奇葩<br>还是说网络太卡或有什么问题,能上线就是不能操作，哈哈，一直在上线却啥事也不能做</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="comment">### Cobalt Strike Cheat by K8gege</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cscheat</span><span class="params">()</span>:</span></span><br><span class="line">	opener = urllib2.build_opener()</span><br><span class="line">	opener.addheaders.append((<span class="string">'Cookie'</span>, <span class="string">'Qk1UsVjTNpW6aR0327yD57Zkt1m6XWurvM+bR0xqOqGnXsatzGHpnccfgqmruH6dnJudEzijQhC0NCtoAxdA90rso7NAfBrfRrktO5B4FjZX6LEBxIyzEwQ71Jk1ttM8VY6luE5k+PMLk6DAmWUoGoJmvAl/qp4qreuWumv52TM='</span>))</span><br><span class="line">	res = opener.open(<span class="string">"http://192.168.1.102:800/dpixel"</span>)</span><br><span class="line">	content = res.read()</span><br><span class="line">	<span class="keyword">print</span> content</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:    </span><br><span class="line">	print(time.strftime(<span class="string">'%Y-%m-%d %X'</span>,time.localtime()))    </span><br><span class="line">	cscheat()</span><br><span class="line">	time.sleep(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img alt="img" data-original="http://k8gege.org/k8img/csonline/cscheat4.gif"></p>
+<h3 id="读取CMD指令"><a href="#读取CMD指令" class="headerlink" title="读取CMD指令"></a>读取CMD指令</h3><p>当客户端下达CMD命令时，中转TeamServer会将命令放在心跳包中，返回的结果如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">^Zd........N...&amp;....%COMSPEC%.... /C net user k8gege..AAAAAAAAAA.&lt;....g..I9.....</span><br><span class="line"></span><br><span class="line">5e5a69740000002e0000004e000000260000000925434f4d535045432500000013202f43206e6574</span><br><span class="line">2075736572206b387465616d00004141414141414141414100e488fc2a22f737b0067ac4384c4971</span><br></pre></td></tr></table></figure>
+
+<p>测试多次发现不管执行多长的命令 都会出现/C空格 和两个00加至少一个A<br>所以我们截取 2F4320 和 000041 之间的值，再解密即为CS下发的CMD命令</p>
+<p><img alt="img" data-original="http://k8gege.org/k8img/csonline/cscheat5.PNG"></p>
+<h3 id="返回CMD结果"><a href="#返回CMD结果" class="headerlink" title="返回CMD结果"></a>返回CMD结果</h3><p>将CS的命令执行结果提交到submit.php页面，即可实现回显,数据包如下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">POST /submit.php?id=60871 HTTP/1.1</span><br><span class="line">Accept: */*</span><br><span class="line">Content-Type: application/octet-stream</span><br><span class="line">User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)</span><br><span class="line">Host: 192.168.1.102:800</span><br><span class="line">Content-Length: 68</span><br><span class="line">Connection: Keep-Alive</span><br><span class="line">Cache-Control: no-cache</span><br><span class="line"></span><br><span class="line">...@...</span><br><span class="line">........win-60a3b595b7m\k8gege</span><br><span class="line">................0=W1..LGCN..</span><br></pre></td></tr></table></figure>
+
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>通过本文我们了解了CS心跳包机制、下达指令、回显等原理，并玩弄入侵者<br>有兴趣的话，可以自行抓包实现自己的CS服务端，甚至支持对Linux的控制<br>也可以实现CS远控的密罐，把CS下达的指令提取出来，返回假的CMD命令结果<br>即能收集目标证据以及意图，还能将他玩弄于鼓掌之中，搞死他，哈哈</p>
+<p>PS：之所以有这篇文章，是因为昨晚有人在群里讨论，CS能不能支不支持Linux<br>目前CS的shellcode以及beacon(核心功能DLL)都是WINDOWS系统才能执行。<br>而CS对于Linux的控制目前仅是SSH会话，想真正支持就得自己实现服务端<br>不要说让其支持Linux，用个GO来实现，兼容全平台都可以，只是很麻烦<br>因为不开源，每一个动作都要自己去分析它的数据包，很多功能也很费时<br>其实早在去年的这个时间就想实现Linux服务端，所以抓包研究了下。<br>当时就应该有这篇文章了，只是因为忙，懒得编辑文字，后面忘了发。</p>
+]]></content>
+      <categories>
+        <category>Cobalt Strike</category>
+      </categories>
+      <tags>
+        <tag>Cobalt Strike</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ladon CVE-2020-1938跨网段、C段批量扫描内网漏洞</title>
     <url>/p/42879.html</url>
     <content><![CDATA[<h3 id="漏洞信息"><a href="#漏洞信息" class="headerlink" title="漏洞信息"></a>漏洞信息</h3><p>根据国家信息安全漏洞共享平台（CNVD）20日发布的Apache Tomcat文件包含漏洞（CNVD-2020-10487/CVE-2020-1938）。该漏洞是由于Tomcat AJP协议存在缺陷而导致，攻击者利用该漏洞可通过构造特定参数，读取服务器webapp下的任意文件。若目标服务器同时存在文件上传功能，攻击者可进一步实现远程代码执行。</p>
@@ -1729,45 +1767,6 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       <tags>
         <tag>Ladon</tag>
         <tag>.NET</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>看我如何模拟Cobalt Strike上线欺骗入侵者</title>
-    <url>/p/40523.html</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>不知道你有没有遇到过马上线却不能操作的情况，我猜当你网络卡或马写得不好时会出现这个问题<br>但是人为的你可能没遇到过，首先要欺骗你的远控，得分析你的协议，如果你的马根本不是公开的<br>网络又是好的，你刚往人家机器里种马，发现马只能上线不能操作，绝对是马有问题，不能甩锅我<br>人家都不知道你的马的通信原理，流量特征，不可能事先准备好一个程序，让你一发就欺骗你的马<br>本文主要研究CS这个APT很喜欢用的马，当然TCP的也一样原理，只要构造对应的数据包就可欺骗</p>
-<h3 id="远控术语"><a href="#远控术语" class="headerlink" title="远控术语"></a>远控术语</h3><p>Cobalt Strike采用的是B/S架构，也就是常说的HTTP协议（HTTPS加密的http，记住都是WEB就不会错了）<br>Client：客户是上帝，我们想买什么告诉服务员。就是控制端，即通过它来控制对方电脑。不叫服务端哦<br>Server：服务员，即服务端。以前常说的肉鸡，这个叫被控端不是控制端，叫做什么就做什么不就是服务？<br>中转：放在VPS，好比现在的快递，可有可无，买家直接见卖家就不需要。CS中转Teamserve就是一个WEB</p>
-<p>就是说如果你用IIS或Tomcat搭建的ASP、JSP、PHP、.NET等网站也可以做为中转，即可实现HTTP远控<br>如果CS不搞客户端，我们便可直接在浏览器上操作和控制目标机器，这就是08年这类码称为B/S架构的原因<br>CS的客户端就像我们用PY或其它语言实现模拟WEB登陆网站来操作一样，中转是WEB，那么肉鸡上线，它也<br>一样是HTTP请求来实现，WEB发包、POST提交不管怎么表达都可以，这是渗透基础，即是CS通信采用HTTP</p>
-<p>C/S架构：Clinet/Server,主要指的是TCP，客户端和服务端，即便带个中转它也还是叫CS架构<br>B/S架构: Browser/Server,主要是HTTP，无论直接通过浏览器操作，还是像CS加个中转再用客户端访问<br>RAT：Remote Admin Tools，远程管理工具，长期以来国内外通用叫法。<br>C2: 老外的新名词，command&amp;control，从字面上就很好理解命令和控制，不管任何协议马都可这样叫<br>这种叫法对于不够专业的人来说不会错，因为他根本不需要了解远控到底用什么协议实现，反正都叫C2</p>
-<p>当然无论是以前还是现在叫RAT也绝对不会错，叫RAT可能更专业一点，RAT像老戏骨，C2像小鲜肉<br>看看现在好多远控基本都有CMD和文件管理，甚至只是一个SHELL而已了，我猜这就是C2的由来吧<br>以前像这样一般只称为后门，随便找一个远控都有CMD、文件管理、屏幕控制、键盘记录等功能<br>而现在一个CMD和文件管理，在10几年前也很难称为马叫炮灰，现在搞个炮灰一堆BUG还以为很吊<br>以前只能称为后门，连远控都称不上的，现在只实现了一个CMD执行命令，就说成自己写个远控了<br>多台机器管理实现不了先不说，只能一对一，断以后就无法控制，连后门都不合格，还TM说成远控</p>
-<p>PS：之所以写这一段话，主要是发现不少写马的或渗透的，竟然都分不清楚服务端和控制端</p>
-<h4 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h4><p>还有我说HTTP协议(含HTTP/S)，还有人说不是HTTP还有HTTPS（首先搞清楚HTTPS是什么，加密的HTTP）<br>比方说你设计一个HTTP经过特定格式加密，单纯HTTP访问得不到真实数据而已，解不了就不属于HTTP了？<br>当有一天大家都觉得这个加密好用或安全，给它起个名叫KTTPS，或许可称为新协议，但本质还是HTTP协议。<br>当然可能有些人要说HTTP也属于TCP，虽说HTTP可通过TCP实现，但是两者有很大区别，通过TCP实现叫伪<br>为什么因为它不是真正的HTTP，目标WAF禁TCP的时候，TCP实现的就出不来，HTTP只要会操作WEB就行<br>HTTP比TCP多了一个，允许通过WEB操作来访问，HTTP虽是特殊的TCP，但已经完全变异成了一个新协议。</p>
-<p>就像猩猩和人，我们几乎不会说人是猩猩，只会说人是猩猩进化而来的，因为变异太多，可以以新物种定义。<br>而HTTPS和HTTP，就像戴不戴口罩，戴个口罩就TM不是人了？除了戴个口罩，你的衣食住行哪一样不是人。<br>你不戴口罩进不了小区，那你就戴口罩就能进去了啊，就像HTTPS(HTTP基础上加SSL协议就可以访问了啊)<br>HTTP不加SSL访问不了HTTPS，你就说HTTPS不属于HTTP，这和不戴口罩不让进小区，就说你不是人一样<br>本质是因为你不是人而不让你进吗？而是你不戴口罩，并不是说你不是人所以不让你出入，概念不一样。<br>所以说我们通常只说TCP协议、HTTP协议(因为已包含HTTPS在内)，至少10几年来很少听到有人说HTTPS马<br>最多只是听说这款http马也支持https，或这个webshell工具支持https站点，这个EXP支持HTTPS站点等</p>
-<h3 id="CS心跳包"><a href="#CS心跳包" class="headerlink" title="CS心跳包"></a>CS心跳包</h3><p>一般在设计远控时，我们都会对机器进行标记，比如上线特征为A<br>A对应信息已保存在本地数据库，因此想要确认机器是否还在控<br>我们只需要发送A标识给客户端，告诉它机器还在控制,即心跳包<br>而没实战过的人是每次都发送目标信息，这样很容易被目标发现</p>
-<p>下面配置好CS让其上线后，我们对服务端进行抓包，其心跳包如下<br>CS也是一样，因为是BS模式HTTP协议，它的心跳特征存在Cookie里<br>非正常cookie写法，一段很长的加密数据，可以止来判断是否中招</p>
-<p><img alt="img" data-original="http://k8gege.org/k8img/csonline/cscheat1.PNG"></p>
-<h3 id="上线验证"><a href="#上线验证" class="headerlink" title="上线验证"></a>上线验证</h3><p>使用Ladon Exp生成器可以提交WEB数据包，类似Firefox上的HackBar但更高级<br>区别在于可生成Ladon插件或独立EXE，对于不懂编程的人来说也可“编写”EXP<br><img alt="img" data-original="http://k8gege.org/k8img/csonline/cscheat2.PNG"></p>
-<p>运行LadonPoc.exe发现CS上线，执行一次就上线一次，说明思路没错<br><img alt="img" data-original="http://k8gege.org/k8img/csonline/cscheat3.gif"></p>
-<h3 id="欺骗入侵者"><a href="#欺骗入侵者" class="headerlink" title="欺骗入侵者"></a>欺骗入侵者</h3><p>假设我们在内网中发现别人的CS流量或者抓到样本，给他模拟上线，让他有得看没得吃<br>他在客户端那边只会看到机器在线，就是死活控不了，然后他就想是不是目标环境奇葩<br>还是说网络太卡或有什么问题,能上线就是不能操作，哈哈，一直在上线却啥事也不能做</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="comment">### Cobalt Strike Cheat by K8gege</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cscheat</span><span class="params">()</span>:</span></span><br><span class="line">	opener = urllib2.build_opener()</span><br><span class="line">	opener.addheaders.append((<span class="string">'Cookie'</span>, <span class="string">'Qk1UsVjTNpW6aR0327yD57Zkt1m6XWurvM+bR0xqOqGnXsatzGHpnccfgqmruH6dnJudEzijQhC0NCtoAxdA90rso7NAfBrfRrktO5B4FjZX6LEBxIyzEwQ71Jk1ttM8VY6luE5k+PMLk6DAmWUoGoJmvAl/qp4qreuWumv52TM='</span>))</span><br><span class="line">	res = opener.open(<span class="string">"http://192.168.1.102:800/dpixel"</span>)</span><br><span class="line">	content = res.read()</span><br><span class="line">	<span class="keyword">print</span> content</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:    </span><br><span class="line">	print(time.strftime(<span class="string">'%Y-%m-%d %X'</span>,time.localtime()))    </span><br><span class="line">	cscheat()</span><br><span class="line">	time.sleep(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
-
-<p><img alt="img" data-original="http://k8gege.org/k8img/csonline/cscheat4.gif"></p>
-<h3 id="读取CMD指令"><a href="#读取CMD指令" class="headerlink" title="读取CMD指令"></a>读取CMD指令</h3><p>当客户端下达CMD命令时，中转TeamServer会将命令放在心跳包中，返回的结果如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">^Zd........N...&amp;....%COMSPEC%.... /C net user k8gege..AAAAAAAAAA.&lt;....g..I9.....</span><br><span class="line"></span><br><span class="line">5e5a69740000002e0000004e000000260000000925434f4d535045432500000013202f43206e6574</span><br><span class="line">2075736572206b387465616d00004141414141414141414100e488fc2a22f737b0067ac4384c4971</span><br></pre></td></tr></table></figure>
-
-<p>测试多次发现不管执行多长的命令 都会出现/C空格 和两个00加至少一个A<br>所以我们截取 2F4320 和 000041 之间的值，再解密即为CS下发的CMD命令</p>
-<p><img alt="img" data-original="http://k8gege.org/k8img/csonline/cscheat5.PNG"></p>
-<h3 id="返回CMD结果"><a href="#返回CMD结果" class="headerlink" title="返回CMD结果"></a>返回CMD结果</h3><p>将CS的命令执行结果提交到submit.php页面，即可实现回显,数据包如下</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">POST /submit.php?id=60871 HTTP/1.1</span><br><span class="line">Accept: */*</span><br><span class="line">Content-Type: application/octet-stream</span><br><span class="line">User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)</span><br><span class="line">Host: 192.168.1.102:800</span><br><span class="line">Content-Length: 68</span><br><span class="line">Connection: Keep-Alive</span><br><span class="line">Cache-Control: no-cache</span><br><span class="line"></span><br><span class="line">...@...</span><br><span class="line">........win-60a3b595b7m\k8gege</span><br><span class="line">................0=W1..LGCN..</span><br></pre></td></tr></table></figure>
-
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>通过本文我们了解了CS心跳包机制、下达指令、回显等原理，并玩弄入侵者<br>有兴趣的话，可以自行抓包实现自己的CS服务端，甚至支持对Linux的控制<br>也可以实现CS远控的密罐，把CS下达的指令提取出来，返回假的CMD命令结果<br>即能收集目标证据以及意图，还能将他玩弄于鼓掌之中，搞死他，哈哈</p>
-<p>PS：之所以有这篇文章，是因为昨晚有人在群里讨论，CS能不能支不支持Linux<br>目前CS的shellcode以及beacon(核心功能DLL)都是WINDOWS系统才能执行。<br>而CS对于Linux的控制目前仅是SSH会话，想真正支持就得自己实现服务端<br>不要说让其支持Linux，用个GO来实现，兼容全平台都可以，只是很麻烦<br>因为不开源，每一个动作都要自己去分析它的数据包，很多功能也很费时<br>其实早在去年的这个时间就想实现Linux服务端，所以抓包研究了下。<br>当时就应该有这篇文章了，只是因为忙，懒得编辑文字，后面忘了发。</p>
-]]></content>
-      <categories>
-        <category>Cobalt Strike</category>
-      </categories>
-      <tags>
-        <tag>Cobalt Strike</tag>
-        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -2543,6 +2542,76 @@ exploit(dip, dport, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;)</cod
       </tags>
   </entry>
   <entry>
+    <title>CVE-2019-0803提权工具</title>
+    <url>/p/fa25cc9b.html</url>
+    <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x000 漏洞信息</strong></span><br>CVE-2019-0803 | Win32k 特权提升漏洞<br>发布时间: 2019-04-09<br>当 Win32k 组件无法正确处理内存中的对象时，Windows 中存在特权提升漏洞。成功利用此漏洞的攻击者可以在内核模式中运行任意代码。攻击者可随后安装程序；查看、更改或删除数据；或者创建拥有完全用户权限的新帐户。<br>若要利用此漏洞，攻击者首先必须登录到系统。然后，攻击者可以运行一个为利用此漏洞而经特殊设计的应用程序，从而控制受影响的系统。</p>
+<p><span style="font-size: 18px;"><strong>0x001 影响版本</strong></span></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:csharp;gutter:true;">Microsoft Windows Server 2019 0
+Microsoft Windows Server 2016 0
+Microsoft Windows Server 2012 R2 0
+Microsoft Windows Server 2012 0
+Microsoft Windows Server 2008 R2 for x64-based Systems SP1
+Microsoft Windows Server 2008 R2 for Itanium-based Systems SP1
+Microsoft Windows Server 2008 for x64-based Systems SP2
+Microsoft Windows Server 2008 for Itanium-based Systems SP2
+Microsoft Windows Server 2008 for 32-bit Systems SP2
+Microsoft Windows Server 1803 0
+Microsoft Windows Server 1709 0
+Microsoft Windows RT 8.1
+Microsoft Windows 8.1 for x64-based Systems 0
+Microsoft Windows 8.1 for 32-bit Systems 0
+Microsoft Windows 7 for x64-based Systems SP1
+Microsoft Windows 7 for 32-bit Systems SP1
+Microsoft Windows 10 Version 1809 for x64-based Systems 0
+Microsoft Windows 10 Version 1809 for ARM64-based Systems 0
+Microsoft Windows 10 Version 1809 for 32-bit Systems 0
+Microsoft Windows 10 Version 1803 for x64-based Systems 0
+Microsoft Windows 10 Version 1803 for ARM64-based Systems 0
+Microsoft Windows 10 Version 1803 for 32-bit Systems 0
+Microsoft Windows 10 version 1709 for x64-based Systems 0
+Microsoft Windows 10 Version 1709 for ARM64-based Systems 0
+Microsoft Windows 10 version 1709 for 32-bit Systems 0
+Microsoft Windows 10 version 1703 for x64-based Systems 0
+Microsoft Windows 10 version 1703 for 32-bit Systems 0
+Microsoft Windows 10 Version 1607 for x64-based Systems 0
+Microsoft Windows 10 Version 1607 for 32-bit Systems 0
+Microsoft Windows 10 for x64-based Systems 0
+Microsoft Windows 10 for 32-bit Systems 0
+</pre>
+</div>
+<p><span style="font-size: 18px;"><strong>&nbsp;0x002 EXP用法</strong></span></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:csharp;gutter:true;">Usage:  CVE-2019-0803.exe cmd cmdline
+</pre>
+</div>
+<p>如图：可能需执行3-4次左右才能提权成功,测试系统为Win7 X64,其它未测。</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/CVE-2019-0803.png"></p>
+<p><span style="font-size: 18px;"><strong><span style="color: #ff00ff;">0x003 下载</span></strong></span></p>
+<p>https://github.com/k8gege/K8tools</p>
+<p><span style="font-size: 18px;"><strong>0x004 补丁</strong></span></p>
+<p>补丁号有很多个，不同的系统补丁号不一样，有时新的补丁包含旧洞补丁</p>
+<p>旧的补丁号会被替换掉，所以每次提权都应该先到官方查看下对应补丁号</p>
+<p>不要老是查询有没旧的补丁号，然后再去提权，没有旧的补丁号不代表没补</p>
+<p><a href="https://portal.msrc.microsoft.com/zh-cn/security-guidance/advisory/CVE-2019-0803" target="_blank">https://portal.msrc.microsoft.com/zh-cn/security-guidance/advisory/CVE-2019-0803</a></p>
+<p><span style="font-size: 18px;"><strong>0x005 链接</strong></span></p>
+<p><a href="https://www.exploit-db.com/exploits/46920" target="_blank">https://www.exploit-db.com/exploits/46920</a><br>(steal Security token) <a href="https://github.com/mwrlabs/CVE-2016-7255" target="_blank">https://github.com/mwrlabs/CVE-2016-7255</a><br>EDB Note: Download ~ <a href="https://github.com/offensive-security/exploitdb-bin-sploits/raw/master/bin-sploits/46920.zip" target="_blank">https://github.com/offensive-security/exploitdb-bin-sploits/raw/master/bin-sploits/46920.zip</a></p>
+<p><a title="External url" href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0803" target="_blank">https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0803</a> <br>                    
+
+
+
+<pre><code>&lt;a title=&quot;External url&quot; href=&quot;http://packetstormsecurity.com/files/153034/Microsoft-Windows-Win32k-Privilege-Escalation.html&quot; target=&quot;_blank&quot;&gt;http://packetstormsecurity.com/files/153034/Microsoft-Windows-Win32k-Privilege-Escalation.html&lt;/a&gt;&lt;/p&gt;</code></pre></p>]]></content>
+      <categories>
+        <category>提权</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Exp</tag>
+        <tag>Tool</tag>
+        <tag>LPE</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CVE-2019-0604 SharePoint GetShell Exploit</title>
     <url>/p/e896a7d1.html</url>
     <content><![CDATA[<p><span style="font-size: 18px;"><strong>漏洞信息</strong></span></p>
@@ -2639,76 +2708,6 @@ payload5='\x23\x64\x61\x74\x65\x3A\x20\x32\x30\x31\x39\x30\x36\x32\x36\x20\x23\x
         <tag>Tool</tag>
         <tag>GetShell</tag>
         <tag>Code</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CVE-2019-0803提权工具</title>
-    <url>/p/fa25cc9b.html</url>
-    <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x000 漏洞信息</strong></span><br>CVE-2019-0803 | Win32k 特权提升漏洞<br>发布时间: 2019-04-09<br>当 Win32k 组件无法正确处理内存中的对象时，Windows 中存在特权提升漏洞。成功利用此漏洞的攻击者可以在内核模式中运行任意代码。攻击者可随后安装程序；查看、更改或删除数据；或者创建拥有完全用户权限的新帐户。<br>若要利用此漏洞，攻击者首先必须登录到系统。然后，攻击者可以运行一个为利用此漏洞而经特殊设计的应用程序，从而控制受影响的系统。</p>
-<p><span style="font-size: 18px;"><strong>0x001 影响版本</strong></span></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:csharp;gutter:true;">Microsoft Windows Server 2019 0
-Microsoft Windows Server 2016 0
-Microsoft Windows Server 2012 R2 0
-Microsoft Windows Server 2012 0
-Microsoft Windows Server 2008 R2 for x64-based Systems SP1
-Microsoft Windows Server 2008 R2 for Itanium-based Systems SP1
-Microsoft Windows Server 2008 for x64-based Systems SP2
-Microsoft Windows Server 2008 for Itanium-based Systems SP2
-Microsoft Windows Server 2008 for 32-bit Systems SP2
-Microsoft Windows Server 1803 0
-Microsoft Windows Server 1709 0
-Microsoft Windows RT 8.1
-Microsoft Windows 8.1 for x64-based Systems 0
-Microsoft Windows 8.1 for 32-bit Systems 0
-Microsoft Windows 7 for x64-based Systems SP1
-Microsoft Windows 7 for 32-bit Systems SP1
-Microsoft Windows 10 Version 1809 for x64-based Systems 0
-Microsoft Windows 10 Version 1809 for ARM64-based Systems 0
-Microsoft Windows 10 Version 1809 for 32-bit Systems 0
-Microsoft Windows 10 Version 1803 for x64-based Systems 0
-Microsoft Windows 10 Version 1803 for ARM64-based Systems 0
-Microsoft Windows 10 Version 1803 for 32-bit Systems 0
-Microsoft Windows 10 version 1709 for x64-based Systems 0
-Microsoft Windows 10 Version 1709 for ARM64-based Systems 0
-Microsoft Windows 10 version 1709 for 32-bit Systems 0
-Microsoft Windows 10 version 1703 for x64-based Systems 0
-Microsoft Windows 10 version 1703 for 32-bit Systems 0
-Microsoft Windows 10 Version 1607 for x64-based Systems 0
-Microsoft Windows 10 Version 1607 for 32-bit Systems 0
-Microsoft Windows 10 for x64-based Systems 0
-Microsoft Windows 10 for 32-bit Systems 0
-</pre>
-</div>
-<p><span style="font-size: 18px;"><strong>&nbsp;0x002 EXP用法</strong></span></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:csharp;gutter:true;">Usage:  CVE-2019-0803.exe cmd cmdline
-</pre>
-</div>
-<p>如图：可能需执行3-4次左右才能提权成功,测试系统为Win7 X64,其它未测。</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/CVE-2019-0803.png"></p>
-<p><span style="font-size: 18px;"><strong><span style="color: #ff00ff;">0x003 下载</span></strong></span></p>
-<p>https://github.com/k8gege/K8tools</p>
-<p><span style="font-size: 18px;"><strong>0x004 补丁</strong></span></p>
-<p>补丁号有很多个，不同的系统补丁号不一样，有时新的补丁包含旧洞补丁</p>
-<p>旧的补丁号会被替换掉，所以每次提权都应该先到官方查看下对应补丁号</p>
-<p>不要老是查询有没旧的补丁号，然后再去提权，没有旧的补丁号不代表没补</p>
-<p><a href="https://portal.msrc.microsoft.com/zh-cn/security-guidance/advisory/CVE-2019-0803" target="_blank">https://portal.msrc.microsoft.com/zh-cn/security-guidance/advisory/CVE-2019-0803</a></p>
-<p><span style="font-size: 18px;"><strong>0x005 链接</strong></span></p>
-<p><a href="https://www.exploit-db.com/exploits/46920" target="_blank">https://www.exploit-db.com/exploits/46920</a><br>(steal Security token) <a href="https://github.com/mwrlabs/CVE-2016-7255" target="_blank">https://github.com/mwrlabs/CVE-2016-7255</a><br>EDB Note: Download ~ <a href="https://github.com/offensive-security/exploitdb-bin-sploits/raw/master/bin-sploits/46920.zip" target="_blank">https://github.com/offensive-security/exploitdb-bin-sploits/raw/master/bin-sploits/46920.zip</a></p>
-<p><a title="External url" href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0803" target="_blank">https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0803</a> <br>                    
-
-
-
-<pre><code>&lt;a title=&quot;External url&quot; href=&quot;http://packetstormsecurity.com/files/153034/Microsoft-Windows-Win32k-Privilege-Escalation.html&quot; target=&quot;_blank&quot;&gt;http://packetstormsecurity.com/files/153034/Microsoft-Windows-Win32k-Privilege-Escalation.html&lt;/a&gt;&lt;/p&gt;</code></pre></p>]]></content>
-      <categories>
-        <category>提权</category>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>Exp</tag>
-        <tag>Tool</tag>
-        <tag>LPE</tag>
       </tags>
   </entry>
   <entry>
@@ -3383,8 +3382,8 @@ from pprint import pprint
         <category>内网</category>
         <category>Python</category>
         <category>源码</category>
-        <category>嗅探</category>
         <category>编程</category>
+        <category>嗅探</category>
       </categories>
       <tags>
         <tag>Tool</tag>
