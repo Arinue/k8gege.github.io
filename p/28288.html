@@ -22,7 +22,7 @@
 <meta name="keywords" content="DllHijack">
 
 
-<meta name="description" content="DLL却持DLL却持在”白加黑“里最常见，07、08年开始在国内才开始起步，但主要是写病毒用到的较多，什么LPK.DLL、USP10.DLL都是当时流行的U盘病毒木马最喜欢用的却持方式，因为它们...">
+<meta name="description" content="DLL却持&amp;白加黑DLL却持在白加黑里最常见，07、08年开始在国内才开始起步，但主要是写病毒用到的较多，什么LPK.DLL、USP10.DLL都是当时流行的U盘病毒木马最喜欢用的却持方...">
 
 
 <meta name="robots" content="all">
@@ -190,9 +190,9 @@
     </div>
     
     <div class="post-body post-content">
-        <h3 id="DLL却持"><a href="#DLL却持" class="headerlink" title="DLL却持"></a>DLL却持</h3><p>DLL却持在”白加黑“里最常见，07、08年开始在国内才开始起步，但主要是写病毒用到的较多，什么LPK.DLL、USP10.DLL都是当时流行的U盘病毒木马最喜欢用的却持方式，因为它们可以却持99%的EXE，10年后渗透圈才开始懂利用，常见的只是单纯用于提权而已。很多人在很多方面不懂举一反三，能执行添加用户命令，你就不懂让它执行远控上线了吗？一定要登3389?</p>
-<p>目前还不能完全避免此“漏洞”（其实算不上漏洞，只能说是规则），特别是应用软件们的，通过DLL劫持来绕过安全软件主动防御的保护被称为“白加黑”，因为加载的主程序是正常的软件，主动防御可能会放过它，允许它启动，而恶意DLL则通过该软件的漏洞或替换正常的同名文件（对应用软件的文件保护似乎并不象对系统文件保护那样严密，而且并不是一直运行状态，被替换还是比较容易的）， 甚至有的还会冒用合法软件的数字签字等方式，由正常程序加载，从而躲开安全软件的拦截。</p>
-<p>当然可能有些人对“白加黑”有误解，以为非要却持系统的才叫白加黑，实际APT里最常用的一些方法是，却持第3方程序。比如360、讯雷、WinRar、Chrome、Office系列等存在DLL却持，人家给你发送的马包含被却持程序和对应DLL，运行正常的程序即可绕过主防上线。如海莲花等APT常用WINWORD.EXE加wwwlib.dll方式上线，因为EXE是WORD里的原版程序，有签名又合法它启动，杀软不拦，由于启动时会加载wwwlib.dll（什么C2或CS啊加密存在DLL里，海莲花常用的是CS），它就上线了，这也是白加黑利用。因为并不是所有人都安装WORD，而且安装的版本不定存在这个却持，所以它必须捆绑合法的EXE在里面，因此说非要系统自带的才叫白加黑，这是不对的，也是还不够理解的表现。</p>
+        <h3 id="DLL却持-amp-白加黑"><a href="#DLL却持-amp-白加黑" class="headerlink" title="DLL却持&amp;白加黑"></a>DLL却持&amp;白加黑</h3><p>DLL却持在白加黑里最常见，07、08年开始在国内才开始起步，但主要是写病毒用到的较多，什么LPK.DLL、USP10.DLL都是当时流行的U盘病毒木马最喜欢用的却持方式，因为它们可以却持99%的EXE，10年后渗透圈才开始懂利用，常见的只是单纯用于提权而已。很多人在很多方面不懂举一反三，能执行添加用户命令，你就不懂让它执行远控上线了吗？一定要登3389?</p>
+<p>目前还不能完全避免此漏洞，特别是应用软件们的，通过DLL劫持来绕过安全软件主动防御的保护被称为“白加黑”，因为加载的主程序是正常的软件，主动防御可能会放过它，允许它启动，而恶意DLL则通过该软件的漏洞或替换正常的同名文件（对应用软件的文件保护似乎并不象对系统文件保护那样严密，而且并不是一直运行状态，被替换还是比较容易的）， 甚至有的还会冒用合法软件的数字签字等方式，由正常程序加载，从而躲开安全软件的拦截。</p>
+<p>当然可能有些人对白加黑有误解，以为非要却持系统的才叫白加黑，实际APT里最常用的一些方法是，却持第3方程序。比如360、讯雷、WinRar、Chrome、Office系列等存在DLL却持，人家给你发送的马包含被却持程序和对应DLL，运行正常的程序即可绕过主防上线。如海莲花等APT常用WINWORD.EXE加wwwlib.dll方式上线，因为EXE是WORD里的原版程序，有签名又合法它启动，杀软不拦，由于启动时会加载wwwlib.dll（什么C2或CS啊加密存在DLL里，海莲花常用的是CS），它就上线了，这也是白加黑利用。因为并不是所有人都安装WORD，而且安装的版本不定存在这个却持，所以它必须捆绑EXE在里面，而这个合法的EXE可以是任何第3方程序。</p>
 <h3 id="VS却持"><a href="#VS却持" class="headerlink" title="VS却持"></a>VS却持</h3><p>将K8测试专用DLL却持工具里的DLL改名成SspiCli.dll后放入VS目录<br>运行VS即可，却持对象VS2008-VS2015主程序devenv，VS2019已修复<br>其它不只主程序，只是时间太久了，我忘了懒得测，大家自行测试</p>
 <h4 id="却持VS2015"><a href="#却持VS2015" class="headerlink" title="却持VS2015"></a>却持VS2015</h4><p><img alt="image" data-original="http://k8gege.org/k8img/dllhijack/vs2015_ssp.jpg"></p>
 <h4 id="却持VS2012"><a href="#却持VS2012" class="headerlink" title="却持VS2012"></a>却持VS2012</h4><p><img alt="image" data-original="http://k8gege.org/k8img/dllhijack/vs2012_ssp.jpg"></p>
@@ -254,7 +254,7 @@
             Table of Contents
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#DLL却持"><span class="toc-text">DLL却持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VS却持"><span class="toc-text">VS却持</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#却持VS2015"><span class="toc-text">却持VS2015</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#却持VS2012"><span class="toc-text">却持VS2012</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#却持VS2010"><span class="toc-text">却持VS2010</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#却持VS2008"><span class="toc-text">却持VS2008</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#POC"><span class="toc-text">POC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#持久化"><span class="toc-text">持久化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扯个淡"><span class="toc-text">扯个淡</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#DLL却持-amp-白加黑"><span class="toc-text">DLL却持&amp;白加黑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VS却持"><span class="toc-text">VS却持</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#却持VS2015"><span class="toc-text">却持VS2015</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#却持VS2012"><span class="toc-text">却持VS2012</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#却持VS2010"><span class="toc-text">却持VS2010</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#却持VS2008"><span class="toc-text">却持VS2008</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#POC"><span class="toc-text">POC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#持久化"><span class="toc-text">持久化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扯个淡"><span class="toc-text">扯个淡</span></a></li></ol>
         
     </div>
 </aside>
