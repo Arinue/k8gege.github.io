@@ -952,7 +952,8 @@
 <h3 id="TC却持"><a href="#TC却持" class="headerlink" title="TC却持"></a>TC却持</h3><p>将K8测试专用DLL却持工具里的DLL改名成RichEd20.dll后放入TC目录<br>运行TrueCrypt目录下的3个EXE均会被却持，成功弹出被却持相关信息<br><img alt="image" data-original="http://k8gege.org/k8img/dllhijack/TC_DllHijack.PNG"></p>
 <h3 id="POC"><a href="#POC" class="headerlink" title="POC"></a>POC</h3><p><a href="https://github.com/k8gege/K8tools/raw/master/K8dllhijack.rar" target="_blank" rel="noopener">https://github.com/k8gege/K8tools/raw/master/K8dllhijack.rar</a></p>
 <h3 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h3><p>如CobalStrike生成DLL改名为RichEd20.dll，用户打开TC时即可上线</p>
-<p>PS: 2016年在网易有发过，发现网上已搜不到，重新发一下<br>Notepad++ DLL却持<br><img alt="image" data-original="http://k8gege.org/k8img/dllhijack/notepad++.png"></p>
+<p>PS: 2016年在网易有发过，发现网上已搜不到，重新发一下，除了让别人知道，<br>也防止自己未来老年痴呆，被刚入门的利用TC持久化就蛋疼了，因为我喜欢用。<br>他搞你后还来一句，你看这SB这么简单的东西，他天天用都不知道我加了后门</p>
+<p>Notepad++ DLL却持<br><img alt="image" data-original="http://k8gege.org/k8img/dllhijack/notepad++.png"></p>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>Notepad++ 修复被 CIA 利用的 DLL 劫持<br><a href="https://www.sohu.com/a/129080133_466846" target="_blank" rel="noopener">https://www.sohu.com/a/129080133_466846</a><br>[提权]Notepad++ DLL却持漏洞<br><a href="https://bbs.mayidui.net/t219-e.html" target="_blank" rel="noopener">https://bbs.mayidui.net/t219-e.html</a></p>
 ]]></content>
       <categories>
