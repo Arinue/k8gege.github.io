@@ -920,8 +920,8 @@
       </tags>
   </entry>
   <entry>
-    <title>超过8年的QQkey漏洞依然被盗号利用</title>
-    <url>/p/2357.html</url>
+    <title>超过8年至今可用的QQkey漏洞</title>
+    <url>/p/qqkey.html</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>你是否收到好友给你发的H站、赌博等站点的广告信息？没错都是QQKEY的蠕虫，在2012年的时候很疯狂<br>什么QQ空间自动发广告，邮箱自动给好友发广告消息等等，可能你点击里面的广告你的Q也跟着被盗…<br>如果你的号值钱就是以前常说的靓号，盗号者还会改你的信息卖你的QQ，当然现在也就只能发广告了<br>前几年可能也被电信诈骗利用，毕竟能通过资料或好友备注等很多信息，增加诈骗你好友钱的可信度</p>
 <h3 id="什么是QQkey"><a href="#什么是QQkey" class="headerlink" title="什么是QQkey"></a>什么是QQkey</h3><p>不管是ClinetKey还是skey在这里我统称它为QQKEY吧，他俩是有区别的，但对于最终目的我们都是登陆。<br>比如说钥匙，长得不一样，售价不一样，开锁难度不一样，但它一样是锁，叫法或卖的价钱不一样而已。</p>
 <p>无论是ClinetKey还是skey都是一张临时登陆的身分证，可理解为腾讯对特定字符串（cookie）的定义<br>ClientKey大家有没注意到当你登陆QQ后，访问QQ的相关站点，无需输入QQ密码即可自动登陆相关站点？<br>能自动登陆说明肯定有令牌，总不可能给你存密码，因此我们可以通过特定网页获取到QQKEY免密登陆。</p>
