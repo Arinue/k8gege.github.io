@@ -19,10 +19,11 @@
     <link rel="dns-prefetch" href="http://k8gege.org">
     <!--SEO-->
 
-<meta name="keywords" content="Ladon,.NET">
+<meta name="keywords" content="Ladon">
 
 
-<meta name="description" content="前言System.DirectoryServices.DirectoryEntry组件提供了对Active Directory的访问。本文以两个简单的小程序为例，阐述了如何利用此组件查看网络的各...">
+<meta name="description" content="前言你是否收到好友给你发的H站、赌博等站点的广告信息？没错都是QQKEY的蠕虫，在2012年的时候很疯狂
+什么是QQkey不管是ClinetKey还是skey在这里我统称它为QQKEY吧，他俩是...">
 
 
 <meta name="robots" content="all">
@@ -33,7 +34,7 @@
 
 <title>
     
-    利用DirectoryEntry获取域内计算机以及共享资源 |
+    8年了依然可用的QQkey漏洞 |
     
     K8哥哥’s Blog
 </title>
@@ -148,16 +149,16 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="利用DirectoryEntry获取域内计算机以及共享资源">
+        <h1 id="8年了依然可用的QQkey漏洞">
             
-            利用DirectoryEntry获取域内计算机以及共享资源
+            8年了依然可用的QQkey漏洞
             
         </h1>
         <div class="post-meta">
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/NET/">.NET</a> <a class="category-link" href="/categories/Ladon/">Ladon</a> <a class="category-link" href="/categories/%E5%86%85%E7%BD%91/">内网</a> <a class="category-link" href="/categories/%E6%BA%90%E7%A0%81/">源码</a> <a class="category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+        <a class="category-link" href="/categories/QQkey/">QQkey</a> <a class="category-link" href="/categories/%E5%97%85%E6%8E%A2/">嗅探</a>
     </span>
     
     
@@ -165,7 +166,7 @@
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a class="tag-link" href="/tags/NET/" rel="tag">.NET</a> <a class="tag-link" href="/tags/Ladon/" rel="tag">Ladon</a>
+            <a class="tag-link" href="/tags/Ladon/" rel="tag">Ladon</a>
             
         </span>
     </span>
@@ -175,7 +176,7 @@
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2020/03/28</span>
+            2020/04/23</span>
     </span>
     
     <span class="fa-wrap">
@@ -190,14 +191,14 @@
     </div>
     
     <div class="post-body post-content">
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>System.DirectoryServices.DirectoryEntry组件提供了对Active Directory的访问。本文以两个简单的小程序为例，阐述了如何利用此组件查看网络的各节点的信息。 DirectoryEntry组件提供了Path属性，根据文档，此属性指定了目录服务中用来访问对象的对象名，其格式如下：<br>protocol://servername:port number/distinguished name<br>此语句的第一部分定义了访问将使用的协议，如<br>LDAP: (Lightweight Directory Access Protocol)<br>IIS: (提供IIS元数据来读及配置Internet Infomation Server)<br>WinNT: (提供在非常有限的性能下对Windows NT域的访问)<br>NDS: (提供对Novell Directory Service的访问)<br>等等（详细信息清参考MSDN）。 </p>
-<p>因此我们构造一个DirectoryEntry实例，将它的Path设为”WinNT:”，以通过对它的所有子项的枚举来发现网络上的所有域（以及工作组）。这样，再对所发现的域（以及工作组）的子项进行枚举，就可以发现网络上的所有计算机，结合WMI发现机器上的共享资源。</p>
-<h3 id="C-实现代码"><a href="#C-实现代码" class="headerlink" title="C#实现代码"></a>C#实现代码</h3><p>以下为Ladon的EnumShare代码,自动获取当前域，并枚举域内计算机以及获取机器开放共享资源。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">string strDomain;</span><br><span class="line">string strComputer;</span><br><span class="line">string strShare;</span><br><span class="line">Console.WriteLine(&quot;Load EnumShare&quot;);</span><br><span class="line"></span><br><span class="line">DirectoryEntry root &#x3D; new DirectoryEntry(&quot;WinNT:&quot;);</span><br><span class="line">foreach (DirectoryEntry Domain in root.Children)</span><br><span class="line">&#123;</span><br><span class="line">    strDomain &#x3D; Domain.Name;</span><br><span class="line">    Console.WriteLine(&quot;Domain: &quot; + strDomain);</span><br><span class="line">    foreach (DirectoryEntry Computer in Domain.Children)</span><br><span class="line">    &#123;</span><br><span class="line">        if (Computer.SchemaClassName.Equals(&quot;Computer&quot;))</span><br><span class="line">        &#123;</span><br><span class="line">            strComputer &#x3D; Computer.Name;</span><br><span class="line">            ManagementObjectSearcher searcher &#x3D; new ManagementObjectSearcher(&quot;select * from win32_share&quot;);</span><br><span class="line">            foreach (ManagementObject share in searcher.Get())</span><br><span class="line">            &#123;</span><br><span class="line">                strShare &#x3D; share[&quot;Name&quot;].ToString();</span><br><span class="line">                Console.WriteLine(strComputer + &quot;\\&quot; + strShare);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Ladon EnumShare<br>因为崇尚极简主义，所以Ladon无需填写域名以及参数，参数多也很烦，全自动获取，一步到位。<br><img alt="img" data-original="https://k8gege.org/k8img/Ladon/exe/EnumShare.PNG"></p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a></p>
-<p><a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.directoryservices.directoryentry?view=netframework-4.8" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/dotnet/api/system.directoryservices.directoryentry?view=netframework-4.8</a></p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>你是否收到好友给你发的H站、赌博等站点的广告信息？没错都是QQKEY的蠕虫，在2012年的时候很疯狂</p>
+<h3 id="什么是QQkey"><a href="#什么是QQkey" class="headerlink" title="什么是QQkey"></a>什么是QQkey</h3><p>不管是ClinetKey还是skey在这里我统称它为QQKEY吧，他俩是有区别的，但对于最终目的我们都是登陆。<br>比如说钥匙，长得不一样，售价不一样，开锁难度不一样，但它一样是锁，叫法或卖的价钱不一样而已。</p>
+<p>无论是ClinetKey还是skey都是一张临时登陆的身分证，可理解为腾讯对特定字符串（cookie）的定义<br>ClientKey大家有没注意到当你登陆QQ后，访问QQ的相关站点，无需输入QQ密码即可自动登陆相关站点？<br>能自动登陆说明肯定有令牌，总不可能给你存密码，因此我们可以通过特定网页获取到QQKEY免密登陆。</p>
+<p>发帖前我又测了一下2014年的QQKEY利用程序，确认依然存在,如QQ邮箱、QQ安全中心均可直接KEY登陆</p>
+<h3 id="获取内网QQkey"><a href="#获取内网QQkey" class="headerlink" title="获取内网QQkey"></a>获取内网QQkey</h3><p>由于腾讯对QQ做了异地登陆限制，需手机解锁等操作，相对来说也是顶安全的，但在公共场所就不一样了。<br>使用Ladon的HTTP嗅探功能，可轻松嗅探到局域网或公共场所中的QQ和SKEY，比如在网吧、学校、星巴克等<br>在公共场所获取到的QQ肯定是别人当前可登陆的，所以登陆地IP限制就不存在了，嗅到SKEY可直接登陆<br>Ladon获取SKEY的方法非常简单，命令Ladon HttpSniffer 192.168.1.8(本机IP)，坐等即可。<br>该功能在Ladon添加嗅探功能时就有</p>
+<h3 id="QQkey登陆邮箱"><a href="#QQkey登陆邮箱" class="headerlink" title="QQkey登陆邮箱"></a>QQkey登陆邮箱</h3><p><a href="http://ptlogin2.qq.com/jump?clientuin=QQ&amp;clientkey=key&amp;keyindex=9&amp;u1=https%3A%2F%2Fmail.qq.com%2Fcgi-bin%2Flogin%3Fvt%3Dpassport%26vm%3Dwpt%26ft%3Dloginpage%26target%3D&amp;pt_local_tk=&amp;pt_3rd_aid=0&amp;ptopt=1&amp;style=25" target="_blank" rel="noopener">http://ptlogin2.qq.com/jump?clientuin=QQ&amp;clientkey=key&amp;keyindex=9&amp;u1=https%3A%2F%2Fmail.qq.com%2Fcgi-bin%2Flogin%3Fvt%3Dpassport%26vm%3Dwpt%26ft%3Dloginpage%26target%3D&amp;pt_local_tk=&amp;pt_3rd_aid=0&amp;ptopt=1&amp;style=25</a></p>
+<p>PS: 其它业务自行抓包获取URL</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://blog.csdn.net/qq_38837337/article/details/80673809" target="_blank" rel="noopener">https://blog.csdn.net/qq_38837337/article/details/80673809</a></p>
 
     </div>
     
@@ -226,17 +227,11 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/p/42879.html" class="pre-post btn btn-default" title="Ladon CVE-2020-1938跨网段、C段批量扫描内网漏洞">
-        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-        <span class="hidden-xs">
-            Ladon CVE-2020-1938跨网段、C段批量扫描内网漏洞</span>
-    </a>
     
-    
-    <a href="/p/30568.html" class="next-post btn btn-default" title="利用Gh0st 3.6远程溢出漏洞反向控制攻击者">
+    <a href="/p/28288.html" class="next-post btn btn-default" title="持久化后门之微软Visual Studio开发工具DLL劫持">
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            利用Gh0st 3.6远程溢出漏洞反向控制攻击者</span><i class="fa fa-angle-right fa-fw"></i>
+            持久化后门之微软Visual Studio开发工具DLL劫持</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
@@ -255,7 +250,7 @@
             Table of Contents
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-实现代码"><span class="toc-text">C#实现代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是QQkey"><span class="toc-text">什么是QQkey</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取内网QQkey"><span class="toc-text">获取内网QQkey</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#QQkey登陆邮箱"><span class="toc-text">QQkey登陆邮箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
         
     </div>
 </aside>
