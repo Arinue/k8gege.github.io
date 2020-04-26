@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://k8gege.org/"/>
-  <updated>2020-04-26T14:27:44.002Z</updated>
+  <updated>2020-04-26T14:31:02.842Z</updated>
   <id>http://k8gege.org/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://k8gege.org/p/ladon_cs_shell.html"/>
     <id>http://k8gege.org/p/ladon_cs_shell.html</id>
     <published>2020-04-26T14:10:00.000Z</published>
-    <updated>2020-04-26T14:27:44.002Z</updated>
+    <updated>2020-04-26T14:31:02.842Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>无论是外网渗透还是内网渗透，为了能够长期控制权限，都会留下各类后门。<br>WebShell无额外进程、无额外端口、不主动向外连接的后门使用频率非常高。<br>外网的有很多管理工具不用说了，但是内网有WebShell机器无法上网怎么办？<br>方案1：代理后管理工具访问，缺点代理卡时，无法连接内网WebShell<br>方案2：使用Ladon，无需代理，只要有SHELL就可以连接内网WebShell</p><h3 id="一键GetShell"><a href="#一键GetShell" class="headerlink" title="一键GetShell"></a>一键GetShell</h3><p>使用WebLogicExp模块对内网进行Weblogic漏洞扫描并GetShell<br><img alt="image" data-original="http://k8gege.org/k8img/exe/WeblogicExp64.PNG"></p><h3 id="Ladon-JspShel"><a href="#Ladon-JspShel" class="headerlink" title="Ladon JspShel"></a>Ladon JspShel</h3><p>K8-UA马,类型为1或ua<br><img alt="image" data-original="http://k8gege.org/k8img/exe/JspShellExec.PNG"></p><p>菜刀马,类型为2或cd<br><img alt="image" data-original="http://k8gege.org/k8img/exe/JspShell_cd.PNG"></p><h3 id="CS-JspShel"><a href="#CS-JspShel" class="headerlink" title="CS JspShel"></a>CS JspShel</h3><p>Cobalt Strike下连接内网WebShell</p><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/cs/CS_JspShell.PNG"></p><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3>]]></content>
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>无论是外网渗透还是内网渗透，为了能够长期控制权限，都会留下各类后门。<br>WebShell无额外进程、无额外端口、不主动向外连接的后门使用频率非常高。<br>外网的有很多管理工具不用说了，但是内网有WebShell机器无法上网怎么办？<br>方案1：代理后管理工具访问，缺点代理卡时，无法连接内网WebShell<br>方案2：使用Ladon，无需代理，只要有SHELL就可以连接内网WebShell</p><h3 id="一键GetShell"><a href="#一键GetShell" class="headerlink" title="一键GetShell"></a>一键GetShell</h3><p>使用WebLogicExp模块对内网进行Weblogic漏洞扫描并GetShell<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/WeblogicExp64.PNG"></p><h3 id="Ladon-JspShel"><a href="#Ladon-JspShel" class="headerlink" title="Ladon JspShel"></a>Ladon JspShel</h3><p>K8-UA马,类型为1或ua<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/JspShellExec.PNG"></p><p>菜刀马,类型为2或cd<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/JspShell_cd.PNG"></p><h3 id="CS-JspShel"><a href="#CS-JspShel" class="headerlink" title="CS JspShel"></a>CS JspShel</h3><p>Cobalt Strike下连接内网WebShell</p><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/cs/CS_JspShell.PNG"></p><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3>]]></content>
     
     <summary type="html">
     
@@ -35,9 +35,9 @@
     </summary>
     
     
-      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
-    
       <category term="Cobalt Strike" scheme="http://k8gege.org/categories/Cobalt-Strike/"/>
+    
+      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
     
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
@@ -176,9 +176,9 @@
     
       <category term="工具" scheme="http://k8gege.org/categories/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
-    
       <category term="Cobalt Strike" scheme="http://k8gege.org/categories/Cobalt-Strike/"/>
+    
+      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
       <category term="内网" scheme="http://k8gege.org/categories/%E5%86%85%E7%BD%91/"/>
     
@@ -312,9 +312,9 @@
     </summary>
     
     
-      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
-    
       <category term="Cobalt Strike" scheme="http://k8gege.org/categories/Cobalt-Strike/"/>
+    
+      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
     
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
