@@ -1,0 +1,353 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="K8哥哥’s Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.0.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://k8gege.org">
+    <!--SEO-->
+
+<meta name="keywords" content="Ladon">
+
+
+<meta name="description" content="前言无论是外网渗透还是内网渗透，为了能够长期控制权限，都会留下各类后门。WebShell无额外进程、无额外端口、不主动向外连接的后门使用频率非常高。外网的有很多管理工具不用说了，但是内网有Web...">
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>
+    
+    Ladon &amp; Cobalt Strike连接内网WebShell执行命令 |
+    
+    K8哥哥’s Blog
+</title>
+
+<link rel="alternate" href="/atom.xml" title="K8哥哥’s Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+
+
+
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header" style="background-image:url(
+    https://www.cnblogs.com/skins/CodingLife/images/title-yellow.png)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="K8gege">
+            <img alt="logo" class="img-responsive" data-original="https://s2.ax1x.com/2020/01/12/lTggg0.png">
+			<h3 class="K8tilte">K8哥哥</h3>
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">没有绝对安全的系统</h2>-->
+            
+            <h2>
+                没有绝对安全的系统
+            </h2>
+            
+        </div>
+    </div>
+	
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://k8gege.org">
+                        K8哥哥’s Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                Home</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/Ladon/"><i class="fa "></i>
+                                Ladon</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/Code/"><i class="fa "></i>
+                                Code</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/Exp/"><i class="fa "></i>
+                                Exp</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/Tool/"><i class="fa "></i>
+                                Tool</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                Archives</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/atom.xml"><i class="fa "></i>
+                                Rss</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Ladon &amp; Cobalt Strike连接内网WebShell执行命令">
+            
+            Ladon &amp; Cobalt Strike连接内网WebShell执行命令
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/Cobalt-Strike/">Cobalt Strike</a> <a class="category-link" href="/categories/Ladon/">Ladon</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/Ladon/" rel="tag">Ladon</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/04/26</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>无论是外网渗透还是内网渗透，为了能够长期控制权限，都会留下各类后门。<br>WebShell无额外进程、无额外端口、不主动向外连接的后门使用频率非常高。<br>外网的有很多管理工具不用说了，但是内网有WebShell机器无法上网怎么办？<br>方案1：代理后管理工具访问，缺点代理卡时，无法连接内网WebShell<br>方案2：使用Ladon，无需代理，只要有SHELL就可以连接内网WebShell</p>
+<h3 id="一键GetShell"><a href="#一键GetShell" class="headerlink" title="一键GetShell"></a>一键GetShell</h3><p>使用WebLogicExp模块对内网进行Weblogic漏洞扫描并GetShell<br><img alt="image" data-original="http://k8gege.org/k8img/exe/WeblogicExp64.PNG"></p>
+<h3 id="Ladon-JspShel"><a href="#Ladon-JspShel" class="headerlink" title="Ladon JspShel"></a>Ladon JspShel</h3><p>K8-UA马,类型为1或ua<br><img alt="image" data-original="http://k8gege.org/k8img/exe/JspShellExec.PNG"></p>
+<p>菜刀马,类型为2或cd<br><img alt="image" data-original="http://k8gege.org/k8img/exe/JspShell_cd.PNG"></p>
+<h3 id="CS-JspShel"><a href="#CS-JspShel" class="headerlink" title="CS JspShel"></a>CS JspShel</h3><p>Cobalt Strike下连接内网WebShell</p>
+<p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/cs/CS_JspShell.PNG"></p>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3>
+    </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">
+	<img height="70" width="70" data-original="../img/join.png">
+
+    </div>
+    <p class="reward-tip">
+        ~进群讨论
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="http://k8gege.org" target="_blank">K8gege</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/p/qqkey.html" class="next-post btn btn-default" title="超过8年依然可用的QQkey免密登陆漏洞">
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            超过8年依然可用的QQkey免密登陆漏洞</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+<p>评论系统未开启，无法评论！</p>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            Table of Contents
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一键GetShell"><span class="toc-text">一键GetShell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ladon-JspShel"><span class="toc-text">Ladon JspShel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CS-JspShel"><span class="toc-text">CS JspShel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载"><span class="toc-text">下载</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0f0409af9df7ad2cc43cc334b4d9b515";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+ <script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery-lazyload/1.9.5/jquery.lazyload.min.js"></script>
+    <script type="text/javascript">
+      $(function() {        
+          $("img").lazyload({
+            placeholder:"/img/loading.gif",
+              effect:"fadeIn"
+            });
+          });
+    </script>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    Total:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+	<!-- 
+    &nbsp; | &nbsp;
+    
+	Visitors:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i> 
+    </strong>
+	-->
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2020
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//k8gege.org" class="copyright-links" target="_blank" rel="nofollow">K8gege</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/assets/tagcanvas.min.js?rev=2.9.js"></script>
+
+<script>
+var tagOption = {
+    textColour: '#444', // 字体颜色
+    outlineMethod: 'block', // 选中模式
+    outlineColour: '#FFDAB9', // 选中模式的颜色
+    interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+    textHeight: 13,
+    outlineRadius: 3,
+    freezeActive: true || '', // 选中的标签是否继续滚动
+    frontSelect: true || '', // 不选标签云后部的标签
+    initial: [0.1, -0.1],
+    depth: 0.5,
+    decel: 0.95,
+    maxSpeed: 0.03,
+    reverse: true || '', // 是否反向触发
+    fadeIn: 500, // 进入动画时间
+    wheelZoom: false || '' // 是否启用鼠标滚轮
+}
+TagCanvas.Start('tag-cloud-3d', '', tagOption);
+</script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>

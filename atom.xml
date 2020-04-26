@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://k8gege.org/"/>
-  <updated>2020-04-23T16:53:58.089Z</updated>
+  <updated>2020-04-26T14:27:44.002Z</updated>
   <id>http://k8gege.org/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ladon &amp; Cobalt Strike连接内网WebShell执行命令</title>
+    <link href="http://k8gege.org/p/ladon_cs_shell.html"/>
+    <id>http://k8gege.org/p/ladon_cs_shell.html</id>
+    <published>2020-04-26T14:10:00.000Z</published>
+    <updated>2020-04-26T14:27:44.002Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>无论是外网渗透还是内网渗透，为了能够长期控制权限，都会留下各类后门。<br>WebShell无额外进程、无额外端口、不主动向外连接的后门使用频率非常高。<br>外网的有很多管理工具不用说了，但是内网有WebShell机器无法上网怎么办？<br>方案1：代理后管理工具访问，缺点代理卡时，无法连接内网WebShell<br>方案2：使用Ladon，无需代理，只要有SHELL就可以连接内网WebShell</p><h3 id="一键GetShell"><a href="#一键GetShell" class="headerlink" title="一键GetShell"></a>一键GetShell</h3><p>使用WebLogicExp模块对内网进行Weblogic漏洞扫描并GetShell<br><img alt="image" data-original="http://k8gege.org/k8img/exe/WeblogicExp64.PNG"></p><h3 id="Ladon-JspShel"><a href="#Ladon-JspShel" class="headerlink" title="Ladon JspShel"></a>Ladon JspShel</h3><p>K8-UA马,类型为1或ua<br><img alt="image" data-original="http://k8gege.org/k8img/exe/JspShellExec.PNG"></p><p>菜刀马,类型为2或cd<br><img alt="image" data-original="http://k8gege.org/k8img/exe/JspShell_cd.PNG"></p><h3 id="CS-JspShel"><a href="#CS-JspShel" class="headerlink" title="CS JspShel"></a>CS JspShel</h3><p>Cobalt Strike下连接内网WebShell</p><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/cs/CS_JspShell.PNG"></p><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;无论是外网渗透还是内网渗透，为了能够长期控制权限，都会留下各类后门。&lt;br&gt;WebShell无额外进程、无额外端口、不主动向外连接的后门使用
+      
+    
+    </summary>
+    
+    
+      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
+    
+      <category term="Cobalt Strike" scheme="http://k8gege.org/categories/Cobalt-Strike/"/>
+    
+    
+      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
+    
+  </entry>
   
   <entry>
     <title>超过8年依然可用的QQkey免密登陆漏洞</title>
@@ -148,9 +176,9 @@
     
       <category term="工具" scheme="http://k8gege.org/categories/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="Cobalt Strike" scheme="http://k8gege.org/categories/Cobalt-Strike/"/>
-    
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
+    
+      <category term="Cobalt Strike" scheme="http://k8gege.org/categories/Cobalt-Strike/"/>
     
       <category term="内网" scheme="http://k8gege.org/categories/%E5%86%85%E7%BD%91/"/>
     
@@ -284,9 +312,9 @@
     </summary>
     
     
-      <category term="Cobalt Strike" scheme="http://k8gege.org/categories/Cobalt-Strike/"/>
-    
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
+    
+      <category term="Cobalt Strike" scheme="http://k8gege.org/categories/Cobalt-Strike/"/>
     
     
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
@@ -638,37 +666,6 @@
       <category term="ShellCode" scheme="http://k8gege.org/tags/ShellCode/"/>
     
       <category term="OpCode" scheme="http://k8gege.org/tags/OpCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Oracle WebLogic 默认密码表</title>
-    <link href="http://k8gege.org/p/30603.html"/>
-    <id>http://k8gege.org/p/30603.html</id>
-    <published>2020-01-11T06:00:10.000Z</published>
-    <updated>2020-01-11T08:02:23.143Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li>Oracle - WebLogic<br>Method    HTTP<br>User ID    system<br>Password    password<br>Level    Administrator</li></ol><p>Notes    Login located at /console</p><ol start="2"><li>Oracle - WebLogic<br>Method    HTTP<br>User ID    weblogic<br>Password    weblogic<br>Level    Administrator</li></ol><p>Notes    Login located at /console</p><ol start="3"><li>Oracle - WebLogic<br>Version    9.0 Beta (Diablo)<br>User ID    weblogic<br>Password    weblogic</li></ol><ol start="4"><li>Oracle - WebLogic Process Integrator<br>Version    2.0<br>User ID    admin<br>Password    security</li></ol><ol start="5"><li>Oracle - WebLogic Process Integrator<br>Version    2.0<br>User ID    joe<br>Password    password</li></ol><ol start="6"><li>Oracle - WebLogic Process Integrator<br>Version    2.0<br>User ID    mary<br>Password    password</li></ol><ol start="7"><li>Oracle - WebLogic Process Integrator<br>Version    2.0<br>User ID    system<br>Password    security</li></ol><ol start="8"><li>Oracle - WebLogic Process Integrator<br>Version    2.0<br>User ID    wlcsystem<br>Password    wlcsystem</li></ol><ol start="9"><li>Oracle - WebLogic Process Integrator<br>Version    2.0<br>User ID    wlpisystem<br>Password    wlpisystem</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ol&gt;
-&lt;li&gt;Oracle - WebLogic&lt;br&gt;Method    HTTP&lt;br&gt;User ID    system&lt;br&gt;Password    password&lt;br&gt;Level    Administrator&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Notes    L
-      
-    
-    </summary>
-    
-    
-      <category term="密码" scheme="http://k8gege.org/categories/%E5%AF%86%E7%A0%81/"/>
-    
-    
-      <category term="Password" scheme="http://k8gege.org/tags/Password/"/>
-    
-      <category term="Brute" scheme="http://k8gege.org/tags/Brute/"/>
     
   </entry>
   
