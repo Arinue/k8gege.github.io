@@ -690,14 +690,14 @@
 <h3 id="注本页面的教程并不是很全，详情请看WIKI-我会慢慢完善"><a href="#注本页面的教程并不是很全，详情请看WIKI-我会慢慢完善" class="headerlink" title="注本页面的教程并不是很全，详情请看WIKI,我会慢慢完善"></a>注本页面的教程并不是很全，详情请看WIKI,我会慢慢完善</h3><h4 id="Top"><a href="#Top" class="headerlink" title="Top"></a><a href="#readme">Top</a></h4>]]></content>
       <categories>
         <category>工具</category>
-        <category>Ladon</category>
         <category>Cobalt Strike</category>
+        <category>Ladon</category>
         <category>内网</category>
       </categories>
       <tags>
         <tag>Exp</tag>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Code</tag>
       </tags>
   </entry>
@@ -935,8 +935,8 @@
 <h3 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h3><p>暂时只支持JspShell，有空再添加其它SHELL</p>
 ]]></content>
       <categories>
-        <category>Ladon</category>
         <category>Cobalt Strike</category>
+        <category>Ladon</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1028,8 +1028,8 @@
         <category>Ladon</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
       </tags>
   </entry>
   <entry>
@@ -1281,13 +1281,13 @@
 <h3 id="PortScan端口扫描"><a href="#PortScan端口扫描" class="headerlink" title="PortScan端口扫描"></a>PortScan端口扫描</h3><p>命令行支持自定义端口，而不是非要ports.txt指定端口<br>Ladon 192.168.1.8-192.168.1.200 PortScan 22,80,1433,21,3306,1521<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/PortScan6.2.PNG"></p>
 ]]></content>
       <categories>
-        <category>Ladon</category>
-        <category>密码</category>
         <category>Kali</category>
+        <category>密码</category>
+        <category>Ladon</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Kali</tag>
         <tag>Scanner</tag>
       </tags>
@@ -1461,12 +1461,12 @@
 ]]></content>
       <categories>
         <category>工具</category>
-        <category>Ladon</category>
         <category>Kali</category>
+        <category>Ladon</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Kali</tag>
         <tag>Scanner</tag>
       </tags>
@@ -1510,12 +1510,12 @@
 <h3 id="28-ActiveMQPoc-ActiveMQ漏洞扫描"><a href="#28-ActiveMQPoc-ActiveMQ漏洞扫描" class="headerlink" title="28.ActiveMQPoc ActiveMQ漏洞扫描"></a>28.ActiveMQPoc ActiveMQ漏洞扫描</h3><p>Example: Ladon 192.168.1.8/24 ActiveMQPoc<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_ActiveMQPoc.gif"></p>
 ]]></content>
       <categories>
-        <category>Ladon</category>
         <category>Cobalt Strike</category>
+        <category>Ladon</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Cobalt Strike</tag>
       </tags>
   </entry>
@@ -1709,14 +1709,14 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
 ]]></content>
       <categories>
         <category>工具</category>
-        <category>Ladon</category>
         <category>密码</category>
+        <category>Ladon</category>
         <category>内网</category>
         <category>嗅探</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Sniffer</tag>
         <tag>FtpSniffer</tag>
         <tag>HttpSniffer</tag>
@@ -1759,8 +1759,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       <tags>
         <tag>Metasploit</tag>
         <tag>PowerShell</tag>
-        <tag>C#</tag>
         <tag>.NET</tag>
+        <tag>C#</tag>
         <tag>MSF</tag>
         <tag>meterpreter</tag>
       </tags>
@@ -1983,9 +1983,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </categories>
       <tags>
         <tag>Exp</tag>
+        <tag>Ladon</tag>
         <tag>Tool</tag>
         <tag>GetShell</tag>
-        <tag>Ladon</tag>
         <tag>ActiveMQ</tag>
         <tag>CVE-2016-3088</tag>
       </tags>
@@ -2007,9 +2007,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </categories>
       <tags>
         <tag>Exp</tag>
+        <tag>Ladon</tag>
         <tag>Tool</tag>
         <tag>GetShell</tag>
-        <tag>Ladon</tag>
         <tag>ThinkPHP</tag>
       </tags>
   </entry>
@@ -2032,9 +2032,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </categories>
       <tags>
         <tag>Exp</tag>
+        <tag>Ladon</tag>
         <tag>Tool</tag>
         <tag>GetShell</tag>
-        <tag>Ladon</tag>
         <tag>PhpStudy</tag>
       </tags>
   </entry>
@@ -2063,9 +2063,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </categories>
       <tags>
         <tag>Exp</tag>
+        <tag>Ladon</tag>
         <tag>Tool</tag>
         <tag>GetShell</tag>
-        <tag>Ladon</tag>
         <tag>PhpStudy</tag>
       </tags>
   </entry>
@@ -2155,8 +2155,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <category>PowerShell</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>PowerShell</tag>
       </tags>
   </entry>
@@ -2198,9 +2198,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <category>工具</category>
       </categories>
       <tags>
-        <tag>Exp</tag>
         <tag>Apache</tag>
         <tag>Solr</tag>
+        <tag>Exp</tag>
         <tag>Ladon</tag>
         <tag>0day</tag>
       </tags>
@@ -2225,9 +2225,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </categories>
       <tags>
         <tag>Ladon</tag>
+        <tag>Code</tag>
         <tag>Poc</tag>
         <tag>PHP</tag>
-        <tag>Code</tag>
         <tag>Ngnix</tag>
         <tag>CVE-2019-11043</tag>
       </tags>
@@ -2480,12 +2480,12 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
 ]]></content>
       <categories>
         <category>工具</category>
-        <category>Ladon</category>
         <category>Kali</category>
+        <category>Ladon</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Kali</tag>
         <tag>Scanner</tag>
       </tags>
@@ -2549,8 +2549,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </categories>
       <tags>
         <tag>Exp</tag>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Kali</tag>
         <tag>PowerShell</tag>
       </tags>
@@ -2736,26 +2736,6 @@ payload5='\x23\x64\x61\x74\x65\x3A\x20\x32\x30\x31\x39\x30\x36\x32\x36\x20\x23\x
       </tags>
   </entry>
   <entry>
-    <title>Cobalt Strike TeamServer For Windows</title>
-    <url>/p/22e5f4a8.html</url>
-    <content><![CDATA[<p><img alt data-original="http://k8gege.org/k8img/posts/TeamServer.png"></p>
-<p><strong>Cobalt Strike 3.x TeamServer for Windows<br></strong></p>
-<p><strong>0x001 环境</strong><br><br>CS 3.12 或 3.13 </p>
-<p>Kali或Win最好安装jdk1.8.5或之后版本<br><br>设置环境变量,如path=C:\Program Files\Java\jdk1.8.0_05\bin<br><br><strong>0x002 启动中转</strong><br>启动TeamServer.exe(第一次运行Win7后系统需右键管理员)<br><br>TeamServer.exe IP pass</p>
-<p><span style="color: #ff00ff;">20190306编译版无需kali下生成cobaltstrike.store文件</span></p>
-<p><strong>0x003 下载</strong></p>
-<p>TeamServer.exe</p>
-<p><a href="https://github.com/k8gege/K8tools" target="_blank">https://github.com/k8gege/K8tools/raw/master/TeamServer.exe</a></p>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>Cobalt Strike</category>
-      </categories>
-      <tags>
-        <tag>Tool</tag>
-        <tag>Cobalt Strike</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CVE-2019-0803提权工具</title>
     <url>/p/fa25cc9b.html</url>
     <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x000 漏洞信息</strong></span><br>CVE-2019-0803 | Win32k 特权提升漏洞<br>发布时间: 2019-04-09<br>当 Win32k 组件无法正确处理内存中的对象时，Windows 中存在特权提升漏洞。成功利用此漏洞的攻击者可以在内核模式中运行任意代码。攻击者可随后安装程序；查看、更改或删除数据；或者创建拥有完全用户权限的新帐户。<br>若要利用此漏洞，攻击者首先必须登录到系统。然后，攻击者可以运行一个为利用此漏洞而经特殊设计的应用程序，从而控制受影响的系统。</p>
@@ -2816,13 +2796,33 @@ Microsoft Windows 10 for 32-bit Systems 0
 
 <pre><code>&lt;a title=&quot;External url&quot; href=&quot;http://packetstormsecurity.com/files/153034/Microsoft-Windows-Win32k-Privilege-Escalation.html&quot; target=&quot;_blank&quot;&gt;http://packetstormsecurity.com/files/153034/Microsoft-Windows-Win32k-Privilege-Escalation.html&lt;/a&gt;&lt;/p&gt;</code></pre></p>]]></content>
       <categories>
-        <category>工具</category>
         <category>提权</category>
+        <category>工具</category>
       </categories>
       <tags>
         <tag>Exp</tag>
         <tag>Tool</tag>
         <tag>LPE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Cobalt Strike TeamServer For Windows</title>
+    <url>/p/22e5f4a8.html</url>
+    <content><![CDATA[<p><img alt data-original="http://k8gege.org/k8img/posts/TeamServer.png"></p>
+<p><strong>Cobalt Strike 3.x TeamServer for Windows<br></strong></p>
+<p><strong>0x001 环境</strong><br><br>CS 3.12 或 3.13 </p>
+<p>Kali或Win最好安装jdk1.8.5或之后版本<br><br>设置环境变量,如path=C:\Program Files\Java\jdk1.8.0_05\bin<br><br><strong>0x002 启动中转</strong><br>启动TeamServer.exe(第一次运行Win7后系统需右键管理员)<br><br>TeamServer.exe IP pass</p>
+<p><span style="color: #ff00ff;">20190306编译版无需kali下生成cobaltstrike.store文件</span></p>
+<p><strong>0x003 下载</strong></p>
+<p>TeamServer.exe</p>
+<p><a href="https://github.com/k8gege/K8tools" target="_blank">https://github.com/k8gege/K8tools/raw/master/TeamServer.exe</a></p>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>Cobalt Strike</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>Cobalt Strike</tag>
       </tags>
   </entry>
   <entry>
@@ -2843,8 +2843,8 @@ Microsoft Windows 10 for 32-bit Systems 0
 <p><span style="font-size: 14px;"><a href="https://github.com/k8gege/K8tools/raw/master/K8_SC_ENCODE(CobaltStrike%20%26%20Metasploit%20Shellcode%E5%85%8D%E6%9D%80%E5%B7%A5%E5%85%B7).rar" target="_blank">https://github.com/k8gege/K8tools/raw/master/K8_SC_ENCODE(CobaltStrike &amp; Metasploit Shellcode免杀工具).rar</a></span></p>]]></content>
       <categories>
         <category>工具</category>
-        <category>Metasploit</category>
         <category>免杀</category>
+        <category>Metasploit</category>
         <category>Cobalt Strike</category>
         <category>ShellCode</category>
       </categories>
@@ -2991,8 +2991,8 @@ Microsoft Windows 10 for 32-bit Systems 0
         <category>编程</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Python</tag>
       </tags>
   </entry>
@@ -3139,8 +3139,8 @@ ptr = ctypes.windll.kernel32.VirtualAlloc(ctypes.c_int(0),
 <p>基本都是白名单加载DLL，DLL释放各种加密文件，再解密执行，最终加载CS而已。</p>]]></content>
       <categories>
         <category>工具</category>
-        <category>Metasploit</category>
         <category>免杀</category>
+        <category>Metasploit</category>
         <category>Cobalt Strike</category>
         <category>ShellCode</category>
         <category>Python</category>
@@ -3352,8 +3352,8 @@ xxe_data = r"""&lt;!DOCTYPE Autodiscover [
 <p><img alt data-original="http://k8gege.org/k8img/posts/k8uac.png"></p>
 <p>&nbsp;下载：<a href="https://files.cnblogs.com/files/k8gege/k8uac_20181125%5BK8%5D.rar" target="_blank">https://files.cnblogs.com/files/k8gege/k8uac_20181125%5BK8%5D.rar</a></p>]]></content>
       <categories>
-        <category>工具</category>
         <category>提权</category>
+        <category>工具</category>
       </categories>
       <tags>
         <tag>Exp</tag>
@@ -3373,8 +3373,8 @@ xxe_data = r"""&lt;!DOCTYPE Autodiscover [
 <p>PowerShell</p>
 <p><a href="https://github.com/k8gege/K8tools/blob/master/Invoke-Mimikatz.ps1" target="_blank">https://github.com/k8gege/K8tools/blob/master/Invoke-Mimikatz.ps1</a></p>]]></content>
       <categories>
-        <category>工具</category>
         <category>提权</category>
+        <category>工具</category>
         <category>密码</category>
         <category>PowerShell</category>
       </categories>
@@ -3401,8 +3401,8 @@ xxe_data = r"""&lt;!DOCTYPE Autodiscover [
 <p>&nbsp;</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp; </p>]]></content>
       <categories>
-        <category>工具</category>
         <category>提权</category>
+        <category>工具</category>
       </categories>
       <tags>
         <tag>Exp</tag>
