@@ -19,7 +19,7 @@
     <link rel="dns-prefetch" href="http://k8gege.org">
     <!--SEO-->
 
-<meta name="keywords" content="Ladon,Tool">
+<meta name="keywords" content="Tool,Ladon">
 
 
 <meta name="description" content="前言你还在为权限切换的问题而烦恼吗？SYSTEM权限下浏览器密码读取工具失效？SYS权限下系统自带NET USE命令连接IPC失效？SYSTEM权限下截取不到目标桌面？ADMIN权限下打不开SY...">
@@ -191,13 +191,26 @@
     
     <div class="post-body post-content">
         <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>你还在为权限切换的问题而烦恼吗？SYSTEM权限下浏览器密码读取工具失效？SYS权限下系统自带NET USE命令连接IPC失效？<br>SYSTEM权限下截取不到目标桌面？ADMIN权限下打不开SYSTEM权限进程？如何切换各种权限测试工具？等这些都是权限问题，在XP和03用户权限和SYS权限都是同一个会话，所以远控可直接记录到，很多功能我们也没发现影响，直到WIN7微软为了这全，将会话进行隔离，我们会发现SYS权限会话为0，用户为1，这就是为什么以前sys权限控制WIN7机器远程桌面会黑屏的原因?Firefxo和Chrome采用了DBAPI加密，该加密需要对应用户会话信息才能解密，直接以SYSTEM权限启动发现解密失败。所以我们需要切换权限</p>
-<h3 id="Ladon-6-4更新功能"><a href="#Ladon-6-4更新功能" class="headerlink" title="Ladon 6.4更新功能"></a>Ladon 6.4更新功能</h3><p>[+] GetSystem 管理员/SYSTEM权限切换<br>[+] DumpLsass 导出Lsass内存文件<br>[u] OsScan新增SSH识别操作系统<br>[u] WebScan、SameWeb新增WebBanner<br>[+] WhatCms新增Banner、TP-Link WDR7300识别<br>[u] 修复6.3漏扫10、20等含0的C段</p>
+<h3 id="Ladon-6-4更新功能"><a href="#Ladon-6-4更新功能" class="headerlink" title="Ladon 6.4更新功能"></a>Ladon 6.4更新功能</h3><p>5.2<br>[u] 修复noping参数问题(误注释了一行代码导致)<br>4.27<br>[+] Ping/PingIP 仅ICMP探测IP速度快(3-6秒/C段,5.8前的OnlinePC)<br>[+] CheckDoor 检测后门(网上公开多年的)–OCI.DLL/5个注册表RUN<br>[u] OsScan 修复6.2 4.20后osscan无法使用的BUG<br>[+] ipcscan.ini INI插件之Ipc密码爆破(net use)<br>[+] smbscan.ini INI插件之Smb密码爆破(impacket)<br>[+] smbhash.ini INI插件之NtlmHash爆破(impacket)</p>
+<p>4.26<br>[+]JspShell 横向移动连接内网webshell执行命令</p>
+<p>4.20<br>[+] GetSystem 管理员/SYSTEM权限切换<br>[+] DumpLsass 导出Lsass内存文件<br>[u] OsScan新增SSH识别操作系统<br>[u] WebScan、SameWeb新增WebBanner<br>[+] WhatCms新增Banner、TP-Link WDR7300识别<br>[u] 修复6.3漏扫10、20等含0的C段</p>
 <h3 id="提权-以SYSTEM权限执行"><a href="#提权-以SYSTEM权限执行" class="headerlink" title="提权 以SYSTEM权限执行"></a>提权 以SYSTEM权限执行</h3><p>命令：Ladon GetSystem cmd.exe<br>命令：Ladon GetSystem cmd.exe /system<br>命令：Ladon GetSystem cmd.exe lsass<br>可指定EXE或BAT，将以SYSTEM权限运行，如下图弹个CMD<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/GetSystem.PNG"></p>
 <p>注意：需管理员权限，若存在UAC可使用BypassUac获取管理员</p>
 <p>当然也可以使用系统AT、SCHTASKS等命令获取SYSTEM权限，不担心被杀，只是麻烦点，看Ladom多简单</p>
 <h3 id="降权-以用户权限执行"><a href="#降权-以用户权限执行" class="headerlink" title="降权 以用户权限执行"></a>降权 以用户权限执行</h3><p>SYSTEM权限下并不是什么都可以做，比如大家用Ladon或其它工具弹出个SYS权限CMD，再试一下系统自带的NET USE命令连接IPC看提示什么，你会发现明明密码是正确的但是却提示错误。为何需提权、降权我在14年已发布<br>命令：Ladon GetSystem cmd.exe /user<br>命令：Ladon GetSystem cmd.exe explorer<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/GetSystem2.PNG"></p>
 <p>PS: 当然也可以切换至任意权限，指定对应进程即可，如降权到服务权限等</p>
 <h3 id="DumpLsass内存密码"><a href="#DumpLsass内存密码" class="headerlink" title="DumpLsass内存密码"></a>DumpLsass内存密码</h3><p>Dump Lsass内存文件，取回本地读取密码，无需免杀MIMI<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/DumpLsass.PNG"></p>
+<h3 id="Ping"><a href="#Ping" class="headerlink" title="Ping"></a>Ping</h3><p>命令: Ping 或 PingIP</p>
+<p>仅ICMP协议探测存活主机（速度快3-6秒/ C段，5.8版本前的OnlinePC）<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/PingIP.PNG"></p>
+<h3 id="Ipc密码爆破"><a href="#Ipc密码爆破" class="headerlink" title="Ipc密码爆破"></a>Ipc密码爆破</h3><p>INI插件：调用系统net use命令进行IPC爆破，由于系统限制只能连接一个，因此只能验证一个密码结束后，才能对下一个密码进行验证，而且必须删除连接，以上因素导致用系统命令爆破速度会很慢，因为你无法多线程一下就验证多个密码，所以Ladon内置模块不再保留IpcScan，使用分破4万密码的SmbScan可快速验证密码或者调用impacket的smbexec验证速度要比net use也快很多。</p>
+<p>PS：此模块的存在主要是用于针对2003或XP系统的Ipc爆破，远程为Win7后系统推荐使用内置SmbScan爆破</p>
+<p>ipcscan.ini</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line"><span class="comment">#Brute-Force IPC(445) PassWord </span></span><br><span class="line">exe=cmd.exe</span><br><span class="line">arg=net use \\<span class="variable">$ip</span>$ /user:<span class="variable">$user</span>$ <span class="variable">$pass</span>$ &amp; net use \\<span class="variable">$ip</span>$ /del</span><br><span class="line"><span class="comment">#isok=The command completed successfully</span></span><br><span class="line">isok=命令成功完成</span><br><span class="line">port=445</span><br><span class="line"><span class="built_in">log</span>=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>扫描C段</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon 192.168.1.8/c ipcscan.ini</span><br></pre></td></tr></table></figure>
+
+<p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/INI_ipcscan.PNG"></p>
 
     </div>
     
@@ -255,7 +268,7 @@
             Table of Contents
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ladon-6-4更新功能"><span class="toc-text">Ladon 6.4更新功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提权-以SYSTEM权限执行"><span class="toc-text">提权 以SYSTEM权限执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#降权-以用户权限执行"><span class="toc-text">降权 以用户权限执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DumpLsass内存密码"><span class="toc-text">DumpLsass内存密码</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ladon-6-4更新功能"><span class="toc-text">Ladon 6.4更新功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提权-以SYSTEM权限执行"><span class="toc-text">提权 以SYSTEM权限执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#降权-以用户权限执行"><span class="toc-text">降权 以用户权限执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DumpLsass内存密码"><span class="toc-text">DumpLsass内存密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ping"><span class="toc-text">Ping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ipc密码爆破"><span class="toc-text">Ipc密码爆破</span></a></li></ol>
         
     </div>
 </aside>
