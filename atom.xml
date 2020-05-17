@@ -380,9 +380,9 @@
     
       <category term="源码" scheme="http://k8gege.org/categories/%E6%BA%90%E7%A0%81/"/>
     
-      <category term="SQL" scheme="http://k8gege.org/categories/SQL/"/>
-    
       <category term="编程" scheme="http://k8gege.org/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="SQL" scheme="http://k8gege.org/categories/SQL/"/>
     
     
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
@@ -501,9 +501,9 @@
     
       <category term="PowerShell" scheme="http://k8gege.org/tags/PowerShell/"/>
     
-      <category term=".NET" scheme="http://k8gege.org/tags/NET/"/>
-    
       <category term="C#" scheme="http://k8gege.org/tags/C/"/>
+    
+      <category term=".NET" scheme="http://k8gege.org/tags/NET/"/>
     
       <category term="MSF" scheme="http://k8gege.org/tags/MSF/"/>
     
