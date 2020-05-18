@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://k8gege.org/p/winrmscan.html</loc>
+    
+    <lastmod>2020-05-18T15:23:54.982Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://k8gege.org/Ladon/WinrmScan.html</loc>
     
     <lastmod>2020-05-18T15:23:54.982Z</lastmod>
@@ -19,6 +26,13 @@
     <loc>http://k8gege.org/Ladon/index.html</loc>
     
     <lastmod>2020-05-17T14:08:43.211Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k8gege.org/p/sshscan.html</loc>
+    
+    <lastmod>2020-05-17T10:57:31.110Z</lastmod>
     
   </url>
   
