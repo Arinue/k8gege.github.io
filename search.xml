@@ -19,8 +19,13 @@
 </tr>
 </thead>
 <tbody><tr>
+<td>0</td>
+<td>Ladon完整文档</td>
+<td><a href="https://k8gege.org/Ladon/">https://k8gege.org/Ladon/</a></td>
+</tr>
+<tr>
 <td>1</td>
-<td>Ladon最新文档</td>
+<td>Ladon基础文档</td>
 <td><a href="http://k8gege.org/p/648af4b3.html">http://k8gege.org/p/648af4b3.html</a></td>
 </tr>
 <tr>
@@ -927,7 +932,7 @@
       </tags>
   </entry>
   <entry>
-    <title>〖教程〗Ladon调用Winrm批量爆破Windows登陆密码</title>
+    <title>〖教程〗Winrm远程命令/端口复用后门/Windows密码爆破</title>
     <url>/p/winrmscan.html</url>
     <content><![CDATA[<p style="color:#fff;"> 
 <% <span class="archive-article-date">
@@ -1157,8 +1162,7 @@ Visit <span id="busuanzi_value_page_pv"></span>
 ]]></content>
       <categories>
         <category>Ladon</category>
-        <category>ssh</category>
-        <category>brute force</category>
+        <category>Brute</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
