@@ -932,7 +932,7 @@
       </tags>
   </entry>
   <entry>
-    <title>〖教程〗Winrm远程命令/端口复用后门/Windows密码爆破</title>
+    <title>Winrm远程命令/端口复用后门/Windows密码爆破</title>
     <url>/p/winrmscan.html</url>
     <content><![CDATA[<p style="color:#fff;"> 
 <% <span class="archive-article-date">
@@ -986,7 +986,7 @@ Visit <span id="busuanzi_value_page_pv"></span>
       </tags>
   </entry>
   <entry>
-    <title>〖教程〗Windows下使用Ladon批量爆破SSH弱口令</title>
+    <title>〖教程〗Ladon网络认证弱口令爆破详解SSH为例</title>
     <url>/p/sshscan.html</url>
     <content><![CDATA[<p style="color:#fff;"> 
 <% <span class="archive-article-date">
