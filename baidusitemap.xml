@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://k8gege.org/p/winrmscan.html</loc>
+    <lastmod>2020-05-21</lastmod>
+  </url>  <url>
     <loc>http://k8gege.org/Ladon/index.html</loc>
     <lastmod>2020-05-21</lastmod>
   </url>  <url>
@@ -13,9 +16,6 @@
     <loc>http://k8gege.org/Download/index.html</loc>
     <lastmod>2020-05-21</lastmod>
   </url>  <url>
-    <loc>http://k8gege.org/p/winrmscan.html</loc>
-    <lastmod>2020-05-20</lastmod>
-  </url>  <url>
     <loc>http://k8gege.org/p/sshscan.html</loc>
     <lastmod>2020-05-20</lastmod>
   </url>  <url>
@@ -25,7 +25,7 @@
     <loc>http://k8gege.org/p/648af4b3.html</loc>
     <lastmod>2020-05-18</lastmod>
   </url>  <url>
-    <loc>http://k8gege.org/Ladon/winrmscan.html</loc>
+    <loc>http://k8gege.org/Ladon/WinrmScan.html</loc>
     <lastmod>2020-05-18</lastmod>
   </url>  <url>
     <loc>http://k8gege.org/p/qqkey.html</loc>
