@@ -932,6 +932,20 @@
       </tags>
   </entry>
   <entry>
+    <title>〖教程〗Ladon远程命令执行Wmiexec/psexec/atexec回显版</title>
+    <url>/p/winshell.html</url>
+    <content><![CDATA[<p><a href="http://k8gege.org/Ladon/winshell.html">http://k8gege.org/Ladon/winshell.html</a></p>
+]]></content>
+      <categories>
+        <category>Ladon</category>
+        <category>Rce</category>
+      </categories>
+      <tags>
+        <tag>Ladon</tag>
+        <tag>Rce</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Winrm远程命令/端口复用后门/Windows密码爆破</title>
     <url>/p/winrmscan.html</url>
     <content><![CDATA[<p><a href="http://k8gege.org/Ladon/winrmscan.html">http://k8gege.org/Ladon/winrmscan.html</a></p>
@@ -943,8 +957,8 @@
       </categories>
       <tags>
         <tag>Ladon</tag>
-        <tag>brute force</tag>
         <tag>Rce</tag>
+        <tag>brute force</tag>
       </tags>
   </entry>
   <entry>
