@@ -1,0 +1,7 @@
+Ladon 6.5 20200521
+===========================================
+5.21 
+[+] psexec 交互式回显  (https://github.com/malcomvetter/CSExec)
+5.18
+[+] WmiExec非交互回显  (https://github.com/nccgroup/WMIcmd)
+[+] AtExec 非交互回显  (https://github.com/0x7556/smbexec)
