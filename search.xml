@@ -3648,8 +3648,8 @@ from pprint import pprint
         <category>内网</category>
         <category>Python</category>
         <category>源码</category>
-        <category>嗅探</category>
         <category>编程</category>
+        <category>嗅探</category>
       </categories>
       <tags>
         <tag>Tool</tag>
