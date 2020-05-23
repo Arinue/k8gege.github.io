@@ -537,7 +537,47 @@
 <td>Ladon GetInfo 或 Ladon GetInfo2</td>
 </tr>
 </tbody></table>
-<h4 id="0x010-其它功能-3"><a href="#0x010-其它功能-3" class="headerlink" title="0x010 其它功能(3)"></a>0x010 其它功能(3)</h4><table>
+<h4 id="0x010-远程执行命令-5"><a href="#0x010-远程执行命令-5" class="headerlink" title="0x010 远程执行命令(5)"></a>0x010 远程执行命令(5)</h4><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>模块名称</th>
+<th>功能说明</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>WmiExec</td>
+<td>远程执行命令</td>
+<td><a href="http://k8gege.org/Ladon/WinShell.html">http://k8gege.org/Ladon/WinShell.html</a></td>
+<td></td>
+</tr>
+<tr>
+<td>PsExec</td>
+<td>远程执行命令</td>
+<td><a href="http://k8gege.org/Ladon/WinShell.html">http://k8gege.org/Ladon/WinShell.html</a></td>
+<td></td>
+</tr>
+<tr>
+<td>AtExec</td>
+<td>远程执行命令</td>
+<td><a href="http://k8gege.org/Ladon/WinShell.html">http://k8gege.org/Ladon/WinShell.html</a></td>
+<td></td>
+</tr>
+<tr>
+<td>SshExec</td>
+<td>远程执行命令</td>
+<td><a href="http://k8gege.org/Ladon/WinShell.html">http://k8gege.org/Ladon/WinShell.html</a></td>
+<td></td>
+</tr>
+<tr>
+<td>JspShell</td>
+<td>远程执行命令</td>
+<td><a href="http://k8gege.org/Ladon/WinShell.html">http://k8gege.org/Ladon/WinShell.html</a></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="0x011-其它功能-3"><a href="#0x011-其它功能-3" class="headerlink" title="0x011 其它功能(3)"></a>0x011 其它功能(3)</h4><table>
 <thead>
 <tr>
 <th>ID</th>
