@@ -1,5 +1,9 @@
-Ladon 6.5 20200521
+
+
+Ladon 6.5 远程执行命令
 ===========================================
+5.23
+[+] sshexec非交互回显 (https://github.com/k8gege/K8tools)
 5.21 
 [+] psexec 交互式回显  (https://github.com/malcomvetter/CSExec)
 5.18
