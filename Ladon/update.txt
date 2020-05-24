@@ -1,11 +1,11 @@
+Wiki: http://k8gege.org/Ladon
 
-
-Ladon 6.5 远程执行命令
+Ladon 6.5 远程执行命令 20200524
 ===========================================
-5.23
+[+] RunPS 执行PowerShell脚本
+[+] Runas 模拟用户执行命令
 [+] sshexec非交互回显 (https://github.com/k8gege/K8tools)
-5.21 
 [+] psexec 交互式回显  (https://github.com/malcomvetter/CSExec)
-5.18
 [+] WmiExec非交互回显  (https://github.com/nccgroup/WMIcmd)
 [+] AtExec 非交互回显  (https://github.com/0x7556/smbexec)
+[+] GetIP 获取本机内网IP与外网IP
