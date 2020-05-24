@@ -593,7 +593,7 @@
 <td><a href="http://k8gege.org/p/ladon_cs_shell.html">http://k8gege.org/p/ladon_cs_shell.html</a></td>
 </tr>
 </tbody></table>
-<h4 id="0x011-提权降权-2"><a href="#0x011-提权降权-2" class="headerlink" title="0x011 提权降权(2)"></a>0x011 提权降权(2)</h4><table>
+<h4 id="0x011-提权降权-3"><a href="#0x011-提权降权-3" class="headerlink" title="0x011 提权降权(3)"></a>0x011 提权降权(3)</h4><table>
 <thead>
 <tr>
 <th>ID</th>
@@ -614,8 +614,14 @@
 <td>提权或降权运行程序</td>
 <td>Ladon GetSystem cmd.exe 或 Ladon GetSystem cmd.exe explorer</td>
 </tr>
+<tr>
+<td>3</td>
+<td>Runas</td>
+<td>模拟用户执行命令</td>
+<td>Ladon Runas user pass cmd</td>
+</tr>
 </tbody></table>
-<h4 id="0x012-其它功能-3"><a href="#0x012-其它功能-3" class="headerlink" title="0x012 其它功能(3)"></a>0x012 其它功能(3)</h4><table>
+<h4 id="0x012-其它功能-4"><a href="#0x012-其它功能-4" class="headerlink" title="0x012 其它功能(4)"></a>0x012 其它功能(4)</h4><table>
 <thead>
 <tr>
 <th>ID</th>
@@ -641,6 +647,12 @@
 <td><a href="http://k8gege.org/p/55476.html">CheckDoor</a></td>
 <td>检测后门(网上公开多年的)</td>
 <td>Ladon CheckDoor 或 Ladon AutoRun</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="http://k8gege.org/">GetIP</a></td>
+<td>获取本机内网IP与外网IP</td>
+<td>Ladon GetIP</td>
 </tr>
 </tbody></table>
 <p>注：以上仅是该工具内置模块的初级用法，外置插件或更高级用法请查看使用文档<br> 中级用法INI文件配置调用任意程序、系统命令、各种语言现成EXP的批量利用<br> 高级用法Exp生成器一键生成Poc，使用各种语言编写插件扩展Ladon扫描能力。</p>
