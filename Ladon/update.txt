@@ -1,9 +1,10 @@
 Wiki: http://k8gege.org/Ladon
 
-Ladon 6.5 远程执行命令 20200524
+Ladon 6.5 远程执行命令 20200530
 ===========================================
-[+] RunPS 执行PowerShell脚本
-[+] Runas 模拟用户执行命令
+[+] webser 迷你HTTP服务器(内网传输文件、浏览器漏洞测试、HTA、SCT远程加载等)
+[+] RunPS 无PowerShell.exe执行PowerShell脚本
+[+] Runas 模拟用户执行命令(用户权限会话切换)
 [+] sshexec非交互回显 (https://github.com/k8gege/K8tools)
 [+] psexec 交互式回显  (https://github.com/malcomvetter/CSExec)
 [+] WmiExec非交互回显  (https://github.com/nccgroup/WMIcmd)
