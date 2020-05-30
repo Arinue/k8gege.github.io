@@ -1052,6 +1052,27 @@
       </tags>
   </entry>
   <entry>
+    <title>〖教程〗Ladon迷你WEB服务器/一键内网HTTP服务器</title>
+    <url>/p/webser.html</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>你是否在为配置浏览器漏洞测试环境而烦恼，如配置Apache解析某种MIME测试某个漏洞<br>又或者在为内网机器无WEB又无法通过其它协议传输文件到内网另一台不出网的主机烦恼<br>还有些远程命令不支持多条语句，需要多次写入或HTTP一次性下载过去，显然都会选后者</p>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>1.浏览器0day漏洞测试或VPS上一键部署，无需安装配置Apache<br>2.内网HTTP协议文件传输，如内网目标不出网不允许其它协议通过<br>3.Office/Word/Pdf等漏洞或远程下载SCT、HTA等格式的CS Payload<br>4.IP追踪，在邮件里放任意URL，当目标查阅邮件时，可记录访问IP<br>5.系统探测，无论用于XSS或IP追踪都会记录UA，确认目标操作系统</p>
+<p>PS：不是非要使用Apache/Ngnix才能复现以上相关漏洞，配置麻烦</p>
+<p>=============================================================================================<br>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p>
+<script language="javascript" type="text/javascript">
+window.location.href="http://k8gege.org/Ladon/webser.html";
+</script>
+
+<p><a href="http://k8gege.org/Ladon/webser.html">http://k8gege.org/Ladon/webser.html</a></p>
+]]></content>
+      <categories>
+        <category>Ladon</category>
+      </categories>
+      <tags>
+        <tag>Ladon</tag>
+        <tag>webser</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>〖教程〗Ladon以指定用户权限运行程序或命令</title>
     <url>/p/runas.html</url>
     <content><![CDATA[<h1 id="Ladon内置Runas允许用户用其他权限运行指定的工具和程序。系统自带Runas命令需要交互式登陆，在webshell或不支持交互式的shell下使用麻烦。而Ladon的Runas则完美解决了以上问题，支持非交互式模拟登陆指定用户运行程序或命令。"><a href="#Ladon内置Runas允许用户用其他权限运行指定的工具和程序。系统自带Runas命令需要交互式登陆，在webshell或不支持交互式的shell下使用麻烦。而Ladon的Runas则完美解决了以上问题，支持非交互式模拟登陆指定用户运行程序或命令。" class="headerlink" title="Ladon内置Runas允许用户用其他权限运行指定的工具和程序。系统自带Runas命令需要交互式登陆，在webshell或不支持交互式的shell下使用麻烦。而Ladon的Runas则完美解决了以上问题，支持非交互式模拟登陆指定用户运行程序或命令。"></a>Ladon内置Runas允许用户用其他权限运行指定的工具和程序。系统自带Runas命令需要交互式登陆，在webshell或不支持交互式的shell下使用麻烦。而Ladon的Runas则完美解决了以上问题，支持非交互式模拟登陆指定用户运行程序或命令。</h1><p>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p>
