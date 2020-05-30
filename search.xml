@@ -621,7 +621,7 @@
 <td>Ladon Runas user pass cmd</td>
 </tr>
 </tbody></table>
-<h4 id="0x012-其它功能-4"><a href="#0x012-其它功能-4" class="headerlink" title="0x012 其它功能(4)"></a>0x012 其它功能(4)</h4><table>
+<h4 id="0x012-其它功能-5"><a href="#0x012-其它功能-5" class="headerlink" title="0x012 其它功能(5)"></a>0x012 其它功能(5)</h4><table>
 <thead>
 <tr>
 <th>ID</th>
@@ -653,6 +653,12 @@
 <td><a href="http://k8gege.org/">GetIP</a></td>
 <td>获取本机内网IP与外网IP</td>
 <td>Ladon GetIP</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="http://k8gege.org/">WebSer</a></td>
+<td>迷你WEB服务器</td>
+<td>Ladon WebSer 80 或 Ladon web 80</td>
 </tr>
 </tbody></table>
 <p>注：以上仅是该工具内置模块的初级用法，外置插件或更高级用法请查看使用文档<br> 中级用法INI文件配置调用任意程序、系统命令、各种语言现成EXP的批量利用<br> 高级用法Exp生成器一键生成Poc，使用各种语言编写插件扩展Ladon扫描能力。</p>
