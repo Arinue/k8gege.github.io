@@ -19,10 +19,14 @@
     <link rel="dns-prefetch" href="http://k8gege.org">
     <!--SEO-->
 
-<meta name="keywords" content="K8博客，K8哥哥，Ladon，K8tools，Exploit，GetShell，扫描器，黑客，网络安全，信息安全，渗透测试，内网渗透，提权工具">
+<meta name="keywords" content=",">
 
 
-<meta name="description" content="K8博客，K8哥哥，Ladon，K8tools，Exploit，GetShell，扫描器，黑客，网络安全，信息安全，渗透测试，内网渗透，提权工具">
+<meta name="description" content=" 
+
+
+
+前言在内网渗透中，横向移动用的最多的就是远程执行命令了，网上有很多相关工具，系统也自带相关命令。但不是体积大就是命令繁琐，如schtasks命令等，执行需先创建任务、执行任务、删除任务...">
 
 
 <meta name="robots" content="all">
@@ -32,6 +36,8 @@
     <!--Title-->
 
 <title>
+    
+    〖教程〗Ladon远程命令执行webshell后门(jsp asp php aspx cfm py perl) |
     
     K8哥哥’s Blog
 </title>
@@ -143,568 +149,47 @@
         <div class="container">
             <div class="row">
                 <main class="col-md-8 main-content ">
-                    
-<div class="carousel">
-    <a href="http://k8gege.org/p/56393.html" target="_blank">
-        <img alt data-original="https://s2.ax1x.com/2020/01/12/lTg0Hg.gif">
-    </a>
-</div>
-
-
-
-
-<article class="post">
+                    <div>
     
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/p/36010.html">
-                    PhpStudy BackDoor GetShell</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2020/01/11
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            前言使用Exp生成器生成Ladon插件实战,PhpStudy BackDoor GetShell
-简介Cscan Web Exp生成器包含4种提交方法Get/Post/Put/Move,支持16个Http协议参数。用户无需编程能力，填...
-            
-        </p>
+    <article class="post">
+    <h1 class="post-head">
+        〖教程〗Ladon远程命令执行webshell后门(jsp asp php aspx cfm py perl)
+    </h1>
+    <div class="post-body">
+        <p style="color:#fff;"> 
+<% <span class="archive-article-date">
+Visit <span id="busuanzi_value_page_pv"></span>
+
+%>
+</%></p>
+
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在内网渗透中，横向移动用的最多的就是远程执行命令了，网上有很多相关工具，系统也自带相关命令。但不是体积大就是命令繁琐，如schtasks命令等，执行需先创建任务、执行任务、删除任务等，命令长，输错会浪费很多时间，即使复制粘贴也很麻烦。体积大的如Impacket中的psexec/atexec/smbexec/wmiexec等，若是使用PY2.7编译低版本最小也5M左右，最大可能37.5M，无论是内存加载或是传到目标都很麻烦，如果后渗透工具垃圾，区区这几M还未必能传上去，传上去得浪费很多时间。传一个就5M，传4个不得20M?基于以上原因，Ladon添加常用的远程执行命令功能，6.5体积仅844K就包含以上工具功能，扫描到相关密码，即可使用对应模块横向移动，一站式工具，完美一条龙服务。</p>
+<h3 id="Ladon远程执行命令"><a href="#Ladon远程执行命令" class="headerlink" title="Ladon远程执行命令"></a>Ladon远程执行命令</h3><h4 id="PSEXEC交互式回显"><a href="#PSEXEC交互式回显" class="headerlink" title="PSEXEC交互式回显"></a>PSEXEC交互式回显</h4><p>需先连接IPC，然后再通过psexec执行命令，类似psexec需445端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">net user \\192.168.1.8 k8gege520 /user:k8gege</span><br><span class="line">Ladon psexec 192.168.1.8</span><br><span class="line">psexec&gt; whoami</span><br><span class="line">nt authority\system</span><br></pre></td></tr></table></figure>
+<p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/psexec.PNG"></p>
+<h4 id="WmiExec非交互回显"><a href="#WmiExec非交互回显" class="headerlink" title="WmiExec非交互回显"></a>WmiExec非交互回显</h4><p>并非所有机器都允许连接445端口，所以可通过135端口执行命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon wmiexec 192.168.1.8 k8gege k8gege520 whoami</span><br></pre></td></tr></table></figure>
+<p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/wmiexec.PNG"></p>
+<h4 id="AtExec非交互回显"><a href="#AtExec非交互回显" class="headerlink" title="AtExec非交互回显"></a>AtExec非交互回显</h4><p>通过sctask命令执行，可以SYSTEM权限或对应用户执行命令，需445端口<br>但是以用户权限执行命令需要远程机器登陆对应用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon wmiexec 192.168.1.8 k8gege k8gege520 whoami</span><br></pre></td></tr></table></figure>
+<p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/atexec.PNG"></p>
+<h4 id="SshExec非交互回显"><a href="#SshExec非交互回显" class="headerlink" title="SshExec非交互回显"></a>SshExec非交互回显</h4><p>一般开放SSH服务的有Linux系统，网络设备等，默认为22端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Ladon SshExec 192.168.1.8 k8gege k8gege520 whoami</span><br><span class="line">Ladon SshExec 192.168.1.8 22 k8gege k8gege520 whoami</span><br></pre></td></tr></table></figure>
+<p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/sshexec.PNG"></p>
+<h4 id="JspShell非交互回显"><a href="#JspShell非交互回显" class="headerlink" title="JspShell非交互回显"></a>JspShell非交互回显</h4><p>支持菜刀以及Ladon自动GetShell时传的UAshell，详见：<a href="http://k8gege.org/p/ladon_cs_shell.html">http://k8gege.org/p/ladon_cs_shell.html</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Usage：Ladon JspShell <span class="built_in">type</span> url <span class="built_in">pwd</span> cmd</span><br><span class="line">Example: Ladon JspShell ua http://192.168.1.8/shell.jsp Ladon whoami</span><br></pre></td></tr></table></figure>
+
+<p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/JspShellExec.PNG"></p>
+<h4 id="WebShell非交互回显"><a href="#WebShell非交互回显" class="headerlink" title="WebShell非交互回显"></a>WebShell非交互回显</h4><p>支持菜刀以及Ladon自动GetShell时传的UAshell，详见：<a href="http://k8gege.org/p/ladon_cs_shell.html">http://k8gege.org/p/ladon_cs_shell.html</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Usage：Ladon WebShell ScriptType ShellType url <span class="built_in">pwd</span> cmd</span><br><span class="line">Example: Ladon WebShell ua http://192.168.1.8/shell.jsp Ladon whoami</span><br><span class="line">Example: Ladon WebShell <span class="built_in">cd</span> http://192.168.1.8/1.aspx Ladon whoami</span><br><span class="line">Example: Ladon WebShell ua http://192.168.1.8/1.php Ladon whoami</span><br></pre></td></tr></table></figure>
+
+<p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/WebShell.PNG"></p>
+<h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download/Ladon.rar">https://k8gege.org/Download/Ladon.rar</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>
+
     </div>
-    
-    <footer class="post-footer clearfix">
-        <div class="pull-left tag-list">
-            <div class="post-meta">
-    
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/Exp/">Exp</a> <a class="category-link" href="/categories/Ladon/">Ladon</a> <a class="category-link" href="/categories/Tool/">工具</a>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            <a class="tag-link" href="/tags/Exp/" rel="tag">Exp</a> <a class="tag-link" href="/tags/GetShell/" rel="tag">GetShell</a> <a class="tag-link" href="/tags/Ladon/" rel="tag">Ladon</a> <a class="tag-link" href="/tags/PhpStudy/" rel="tag">PhpStudy</a> <a class="tag-link" href="/tags/Tool/" rel="tag">Tool</a>
-            
-        </span>
-    </span>
-    
-    
-</div>
-        </div>
-        <div class="post-permalink">
-            <a href="/p/36010.html" class="btn btn-default">
-                Read</a>
-        </div>
-    </footer>
-    
 </article>
-
-
-<article class="post">
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/p/673c210e.html">
-                    Ladon Scanner For PowerShell</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2019/12/27
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            
-程序简介Ladon一款用于大型网络渗透的多线程插件化综合扫描神器，含端口扫描、服务识别、网络资产、密码爆破、高危漏洞检测以及一键GetShell，支持批量A段/B段/C段以及跨网段扫描，支持URL、主机、域名列表扫描。5.5版本内置...
-            
-        </p>
-    </div>
-    
-    <footer class="post-footer clearfix">
-        <div class="pull-left tag-list">
-            <div class="post-meta">
-    
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/Ladon/">Ladon</a> <a class="category-link" href="/categories/PowerShell/">PowerShell</a> <a class="category-link" href="/categories/Tool/">工具</a>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            <a class="tag-link" href="/tags/Ladon/" rel="tag">Ladon</a> <a class="tag-link" href="/tags/PowerShell/" rel="tag">PowerShell</a> <a class="tag-link" href="/tags/Tool/" rel="tag">Tool</a>
-            
-        </span>
-    </span>
-    
     
 </div>
-        </div>
-        <div class="post-permalink">
-            <a href="/p/673c210e.html" class="btn btn-default">
-                Read</a>
-        </div>
-    </footer>
-    
-</article>
-
-
-<article class="post">
-    
-    <div class="post-media">
-        <a href="/p/16172.html">
-            <img class="img-ajax" data-src="/./k8img/Other/top100pwd.PNG" alt="2011-2019年Top100弱口令密码字典" data-original="/img/loading.gif">
-        </a>
-    </div>
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/p/16172.html">
-                    2011-2019年Top100弱口令密码字典</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2019/12/21
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            2019年最差密码123456近日，在评估网上泄漏的500万个密码后，密码管理公司SplashData发布了2019年度最糟糕密码榜单，123456连续两年蝉联冠军，根据统计共有超过281万人使用；第二名的123456，统计共有超过2...
-            
-        </p>
-    </div>
-    
-    <footer class="post-footer clearfix">
-        <div class="pull-left tag-list">
-            <div class="post-meta">
-    
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/Pass/">密码</a>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            <a class="tag-link" href="/tags/Brute/" rel="tag">Brute</a> <a class="tag-link" href="/tags/Password/" rel="tag">Password</a>
-            
-        </span>
-    </span>
-    
-    
-</div>
-        </div>
-        <div class="post-permalink">
-            <a href="/p/16172.html" class="btn btn-default">
-                Read</a>
-        </div>
-    </footer>
-    
-</article>
-
-
-<article class="post">
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/p/61341.html">
-                    Apache Solr <=8.2.0 velocity template 0day exploit< a>
-            </=8.2.0></a></h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2019/12/19
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            环境下载Solr 8.2.0添加core,默认配置即可。7.x版本自带core
-配置0x001 批量URL配置Cscan.ini[Cscan]exe=F:\Python279\python.exearg=exp.py $ip$ who...
-            
-        </p>
-    </div>
-    
-    <footer class="post-footer clearfix">
-        <div class="pull-left tag-list">
-            <div class="post-meta">
-    
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/Exp/">Exp</a> <a class="category-link" href="/categories/Tool/">工具</a>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            <a class="tag-link" href="/tags/0day/" rel="tag">0day</a> <a class="tag-link" href="/tags/Apache/" rel="tag">Apache</a> <a class="tag-link" href="/tags/Exp/" rel="tag">Exp</a> <a class="tag-link" href="/tags/Ladon/" rel="tag">Ladon</a> <a class="tag-link" href="/tags/Solr/" rel="tag">Solr</a>
-            
-        </span>
-    </span>
-    
-    
-</div>
-        </div>
-        <div class="post-permalink">
-            <a href="/p/61341.html" class="btn btn-default">
-                Read</a>
-        </div>
-    </footer>
-    
-</article>
-
-
-<article class="post">
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/p/41162.html">
-                    Ladon POC CVE-2019-11043 PHP-FPM</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2019/12/18
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            漏洞简介PHP-FPM 远程代码执行漏洞(CVE-2019-11043)
-在长亭科技举办的 Real World CTF 中,国外安全研究员 Andrew Danau 在解决一道 CTF 题目时发现,向目标服务器 URL 发送 %0a...
-            
-        </p>
-    </div>
-    
-    <footer class="post-footer clearfix">
-        <div class="pull-left tag-list">
-            <div class="post-meta">
-    
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/Exp/">Exp</a> <a class="category-link" href="/categories/Ladon/">Ladon</a> <a class="category-link" href="/categories/Tool/">工具</a>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            <a class="tag-link" href="/tags/CVE-2019-11043/" rel="tag">CVE-2019-11043</a> <a class="tag-link" href="/tags/Code/" rel="tag">Code</a> <a class="tag-link" href="/tags/Ladon/" rel="tag">Ladon</a> <a class="tag-link" href="/tags/Ngnix/" rel="tag">Ngnix</a> <a class="tag-link" href="/tags/PHP/" rel="tag">PHP</a>
-            
-        </span>
-    </span>
-    
-    
-</div>
-        </div>
-        <div class="post-permalink">
-            <a href="/p/41162.html" class="btn btn-default">
-                Read</a>
-        </div>
-    </footer>
-    
-</article>
-
-
-<article class="post">
-    
-    <div class="post-media">
-        <a href="/p/dc4a2cb7.html">
-            <img class="img-ajax" data-src="http://k8gege.org/k8img/Ladon/kali/Kali_MS17010.gif" alt="Ladon for Kali 2019" data-original="/img/loading.gif">
-        </a>
-    </div>
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/p/dc4a2cb7.html">
-                    Ladon for Kali 2019</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2019/12/10
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            
-     
-前言无论内网还是外网渗透信息收集都是非常关键，信息收集越多越准确渗透的成功率就越高。但成功率还受到漏洞影响，漏洞受时效性影响，对于大型内网扫描速度直接影响着成功率。漏洞时效性1-2天，扫描内网或外网需1周时间，是否会因此...
-            
-        </p>
-    </div>
-    
-    <footer class="post-footer clearfix">
-        <div class="pull-left tag-list">
-            <div class="post-meta">
-    
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/Kali/">Kali</a> <a class="category-link" href="/categories/Ladon/">Ladon</a> <a class="category-link" href="/categories/Tool/">工具</a>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            <a class="tag-link" href="/tags/Kali/" rel="tag">Kali</a> <a class="tag-link" href="/tags/Ladon/" rel="tag">Ladon</a> <a class="tag-link" href="/tags/Scanner/" rel="tag">Scanner</a> <a class="tag-link" href="/tags/Tool/" rel="tag">Tool</a>
-            
-        </span>
-    </span>
-    
-    
-</div>
-        </div>
-        <div class="post-permalink">
-            <a href="/p/dc4a2cb7.html" class="btn btn-default">
-                Read</a>
-        </div>
-    </footer>
-    
-</article>
-
-
-<article class="post">
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/p/da863d02.html">
-                    Ladon插件实例内网Web扫描C#源码</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2019/12/08
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            
-获取网页标题、服务器Banner，例子仅探测80端口大家可自行修改添加其它端口识别定制Web扫描功能如识别出特定中间件或WEB后再检测是否存在漏洞等编译后的netscan.dll可改成任意名称Ladon均可加载
-1234567891...
-            
-        </p>
-    </div>
-    
-    <footer class="post-footer clearfix">
-        <div class="pull-left tag-list">
-            <div class="post-meta">
-    
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/Dotnet/">.NET</a> <a class="category-link" href="/categories/Ladon/">Ladon</a> <a class="category-link" href="/categories/Tool/">工具</a> <a class="category-link" href="/categories/Code/">源码</a> <a class="category-link" href="/categories/Program/">编程</a>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            <a class="tag-link" href="/tags/C/" rel="tag">C#</a> <a class="tag-link" href="/tags/Code/" rel="tag">Code</a> <a class="tag-link" href="/tags/Ladon/" rel="tag">Ladon</a> <a class="tag-link" href="/tags/Moudle/" rel="tag">Moudle</a> <a class="tag-link" href="/tags/WebScan/" rel="tag">WebScan</a>
-            
-        </span>
-    </span>
-    
-    
-</div>
-        </div>
-        <div class="post-permalink">
-            <a href="/p/da863d02.html" class="btn btn-default">
-                Read</a>
-        </div>
-    </footer>
-    
-</article>
-
-
-<article class="post">
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/p/4a713e0e.html">
-                    Ladon插件实例简单端口扫描C#源码</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2019/12/08
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            
-源码为单纯检测端口是否开放，有需要大家可自行定制功能。当然可以使用PortScan模块扫描开放端口带服务和Web识别。
-12345678910111213141516171819202122232425262728293031323...
-            
-        </p>
-    </div>
-    
-    <footer class="post-footer clearfix">
-        <div class="pull-left tag-list">
-            <div class="post-meta">
-    
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/Dotnet/">.NET</a> <a class="category-link" href="/categories/Ladon/">Ladon</a> <a class="category-link" href="/categories/Tool/">工具</a> <a class="category-link" href="/categories/Code/">源码</a> <a class="category-link" href="/categories/Program/">编程</a>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            <a class="tag-link" href="/tags/Code/" rel="tag">Code</a> <a class="tag-link" href="/tags/Ladon/" rel="tag">Ladon</a> <a class="tag-link" href="/tags/Moudle/" rel="tag">Moudle</a> <a class="tag-link" href="/tags/PortScan/" rel="tag">PortScan</a> <a class="tag-link" href="/tags/Sharp/" rel="tag">Sharp</a>
-            
-        </span>
-    </span>
-    
-    
-</div>
-        </div>
-        <div class="post-permalink">
-            <a href="/p/4a713e0e.html" class="btn btn-default">
-                Read</a>
-        </div>
-    </footer>
-    
-</article>
-
-
-<article class="post">
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/p/89f3c60.html">
-                    Ladon MS17010 Exploit for PowerShell</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2019/12/07
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            Win Ladon
-Kali PowerShell
-MS17010EXP123456789101112131415161718192021222324252627282930313233343536373839404142434445...
-            
-        </p>
-    </div>
-    
-    <footer class="post-footer clearfix">
-        <div class="pull-left tag-list">
-            <div class="post-meta">
-    
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/Exp/">Exp</a> <a class="category-link" href="/categories/Ladon/">Ladon</a> <a class="category-link" href="/categories/Lan/">内网</a> <a class="category-link" href="/categories/Code/">源码</a>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            <a class="tag-link" href="/tags/Exp/" rel="tag">Exp</a> <a class="tag-link" href="/tags/Kali/" rel="tag">Kali</a> <a class="tag-link" href="/tags/Ladon/" rel="tag">Ladon</a> <a class="tag-link" href="/tags/PowerShell/" rel="tag">PowerShell</a> <a class="tag-link" href="/tags/Tool/" rel="tag">Tool</a>
-            
-        </span>
-    </span>
-    
-    
-</div>
-        </div>
-        <div class="post-permalink">
-            <a href="/p/89f3c60.html" class="btn btn-default">
-                Read</a>
-        </div>
-    </footer>
-    
-</article>
-
-
-<article class="post">
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/p/32e1a912.html">
-                    Kali 2019 & Ladon无PowerShell执行脚本</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2019/12/07
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            关于Kali &amp;amp; PowerShell最近Kali出了年度最终版2019.4，该版本主存储库集成了PowerShell，可apt一键安装。实际上想用PowerShell也不是非要等2019.4版本，和很多程序一样，可以自己下载...
-            
-        </p>
-    </div>
-    
-    <footer class="post-footer clearfix">
-        <div class="pull-left tag-list">
-            <div class="post-meta">
-    
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/Kali/">Kali</a>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            <a class="tag-link" href="/tags/Kali/" rel="tag">Kali</a> <a class="tag-link" href="/tags/Ladon/" rel="tag">Ladon</a> <a class="tag-link" href="/tags/PowerShell/" rel="tag">PowerShell</a>
-            
-        </span>
-    </span>
-    
-    
-</div>
-        </div>
-        <div class="post-permalink">
-            <a href="/p/32e1a912.html" class="btn btn-default">
-                Read</a>
-        </div>
-    </footer>
-    
-</article>
-
-
-
-<nav class="pagination" role="navigation">
-    <div id="page-nav">
-
-        <a class="extend prev" rel="prev" href="/page/3/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next</a>
-    </div>
-</nav>
-
                 </main>
                 
                     
