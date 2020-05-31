@@ -558,7 +558,7 @@
 <td>Ladon GetInfo 或 Ladon GetInfo2</td>
 </tr>
 </tbody></table>
-<h4 id="0x010-远程执行-5"><a href="#0x010-远程执行-5" class="headerlink" title="0x010 远程执行(5)"></a>0x010 远程执行(5)</h4><table>
+<h4 id="0x010-远程执行-6"><a href="#0x010-远程执行-6" class="headerlink" title="0x010 远程执行(6)"></a>0x010 远程执行(6)</h4><table>
 <thead>
 <tr>
 <th>ID</th>
@@ -596,6 +596,12 @@
 <td><a href="http://k8gege.org/p/ladon_cs_shell.html">JspShell</a></td>
 <td>Jsp一句话执行命令</td>
 <td><a href="http://k8gege.org/p/ladon_cs_shell.html">http://k8gege.org/p/ladon_cs_shell.html</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="http://k8gege.org/Ladon/webshell.html">WebShell</a></td>
+<td>WebShell执行命令</td>
+<td><a href="http://k8gege.org/Ladon/webshell.html">http://k8gege.org/Ladon/webshell.html</a></td>
 </tr>
 </tbody></table>
 <h4 id="0x011-提权降权-3"><a href="#0x011-提权降权-3" class="headerlink" title="0x011 提权降权(3)"></a>0x011 提权降权(3)</h4><table>
