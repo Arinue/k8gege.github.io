@@ -2,6 +2,8 @@ Wiki: http://k8gege.org/Ladon
 
 Ladon 6.5 远程执行命令 20200530
 ===========================================
+[+] WebShellCmd支持7种脚本(php asp jsp aspx cfm py cfm) 3种类型(cd/ua/k8)
+[u] INI爆破密码 成功日志 新增BANNER（如操作系统、SSH等）
 [+] webser 迷你HTTP服务器(内网传输文件、浏览器漏洞测试、HTA、SCT远程加载等)
 [+] RunPS 无PowerShell.exe执行PowerShell脚本
 [+] Runas 模拟用户执行命令(用户权限会话切换)
