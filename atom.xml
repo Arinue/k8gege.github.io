@@ -47,11 +47,11 @@
   </entry>
   
   <entry>
-    <title>Ladon简明教程/用法例子</title>
+    <title>Ladon简明教程</title>
     <link href="http://k8gege.org/p/webshell.html"/>
     <id>http://k8gege.org/p/webshell.html</id>
     <published>2020-05-31T06:20:00.000Z</published>
-    <updated>2020-05-31T14:18:47.275Z</updated>
+    <updated>2020-05-31T14:29:48.785Z</updated>
     
     <content type="html"><![CDATA[<p>本文仅是Ladon简单使用例子，Cobalt Strike或PowerShell版用法一致。</p><p>完整文档：<a href="http://k8gege.org">http://k8gege.org</a></p><p>=============================================================================================<br>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p><script language="javascript" type="text/javascript">window.location.href="http://k8gege.org/Ladon/example.html";</script>]]></content>
     
@@ -219,9 +219,9 @@
     
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
-      <category term="Brute" scheme="http://k8gege.org/categories/Brute/"/>
-    
       <category term="Rce" scheme="http://k8gege.org/categories/Rce/"/>
+    
+      <category term="Brute" scheme="http://k8gege.org/categories/Brute/"/>
     
     
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
