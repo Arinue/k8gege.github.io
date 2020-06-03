@@ -1055,8 +1055,8 @@
 <h3 id="扫描指定主机SMBGhost漏洞"><a href="#扫描指定主机SMBGhost漏洞" class="headerlink" title="扫描指定主机SMBGhost漏洞"></a>扫描指定主机SMBGhost漏洞</h3><p>Ladon 192.168.1.8 SMBGhost</p>
 <h3 id="扫描C段主机SMBGhost漏洞"><a href="#扫描C段主机SMBGhost漏洞" class="headerlink" title="扫描C段主机SMBGhost漏洞"></a>扫描C段主机SMBGhost漏洞</h3><p>Ladon 192.168.1.8/24 SMBGhost<br>Ladon 192.168.1.8/C SMBGhost</p>
 <h3 id="批量扫描IP列表主机SMBGhost漏洞"><a href="#批量扫描IP列表主机SMBGhost漏洞" class="headerlink" title="批量扫描IP列表主机SMBGhost漏洞"></a>批量扫描IP列表主机SMBGhost漏洞</h3><p>ip.txt里放需要扫描的IP，使用以下命令即可<br>Ladon SMBGhost</p>
-<h3 id="扫描IP段（-24）列表主机SMBGhost漏洞"><a href="#扫描IP段（-24）列表主机SMBGhost漏洞" class="headerlink" title="扫描IP段（/24）列表主机SMBGhost漏洞"></a>扫描IP段（/24）列表主机SMBGhost漏洞</h3><p>ip24.txt里放需要扫描的IP段，使用以下命令即可<br>Ladon SMBGhost</p>
-<h3 id="扫描IP段（-16）列表主机SMBGhost漏洞"><a href="#扫描IP段（-16）列表主机SMBGhost漏洞" class="headerlink" title="扫描IP段（/16）列表主机SMBGhost漏洞"></a>扫描IP段（/16）列表主机SMBGhost漏洞</h3><p>ip16.txt里放需要扫描的IP段，使用以下命令即可<br>Ladon SMBGhost</p>
+<h3 id="批量检测IP段（-24）SMBGhost漏洞"><a href="#批量检测IP段（-24）SMBGhost漏洞" class="headerlink" title="批量检测IP段（/24）SMBGhost漏洞"></a>批量检测IP段（/24）SMBGhost漏洞</h3><p>ip24.txt里放需要扫描的IP段，使用以下命令即可<br>Ladon SMBGhost</p>
+<h3 id="批量检测IP段（-16）SMBGhost漏洞"><a href="#批量检测IP段（-16）SMBGhost漏洞" class="headerlink" title="批量检测IP段（/16）SMBGhost漏洞"></a>批量检测IP段（/16）SMBGhost漏洞</h3><p>ip16.txt里放需要扫描的IP段，使用以下命令即可<br>Ladon SMBGhost</p>
 <p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/SmbGhost.PNG"></p>
 <h3 id="POC-EXP-LPE"><a href="#POC-EXP-LPE" class="headerlink" title="POC/EXP/LPE"></a>POC/EXP/LPE</h3><p><a href="https://github.com/danigargu/CVE-2020-0796" target="_blank" rel="noopener">https://github.com/danigargu/CVE-2020-0796</a><br><a href="https://github.com/chompie1337/SMBGhost_RCE_PoC" target="_blank" rel="noopener">https://github.com/chompie1337/SMBGhost_RCE_PoC</a></p>
 <h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download/Ladon.rar">https://k8gege.org/Download/Ladon.rar</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>
