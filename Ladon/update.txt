@@ -1,7 +1,13 @@
 Wiki: http://k8gege.org/Ladon
 
+Ladon 6.6 SmbGhost 20200603
+===========================================
+[+] Ver/Version 各种语言运行时或编译环境版本
+[+] SMBGhost CVE-2020-0796 RCE Vulnerable Scan
+
 Ladon 6.5 远程执行命令 20200530
 ===========================================
+[+] PSver/NetVer/NetVersion/PSversion  查看.NET & PowerShell版本
 [+] WebShellCmd支持7种脚本(php asp jsp aspx cfm py cfm) 3种类型(cd/ua/k8)
 [u] INI爆破密码 成功日志 新增BANNER（如操作系统、SSH等）
 [+] webser 迷你HTTP服务器(内网传输文件、浏览器漏洞测试、HTA、SCT远程加载等)

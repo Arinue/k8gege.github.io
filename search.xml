@@ -1046,6 +1046,30 @@
       </tags>
   </entry>
   <entry>
+    <title>Ladon SMBGhost CVE-2020-0796 RCE Vulnerable Scan</title>
+    <url>/p/smbghost_cve_2020_0796.html</url>
+    <content><![CDATA[<h3 id="漏洞信息"><a href="#漏洞信息" class="headerlink" title="漏洞信息"></a>漏洞信息</h3><h3 id="模块说明"><a href="#模块说明" class="headerlink" title="模块说明"></a>模块说明</h3><p>漏洞编号：CVE-2020-0796<br>漏洞别名：SMBGhost</p>
+<p>结果：IP、机器名、漏洞编号、操作系统版本</p>
+<h3 id="扫描指定主机SMBGhost漏洞"><a href="#扫描指定主机SMBGhost漏洞" class="headerlink" title="扫描指定主机SMBGhost漏洞"></a>扫描指定主机SMBGhost漏洞</h3><p>Ladon 192.168.1.8 SMBGhost</p>
+<h3 id="扫描C段主机SMBGhost漏洞"><a href="#扫描C段主机SMBGhost漏洞" class="headerlink" title="扫描C段主机SMBGhost漏洞"></a>扫描C段主机SMBGhost漏洞</h3><p>Ladon 192.168.1.8/24 SMBGhost<br>Ladon 192.168.1.8/C SMBGhost</p>
+<h3 id="批量扫描IP列表主机SMBGhost漏洞"><a href="#批量扫描IP列表主机SMBGhost漏洞" class="headerlink" title="批量扫描IP列表主机SMBGhost漏洞"></a>批量扫描IP列表主机SMBGhost漏洞</h3><p>ip.txt里放需要扫描的IP，使用以下命令即可<br>Ladon SMBGhost</p>
+<h3 id="扫描IP段（-24）列表主机SMBGhost漏洞"><a href="#扫描IP段（-24）列表主机SMBGhost漏洞" class="headerlink" title="扫描IP段（/24）列表主机SMBGhost漏洞"></a>扫描IP段（/24）列表主机SMBGhost漏洞</h3><p>ip24.txt里放需要扫描的IP段，使用以下命令即可<br>Ladon SMBGhost</p>
+<h3 id="扫描IP段（-16）列表主机SMBGhost漏洞"><a href="#扫描IP段（-16）列表主机SMBGhost漏洞" class="headerlink" title="扫描IP段（/16）列表主机SMBGhost漏洞"></a>扫描IP段（/16）列表主机SMBGhost漏洞</h3><p>ip16.txt里放需要扫描的IP段，使用以下命令即可<br>Ladon SMBGhost</p>
+<p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/SmbGhost.PNG"></p>
+]]></content>
+      <categories>
+        <category>Ladon</category>
+        <category>Rce</category>
+        <category>LPE</category>
+      </categories>
+      <tags>
+        <tag>Ladon</tag>
+        <tag>Rce</tag>
+        <tag>CVE-2020-0796</tag>
+        <tag>SMBGhost</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>〖教程〗Ladon连接WebShell一句话远程执行命令</title>
     <url>/p/webshell.html</url>
     <content><![CDATA[<h1 id="在内网渗透中，横向移动用的最多的就是远程执行命令了，网上有很多相关工具，系统也自带相关命令。但不是体积大就是命令繁琐，如schtasks命令等，执行需先创建任务、执行任务、删除任务等，命令长，输错会浪费很多时间，即使复制粘贴也很麻烦。体积大的如Impacket中的psexec-atexec-smbexec-wmiexec等，若是使用PY2-7编译低版本最小也5M左右，最大可能37-5M，无论是内存加载或是传到目标都很麻烦，如果后渗透工具垃圾，区区这几M还未必能传上去，传上去得浪费很多时间。传一个就5M，传4个不得20M-基于以上原因，Ladon添加常用的远程执行命令功能，6-5体积仅844K就包含以上工具功能，扫描到相关密码，即可使用对应模块横向移动，一站式工具，完美一条龙服务。"><a href="#在内网渗透中，横向移动用的最多的就是远程执行命令了，网上有很多相关工具，系统也自带相关命令。但不是体积大就是命令繁琐，如schtasks命令等，执行需先创建任务、执行任务、删除任务等，命令长，输错会浪费很多时间，即使复制粘贴也很麻烦。体积大的如Impacket中的psexec-atexec-smbexec-wmiexec等，若是使用PY2-7编译低版本最小也5M左右，最大可能37-5M，无论是内存加载或是传到目标都很麻烦，如果后渗透工具垃圾，区区这几M还未必能传上去，传上去得浪费很多时间。传一个就5M，传4个不得20M-基于以上原因，Ladon添加常用的远程执行命令功能，6-5体积仅844K就包含以上工具功能，扫描到相关密码，即可使用对应模块横向移动，一站式工具，完美一条龙服务。" class="headerlink" title="在内网渗透中，横向移动用的最多的就是远程执行命令了，网上有很多相关工具，系统也自带相关命令。但不是体积大就是命令繁琐，如schtasks命令等，执行需先创建任务、执行任务、删除任务等，命令长，输错会浪费很多时间，即使复制粘贴也很麻烦。体积大的如Impacket中的psexec/atexec/smbexec/wmiexec等，若是使用PY2.7编译低版本最小也5M左右，最大可能37.5M，无论是内存加载或是传到目标都很麻烦，如果后渗透工具垃圾，区区这几M还未必能传上去，传上去得浪费很多时间。传一个就5M，传4个不得20M?基于以上原因，Ladon添加常用的远程执行命令功能，6.5体积仅844K就包含以上工具功能，扫描到相关密码，即可使用对应模块横向移动，一站式工具，完美一条龙服务。"></a>在内网渗透中，横向移动用的最多的就是远程执行命令了，网上有很多相关工具，系统也自带相关命令。但不是体积大就是命令繁琐，如schtasks命令等，执行需先创建任务、执行任务、删除任务等，命令长，输错会浪费很多时间，即使复制粘贴也很麻烦。体积大的如Impacket中的psexec/atexec/smbexec/wmiexec等，若是使用PY2.7编译低版本最小也5M左右，最大可能37.5M，无论是内存加载或是传到目标都很麻烦，如果后渗透工具垃圾，区区这几M还未必能传上去，传上去得浪费很多时间。传一个就5M，传4个不得20M?基于以上原因，Ladon添加常用的远程执行命令功能，6.5体积仅844K就包含以上工具功能，扫描到相关密码，即可使用对应模块横向移动，一站式工具，完美一条龙服务。</h1><p>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p>
@@ -1156,8 +1180,8 @@ window.location.href="http://k8gege.org/Ladon/WinrmScan.html";
 ]]></content>
       <categories>
         <category>Ladon</category>
-        <category>Brute</category>
         <category>Rce</category>
+        <category>Brute</category>
       </categories>
       <tags>
         <tag>Ladon</tag>

