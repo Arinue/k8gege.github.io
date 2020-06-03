@@ -173,7 +173,8 @@ Visit <span id="busuanzi_value_page_pv"></span>
 <h5 id="002-多协议扫描存活主机（IP、机器名、操作系统版本、开放服务）"><a href="#002-多协议扫描存活主机（IP、机器名、操作系统版本、开放服务）" class="headerlink" title="002 多协议扫描存活主机（IP、机器名、操作系统版本、开放服务）"></a>002 多协议扫描存活主机（IP、机器名、操作系统版本、开放服务）</h5><p>Ladon 192.168.1.8/24 OsScan</p>
 <h5 id="003-扫描存活主机"><a href="#003-扫描存活主机" class="headerlink" title="003 扫描存活主机"></a>003 扫描存活主机</h5><p>Ladon 192.168.1.8/24 OnlineIP</p>
 <h5 id="004-ICMP扫描存活主机"><a href="#004-ICMP扫描存活主机" class="headerlink" title="004 ICMP扫描存活主机"></a>004 ICMP扫描存活主机</h5><p>Ladon 192.168.1.8/24 Ping</p>
-<h5 id="005-SMB扫描MS17010漏洞-（IP、机器名、操作系统版本）"><a href="#005-SMB扫描MS17010漏洞-（IP、机器名、操作系统版本）" class="headerlink" title="005 SMB扫描MS17010漏洞 （IP、机器名、操作系统版本）"></a>005 SMB扫描MS17010漏洞 （IP、机器名、操作系统版本）</h5><p>Ladon 192.168.1.8/24 MS17010</p>
+<h5 id="005-扫描SMB漏洞MS17010-（IP、机器名、操作系统版本）"><a href="#005-扫描SMB漏洞MS17010-（IP、机器名、操作系统版本）" class="headerlink" title="005 扫描SMB漏洞MS17010 （IP、机器名、操作系统版本）"></a>005 扫描SMB漏洞MS17010 （IP、机器名、操作系统版本）</h5><p>Ladon 192.168.1.8/24 MS17010</p>
+<h5 id="006-扫描SMBGhost漏洞-CVE-2020-0796（IP、机器名、操作系统版本）"><a href="#006-扫描SMBGhost漏洞-CVE-2020-0796（IP、机器名、操作系统版本）" class="headerlink" title="006 扫描SMBGhost漏洞 CVE-2020-0796（IP、机器名、操作系统版本）"></a>006 扫描SMBGhost漏洞 CVE-2020-0796（IP、机器名、操作系统版本）</h5><p>Ladon 192.168.1.8/24 SMBGhost</p>
 <h5 id="扫描Web信息-（IP、主机名、Banner、Web标题）"><a href="#扫描Web信息-（IP、主机名、Banner、Web标题）" class="headerlink" title="扫描Web信息 （IP、主机名、Banner、Web标题）"></a>扫描Web信息 （IP、主机名、Banner、Web标题）</h5><p>Ladon 192.168.1.8/24 WebScan</p>
 <h5 id="扫描C段站点URL域名-（域名、Web标题）"><a href="#扫描C段站点URL域名-（域名、Web标题）" class="headerlink" title="扫描C段站点URL域名  （域名、Web标题）"></a>扫描C段站点URL域名  （域名、Web标题）</h5><p>Ladon 192.168.1.8/24 UrlScan</p>
 <h5 id="扫描C段站点URL域名-（域名、Web标题）-1"><a href="#扫描C段站点URL域名-（域名、Web标题）-1" class="headerlink" title="扫描C段站点URL域名 （域名、Web标题）"></a>扫描C段站点URL域名 （域名、Web标题）</h5><p>Ladon 192.168.1.8/24 SameWeb</p>
@@ -226,6 +227,7 @@ Visit <span id="busuanzi_value_page_pv"></span>
 <h5 id="获取命令行参数"><a href="#获取命令行参数" class="headerlink" title="获取命令行参数"></a>获取命令行参数</h5><p>Ladon cmdline<br>Ladon cmdline cmd.exe</p>
 <h5 id="获取渗透基础信息"><a href="#获取渗透基础信息" class="headerlink" title="获取渗透基础信息"></a>获取渗透基础信息</h5><p>Ladon GetInfo<br>Ladon GetInfo2</p>
 <h5 id="NET-amp-PowerShell版本"><a href="#NET-amp-PowerShell版本" class="headerlink" title=".NET &amp; PowerShell版本"></a>.NET &amp; PowerShell版本</h5><p>Ladon NetVer<br>Ladon PSver<br>Ladon NetVersion<br>Ladon PSversion</p>
+<h5 id="运行时版本-amp-编译环境"><a href="#运行时版本-amp-编译环境" class="headerlink" title="运行时版本&amp;编译环境"></a>运行时版本&amp;编译环境</h5><p>Ladon Ver<br>Ladon Version</p>
 <h3 id="远程执行-psexec-wmiexec-atexec-sshexec"><a href="#远程执行-psexec-wmiexec-atexec-sshexec" class="headerlink" title="远程执行(psexec/wmiexec/atexec/sshexec)"></a>远程执行(psexec/wmiexec/atexec/sshexec)</h3><h5 id="445端口-PSEXEC远程执行命令（交互式）"><a href="#445端口-PSEXEC远程执行命令（交互式）" class="headerlink" title="445端口 PSEXEC远程执行命令（交互式）"></a>445端口 PSEXEC远程执行命令（交互式）</h5><p>net user \192.168.1.8 k8gege520 /user:k8gege<br>Ladon psexec 192.168.1.8<br>psexec&gt; whoami<br>nt authority\system</p>
 <h5 id="135端口-WmiExec远程执行命令-（非交互式）"><a href="#135端口-WmiExec远程执行命令-（非交互式）" class="headerlink" title="135端口 WmiExec远程执行命令 （非交互式）"></a>135端口 WmiExec远程执行命令 （非交互式）</h5><p>Ladon wmiexec 192.168.1.8 k8gege k8gege520 whoami</p>
 <h5 id="445端口-AtExec远程执行命令（非交互式）"><a href="#445端口-AtExec远程执行命令（非交互式）" class="headerlink" title="445端口 AtExec远程执行命令（非交互式）"></a>445端口 AtExec远程执行命令（非交互式）</h5><p>Ladon wmiexec 192.168.1.8 k8gege k8gege520 whoami</p>
