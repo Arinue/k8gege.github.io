@@ -22,9 +22,7 @@
 <meta name="keywords" content="Ladon,Rce,CVE-2020-0796,SMBGhost">
 
 
-<meta name="description" content="漏洞信息模块说明漏洞编号：CVE-2020-0796漏洞别名：SMBGhost
-结果：IP、机器名、漏洞编号、操作系统版本
-扫描指定主机SMBGhost漏洞Ladon 192.168.1.8 S...">
+<meta name="description" content="漏洞介绍2020年3月10日，微软在其官方SRC发布了CVE-2020-0796的安全公告（ADV200005，MicrosoftGuidance for Disabling SMBv3 Com...">
 
 
 <meta name="robots" content="all">
@@ -35,7 +33,7 @@
 
 <title>
     
-    Ladon SMBGhost CVE-2020-0796 RCE Vulnerable Scan |
+    Ladon Scan SMBGhost CVE-2020-0796 RCE Vulnerable |
     
     K8哥哥’s Blog
 </title>
@@ -150,9 +148,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Ladon SMBGhost CVE-2020-0796 RCE Vulnerable Scan">
+        <h1 id="Ladon Scan SMBGhost CVE-2020-0796 RCE Vulnerable">
             
-            Ladon SMBGhost CVE-2020-0796 RCE Vulnerable Scan
+            Ladon Scan SMBGhost CVE-2020-0796 RCE Vulnerable
             
         </h1>
         <div class="post-meta">
@@ -192,14 +190,18 @@
     </div>
     
     <div class="post-body post-content">
-        <h3 id="漏洞信息"><a href="#漏洞信息" class="headerlink" title="漏洞信息"></a>漏洞信息</h3><h3 id="模块说明"><a href="#模块说明" class="headerlink" title="模块说明"></a>模块说明</h3><p>漏洞编号：CVE-2020-0796<br>漏洞别名：SMBGhost</p>
-<p>结果：IP、机器名、漏洞编号、操作系统版本</p>
+        <h3 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h3><p>2020年3月10日，微软在其官方SRC发布了CVE-2020-0796的安全公告（ADV200005，MicrosoftGuidance for Disabling SMBv3 Compression）,公告表示在Windows SMBv3版本的客户端和服务端存在远程代码执行漏洞。同时指出该漏洞存在于MicroSoft Server Message Block 3.1.1协议处理特定请求包的功能中，攻击者利用该漏洞可在目标SMB Server或者Client中执行任意代码。</p>
+<h3 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h3><p>CVE-2020-0796漏洞影响运行Windows 10版本1903，Windows Server版本1903（服务器核心安装），Windows 10版本1909和Windows Server版本1909（服务器核心安装）的设备。根据Fortinet，其他Microsoft版本应受到影响。</p>
+<p>Windows 10 Version 1903 for 32-bit Systems         4551762     Security Update     Remote Code Execution     Critical<br>4540673<br>Windows 10 Version 1903 for ARM64-based Systems         4551762     Security Update     Remote Code Execution     Critical<br>4540673<br>Windows 10 Version 1903 for x64-based Systems         4551762     Security Update     Remote Code Execution     Critical<br>4540673<br>Windows 10 Version 1909 for 32-bit Systems         4551762     Security Update     Remote Code Execution     Critical<br>4540673<br>Windows 10 Version 1909 for ARM64-based Systems         4551762     Security Update     Remote Code Execution     Critical<br>4540673<br>Windows 10 Version 1909 for x64-based Systems         4551762     Security Update     Remote Code Execution     Critical<br>4540673<br>Windows Server, version 1903 (Server Core installation)         4551762     Security Update     Remote Code Execution     Critical<br>4540673<br>Windows Server, version 1909 (Server Core installation)         4551762     Security Update     Remote Code Execution     Critical<br>4540673</p>
+<h3 id="模块说明"><a href="#模块说明" class="headerlink" title="模块说明"></a>模块说明</h3><p>漏洞编号：CVE-2020-0796<br>漏洞别名：SMBGhost<br>影响版本：1903 | 1909<br>结果：IP、机器名、漏洞编号、操作系统版本</p>
 <h3 id="扫描指定主机SMBGhost漏洞"><a href="#扫描指定主机SMBGhost漏洞" class="headerlink" title="扫描指定主机SMBGhost漏洞"></a>扫描指定主机SMBGhost漏洞</h3><p>Ladon 192.168.1.8 SMBGhost</p>
 <h3 id="扫描C段主机SMBGhost漏洞"><a href="#扫描C段主机SMBGhost漏洞" class="headerlink" title="扫描C段主机SMBGhost漏洞"></a>扫描C段主机SMBGhost漏洞</h3><p>Ladon 192.168.1.8/24 SMBGhost<br>Ladon 192.168.1.8/C SMBGhost</p>
 <h3 id="批量扫描IP列表主机SMBGhost漏洞"><a href="#批量扫描IP列表主机SMBGhost漏洞" class="headerlink" title="批量扫描IP列表主机SMBGhost漏洞"></a>批量扫描IP列表主机SMBGhost漏洞</h3><p>ip.txt里放需要扫描的IP，使用以下命令即可<br>Ladon SMBGhost</p>
 <h3 id="扫描IP段（-24）列表主机SMBGhost漏洞"><a href="#扫描IP段（-24）列表主机SMBGhost漏洞" class="headerlink" title="扫描IP段（/24）列表主机SMBGhost漏洞"></a>扫描IP段（/24）列表主机SMBGhost漏洞</h3><p>ip24.txt里放需要扫描的IP段，使用以下命令即可<br>Ladon SMBGhost</p>
 <h3 id="扫描IP段（-16）列表主机SMBGhost漏洞"><a href="#扫描IP段（-16）列表主机SMBGhost漏洞" class="headerlink" title="扫描IP段（/16）列表主机SMBGhost漏洞"></a>扫描IP段（/16）列表主机SMBGhost漏洞</h3><p>ip16.txt里放需要扫描的IP段，使用以下命令即可<br>Ladon SMBGhost</p>
 <p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/SmbGhost.PNG"></p>
+<h3 id="POC-EXP-LPE"><a href="#POC-EXP-LPE" class="headerlink" title="POC/EXP/LPE"></a>POC/EXP/LPE</h3><p><a href="https://github.com/danigargu/CVE-2020-0796" target="_blank" rel="noopener">https://github.com/danigargu/CVE-2020-0796</a><br><a href="https://github.com/chompie1337/SMBGhost_RCE_PoC" target="_blank" rel="noopener">https://github.com/chompie1337/SMBGhost_RCE_PoC</a></p>
+<h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download/Ladon.rar">https://k8gege.org/Download/Ladon.rar</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>
 
     </div>
     
@@ -251,7 +253,7 @@
             Table of Contents
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#漏洞信息"><span class="toc-text">漏洞信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模块说明"><span class="toc-text">模块说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扫描指定主机SMBGhost漏洞"><span class="toc-text">扫描指定主机SMBGhost漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扫描C段主机SMBGhost漏洞"><span class="toc-text">扫描C段主机SMBGhost漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#批量扫描IP列表主机SMBGhost漏洞"><span class="toc-text">批量扫描IP列表主机SMBGhost漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扫描IP段（-24）列表主机SMBGhost漏洞"><span class="toc-text">扫描IP段（&#x2F;24）列表主机SMBGhost漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扫描IP段（-16）列表主机SMBGhost漏洞"><span class="toc-text">扫描IP段（&#x2F;16）列表主机SMBGhost漏洞</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#漏洞介绍"><span class="toc-text">漏洞介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#影响版本"><span class="toc-text">影响版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模块说明"><span class="toc-text">模块说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扫描指定主机SMBGhost漏洞"><span class="toc-text">扫描指定主机SMBGhost漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扫描C段主机SMBGhost漏洞"><span class="toc-text">扫描C段主机SMBGhost漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#批量扫描IP列表主机SMBGhost漏洞"><span class="toc-text">批量扫描IP列表主机SMBGhost漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扫描IP段（-24）列表主机SMBGhost漏洞"><span class="toc-text">扫描IP段（&#x2F;24）列表主机SMBGhost漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扫描IP段（-16）列表主机SMBGhost漏洞"><span class="toc-text">扫描IP段（&#x2F;16）列表主机SMBGhost漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#POC-EXP-LPE"><span class="toc-text">POC&#x2F;EXP&#x2F;LPE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工具下载"><span class="toc-text">工具下载</span></a></li></ol>
         
     </div>
 </aside>
