@@ -817,14 +817,14 @@
 ]]></content>
       <categories>
         <category>工具</category>
-        <category>Cobalt Strike</category>
         <category>Ladon</category>
+        <category>Cobalt Strike</category>
         <category>内网</category>
       </categories>
       <tags>
         <tag>Exp</tag>
-        <tag>Ladon</tag>
         <tag>Tool</tag>
+        <tag>Ladon</tag>
         <tag>Code</tag>
       </tags>
   </entry>
@@ -1063,13 +1063,14 @@
 <h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>
 ]]></content>
       <categories>
+        <category>提权</category>
         <category>Ladon</category>
         <category>Rce</category>
-        <category>LPE</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
         <tag>Rce</tag>
+        <tag>提权</tag>
         <tag>CVE-2020-0796</tag>
         <tag>SMBGhost</tag>
       </tags>
@@ -1230,8 +1231,8 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
 <h3 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h3><p>暂时只支持JspShell，有空再添加其它SHELL</p>
 ]]></content>
       <categories>
-        <category>Cobalt Strike</category>
         <category>Ladon</category>
+        <category>Cobalt Strike</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1336,8 +1337,8 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
         <category>Ladon</category>
       </categories>
       <tags>
-        <tag>Ladon</tag>
         <tag>Tool</tag>
+        <tag>Ladon</tag>
       </tags>
   </entry>
   <entry>
@@ -1591,13 +1592,13 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
 <h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>
 ]]></content>
       <categories>
+        <category>Ladon</category>
         <category>Kali</category>
         <category>密码</category>
-        <category>Ladon</category>
       </categories>
       <tags>
-        <tag>Ladon</tag>
         <tag>Tool</tag>
+        <tag>Ladon</tag>
         <tag>Kali</tag>
         <tag>Scanner</tag>
       </tags>
@@ -1772,12 +1773,12 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
 ]]></content>
       <categories>
         <category>工具</category>
-        <category>Kali</category>
         <category>Ladon</category>
+        <category>Kali</category>
       </categories>
       <tags>
-        <tag>Ladon</tag>
         <tag>Tool</tag>
+        <tag>Ladon</tag>
         <tag>Kali</tag>
         <tag>Scanner</tag>
       </tags>
@@ -1822,12 +1823,12 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
 <h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>
 ]]></content>
       <categories>
-        <category>Cobalt Strike</category>
         <category>Ladon</category>
+        <category>Cobalt Strike</category>
       </categories>
       <tags>
-        <tag>Ladon</tag>
         <tag>Tool</tag>
+        <tag>Ladon</tag>
         <tag>Cobalt Strike</tag>
       </tags>
   </entry>
@@ -2022,14 +2023,14 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
 ]]></content>
       <categories>
         <category>工具</category>
-        <category>密码</category>
         <category>Ladon</category>
+        <category>密码</category>
         <category>内网</category>
         <category>嗅探</category>
       </categories>
       <tags>
-        <tag>Ladon</tag>
         <tag>Tool</tag>
+        <tag>Ladon</tag>
         <tag>Sniffer</tag>
         <tag>FtpSniffer</tag>
         <tag>HttpSniffer</tag>
@@ -2076,6 +2077,30 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <tag>C#</tag>
         <tag>MSF</tag>
         <tag>meterpreter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>利用DirectoryEntry获取域内计算机以及共享资源</title>
+    <url>/p/54132.html</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>System.DirectoryServices.DirectoryEntry组件提供了对Active Directory的访问。本文以两个简单的小程序为例，阐述了如何利用此组件查看网络的各节点的信息。 DirectoryEntry组件提供了Path属性，根据文档，此属性指定了目录服务中用来访问对象的对象名，其格式如下：<br>protocol://servername:port number/distinguished name<br>此语句的第一部分定义了访问将使用的协议，如<br>LDAP: (Lightweight Directory Access Protocol)<br>IIS: (提供IIS元数据来读及配置Internet Infomation Server)<br>WinNT: (提供在非常有限的性能下对Windows NT域的访问)<br>NDS: (提供对Novell Directory Service的访问)<br>等等（详细信息清参考MSDN）。 </p>
+<p>因此我们构造一个DirectoryEntry实例，将它的Path设为”WinNT:”，以通过对它的所有子项的枚举来发现网络上的所有域（以及工作组）。这样，再对所发现的域（以及工作组）的子项进行枚举，就可以发现网络上的所有计算机，结合WMI发现机器上的共享资源。</p>
+<h3 id="C-实现代码"><a href="#C-实现代码" class="headerlink" title="C#实现代码"></a>C#实现代码</h3><p>以下为Ladon的EnumShare代码,自动获取当前域，并枚举域内计算机以及获取机器开放共享资源。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">string strDomain;</span><br><span class="line">string strComputer;</span><br><span class="line">string strShare;</span><br><span class="line">Console.WriteLine(&quot;Load EnumShare&quot;);</span><br><span class="line"></span><br><span class="line">DirectoryEntry root &#x3D; new DirectoryEntry(&quot;WinNT:&quot;);</span><br><span class="line">foreach (DirectoryEntry Domain in root.Children)</span><br><span class="line">&#123;</span><br><span class="line">    strDomain &#x3D; Domain.Name;</span><br><span class="line">    Console.WriteLine(&quot;Domain: &quot; + strDomain);</span><br><span class="line">    foreach (DirectoryEntry Computer in Domain.Children)</span><br><span class="line">    &#123;</span><br><span class="line">        if (Computer.SchemaClassName.Equals(&quot;Computer&quot;))</span><br><span class="line">        &#123;</span><br><span class="line">            strComputer &#x3D; Computer.Name;</span><br><span class="line">            ManagementObjectSearcher searcher &#x3D; new ManagementObjectSearcher(&quot;select * from win32_share&quot;);</span><br><span class="line">            foreach (ManagementObject share in searcher.Get())</span><br><span class="line">            &#123;</span><br><span class="line">                strShare &#x3D; share[&quot;Name&quot;].ToString();</span><br><span class="line">                Console.WriteLine(strComputer + &quot;\\&quot; + strShare);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Ladon EnumShare<br>因为崇尚极简主义，所以Ladon无需填写域名以及参数，参数多也很烦，全自动获取，一步到位。<br><img alt="img" data-original="https://k8gege.org/k8img/Ladon/exe/EnumShare.PNG"></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a></p>
+<p><a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.directoryservices.directoryentry?view=netframework-4.8" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/dotnet/api/system.directoryservices.directoryentry?view=netframework-4.8</a></p>
+]]></content>
+      <categories>
+        <category>Ladon</category>
+        <category>.NET</category>
+        <category>内网</category>
+        <category>源码</category>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>Ladon</tag>
+        <tag>.NET</tag>
       </tags>
   </entry>
   <entry>
@@ -2151,30 +2176,6 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       <tags>
         <tag>Exp</tag>
         <tag>Ladon</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>利用DirectoryEntry获取域内计算机以及共享资源</title>
-    <url>/p/54132.html</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>System.DirectoryServices.DirectoryEntry组件提供了对Active Directory的访问。本文以两个简单的小程序为例，阐述了如何利用此组件查看网络的各节点的信息。 DirectoryEntry组件提供了Path属性，根据文档，此属性指定了目录服务中用来访问对象的对象名，其格式如下：<br>protocol://servername:port number/distinguished name<br>此语句的第一部分定义了访问将使用的协议，如<br>LDAP: (Lightweight Directory Access Protocol)<br>IIS: (提供IIS元数据来读及配置Internet Infomation Server)<br>WinNT: (提供在非常有限的性能下对Windows NT域的访问)<br>NDS: (提供对Novell Directory Service的访问)<br>等等（详细信息清参考MSDN）。 </p>
-<p>因此我们构造一个DirectoryEntry实例，将它的Path设为”WinNT:”，以通过对它的所有子项的枚举来发现网络上的所有域（以及工作组）。这样，再对所发现的域（以及工作组）的子项进行枚举，就可以发现网络上的所有计算机，结合WMI发现机器上的共享资源。</p>
-<h3 id="C-实现代码"><a href="#C-实现代码" class="headerlink" title="C#实现代码"></a>C#实现代码</h3><p>以下为Ladon的EnumShare代码,自动获取当前域，并枚举域内计算机以及获取机器开放共享资源。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">string strDomain;</span><br><span class="line">string strComputer;</span><br><span class="line">string strShare;</span><br><span class="line">Console.WriteLine(&quot;Load EnumShare&quot;);</span><br><span class="line"></span><br><span class="line">DirectoryEntry root &#x3D; new DirectoryEntry(&quot;WinNT:&quot;);</span><br><span class="line">foreach (DirectoryEntry Domain in root.Children)</span><br><span class="line">&#123;</span><br><span class="line">    strDomain &#x3D; Domain.Name;</span><br><span class="line">    Console.WriteLine(&quot;Domain: &quot; + strDomain);</span><br><span class="line">    foreach (DirectoryEntry Computer in Domain.Children)</span><br><span class="line">    &#123;</span><br><span class="line">        if (Computer.SchemaClassName.Equals(&quot;Computer&quot;))</span><br><span class="line">        &#123;</span><br><span class="line">            strComputer &#x3D; Computer.Name;</span><br><span class="line">            ManagementObjectSearcher searcher &#x3D; new ManagementObjectSearcher(&quot;select * from win32_share&quot;);</span><br><span class="line">            foreach (ManagementObject share in searcher.Get())</span><br><span class="line">            &#123;</span><br><span class="line">                strShare &#x3D; share[&quot;Name&quot;].ToString();</span><br><span class="line">                Console.WriteLine(strComputer + &quot;\\&quot; + strShare);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Ladon EnumShare<br>因为崇尚极简主义，所以Ladon无需填写域名以及参数，参数多也很烦，全自动获取，一步到位。<br><img alt="img" data-original="https://k8gege.org/k8img/Ladon/exe/EnumShare.PNG"></p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a></p>
-<p><a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.directoryservices.directoryentry?view=netframework-4.8" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/dotnet/api/system.directoryservices.directoryentry?view=netframework-4.8</a></p>
-]]></content>
-      <categories>
-        <category>Ladon</category>
-        <category>.NET</category>
-        <category>内网</category>
-        <category>源码</category>
-        <category>编程</category>
-      </categories>
-      <tags>
-        <tag>Ladon</tag>
-        <tag>.NET</tag>
       </tags>
   </entry>
   <entry>
@@ -2296,9 +2297,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </categories>
       <tags>
         <tag>Exp</tag>
-        <tag>Ladon</tag>
         <tag>Tool</tag>
         <tag>GetShell</tag>
+        <tag>Ladon</tag>
         <tag>ActiveMQ</tag>
         <tag>CVE-2016-3088</tag>
       </tags>
@@ -2320,9 +2321,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </categories>
       <tags>
         <tag>Exp</tag>
-        <tag>Ladon</tag>
         <tag>Tool</tag>
         <tag>GetShell</tag>
+        <tag>Ladon</tag>
         <tag>ThinkPHP</tag>
       </tags>
   </entry>
@@ -2345,9 +2346,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </categories>
       <tags>
         <tag>Exp</tag>
-        <tag>Ladon</tag>
         <tag>Tool</tag>
         <tag>GetShell</tag>
+        <tag>Ladon</tag>
         <tag>PhpStudy</tag>
       </tags>
   </entry>
@@ -2376,9 +2377,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </categories>
       <tags>
         <tag>Exp</tag>
-        <tag>Ladon</tag>
         <tag>Tool</tag>
         <tag>GetShell</tag>
+        <tag>Ladon</tag>
         <tag>PhpStudy</tag>
       </tags>
   </entry>
@@ -2468,8 +2469,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <category>PowerShell</category>
       </categories>
       <tags>
-        <tag>Ladon</tag>
         <tag>Tool</tag>
+        <tag>Ladon</tag>
         <tag>PowerShell</tag>
       </tags>
   </entry>
@@ -2511,9 +2512,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <category>工具</category>
       </categories>
       <tags>
+        <tag>Exp</tag>
         <tag>Apache</tag>
         <tag>Solr</tag>
-        <tag>Exp</tag>
         <tag>Ladon</tag>
         <tag>0day</tag>
       </tags>
@@ -2793,12 +2794,12 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
 ]]></content>
       <categories>
         <category>工具</category>
-        <category>Kali</category>
         <category>Ladon</category>
+        <category>Kali</category>
       </categories>
       <tags>
-        <tag>Ladon</tag>
         <tag>Tool</tag>
+        <tag>Ladon</tag>
         <tag>Kali</tag>
         <tag>Scanner</tag>
       </tags>
@@ -2862,8 +2863,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </categories>
       <tags>
         <tag>Exp</tag>
-        <tag>Ladon</tag>
         <tag>Tool</tag>
+        <tag>Ladon</tag>
         <tag>Kali</tag>
         <tag>PowerShell</tag>
       </tags>
@@ -3049,6 +3050,35 @@ payload5='\x23\x64\x61\x74\x65\x3A\x20\x32\x30\x31\x39\x30\x36\x32\x36\x20\x23\x
       </tags>
   </entry>
   <entry>
+    <title>CobaltStrike &amp; Metasploit Shellcode一键免杀工具</title>
+    <url>/p/9cffe32c.html</url>
+    <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x001 前言</strong></span></p>
+<p>CobaltStrike &amp; Metasploit&nbsp; Shellcode一键免杀工具</p>
+<p>加载器通过AES加密ShellCode，动态编译生成EXE。</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/scencode.png"></p>
+<p>1个月前该工具生成的exe免杀所有杀软，现在未测应该还能过90%的杀软吧。</p>
+<p>可选.net版本为系统安装对应版本，1.0仅支持.net EXE生成。</p>
+<p>后续版本不一定公开，望大家见谅，有兴趣的自行反编译生成的exe就知道怎么弄了。</p>
+<p><strong>注意</strong>: <span style="color: #ff00ff;">一定要使用无后门特征的CS,否则上线1分钟就被个别杀软查杀</span>(因为CS默认每分钟发送流量包,里面包含后门特征信息)</p>
+<p><strong>声明</strong>: 程序<span style="color: #ff00ff;">仅免杀shellcode</span>部分,CS加载的<span style="color: #ff00ff;">其它模块不免杀</span>(比如运行mimikaz读取密码被个别杀软查杀)</p>
+<p>CS其它模块免杀，请自行修改CS客户端资源里对应的DLL，比如mimikaz_x86.dll、mimikaz_x64.dll</p>
+<p>&nbsp;</p>
+<p><span style="font-size: 18px; color: #ff00ff;"><strong>0x002 下载</strong> </span></p>
+<p><span style="font-size: 14px;"><a href="https://github.com/k8gege/K8tools/raw/master/K8_SC_ENCODE(CobaltStrike%20%26%20Metasploit%20Shellcode%E5%85%8D%E6%9D%80%E5%B7%A5%E5%85%B7).rar" target="_blank">https://github.com/k8gege/K8tools/raw/master/K8_SC_ENCODE(CobaltStrike &amp; Metasploit Shellcode免杀工具).rar</a></span></p>]]></content>
+      <categories>
+        <category>免杀</category>
+        <category>工具</category>
+        <category>Metasploit</category>
+        <category>Cobalt Strike</category>
+        <category>ShellCode</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>Cobalt Strike</tag>
+        <tag>Metasploit</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CVE-2019-0803提权工具</title>
     <url>/p/fa25cc9b.html</url>
     <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x000 漏洞信息</strong></span><br>CVE-2019-0803 | Win32k 特权提升漏洞<br>发布时间: 2019-04-09<br>当 Win32k 组件无法正确处理内存中的对象时，Windows 中存在特权提升漏洞。成功利用此漏洞的攻击者可以在内核模式中运行任意代码。攻击者可随后安装程序；查看、更改或删除数据；或者创建拥有完全用户权限的新帐户。<br>若要利用此漏洞，攻击者首先必须登录到系统。然后，攻击者可以运行一个为利用此漏洞而经特殊设计的应用程序，从而控制受影响的系统。</p>
@@ -3136,35 +3166,6 @@ Microsoft Windows 10 for 32-bit Systems 0
       <tags>
         <tag>Tool</tag>
         <tag>Cobalt Strike</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CobaltStrike &amp; Metasploit Shellcode一键免杀工具</title>
-    <url>/p/9cffe32c.html</url>
-    <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x001 前言</strong></span></p>
-<p>CobaltStrike &amp; Metasploit&nbsp; Shellcode一键免杀工具</p>
-<p>加载器通过AES加密ShellCode，动态编译生成EXE。</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/scencode.png"></p>
-<p>1个月前该工具生成的exe免杀所有杀软，现在未测应该还能过90%的杀软吧。</p>
-<p>可选.net版本为系统安装对应版本，1.0仅支持.net EXE生成。</p>
-<p>后续版本不一定公开，望大家见谅，有兴趣的自行反编译生成的exe就知道怎么弄了。</p>
-<p><strong>注意</strong>: <span style="color: #ff00ff;">一定要使用无后门特征的CS,否则上线1分钟就被个别杀软查杀</span>(因为CS默认每分钟发送流量包,里面包含后门特征信息)</p>
-<p><strong>声明</strong>: 程序<span style="color: #ff00ff;">仅免杀shellcode</span>部分,CS加载的<span style="color: #ff00ff;">其它模块不免杀</span>(比如运行mimikaz读取密码被个别杀软查杀)</p>
-<p>CS其它模块免杀，请自行修改CS客户端资源里对应的DLL，比如mimikaz_x86.dll、mimikaz_x64.dll</p>
-<p>&nbsp;</p>
-<p><span style="font-size: 18px; color: #ff00ff;"><strong>0x002 下载</strong> </span></p>
-<p><span style="font-size: 14px;"><a href="https://github.com/k8gege/K8tools/raw/master/K8_SC_ENCODE(CobaltStrike%20%26%20Metasploit%20Shellcode%E5%85%8D%E6%9D%80%E5%B7%A5%E5%85%B7).rar" target="_blank">https://github.com/k8gege/K8tools/raw/master/K8_SC_ENCODE(CobaltStrike &amp; Metasploit Shellcode免杀工具).rar</a></span></p>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>免杀</category>
-        <category>Metasploit</category>
-        <category>Cobalt Strike</category>
-        <category>ShellCode</category>
-      </categories>
-      <tags>
-        <tag>Tool</tag>
-        <tag>Cobalt Strike</tag>
-        <tag>Metasploit</tag>
       </tags>
   </entry>
   <entry>
@@ -3304,51 +3305,9 @@ Microsoft Windows 10 for 32-bit Systems 0
         <category>编程</category>
       </categories>
       <tags>
+        <tag>Tool</tag>
         <tag>Ladon</tag>
-        <tag>Tool</tag>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>.NET端口转发工具PortTran</title>
-    <url>/p/3f55538f.html</url>
-    <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x001 简介</strong></span></p>
-<p>PortTran by k8gege<br>.NET版端口转发工具，支持任意权限下转发 </p>
-<p><span style="font-size: 18px;"><strong>0x002 背景</strong></span><br>工具在2016年左右写的，当时某个内网不知何原故LCX用不了</p>
-<p>由于Win2003才刚停更不久，依然有不少内网还是03的机器</p>
-<p>加上.NET版的兼容性均没LCX好，所以我自己也很少用...</p>
-<p>以至于忘了自己有弄过这玩意，现在基本都WIN7以后系统</p>
-<p>.net程序不用慌了，体积小和易于免杀大家都开心了。</p>
-<p><span style="font-size: 18px;"><strong>0x003 用法</strong></span></p>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;">0x001 VPS监听
-PortTranS.exe 8000 338
-
-<p>0x002 目标内网转发<br>PortTranC20.exe 192.168.1.103 3389 192.168.1.102 8000</p>
-<p>0x003 VPS连接3389<br>mstsc /console /v:127.0.0.1:338<br></p></pre><p></p>
-</div>
-<p><span style="font-size: 18px;"><strong>&nbsp;0x004 实例 </strong></span></p>
-<p>1.vps监听</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/PortTran1.png"></p>
-<p>2.目标内网3389端口转发</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/PortTran2.png"></p>
-<p>3. 连接VPS的338端口即为被转发内网机器的3389，同理可转发其它端口，使用对应的工具连接就可以了</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/PortTran3.png"></p>
-<p>不要死板，很多人误以为只能用于转发3389，这是因为不理解什么叫端口转发，如果只能转特定端口</p>
-<p>就不会起名叫端口转发了，应该叫3389转发，1433、1521等端口不是端口吗？内网访问不了你都可以转出来</p>
-<p>再使用对应数据库连接工具连接啊，要懂得举一反三，不要死脑筋，只懂用于转发3389。</p>
-<p><span style="font-size: 18px; color: #ff00ff;"><strong>0x005 下载</strong></span></p>
-<p><a href="https://github.com/k8gege/K8tools/raw/master/PortTran.rar" target="_blank">https://github.com/k8gege/PortTran</a></p>
-<p>&nbsp;</p>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>.NET</category>
-        <category>内网</category>
-      </categories>
-      <tags>
-        <tag>Tool</tag>
-        <tag>C#</tag>
-        <tag>PortTran</tag>
       </tags>
   </entry>
   <entry>
@@ -3451,8 +3410,8 @@ ptr = ctypes.windll.kernel32.VirtualAlloc(ctypes.c_int(0),
 <p>当然单文件我也可以做，只是费点时间，懒得做而已。相关APT文章里就很多方法</p>
 <p>基本都是白名单加载DLL，DLL释放各种加密文件，再解密执行，最终加载CS而已。</p>]]></content>
       <categories>
-        <category>工具</category>
         <category>免杀</category>
+        <category>工具</category>
         <category>Metasploit</category>
         <category>Cobalt Strike</category>
         <category>ShellCode</category>
@@ -3463,6 +3422,48 @@ ptr = ctypes.windll.kernel32.VirtualAlloc(ctypes.c_int(0),
         <tag>Cobalt Strike</tag>
         <tag>Metasploit</tag>
         <tag>BypassAV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>.NET端口转发工具PortTran</title>
+    <url>/p/3f55538f.html</url>
+    <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x001 简介</strong></span></p>
+<p>PortTran by k8gege<br>.NET版端口转发工具，支持任意权限下转发 </p>
+<p><span style="font-size: 18px;"><strong>0x002 背景</strong></span><br>工具在2016年左右写的，当时某个内网不知何原故LCX用不了</p>
+<p>由于Win2003才刚停更不久，依然有不少内网还是03的机器</p>
+<p>加上.NET版的兼容性均没LCX好，所以我自己也很少用...</p>
+<p>以至于忘了自己有弄过这玩意，现在基本都WIN7以后系统</p>
+<p>.net程序不用慌了，体积小和易于免杀大家都开心了。</p>
+<p><span style="font-size: 18px;"><strong>0x003 用法</strong></span></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;">0x001 VPS监听
+PortTranS.exe 8000 338
+
+<p>0x002 目标内网转发<br>PortTranC20.exe 192.168.1.103 3389 192.168.1.102 8000</p>
+<p>0x003 VPS连接3389<br>mstsc /console /v:127.0.0.1:338<br></p></pre><p></p>
+</div>
+<p><span style="font-size: 18px;"><strong>&nbsp;0x004 实例 </strong></span></p>
+<p>1.vps监听</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/PortTran1.png"></p>
+<p>2.目标内网3389端口转发</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/PortTran2.png"></p>
+<p>3. 连接VPS的338端口即为被转发内网机器的3389，同理可转发其它端口，使用对应的工具连接就可以了</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/PortTran3.png"></p>
+<p>不要死板，很多人误以为只能用于转发3389，这是因为不理解什么叫端口转发，如果只能转特定端口</p>
+<p>就不会起名叫端口转发了，应该叫3389转发，1433、1521等端口不是端口吗？内网访问不了你都可以转出来</p>
+<p>再使用对应数据库连接工具连接啊，要懂得举一反三，不要死脑筋，只懂用于转发3389。</p>
+<p><span style="font-size: 18px; color: #ff00ff;"><strong>0x005 下载</strong></span></p>
+<p><a href="https://github.com/k8gege/K8tools/raw/master/PortTran.rar" target="_blank">https://github.com/k8gege/PortTran</a></p>
+<p>&nbsp;</p>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>.NET</category>
+        <category>内网</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>C#</tag>
+        <tag>PortTran</tag>
       </tags>
   </entry>
   <entry>
@@ -3698,33 +3699,6 @@ xxe_data = r"""&lt;!DOCTYPE Autodiscover [
       </tags>
   </entry>
   <entry>
-    <title>全版本IIS提权工具iislpe</title>
-    <url>/p/6b9b3afe.html</url>
-    <content><![CDATA[<p><strong>工具: </strong>iislpe.exe<strong><br></strong></p>
-<p><strong>编译: </strong><a href="https://www.cnblogs.com/k8gege" target="_blank">.</a>net 3.5 </p>
-<p>　　全版本IIS提权工具<a href="https://www.cnblogs.com/k8gege" target="_blank">,</a>支持IIS应用池用户/网络服务用户/本地服务用户</p>
-<p><strong>原理:</strong></p>
-<p><em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </em>通过NTLM重放将权限提升至SYSTEM权限,详情参考Potato。</p>
-<p><strong>用法:</strong></p>
-<p>IIS Priviledge by k8gege<br>IIS APPPOOL / Network Service / Local Service<br>Us<a href="https://www.cnblogs.com/k8gege/" target="_blank">e</a>age:<br>iislpe c<a href="https://www.cnblogs.com/k8gege/p/10389522.html" target="_blank">:</a>\any.bat<br>iislpe c:\any.exe</p>
-<p><a href="https://www.cnblogs.com/k8gege/p/10389522.html" target="_blank"><img alt data-original="http://k8gege.org/k8img/posts/iislpe.png"></a></p>
-<p>&nbsp;</p>
-<p>&nbsp;下载:https://github.com/k8gege/K8tools/iislpe.rar</p>
-<p>&nbsp; &nbsp;&nbsp; </p>
-<p>&nbsp;</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; </p>]]></content>
-      <categories>
-        <category>提权</category>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>Exp</tag>
-        <tag>Tool</tag>
-        <tag>LPE</tag>
-        <tag>IIS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>基于Browser协议探测内网主机</title>
     <url>/p/16b5ff0b.html</url>
     <content><![CDATA[<p>利用Browser协议可获取机器IP、MAC、机器名、操作系统、域，如图</p>
@@ -3787,8 +3761,8 @@ from pprint import pprint
 <p><a href="https://www.cnblogs.com/k8gege/p/10367844.html" target="_blank">https://www.cnblogs.com/k8gege/p/10367844.html</a></p>]]></content>
       <categories>
         <category>工具</category>
-        <category>内网</category>
         <category>Python</category>
+        <category>内网</category>
         <category>源码</category>
         <category>编程</category>
         <category>嗅探</category>
@@ -3797,6 +3771,33 @@ from pprint import pprint
         <tag>Tool</tag>
         <tag>Code</tag>
         <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>全版本IIS提权工具iislpe</title>
+    <url>/p/6b9b3afe.html</url>
+    <content><![CDATA[<p><strong>工具: </strong>iislpe.exe<strong><br></strong></p>
+<p><strong>编译: </strong><a href="https://www.cnblogs.com/k8gege" target="_blank">.</a>net 3.5 </p>
+<p>　　全版本IIS提权工具<a href="https://www.cnblogs.com/k8gege" target="_blank">,</a>支持IIS应用池用户/网络服务用户/本地服务用户</p>
+<p><strong>原理:</strong></p>
+<p><em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </em>通过NTLM重放将权限提升至SYSTEM权限,详情参考Potato。</p>
+<p><strong>用法:</strong></p>
+<p>IIS Priviledge by k8gege<br>IIS APPPOOL / Network Service / Local Service<br>Us<a href="https://www.cnblogs.com/k8gege/" target="_blank">e</a>age:<br>iislpe c<a href="https://www.cnblogs.com/k8gege/p/10389522.html" target="_blank">:</a>\any.bat<br>iislpe c:\any.exe</p>
+<p><a href="https://www.cnblogs.com/k8gege/p/10389522.html" target="_blank"><img alt data-original="http://k8gege.org/k8img/posts/iislpe.png"></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;下载:https://github.com/k8gege/K8tools/iislpe.rar</p>
+<p>&nbsp; &nbsp;&nbsp; </p>
+<p>&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; </p>]]></content>
+      <categories>
+        <category>提权</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Exp</tag>
+        <tag>Tool</tag>
+        <tag>LPE</tag>
+        <tag>IIS</tag>
       </tags>
   </entry>
 </search>

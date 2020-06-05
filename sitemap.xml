@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://k8gege.org/p/smbghost_cve_2020_0796.html</loc>
+    
+    <lastmod>2020-06-05T02:02:29.670Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://k8gege.org/p/winrmscan.html</loc>
     
     <lastmod>2020-06-05T01:56:51.509Z</lastmod>
@@ -110,13 +117,6 @@
     <loc>http://k8gege.org/Ladon/example.html</loc>
     
     <lastmod>2020-06-04T12:28:27.536Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k8gege.org/p/smbghost_cve_2020_0796.html</loc>
-    
-    <lastmod>2020-06-04T12:28:15.471Z</lastmod>
     
   </url>
   
