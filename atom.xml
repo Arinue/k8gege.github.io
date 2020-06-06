@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://k8gege.org/"/>
-  <updated>2020-06-05T02:02:29.670Z</updated>
+  <updated>2020-06-06T02:23:18.913Z</updated>
   <id>http://k8gege.org/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://k8gege.org/p/smbghost_cve_2020_0796.html"/>
     <id>http://k8gege.org/p/smbghost_cve_2020_0796.html</id>
     <published>2020-06-03T14:40:00.000Z</published>
-    <updated>2020-06-05T02:02:29.670Z</updated>
+    <updated>2020-06-06T02:23:18.913Z</updated>
     
     <content type="html"><![CDATA[<h3 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h3><p>2020年3月10日，微软在其官方SRC发布了CVE-2020-0796的安全公告（ADV200005，MicrosoftGuidance for Disabling SMBv3 Compression）,公告表示在Windows SMBv3版本的客户端和服务端存在远程代码执行漏洞。同时指出该漏洞存在于MicroSoft Server Message Block 3.1.1协议处理特定请求包的功能中，攻击者利用该漏洞可在目标SMB Server或者Client中执行任意代码。</p><h3 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h3><p>CVE-2020-0796漏洞影响运行Windows 10版本1903，Windows Server版本1903（服务器核心安装），Windows 10版本1909和Windows Server版本1909（服务器核心安装）的设备。根据Fortinet，其他Microsoft版本应受到影响。</p><h3 id="模块说明"><a href="#模块说明" class="headerlink" title="模块说明"></a>模块说明</h3><p>漏洞编号：CVE-2020-0796<br>漏洞别名：SMBGhost、永恒之黑<br>影响版本：Win10或2016 1903 | 1909<br>返回结果：IP、机器名、漏洞编号、操作系统版本</p><h3 id="无损扫描"><a href="#无损扫描" class="headerlink" title="无损扫描"></a>无损扫描</h3><p>通过检测SMB3.1.1是否启用压缩功能判定漏洞，和MS17010一样不会对目标造成任何损害，也不会被杀软拦截。</p><h3 id="SMBGhost漏洞检测"><a href="#SMBGhost漏洞检测" class="headerlink" title="SMBGhost漏洞检测"></a>SMBGhost漏洞检测</h3><h4 id="扫描指定主机SMBGhost漏洞"><a href="#扫描指定主机SMBGhost漏洞" class="headerlink" title="扫描指定主机SMBGhost漏洞"></a>扫描指定主机SMBGhost漏洞</h4><p>Ladon 192.168.1.8 SMBGhost</p><h4 id="扫描C段主机SMBGhost漏洞"><a href="#扫描C段主机SMBGhost漏洞" class="headerlink" title="扫描C段主机SMBGhost漏洞"></a>扫描C段主机SMBGhost漏洞</h4><p>Ladon 192.168.1.8/24 SMBGhost<br>Ladon 192.168.1.8/C SMBGhost</p><h4 id="批量扫描IP列表主机SMBGhost漏洞"><a href="#批量扫描IP列表主机SMBGhost漏洞" class="headerlink" title="批量扫描IP列表主机SMBGhost漏洞"></a>批量扫描IP列表主机SMBGhost漏洞</h4><p>ip.txt里放需要扫描的IP，使用以下命令即可<br>Ladon SMBGhost</p><h4 id="批量检测IP段（-24）SMBGhost漏洞"><a href="#批量检测IP段（-24）SMBGhost漏洞" class="headerlink" title="批量检测IP段（/24）SMBGhost漏洞"></a>批量检测IP段（/24）SMBGhost漏洞</h4><p>ip24.txt里放需要扫描的IP段，使用以下命令即可<br>Ladon SMBGhost</p><h4 id="批量检测IP段（-16）SMBGhost漏洞"><a href="#批量检测IP段（-16）SMBGhost漏洞" class="headerlink" title="批量检测IP段（/16）SMBGhost漏洞"></a>批量检测IP段（/16）SMBGhost漏洞</h4><p>ip16.txt里放需要扫描的IP段，使用以下命令即可<br>Ladon SMBGhost</p><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/SmbGhost.PNG"></p><h3 id="POC-EXP-LPE"><a href="#POC-EXP-LPE" class="headerlink" title="POC/EXP/LPE"></a>POC/EXP/LPE</h3><p><a href="https://github.com/danigargu/CVE-2020-0796" target="_blank" rel="noopener">https://github.com/danigargu/CVE-2020-0796</a><br><a href="https://github.com/chompie1337/SMBGhost_RCE_PoC" target="_blank" rel="noopener">https://github.com/chompie1337/SMBGhost_RCE_PoC</a></p><h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>]]></content>
     
@@ -39,14 +39,14 @@
     
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
-      <category term="Rce" scheme="http://k8gege.org/categories/Rce/"/>
+      <category term="远程执行" scheme="http://k8gege.org/categories/Rce/"/>
     
     
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
     
-      <category term="Rce" scheme="http://k8gege.org/tags/Rce/"/>
+      <category term="LPE" scheme="http://k8gege.org/tags/LPE/"/>
     
-      <category term="提权" scheme="http://k8gege.org/tags/Lpe/"/>
+      <category term="RCE" scheme="http://k8gege.org/tags/RCE/"/>
     
       <category term="CVE-2020-0796" scheme="http://k8gege.org/tags/CVE-2020-0796/"/>
     
@@ -97,7 +97,7 @@
     <link href="http://k8gege.org/p/webshell.html"/>
     <id>http://k8gege.org/p/webshell.html</id>
     <published>2020-05-31T14:20:00.000Z</published>
-    <updated>2020-05-31T14:15:43.934Z</updated>
+    <updated>2020-06-06T02:23:48.793Z</updated>
     
     <content type="html"><![CDATA[<h1 id="在内网渗透中，横向移动用的最多的就是远程执行命令了，网上有很多相关工具，系统也自带相关命令。但不是体积大就是命令繁琐，如schtasks命令等，执行需先创建任务、执行任务、删除任务等，命令长，输错会浪费很多时间，即使复制粘贴也很麻烦。体积大的如Impacket中的psexec-atexec-smbexec-wmiexec等，若是使用PY2-7编译低版本最小也5M左右，最大可能37-5M，无论是内存加载或是传到目标都很麻烦，如果后渗透工具垃圾，区区这几M还未必能传上去，传上去得浪费很多时间。传一个就5M，传4个不得20M-基于以上原因，Ladon添加常用的远程执行命令功能，6-5体积仅844K就包含以上工具功能，扫描到相关密码，即可使用对应模块横向移动，一站式工具，完美一条龙服务。"><a href="#在内网渗透中，横向移动用的最多的就是远程执行命令了，网上有很多相关工具，系统也自带相关命令。但不是体积大就是命令繁琐，如schtasks命令等，执行需先创建任务、执行任务、删除任务等，命令长，输错会浪费很多时间，即使复制粘贴也很麻烦。体积大的如Impacket中的psexec-atexec-smbexec-wmiexec等，若是使用PY2-7编译低版本最小也5M左右，最大可能37-5M，无论是内存加载或是传到目标都很麻烦，如果后渗透工具垃圾，区区这几M还未必能传上去，传上去得浪费很多时间。传一个就5M，传4个不得20M-基于以上原因，Ladon添加常用的远程执行命令功能，6-5体积仅844K就包含以上工具功能，扫描到相关密码，即可使用对应模块横向移动，一站式工具，完美一条龙服务。" class="headerlink" title="在内网渗透中，横向移动用的最多的就是远程执行命令了，网上有很多相关工具，系统也自带相关命令。但不是体积大就是命令繁琐，如schtasks命令等，执行需先创建任务、执行任务、删除任务等，命令长，输错会浪费很多时间，即使复制粘贴也很麻烦。体积大的如Impacket中的psexec/atexec/smbexec/wmiexec等，若是使用PY2.7编译低版本最小也5M左右，最大可能37.5M，无论是内存加载或是传到目标都很麻烦，如果后渗透工具垃圾，区区这几M还未必能传上去，传上去得浪费很多时间。传一个就5M，传4个不得20M?基于以上原因，Ladon添加常用的远程执行命令功能，6.5体积仅844K就包含以上工具功能，扫描到相关密码，即可使用对应模块横向移动，一站式工具，完美一条龙服务。"></a>在内网渗透中，横向移动用的最多的就是远程执行命令了，网上有很多相关工具，系统也自带相关命令。但不是体积大就是命令繁琐，如schtasks命令等，执行需先创建任务、执行任务、删除任务等，命令长，输错会浪费很多时间，即使复制粘贴也很麻烦。体积大的如Impacket中的psexec/atexec/smbexec/wmiexec等，若是使用PY2.7编译低版本最小也5M左右，最大可能37.5M，无论是内存加载或是传到目标都很麻烦，如果后渗透工具垃圾，区区这几M还未必能传上去，传上去得浪费很多时间。传一个就5M，传4个不得20M?基于以上原因，Ladon添加常用的远程执行命令功能，6.5体积仅844K就包含以上工具功能，扫描到相关密码，即可使用对应模块横向移动，一站式工具，完美一条龙服务。</h1><p>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p><script language="javascript" type="text/javascript">window.location.href="http://k8gege.org/Ladon/webshell.html";</script><p><a href="http://k8gege.org/Ladon/webshell.html">http://k8gege.org/Ladon/webshell.html</a></p>]]></content>
     
@@ -113,12 +113,14 @@
     
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
-      <category term="Rce" scheme="http://k8gege.org/categories/Rce/"/>
+      <category term="远程执行" scheme="http://k8gege.org/categories/Rce/"/>
     
     
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
+      <category term="WebShell" scheme="http://k8gege.org/tags/WebShell/"/>
     
-      <category term="Rce" scheme="http://k8gege.org/tags/Rce/"/>
+      <category term="RCE" scheme="http://k8gege.org/tags/RCE/"/>
+    
+      <category term="ladon" scheme="http://k8gege.org/tags/ladon/"/>
     
   </entry>
   
@@ -211,7 +213,7 @@
     <link href="http://k8gege.org/p/winshell.html"/>
     <id>http://k8gege.org/p/winshell.html</id>
     <published>2020-05-21T15:20:00.000Z</published>
-    <updated>2020-05-24T18:00:03.313Z</updated>
+    <updated>2020-06-06T02:24:47.399Z</updated>
     
     <content type="html"><![CDATA[<h1 id="在内网渗透中，横向移动用的最多的就是远程执行命令了，网上有很多相关工具，系统也自带相关命令。但不是体积大就是命令繁琐，如schtasks命令等，执行需先创建任务、执行任务、删除任务等，命令长，输错会浪费很多时间，即使复制粘贴也很麻烦。体积大的如Impacket中的psexec-atexec-smbexec-wmiexec等，若是使用PY2-7编译低版本最小也5M左右，最大可能37-5M，无论是内存加载或是传到目标都很麻烦，如果后渗透工具垃圾，区区这几M还未必能传上去，传上去得浪费很多时间。传一个就5M，传4个不得20M-基于以上原因，Ladon添加常用的远程执行命令功能，6-5体积仅844K就包含以上工具功能，扫描到相关密码，即可使用对应模块横向移动，一站式工具，完美一条龙服务。"><a href="#在内网渗透中，横向移动用的最多的就是远程执行命令了，网上有很多相关工具，系统也自带相关命令。但不是体积大就是命令繁琐，如schtasks命令等，执行需先创建任务、执行任务、删除任务等，命令长，输错会浪费很多时间，即使复制粘贴也很麻烦。体积大的如Impacket中的psexec-atexec-smbexec-wmiexec等，若是使用PY2-7编译低版本最小也5M左右，最大可能37-5M，无论是内存加载或是传到目标都很麻烦，如果后渗透工具垃圾，区区这几M还未必能传上去，传上去得浪费很多时间。传一个就5M，传4个不得20M-基于以上原因，Ladon添加常用的远程执行命令功能，6-5体积仅844K就包含以上工具功能，扫描到相关密码，即可使用对应模块横向移动，一站式工具，完美一条龙服务。" class="headerlink" title="在内网渗透中，横向移动用的最多的就是远程执行命令了，网上有很多相关工具，系统也自带相关命令。但不是体积大就是命令繁琐，如schtasks命令等，执行需先创建任务、执行任务、删除任务等，命令长，输错会浪费很多时间，即使复制粘贴也很麻烦。体积大的如Impacket中的psexec/atexec/smbexec/wmiexec等，若是使用PY2.7编译低版本最小也5M左右，最大可能37.5M，无论是内存加载或是传到目标都很麻烦，如果后渗透工具垃圾，区区这几M还未必能传上去，传上去得浪费很多时间。传一个就5M，传4个不得20M?基于以上原因，Ladon添加常用的远程执行命令功能，6.5体积仅844K就包含以上工具功能，扫描到相关密码，即可使用对应模块横向移动，一站式工具，完美一条龙服务。"></a>在内网渗透中，横向移动用的最多的就是远程执行命令了，网上有很多相关工具，系统也自带相关命令。但不是体积大就是命令繁琐，如schtasks命令等，执行需先创建任务、执行任务、删除任务等，命令长，输错会浪费很多时间，即使复制粘贴也很麻烦。体积大的如Impacket中的psexec/atexec/smbexec/wmiexec等，若是使用PY2.7编译低版本最小也5M左右，最大可能37.5M，无论是内存加载或是传到目标都很麻烦，如果后渗透工具垃圾，区区这几M还未必能传上去，传上去得浪费很多时间。传一个就5M，传4个不得20M?基于以上原因，Ladon添加常用的远程执行命令功能，6.5体积仅844K就包含以上工具功能，扫描到相关密码，即可使用对应模块横向移动，一站式工具，完美一条龙服务。</h1><p>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p><script language="javascript" type="text/javascript">window.location.href="http://k8gege.org/Ladon/WinShell.html";</script><p><a href="http://k8gege.org/Ladon/WinShell.html">http://k8gege.org/Ladon/WinShell.html</a></p>]]></content>
     
@@ -227,7 +229,7 @@
     
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
-      <category term="Rce" scheme="http://k8gege.org/categories/Rce/"/>
+      <category term="远程执行" scheme="http://k8gege.org/categories/Rce/"/>
     
     
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
@@ -241,7 +243,7 @@
     <link href="http://k8gege.org/p/winrmscan.html"/>
     <id>http://k8gege.org/p/winrmscan.html</id>
     <published>2020-05-18T14:10:00.000Z</published>
-    <updated>2020-06-05T01:56:51.509Z</updated>
+    <updated>2020-06-06T02:25:08.742Z</updated>
     
     <content type="html"><![CDATA[<h1 id="WinRM是WindowsRemoteManagementd（win远程管理）的简称。基于Web服务管理-WS-Management-标准，使用80端口或者443端口。这样一来，我们就可以在对方有设置防火墙的情况下远程管理这台服务器了。"><a href="#WinRM是WindowsRemoteManagementd（win远程管理）的简称。基于Web服务管理-WS-Management-标准，使用80端口或者443端口。这样一来，我们就可以在对方有设置防火墙的情况下远程管理这台服务器了。" class="headerlink" title="WinRM是WindowsRemoteManagementd（win远程管理）的简称。基于Web服务管理(WS-Management)标准，使用80端口或者443端口。这样一来，我们就可以在对方有设置防火墙的情况下远程管理这台服务器了。"></a>WinRM是WindowsRemoteManagementd（win远程管理）的简称。基于Web服务管理(WS-Management)标准，使用80端口或者443端口。这样一来，我们就可以在对方有设置防火墙的情况下远程管理这台服务器了。</h1><p>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p><script language="javascript" type="text/javascript">window.location.href="http://k8gege.org/Ladon/WinrmScan.html";</script><p><a href="http://k8gege.org/Ladon/WinrmScan.html">http://k8gege.org/Ladon/WinrmScan.html</a></p>]]></content>
     
@@ -257,9 +259,9 @@
     
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
-      <category term="Rce" scheme="http://k8gege.org/categories/Rce/"/>
+      <category term="远程执行" scheme="http://k8gege.org/categories/Rce/"/>
     
-      <category term="Brute" scheme="http://k8gege.org/categories/Brute/"/>
+      <category term="密码爆破" scheme="http://k8gege.org/categories/%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4/"/>
     
     
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
@@ -275,7 +277,7 @@
     <link href="http://k8gege.org/p/sshscan.html"/>
     <id>http://k8gege.org/p/sshscan.html</id>
     <published>2020-05-18T10:10:00.000Z</published>
-    <updated>2020-05-24T18:02:41.565Z</updated>
+    <updated>2020-06-06T02:32:35.485Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Ladon内置SSH密码爆破SSHscan-支持内外网指定IP、批量IP、批量IP段（C段、B段、A段）、支持CIDR格式，支持自定义SSH端口。支持IP帐密检测-check-txt-，支持帐密组检测-userpass-txt-，支持传统用户密码检测-user-txt、pass-txt-密码爆破前程序会自动检测端口是否开放，无需另外扫描22端口，准备好密码就可以批量爆破。"><a href="#Ladon内置SSH密码爆破SSHscan-支持内外网指定IP、批量IP、批量IP段（C段、B段、A段）、支持CIDR格式，支持自定义SSH端口。支持IP帐密检测-check-txt-，支持帐密组检测-userpass-txt-，支持传统用户密码检测-user-txt、pass-txt-密码爆破前程序会自动检测端口是否开放，无需另外扫描22端口，准备好密码就可以批量爆破。" class="headerlink" title="Ladon内置SSH密码爆破SSHscan,支持内外网指定IP、批量IP、批量IP段（C段、B段、A段）、支持CIDR格式，支持自定义SSH端口。支持IP帐密检测(check.txt)，支持帐密组检测(userpass.txt)，支持传统用户密码检测(user.txt、pass.txt),密码爆破前程序会自动检测端口是否开放，无需另外扫描22端口，准备好密码就可以批量爆破。"></a>Ladon内置SSH密码爆破SSHscan,支持内外网指定IP、批量IP、批量IP段（C段、B段、A段）、支持CIDR格式，支持自定义SSH端口。支持IP帐密检测(check.txt)，支持帐密组检测(userpass.txt)，支持传统用户密码检测(user.txt、pass.txt),密码爆破前程序会自动检测端口是否开放，无需另外扫描22端口，准备好密码就可以批量爆破。</h1><p>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p><script language="javascript" type="text/javascript">window.location.href="http://k8gege.org/Ladon/sshscan.html";</script><p><a href="http://k8gege.org/Ladon/sshscan.html">http://k8gege.org/Ladon/sshscan.html</a></p>]]></content>
     
@@ -291,7 +293,7 @@
     
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
-      <category term="Brute" scheme="http://k8gege.org/categories/Brute/"/>
+      <category term="密码爆破" scheme="http://k8gege.org/categories/%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4/"/>
     
     
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
@@ -307,7 +309,7 @@
     <link href="http://k8gege.org/p/ladon_cs_shell.html"/>
     <id>http://k8gege.org/p/ladon_cs_shell.html</id>
     <published>2020-04-26T14:10:00.000Z</published>
-    <updated>2020-04-26T15:06:47.287Z</updated>
+    <updated>2020-06-06T02:34:06.242Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>无论是外网渗透还是内网渗透，为了能够长期控制权限，都会留下各类后门。<br>WebShell无额外进程、无额外端口、不主动向外连接的后门使用频率非常高。<br>外网的有很多管理工具不用说了，但是内网有WebShell机器无法上网怎么办？<br>方案1：代理后管理工具访问，缺点代理卡时，无法连接内网WebShell<br>方案2：使用Ladon，无需代理，只要有SHELL就可以连接内网WebShell</p><p>PS: Shell不只限于WebShell，而是任何可执行命令的，含远控、后门</p><h3 id="一键GetShell"><a href="#一键GetShell" class="headerlink" title="一键GetShell"></a>一键GetShell</h3><p>使用WebLogicExp模块对内网进行Weblogic漏洞扫描并GetShell<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/WeblogicExp64.PNG"></p><h3 id="Ladon-JspShell"><a href="#Ladon-JspShell" class="headerlink" title="Ladon JspShell"></a>Ladon JspShell</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Usage：Ladon JspShell <span class="built_in">type</span> url <span class="built_in">pwd</span> cmd</span><br><span class="line">Example: Ladon JspShell ua http://192.168.1.8/shell.jsp Ladon whoami</span><br></pre></td></tr></table></figure><p>K8-UA马,类型为1或ua（例子WebLogic）<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/JspShellExec.PNG"></p><p>菜刀马,类型为2或cd（例子Struts2）<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/JspShell_cd.PNG"></p><h3 id="CS-JspShell"><a href="#CS-JspShell" class="headerlink" title="CS JspShell"></a>CS JspShell</h3><p>Cobalt Strike下Ladon连接内网WebShell，用法和在CMD下一模一样</p><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/cs/CS_JspShell.PNG"></p><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>CS: <a href="https://github.com/k8gege/Aggressor" target="_blank" rel="noopener">https://github.com/k8gege/Aggressor</a><br>Ladon: <a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a></p><h3 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h3><p>暂时只支持JspShell，有空再添加其它SHELL</p>]]></content>
     
@@ -325,10 +327,14 @@
     
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
+      <category term="内网渗透" scheme="http://k8gege.org/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"/>
     
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
+      <category term="远程执行" scheme="http://k8gege.org/categories/Rce/"/>
+    
     
       <category term="Cobalt Strike" scheme="http://k8gege.org/tags/CS/"/>
+    
+      <category term="WebShell" scheme="http://k8gege.org/tags/WebShell/"/>
     
   </entry>
   
@@ -449,7 +455,7 @@
     <link href="http://k8gege.org/p/48225.html"/>
     <id>http://k8gege.org/p/48225.html</id>
     <published>2020-04-02T15:00:00.000Z</published>
-    <updated>2020-06-04T12:31:51.426Z</updated>
+    <updated>2020-06-06T02:32:07.358Z</updated>
     
     <content type="html"><![CDATA[<p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/OnlinePC6.2.png"></p><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>内网渗透中，最重要的一步就是探测在线机器，只有先探测到机器<br>接下来才是探测操作系统、扫描端口服务、开放WEB、扫描漏洞等。<br>目标不开机，你搞啥呢？当然也有一种情况，目标开机但却扫不到<br>这是因为目前大部份扫描器使用PING扫描，而防火墙默认是拦截的<br>默认条件下也不放行其它端口，比如SMB、RDP、HTTP等协议也不行<br>那能不能在防火墙完全防护状态下探测存活机器呢？答案是有的。</p><h3 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h3><p>Win7-A: 192.168.1.20 测试防火墙<br>Win7-B: 192.168.1.7  Ladon扫描器</p><p>实验1：A机器关闭防火墙<br>实验2：A机器开启防火墙<br>实验3：A机器关机</p><p>PS：整个过程中B机器防火墙需关闭，因为要保证所有协议都能进出B机器<br>才能测试防火墙开启或关闭的情况下，分别有哪些协议可以探测存活主机</p><h3 id="A关闭防火墙"><a href="#A关闭防火墙" class="headerlink" title="A关闭防火墙"></a>A关闭防火墙</h3><p>ICMP协议可达目标机器，即可PING通A机器<br>Ladon 192.168.1.1/24 OnlinePC<br>=============================================<br>ICMP: 192.168.1.7       00-0C-00-00-00-90       Win-K8gege      VMware<br>ICMP: 192.168.1.4       00-0C-00-00-00-1C                       VMware<br>ICMP: 192.168.1.30      08-1F-00-00-00-EA                       Tp-Link<br>ICMP: 192.168.1.1       94-28-00-00-00-4E                       NewH3C<br>ICMP: 192.168.1.20      00-0C-00-00-00-50                       VMware<br>=============================================<br>OnlinePC:5</p><h3 id="A开启防火墙"><a href="#A开启防火墙" class="headerlink" title="A开启防火墙"></a>A开启防火墙</h3><p>ICMP协议不可达目标机器，即无法PING通A机器，但是MAC可以<br>Ladon 192.168.1.1/24 OnlinePC<br>=============================================<br>ICMP: 192.168.1.7       00-0C-00-00-00-90       Win-K8gege      VMware<br>ICMP: 192.168.1.1       94-28-00-00-00-4E                       NewH3C<br>ICMP: 192.168.1.30      08-1F-00-00-00-EA                       Tp-Link<br>ICMP: 192.168.1.4       00-0C-00-00-00-1C                       VMware<br> MAC: 192.168.1.20      00-0C-00-00-00-50                       VMware<br>ICMP: 192.168.1.2       38-AD-00-00-00-1F                       NewH3C<br>=============================================<br>OnlinePC:6</p><h3 id="A机器关机"><a href="#A机器关机" class="headerlink" title="A机器关机"></a>A机器关机</h3><p>A机器关机后，发现无法探测MAC，说明能获取到MAC，机器肯定在线<br>Ladon 192.168.1.1/24 OnlinePC<br>=============================================<br>ICMP: 192.168.1.7       00-0C-00-00-00-90       Win-K8gege      VMware<br>ICMP: 192.168.1.1       94-28-00-00-00-4E                       NewH3C<br>ICMP: 192.168.1.4       00-0C-00-00-00-1C                       VMware<br>ICMP: 192.168.1.30      08-1F-00-00-00-EA                       Tp-Link<br>ICMP: 192.168.1.2       38-AD-00-00-00-1F                       NewH3C<br>=============================================<br>OnlinePC:5</p><h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>开机状态下，开启系统防火墙后，无法PING通机器（默认配置）<br>但可获取远程机器MAC，因此可通过MAC探测目标主机是否存活</p><h3 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h3><p>1.有人问我Ladon扫描出来的存活机器，为何PING不通呢?是不是不准？<br>答：首先机器存活，但相关端口未开放，如3389没开,你当然连不上。<br>同理防火墙默认根本不允许ICMP协议通过，你PING不通很正常。Ladon<br>通过其它方式探测到存活，而非单纯的ICMP，PING不通并不代表关机<br>上面的实验结果已充分说明，用其它工具扫描可能会漏掉禁PING机器</p><p>2.有人问我为什么新版的OnlinePC比之前慢了，以前3秒可扫一个C段。<br>再重复一次，Ladon的OnlinePC不只是单纯的通过ICMP检测存活主机。<br>打个比方一个人自己开车去北京，中途车坏了他就不去了，事情结束<br>如果车坏了，找人来修或换乘轮船，最后到达北京时间是不是多了。<br>新版的先PING机器,不通并没有结束，而是再尝试使用其它协议探测<br>最简单的一个问题，你是想要扫描结果更准更多，还是结果少速度快<br>再者以前可能3秒至几秒，现在可能几秒至13秒，才多几秒钟也不慢啊</p><p>以上两个问题是我发此文章的主要原因，怕还会有很多人问同样的问题</p><h3 id="28种方法"><a href="#28种方法" class="headerlink" title="28种方法"></a>28种方法</h3><p>Ladon以下模块均可用于探测存活主机，不要死板的只用OnlinePC<br>或者只用其它只是用PING来扫描的工具，得到的结果错过很多机器<br>可根据实际情况使用以下模块探测存活主机，如WAF禁用HTTP协议<br>采用HTTP协议的模块就不要用了，即便同样是HTTP，模块结果不同<br>如WhatCMS识别到CMS才回显，WebScan还会返回HttpBanner。<br>所以同个协议，有些模块扫不出东西，不代表防火墙禁止该协议。</p><p>如大家最容易理解的扫445端口发现不开放，不代表TCP协议禁用<br>因为人家怕你用MS17010漏洞一键GETSHELL，所以禁止了共享而已<br>如果要精准探测存活主机，就得使用多个方式才能深入拓展内网</p><table><thead><tr><th>ID</th><th>模块名称</th><th>功能说明</th><th>采用协议</th><th>用法</th></tr></thead><tbody><tr><td>1</td><td>OnlinePC</td><td>存活主机信息</td><td>ICMP、MAC、DNS</td><td>Ladon 192.168.1.1/24 OnlinePC</td></tr><tr><td>2</td><td>OnlineIP</td><td>存活主机(IP)</td><td>ICMP、MAC、DNS</td><td>Ladon 192.168.1.1/24 OnlineIP</td></tr><tr><td>3</td><td>UrlScan</td><td>URL域名扫描</td><td>HTTP</td><td>Ladon 192.168.1.1/24 UrlScan</td></tr><tr><td>4</td><td>SameWeb</td><td>同服域名扫描</td><td>HTTP</td><td>Ladon 192.168.1.1/24 SameWeb</td></tr><tr><td>5</td><td>WebScan</td><td>Web信息扫找</td><td>HTTP</td><td>Ladon 192.168.1.1/24 WebScan</td></tr><tr><td>6</td><td>HostIP</td><td>主机名解析</td><td>DNS</td><td>Ladon Win-K8gege HostIP</td></tr><tr><td>7</td><td>DomainIP</td><td>域名解析</td><td>DNS</td><td>Ladon k8gege.org DomainIP</td></tr><tr><td>8</td><td>OsScan</td><td>操作系统版本</td><td>MAC、DNS、SMB、HTTP、RDP、TCP等</td><td>Ladon 192.168.1.1/24 OsScan</td></tr><tr><td>9</td><td>PortScan</td><td>扫描Banner</td><td>TCP</td><td>Ladon 192.168.1.1/24 PortScan</td></tr><tr><td>10</td><td>WhatCMS</td><td>Web指纹识别</td><td>HTTP</td><td>Ladon 192.168.1.1/24 WhatCMS</td></tr><tr><td>11</td><td>CiscoScan</td><td>思科扫描</td><td>HTTP、TCP</td><td>Ladon 192.168.1.1/24 CiscoScan</td></tr><tr><td>12</td><td>EnumMssql</td><td>MSSQL主机</td><td>MSSQL</td><td>Ladon EnumMssql</td></tr><tr><td>13</td><td>EnumShare</td><td>共享主机</td><td>SMB</td><td>Ladon EnumShare</td></tr><tr><td>14</td><td>LdapScan</td><td>LDAP主机/389端口/密码爆破</td><td>LDAP、TCP</td><td>Ladon 192.168.1.1/24 LdapScan</td></tr><tr><td>15</td><td>FtpScan</td><td>FTP主机/21端口/密码爆破</td><td>FTP、TCP</td><td>Ladon 192.168.1.1/24 FtpScan</td></tr><tr><td>16</td><td>SmbScan</td><td>445端口/密码爆破</td><td>SMB、TCP</td><td>Ladon 192.168.1.1/24 SmbScan</td></tr><tr><td>17</td><td>WmiScan</td><td>135端口/密码爆破</td><td>WMI、TCP</td><td>Ladon 192.168.1.1/24 WmiScan</td></tr><tr><td>18</td><td>SmbHash</td><td>445端口/密码爆破</td><td>SMB、TCP</td><td>Ladon 192.168.1.1/24 SmbHash</td></tr><tr><td>19</td><td>WmiHash</td><td>135端口/密码爆破</td><td>WMI、TCP</td><td>Ladon 192.168.1.1/24 WmiHash</td></tr><tr><td>20</td><td>SshScan</td><td>22端口/密码爆破</td><td>SSH、TCP</td><td>Ladon 192.168.1.1/24 SshScan</td></tr><tr><td>21</td><td>MssqlScan</td><td>1433端口/密码爆破</td><td>MSSQL、TCP</td><td>Ladon 192.168.1.1/24 MssqlScan</td></tr><tr><td>22</td><td>OracleScan</td><td>1521端口/密码爆破</td><td>Oracle、TCP</td><td>Ladon 192.168.1.1/24 OracleScan</td></tr><tr><td>23</td><td>MysqlScan</td><td>3306端口/密码爆破</td><td>MYSQL、TCP</td><td>Ladon 192.168.1.1/24 MysqlScan</td></tr><tr><td>24</td><td>VncScan</td><td>5900端口/密码爆破</td><td>VNC、TCP</td><td>Ladon 192.168.1.1/24 VncScan</td></tr><tr><td>25</td><td>MS17010</td><td>MS17010漏洞检测</td><td>TCP、SMB</td><td>Ladon 192.168.1.1/24 MS17010</td></tr><tr><td>26</td><td>AdiDnsDump</td><td>域内存活机器</td><td>DNS、LDAP</td><td>Ladon AdiDnsDump 域机器IP</td></tr><tr><td>27</td><td>FtpSniffer</td><td>Ftp密码嗅探</td><td>FTP</td><td>Ladon FtpSniffer 192.168.1.8</td></tr><tr><td>28</td><td>HttpSniffer</td><td>HTTP密码嗅探</td><td>HTTP</td><td>Ladon HTTPSniffer 192.168.1.8</td></tr></tbody></table><p>PS: Ladon 6.2开始密码爆破模块，在无帐密文件的情况下，仅探测协议或对应端口<br>当然所有密码爆破均可自定义端口爆破，但自定义端口可能只支持一台不支持批量<br>具体看Ladon对应模块的详细文档,嗅探模块嗅探出HTTP或FTP帐密同时也证明其存活</p><h3 id="Browser协议"><a href="#Browser协议" class="headerlink" title="Browser协议"></a>Browser协议</h3><p>无意发现browser协议中含有机器名、系统版本,发包时间随机，有些2-12分钟<br>除了上述方法外，Browser协议也可以用于探测存活主机，不过是基于嗅探<br>基于Browser协议探测内网主机，详见：<a href="http://k8gege.org/p/16b5ff0b.html">http://k8gege.org/p/16b5ff0b.html</a></p><h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>]]></content>
     
@@ -465,6 +471,14 @@
     
     
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
+    
+      <category term="内网渗透" scheme="http://k8gege.org/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"/>
+    
+      <category term="主机发现" scheme="http://k8gege.org/categories/%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0/"/>
+    
+      <category term="信息收集" scheme="http://k8gege.org/categories/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/"/>
+    
+      <category term="Bypass" scheme="http://k8gege.org/categories/Bypass/"/>
     
     
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
@@ -581,7 +595,7 @@
     <link href="http://k8gege.org/p/53177.html"/>
     <id>http://k8gege.org/p/53177.html</id>
     <published>2020-03-29T16:10:00.000Z</published>
-    <updated>2020-06-04T12:32:32.738Z</updated>
+    <updated>2020-06-06T02:32:58.214Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>内置密码爆破模块还不够全面，研发其它协议认证需要时间。<br>先不说功能实现，首先搭建各种协议认证环境就不少时间吧。<br>还有别人的工具不开源的情况，而且它只能支持单个IP爆破。<br>这时候我们需要批量爆破整个C段、多个网段、或批量列表。<br>批量包括但不限于IP、URL、机器名、CIDR格式、任意XX等。</p><h3 id="INI配置插件"><a href="#INI配置插件" class="headerlink" title="INI配置插件"></a>INI配置插件</h3><p>适用场景，需调用相关命令或第三方工具进行批量操作<br>或者有新的POC，但来不及或无法写成DLL来调用时<br>很多第3方工具不支持批量或者说根本不支持批量网段<br>而Ladon不只限于批量IP、URL、IP段、任意内容等<br>是紧急情况下最适合用于验证内网是否存在漏洞工具<br>新的漏洞来时你能调好POC就不错了，批量更要时间</p><h3 id="自定义密码爆破"><a href="#自定义密码爆破" class="headerlink" title="自定义密码爆破"></a>自定义密码爆破</h3><p>例子：调用修改过的smbexec.exe进行HASH密码验证，原版不退出无法爆破<br>根目录下放4个文件，smbexec.exe、smbhash.ini、user.txt、pass.txt。</p><p>smbhash.ini</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=smbexec.exe</span><br><span class="line">arg=-hashes <span class="variable">$pass</span>$ <span class="variable">$user</span><span class="variable">$@</span><span class="variable">$ip</span>$</span><br><span class="line">isok=Launching semi-interactive shell</span><br><span class="line">port=445</span><br><span class="line"><span class="built_in">log</span>=<span class="literal">true</span></span><br></pre></td></tr></table></figure><h3 id="INI插件用法"><a href="#INI插件用法" class="headerlink" title="INI插件用法"></a>INI插件用法</h3><p>命令：Ladon 192.168.1.1/24 smbhash.ini</p><h3 id="INI参数说明"><a href="#INI参数说明" class="headerlink" title="INI参数说明"></a>INI参数说明</h3><p>exe:  程序名称，必填项。不指定路径优先加载SYSTEM32目录或当前目录下程序<br>arg:  程序参数，必填项。其中$ip$、$user$、$pass$变量为字典文件替换变量<br>isok：成功标志，必填项。如smbexec成功时返回”Launching semi-interactive shell”<br>port：对应端口，非必填。如SMB为445，Ladon先检测到端口开放，才进行密码爆破<br>log:  程序日志，非必填。如有些程序返回一堆错误结果，我们不想看，可不显示</p><p>检测内网C段是否使用同一个密码,命令：Ladon 192.168.1.1/24 smbhash.ini<br>截图为6.1，大家记得把ret改成isok就行了。<br><img alt data-original="http://k8gege.org/k8img/Ladon/exe/DiyIniPwd.PNG"></p><h3 id="功能多余？"><a href="#功能多余？" class="headerlink" title="功能多余？"></a>功能多余？</h3><p>有人可能会说，功能用不到，批量用自己的程序就可以了。<br>1.不是所有人都会编程，INI配置的目的主要是给这些人用的。<br>2.据我所知市面上的批量，仅支持批量单一列表，如IP列表、URL列表等，且不支持模块化。</p><p>举个例子：CVE-2019-0708原版漏洞检测批量支持C段扫描，但不支持批量C段甚至批量B段扫描。<br>没错它是开源的，但有几个人去实现修改让它支持更多实战环境的批量需求？<br>C语言的多线程操作可和Python这种小学生都能轻松学会的人随便写的啊。<br>如果别的Poc，用其它你不懂的语言来写，你需要急用，你还会慢慢去学？<br>当然你不觉得麻烦，也可以另外用自己会的语言写个批量调用工具，哈哈</p><h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>]]></content>
     
@@ -597,8 +611,12 @@
     
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
+      <category term="密码爆破" scheme="http://k8gege.org/categories/%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4/"/>
+    
     
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
+    
+      <category term="Brute" scheme="http://k8gege.org/tags/Brute/"/>
     
   </entry>
   
@@ -607,7 +625,7 @@
     <link href="http://k8gege.org/p/61471.html"/>
     <id>http://k8gege.org/p/61471.html</id>
     <published>2020-03-28T03:39:45.695Z</published>
-    <updated>2020-01-18T11:51:43.871Z</updated>
+    <updated>2020-06-06T02:30:08.129Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>SQL Server 允许应用程序在当前网络中查找 SQL Server 实例。 SqlDataSourceEnumerator 类向应用程序开发人员公开此信息，提供包含所有可见服务器的信息的 DataTable。 此返回的表包含网络上可用的服务器实例的列表，该列表与用户尝试创建新连接时提供的列表匹配，并展开包含连接属性上所有可用服务器的下拉列表。对话框。 显示的结果并非总是完整的。</p><h3 id="SqlDataSourceEnumerator"><a href="#SqlDataSourceEnumerator" class="headerlink" title="SqlDataSourceEnumerator"></a>SqlDataSourceEnumerator</h3><p>命名空间: System.Data.Sql<br>程序集: System.Data.dll</p><p>提供了一种枚举本地网络内的所有可用 SQL Server 实例的机制。</p><p>通过方法调用返回的表包含以下列，所有列均包含 string 值：<br>列     描述<br>ServerName     服务器的名称。<br>InstanceName     服务器实例的名称。 如果服务器作为默认实例运行，则为空白。<br>IsClustered     指示服务器是否属于群集。<br>Version     服务器的版本。 例如:</p><p>-9.00 （SQL Server 2005）<br>-10.0. xx （SQL Server 2008）<br>-10.50 （SQL Server 2008 R2）<br>-11.0. xx （SQL Server 2012）</p><h3 id="C-示例代码"><a href="#C-示例代码" class="headerlink" title="C#示例代码"></a>C#示例代码</h3><p>.NET与PowerShell谁的兼容性和执行效率更好就不用我说了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">using System.Data.Sql;  </span><br><span class="line">  </span><br><span class="line">class Program  </span><br><span class="line">&#123;  </span><br><span class="line">  static void Main()  </span><br><span class="line">  &#123;  </span><br><span class="line">    &#x2F;&#x2F; Retrieve the enumerator instance and then the data.  </span><br><span class="line">    SqlDataSourceEnumerator instance &#x3D;  </span><br><span class="line">      SqlDataSourceEnumerator.Instance;  </span><br><span class="line">    System.Data.DataTable table &#x3D; instance.GetDataSources();  </span><br><span class="line">  </span><br><span class="line">    &#x2F;&#x2F; Display the contents of the table.  </span><br><span class="line">    DisplayData(table);  </span><br><span class="line">  </span><br><span class="line">    Console.WriteLine(&quot;Press any key to continue.&quot;);  </span><br><span class="line">    Console.ReadKey();  </span><br><span class="line">  &#125;  </span><br><span class="line">  </span><br><span class="line">  private static void DisplayData(System.Data.DataTable table)  </span><br><span class="line">  &#123;  </span><br><span class="line">    foreach (System.Data.DataRow row in table.Rows)  </span><br><span class="line">    &#123;  </span><br><span class="line">      foreach (System.Data.DataColumn col in table.Columns)  </span><br><span class="line">      &#123;  </span><br><span class="line">        Console.WriteLine(&quot;&#123;0&#125; &#x3D; &#123;1&#125;&quot;, col.ColumnName, row[col]);  </span><br><span class="line">      &#125;  </span><br><span class="line">      Console.WriteLine(&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;);  </span><br><span class="line">    &#125;  </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="PowerShell命令"><a href="#PowerShell命令" class="headerlink" title="PowerShell命令"></a>PowerShell命令</h3><p>系统未安装或禁用PowerShell会失效，但也比国人故意吹捧的PowerUPSQL好很多倍。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\k8gege\Desktop&gt;PowerShell -Command <span class="string">"[System.Data.Sql.SqlDataSourceEnumerator]::Instance.GetDataSources()"</span></span><br><span class="line"></span><br><span class="line">ServerName          InstanceName        IsClustered         Version</span><br><span class="line">----------          ------------        -----------         -------</span><br><span class="line">K82003-77562E10</span><br><span class="line">WIN-OLDM1T2H9M4</span><br></pre></td></tr></table></figure><h3 id="PowerUPSQL"><a href="#PowerUPSQL" class="headerlink" title="PowerUPSQL"></a>PowerUPSQL</h3><p>此工具也是基于SqlDataSourceEnumerator实现的，兼容性较差，很多系统下运行各种报错。</p><pre><code class="Bash">PS C:\Users\k8gege\Desktop\PowerUpSQL-master&gt; Get-SQLInstanceBroadcast -Verbose详细信息: Attempting to identify SQL Server instances on the broadcast domain.详细信息: 2 SQL Server instances were found.ComputerName                        Instance                           IsClustered                        Version                           ------------                        --------                           -----------                        -------                           K82003-77562E10                     K82003-77562E10                                                                                         WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre><h3 id="Ladon-EnumMssql"><a href="#Ladon-EnumMssql" class="headerlink" title="Ladon EnumMssql"></a>Ladon EnumMssql</h3><p>Ladon的EnumMssql模块不支持扫描，若内网存在多个网段，可使用PortScan扫描探测。<br><img alt="img" data-original="https://camo.githubusercontent.com/2e97e127bfc1acd625ee289dbfaf4b3ffd307bd7/68747470733a2f2f6b38676567652e6769746875622e696f2f6b38696d672f4c61646f6e2f63732f43535f456e756d4d5353514c2e676966"></p><p>Ladon与PowerUPSQL对比，Ladon支持任意Win系统，而PowerUPSQL就未必能用了<br><img alt="img" data-original="https://camo.githubusercontent.com/73b58a071a70adf62dc7f4aecd1dff48d8e5df40/68747470733a2f2f6b38676567652e6769746875622e696f2f6b38696d672f4c61646f6e2f6578652f456e756d4d5353514c2e676966"></p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a><br><a href="https://docs.microsoft.com/zh-cn/dotnet/framework/data/adonet/sql/enumerating-instances-of-sql-server" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/dotnet/framework/data/adonet/sql/enumerating-instances-of-sql-server</a></p>]]></content>
     
@@ -621,17 +639,19 @@
     </summary>
     
     
-      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
-    
       <category term=".NET" scheme="http://k8gege.org/categories/Dotnet/"/>
     
-      <category term="内网" scheme="http://k8gege.org/categories/Lan/"/>
+      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
+    
+      <category term="内网渗透" scheme="http://k8gege.org/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"/>
     
       <category term="源码" scheme="http://k8gege.org/categories/Code/"/>
     
-      <category term="SQL" scheme="http://k8gege.org/categories/SQL/"/>
+      <category term="主机发现" scheme="http://k8gege.org/categories/%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0/"/>
     
       <category term="编程" scheme="http://k8gege.org/categories/Program/"/>
+    
+      <category term="信息收集" scheme="http://k8gege.org/categories/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/"/>
     
     
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>

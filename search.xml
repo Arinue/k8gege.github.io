@@ -1065,12 +1065,12 @@
       <categories>
         <category>提权</category>
         <category>Ladon</category>
-        <category>Rce</category>
+        <category>远程执行</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
-        <tag>Rce</tag>
-        <tag>提权</tag>
+        <tag>LPE</tag>
+        <tag>RCE</tag>
         <tag>CVE-2020-0796</tag>
         <tag>SMBGhost</tag>
       </tags>
@@ -1088,11 +1088,12 @@ window.location.href="http://k8gege.org/Ladon/webshell.html";
 ]]></content>
       <categories>
         <category>Ladon</category>
-        <category>Rce</category>
+        <category>远程执行</category>
       </categories>
       <tags>
-        <tag>Ladon</tag>
-        <tag>Rce</tag>
+        <tag>WebShell</tag>
+        <tag>RCE</tag>
+        <tag>ladon</tag>
       </tags>
   </entry>
   <entry>
@@ -1167,7 +1168,7 @@ window.location.href="http://k8gege.org/Ladon/WinShell.html";
 ]]></content>
       <categories>
         <category>Ladon</category>
-        <category>Rce</category>
+        <category>远程执行</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1186,8 +1187,8 @@ window.location.href="http://k8gege.org/Ladon/WinrmScan.html";
 ]]></content>
       <categories>
         <category>Ladon</category>
-        <category>Rce</category>
-        <category>Brute</category>
+        <category>远程执行</category>
+        <category>密码爆破</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1207,7 +1208,7 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
 ]]></content>
       <categories>
         <category>Ladon</category>
-        <category>Brute</category>
+        <category>密码爆破</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1233,10 +1234,12 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
       <categories>
         <category>Cobalt Strike</category>
         <category>Ladon</category>
+        <category>内网渗透</category>
+        <category>远程执行</category>
       </categories>
       <tags>
-        <tag>Ladon</tag>
         <tag>Cobalt Strike</tag>
+        <tag>WebShell</tag>
       </tags>
   </entry>
   <entry>
@@ -1571,6 +1574,10 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
 ]]></content>
       <categories>
         <category>Ladon</category>
+        <category>内网渗透</category>
+        <category>主机发现</category>
+        <category>信息收集</category>
+        <category>Bypass</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1849,9 +1856,11 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
 ]]></content>
       <categories>
         <category>Ladon</category>
+        <category>密码爆破</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
+        <tag>Brute</tag>
       </tags>
   </entry>
   <entry>
@@ -1882,12 +1891,13 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a><br><a href="https://docs.microsoft.com/zh-cn/dotnet/framework/data/adonet/sql/enumerating-instances-of-sql-server" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/dotnet/framework/data/adonet/sql/enumerating-instances-of-sql-server</a></p>
 ]]></content>
       <categories>
-        <category>Ladon</category>
         <category>.NET</category>
-        <category>内网</category>
+        <category>Ladon</category>
+        <category>内网渗透</category>
         <category>源码</category>
-        <category>SQL</category>
+        <category>主机发现</category>
         <category>编程</category>
+        <category>信息收集</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -2080,42 +2090,29 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </tags>
   </entry>
   <entry>
-    <title>看我如何模拟Cobalt Strike上线欺骗入侵者</title>
-    <url>/p/40523.html</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>不知道你有没有遇到过马上线却不能操作的情况，我猜当你网络卡或马写得不好时会出现这个问题<br>但是人为的你可能没遇到过，首先要欺骗你的远控，得分析你的协议，如果你的马根本不是公开的<br>网络又是好的，你刚往人家机器里种马，发现马只能上线不能操作，绝对是马有问题，不能甩锅我<br>人家都不知道你的马的通信原理，流量特征，不可能事先准备好一个程序，让你一发就欺骗你的马<br>本文主要研究CS这个APT很喜欢用的马，当然TCP的也一样原理，只要构造对应的数据包就可欺骗</p>
-<h3 id="远控术语"><a href="#远控术语" class="headerlink" title="远控术语"></a>远控术语</h3><p>Cobalt Strike采用的是B/S架构，也就是常说的HTTP协议（HTTPS加密的http，记住都是WEB就不会错了）<br>Client：客户是上帝，我们想买什么告诉服务员。就是控制端，即通过它来控制对方电脑。不叫服务端哦<br>Server：服务员，即服务端。以前常说的肉鸡，这个叫被控端不是控制端，叫做什么就做什么不就是服务？<br>中转：放在VPS，好比现在的快递，可有可无，买家直接见卖家就不需要。CS中转Teamserve就是一个WEB</p>
-<p>就是说如果你用IIS或Tomcat搭建的ASP、JSP、PHP、.NET等网站也可以做为中转，即可实现HTTP远控<br>如果CS不搞客户端，我们便可直接在浏览器上操作和控制目标机器，这就是08年这类码称为B/S架构的原因<br>CS的客户端就像我们用PY或其它语言实现模拟WEB登陆网站来操作一样，中转是WEB，那么肉鸡上线，它也<br>一样是HTTP请求来实现，WEB发包、POST提交不管怎么表达都可以，这是渗透基础，即是CS通信采用HTTP</p>
-<p>C/S架构：Clinet/Server,主要指的是TCP，客户端和服务端，即便带个中转它也还是叫CS架构<br>B/S架构: Browser/Server,主要是HTTP，无论直接通过浏览器操作，还是像CS加个中转再用客户端访问<br>RAT：Remote Admin Tools，远程管理工具，长期以来国内外通用叫法。<br>C2: 老外的新名词，command&amp;control，从字面上就很好理解命令和控制，不管任何协议马都可这样叫<br>这种叫法对于不够专业的人来说不会错，因为他根本不需要了解远控到底用什么协议实现，反正都叫C2</p>
-<p>当然无论是以前还是现在叫RAT也绝对不会错，叫RAT可能更专业一点，RAT像老戏骨，C2像小鲜肉<br>看看现在好多远控基本都有CMD和文件管理，甚至只是一个SHELL而已了，我猜这就是C2的由来吧<br>以前像这样一般只称为后门，随便找一个远控都有CMD、文件管理、屏幕控制、键盘记录等功能<br>而现在一个CMD和文件管理，在10几年前也很难称为马叫炮灰，现在搞个炮灰一堆BUG还以为很吊<br>以前只能称为后门，连远控都称不上的，现在只实现了一个CMD执行命令，就说成自己写个远控了<br>多台机器管理实现不了先不说，只能一对一，断以后就无法控制，连后门都不合格，还TM说成远控</p>
-<p>PS：之所以写这一段话，主要是发现不少写马的或渗透的，竟然都分不清楚服务端和控制端</p>
-<h4 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h4><p>还有我说HTTP协议(含HTTP/S)，还有人说不是HTTP还有HTTPS（首先搞清楚HTTPS是什么，加密的HTTP）<br>比方说你设计一个HTTP经过特定格式加密，单纯HTTP访问得不到真实数据而已，解不了就不属于HTTP了？<br>当有一天大家都觉得这个加密好用或安全，给它起个名叫KTTPS，或许可称为新协议，但本质还是HTTP协议。<br>当然可能有些人要说HTTP也属于TCP，虽说HTTP可通过TCP实现，但是两者有很大区别，通过TCP实现叫伪<br>为什么因为它不是真正的HTTP，目标WAF禁TCP的时候，TCP实现的就出不来，HTTP只要会操作WEB就行<br>HTTP比TCP多了一个，允许通过WEB操作来访问，HTTP虽是特殊的TCP，但已经完全变异成了一个新协议。</p>
-<p>就像猩猩和人，我们几乎不会说人是猩猩，只会说人是猩猩进化而来的，因为变异太多，可以以新物种定义。<br>而HTTPS和HTTP，就像戴不戴口罩，戴个口罩就TM不是人了？除了戴个口罩，你的衣食住行哪一样不是人。<br>你不戴口罩进不了小区，那你就戴口罩就能进去了啊，就像HTTPS(HTTP基础上加SSL协议就可以访问了啊)<br>HTTP不加SSL访问不了HTTPS，你就说HTTPS不属于HTTP，这和不戴口罩不让进小区，就说你不是人一样<br>本质是因为你不是人而不让你进吗？而是你不戴口罩，并不是说你不是人所以不让你出入，概念不一样。<br>所以说我们通常只说TCP协议、HTTP协议(因为已包含HTTPS在内)，至少10几年来很少听到有人说HTTPS马<br>最多只是听说这款http马也支持https，或这个webshell工具支持https站点，这个EXP支持HTTPS站点等</p>
-<h3 id="CS心跳包"><a href="#CS心跳包" class="headerlink" title="CS心跳包"></a>CS心跳包</h3><p>一般在设计远控时，我们都会对机器进行标记，比如上线特征为A<br>A对应信息已保存在本地数据库，因此想要确认机器是否还在控<br>我们只需要发送A标识给客户端，告诉它机器还在控制,即心跳包<br>而没实战过的人是每次都发送目标信息，这样很容易被目标发现</p>
-<p>下面配置好CS让其上线后，我们对服务端进行抓包，其心跳包如下<br>CS也是一样，因为是BS模式HTTP协议，它的心跳特征存在Cookie里<br>非正常cookie写法，一段很长的加密数据，可以止来判断是否中招</p>
-<p><img alt="img" data-original="http://k8gege.org/k8img/csonline/cscheat1.PNG"></p>
-<h3 id="上线验证"><a href="#上线验证" class="headerlink" title="上线验证"></a>上线验证</h3><p>使用Ladon Exp生成器可以提交WEB数据包，类似Firefox上的HackBar但更高级<br>区别在于可生成Ladon插件或独立EXE，对于不懂编程的人来说也可“编写”EXP<br><img alt="img" data-original="http://k8gege.org/k8img/csonline/cscheat2.PNG"></p>
-<p>运行LadonPoc.exe发现CS上线，执行一次就上线一次，说明思路没错<br><img alt="img" data-original="http://k8gege.org/k8img/csonline/cscheat3.gif"></p>
-<h3 id="欺骗入侵者"><a href="#欺骗入侵者" class="headerlink" title="欺骗入侵者"></a>欺骗入侵者</h3><p>假设我们在内网中发现别人的CS流量或者抓到样本，给他模拟上线，让他有得看没得吃<br>他在客户端那边只会看到机器在线，就是死活控不了，然后他就想是不是目标环境奇葩<br>还是说网络太卡或有什么问题,能上线就是不能操作，哈哈，一直在上线却啥事也不能做</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="comment">### Cobalt Strike Cheat by K8gege</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cscheat</span><span class="params">()</span>:</span></span><br><span class="line">	opener = urllib2.build_opener()</span><br><span class="line">	opener.addheaders.append((<span class="string">'Cookie'</span>, <span class="string">'Qk1UsVjTNpW6aR0327yD57Zkt1m6XWurvM+bR0xqOqGnXsatzGHpnccfgqmruH6dnJudEzijQhC0NCtoAxdA90rso7NAfBrfRrktO5B4FjZX6LEBxIyzEwQ71Jk1ttM8VY6luE5k+PMLk6DAmWUoGoJmvAl/qp4qreuWumv52TM='</span>))</span><br><span class="line">	res = opener.open(<span class="string">"http://192.168.1.102:800/dpixel"</span>)</span><br><span class="line">	content = res.read()</span><br><span class="line">	<span class="keyword">print</span> content</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:    </span><br><span class="line">	print(time.strftime(<span class="string">'%Y-%m-%d %X'</span>,time.localtime()))    </span><br><span class="line">	cscheat()</span><br><span class="line">	time.sleep(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+    <title>利用DirectoryEntry获取域内计算机以及共享资源</title>
+    <url>/p/54132.html</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>System.DirectoryServices.DirectoryEntry组件提供了对Active Directory的访问。本文以两个简单的小程序为例，阐述了如何利用此组件查看网络的各节点的信息。 DirectoryEntry组件提供了Path属性，根据文档，此属性指定了目录服务中用来访问对象的对象名，其格式如下：<br>protocol://servername:port number/distinguished name<br>此语句的第一部分定义了访问将使用的协议，如<br>LDAP: (Lightweight Directory Access Protocol)<br>IIS: (提供IIS元数据来读及配置Internet Infomation Server)<br>WinNT: (提供在非常有限的性能下对Windows NT域的访问)<br>NDS: (提供对Novell Directory Service的访问)<br>等等（详细信息清参考MSDN）。 </p>
+<p>因此我们构造一个DirectoryEntry实例，将它的Path设为”WinNT:”，以通过对它的所有子项的枚举来发现网络上的所有域（以及工作组）。这样，再对所发现的域（以及工作组）的子项进行枚举，就可以发现网络上的所有计算机，结合WMI发现机器上的共享资源。</p>
+<h3 id="C-实现代码"><a href="#C-实现代码" class="headerlink" title="C#实现代码"></a>C#实现代码</h3><p>以下为Ladon的EnumShare代码,自动获取当前域，并枚举域内计算机以及获取机器开放共享资源。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">string strDomain;</span><br><span class="line">string strComputer;</span><br><span class="line">string strShare;</span><br><span class="line">Console.WriteLine(&quot;Load EnumShare&quot;);</span><br><span class="line"></span><br><span class="line">DirectoryEntry root &#x3D; new DirectoryEntry(&quot;WinNT:&quot;);</span><br><span class="line">foreach (DirectoryEntry Domain in root.Children)</span><br><span class="line">&#123;</span><br><span class="line">    strDomain &#x3D; Domain.Name;</span><br><span class="line">    Console.WriteLine(&quot;Domain: &quot; + strDomain);</span><br><span class="line">    foreach (DirectoryEntry Computer in Domain.Children)</span><br><span class="line">    &#123;</span><br><span class="line">        if (Computer.SchemaClassName.Equals(&quot;Computer&quot;))</span><br><span class="line">        &#123;</span><br><span class="line">            strComputer &#x3D; Computer.Name;</span><br><span class="line">            ManagementObjectSearcher searcher &#x3D; new ManagementObjectSearcher(&quot;select * from win32_share&quot;);</span><br><span class="line">            foreach (ManagementObject share in searcher.Get())</span><br><span class="line">            &#123;</span><br><span class="line">                strShare &#x3D; share[&quot;Name&quot;].ToString();</span><br><span class="line">                Console.WriteLine(strComputer + &quot;\\&quot; + strShare);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img alt="img" data-original="http://k8gege.org/k8img/csonline/cscheat4.gif"></p>
-<h3 id="读取CMD指令"><a href="#读取CMD指令" class="headerlink" title="读取CMD指令"></a>读取CMD指令</h3><p>当客户端下达CMD命令时，中转TeamServer会将命令放在心跳包中，返回的结果如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">^Zd........N...&amp;....%COMSPEC%.... /C net user k8gege..AAAAAAAAAA.&lt;....g..I9.....</span><br><span class="line"></span><br><span class="line">5e5a69740000002e0000004e000000260000000925434f4d535045432500000013202f43206e6574</span><br><span class="line">2075736572206b387465616d00004141414141414141414100e488fc2a22f737b0067ac4384c4971</span><br></pre></td></tr></table></figure>
-
-<p>测试多次发现不管执行多长的命令 都会出现/C空格 和两个00加至少一个A<br>所以我们截取 2F4320 和 000041 之间的值，再解密即为CS下发的CMD命令</p>
-<p><img alt="img" data-original="http://k8gege.org/k8img/csonline/cscheat5.PNG"></p>
-<h3 id="返回CMD结果"><a href="#返回CMD结果" class="headerlink" title="返回CMD结果"></a>返回CMD结果</h3><p>将CS的命令执行结果提交到submit.php页面，即可实现回显,数据包如下</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">POST /submit.php?id=60871 HTTP/1.1</span><br><span class="line">Accept: */*</span><br><span class="line">Content-Type: application/octet-stream</span><br><span class="line">User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)</span><br><span class="line">Host: 192.168.1.102:800</span><br><span class="line">Content-Length: 68</span><br><span class="line">Connection: Keep-Alive</span><br><span class="line">Cache-Control: no-cache</span><br><span class="line"></span><br><span class="line">...@...</span><br><span class="line">........win-60a3b595b7m\k8gege</span><br><span class="line">................0=W1..LGCN..</span><br></pre></td></tr></table></figure>
-
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>通过本文我们了解了CS心跳包机制、下达指令、回显等原理，并玩弄入侵者<br>有兴趣的话，可以自行抓包实现自己的CS服务端，甚至支持对Linux的控制<br>也可以实现CS远控的密罐，把CS下达的指令提取出来，返回假的CMD命令结果<br>即能收集目标证据以及意图，还能将他玩弄于鼓掌之中，搞死他，哈哈</p>
-<p>PS：之所以有这篇文章，是因为昨晚有人在群里讨论，CS能不能支不支持Linux<br>目前CS的shellcode以及beacon(核心功能DLL)都是WINDOWS系统才能执行。<br>而CS对于Linux的控制目前仅是SSH会话，想真正支持就得自己实现服务端<br>不要说让其支持Linux，用个GO来实现，兼容全平台都可以，只是很麻烦<br>因为不开源，每一个动作都要自己去分析它的数据包，很多功能也很费时<br>其实早在去年的这个时间就想实现Linux服务端，所以抓包研究了下。<br>当时就应该有这篇文章了，只是因为忙，懒得编辑文字，后面忘了发。</p>
+<p>Ladon EnumShare<br>因为崇尚极简主义，所以Ladon无需填写域名以及参数，参数多也很烦，全自动获取，一步到位。<br><img alt="img" data-original="https://k8gege.org/k8img/Ladon/exe/EnumShare.PNG"></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a></p>
+<p><a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.directoryservices.directoryentry?view=netframework-4.8" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/dotnet/api/system.directoryservices.directoryentry?view=netframework-4.8</a></p>
 ]]></content>
       <categories>
-        <category>Cobalt Strike</category>
+        <category>.NET</category>
+        <category>Ladon</category>
+        <category>内网渗透</category>
+        <category>源码</category>
+        <category>主机发现</category>
+        <category>编程</category>
+        <category>信息收集</category>
       </categories>
       <tags>
-        <tag>Cobalt Strike</tag>
-        <tag>Python</tag>
+        <tag>Ladon</tag>
+        <tag>.NET</tag>
       </tags>
   </entry>
   <entry>
@@ -2155,27 +2152,42 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </tags>
   </entry>
   <entry>
-    <title>利用DirectoryEntry获取域内计算机以及共享资源</title>
-    <url>/p/54132.html</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>System.DirectoryServices.DirectoryEntry组件提供了对Active Directory的访问。本文以两个简单的小程序为例，阐述了如何利用此组件查看网络的各节点的信息。 DirectoryEntry组件提供了Path属性，根据文档，此属性指定了目录服务中用来访问对象的对象名，其格式如下：<br>protocol://servername:port number/distinguished name<br>此语句的第一部分定义了访问将使用的协议，如<br>LDAP: (Lightweight Directory Access Protocol)<br>IIS: (提供IIS元数据来读及配置Internet Infomation Server)<br>WinNT: (提供在非常有限的性能下对Windows NT域的访问)<br>NDS: (提供对Novell Directory Service的访问)<br>等等（详细信息清参考MSDN）。 </p>
-<p>因此我们构造一个DirectoryEntry实例，将它的Path设为”WinNT:”，以通过对它的所有子项的枚举来发现网络上的所有域（以及工作组）。这样，再对所发现的域（以及工作组）的子项进行枚举，就可以发现网络上的所有计算机，结合WMI发现机器上的共享资源。</p>
-<h3 id="C-实现代码"><a href="#C-实现代码" class="headerlink" title="C#实现代码"></a>C#实现代码</h3><p>以下为Ladon的EnumShare代码,自动获取当前域，并枚举域内计算机以及获取机器开放共享资源。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">string strDomain;</span><br><span class="line">string strComputer;</span><br><span class="line">string strShare;</span><br><span class="line">Console.WriteLine(&quot;Load EnumShare&quot;);</span><br><span class="line"></span><br><span class="line">DirectoryEntry root &#x3D; new DirectoryEntry(&quot;WinNT:&quot;);</span><br><span class="line">foreach (DirectoryEntry Domain in root.Children)</span><br><span class="line">&#123;</span><br><span class="line">    strDomain &#x3D; Domain.Name;</span><br><span class="line">    Console.WriteLine(&quot;Domain: &quot; + strDomain);</span><br><span class="line">    foreach (DirectoryEntry Computer in Domain.Children)</span><br><span class="line">    &#123;</span><br><span class="line">        if (Computer.SchemaClassName.Equals(&quot;Computer&quot;))</span><br><span class="line">        &#123;</span><br><span class="line">            strComputer &#x3D; Computer.Name;</span><br><span class="line">            ManagementObjectSearcher searcher &#x3D; new ManagementObjectSearcher(&quot;select * from win32_share&quot;);</span><br><span class="line">            foreach (ManagementObject share in searcher.Get())</span><br><span class="line">            &#123;</span><br><span class="line">                strShare &#x3D; share[&quot;Name&quot;].ToString();</span><br><span class="line">                Console.WriteLine(strComputer + &quot;\\&quot; + strShare);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>看我如何模拟Cobalt Strike上线欺骗入侵者</title>
+    <url>/p/40523.html</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>不知道你有没有遇到过马上线却不能操作的情况，我猜当你网络卡或马写得不好时会出现这个问题<br>但是人为的你可能没遇到过，首先要欺骗你的远控，得分析你的协议，如果你的马根本不是公开的<br>网络又是好的，你刚往人家机器里种马，发现马只能上线不能操作，绝对是马有问题，不能甩锅我<br>人家都不知道你的马的通信原理，流量特征，不可能事先准备好一个程序，让你一发就欺骗你的马<br>本文主要研究CS这个APT很喜欢用的马，当然TCP的也一样原理，只要构造对应的数据包就可欺骗</p>
+<h3 id="远控术语"><a href="#远控术语" class="headerlink" title="远控术语"></a>远控术语</h3><p>Cobalt Strike采用的是B/S架构，也就是常说的HTTP协议（HTTPS加密的http，记住都是WEB就不会错了）<br>Client：客户是上帝，我们想买什么告诉服务员。就是控制端，即通过它来控制对方电脑。不叫服务端哦<br>Server：服务员，即服务端。以前常说的肉鸡，这个叫被控端不是控制端，叫做什么就做什么不就是服务？<br>中转：放在VPS，好比现在的快递，可有可无，买家直接见卖家就不需要。CS中转Teamserve就是一个WEB</p>
+<p>就是说如果你用IIS或Tomcat搭建的ASP、JSP、PHP、.NET等网站也可以做为中转，即可实现HTTP远控<br>如果CS不搞客户端，我们便可直接在浏览器上操作和控制目标机器，这就是08年这类码称为B/S架构的原因<br>CS的客户端就像我们用PY或其它语言实现模拟WEB登陆网站来操作一样，中转是WEB，那么肉鸡上线，它也<br>一样是HTTP请求来实现，WEB发包、POST提交不管怎么表达都可以，这是渗透基础，即是CS通信采用HTTP</p>
+<p>C/S架构：Clinet/Server,主要指的是TCP，客户端和服务端，即便带个中转它也还是叫CS架构<br>B/S架构: Browser/Server,主要是HTTP，无论直接通过浏览器操作，还是像CS加个中转再用客户端访问<br>RAT：Remote Admin Tools，远程管理工具，长期以来国内外通用叫法。<br>C2: 老外的新名词，command&amp;control，从字面上就很好理解命令和控制，不管任何协议马都可这样叫<br>这种叫法对于不够专业的人来说不会错，因为他根本不需要了解远控到底用什么协议实现，反正都叫C2</p>
+<p>当然无论是以前还是现在叫RAT也绝对不会错，叫RAT可能更专业一点，RAT像老戏骨，C2像小鲜肉<br>看看现在好多远控基本都有CMD和文件管理，甚至只是一个SHELL而已了，我猜这就是C2的由来吧<br>以前像这样一般只称为后门，随便找一个远控都有CMD、文件管理、屏幕控制、键盘记录等功能<br>而现在一个CMD和文件管理，在10几年前也很难称为马叫炮灰，现在搞个炮灰一堆BUG还以为很吊<br>以前只能称为后门，连远控都称不上的，现在只实现了一个CMD执行命令，就说成自己写个远控了<br>多台机器管理实现不了先不说，只能一对一，断以后就无法控制，连后门都不合格，还TM说成远控</p>
+<p>PS：之所以写这一段话，主要是发现不少写马的或渗透的，竟然都分不清楚服务端和控制端</p>
+<h4 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h4><p>还有我说HTTP协议(含HTTP/S)，还有人说不是HTTP还有HTTPS（首先搞清楚HTTPS是什么，加密的HTTP）<br>比方说你设计一个HTTP经过特定格式加密，单纯HTTP访问得不到真实数据而已，解不了就不属于HTTP了？<br>当有一天大家都觉得这个加密好用或安全，给它起个名叫KTTPS，或许可称为新协议，但本质还是HTTP协议。<br>当然可能有些人要说HTTP也属于TCP，虽说HTTP可通过TCP实现，但是两者有很大区别，通过TCP实现叫伪<br>为什么因为它不是真正的HTTP，目标WAF禁TCP的时候，TCP实现的就出不来，HTTP只要会操作WEB就行<br>HTTP比TCP多了一个，允许通过WEB操作来访问，HTTP虽是特殊的TCP，但已经完全变异成了一个新协议。</p>
+<p>就像猩猩和人，我们几乎不会说人是猩猩，只会说人是猩猩进化而来的，因为变异太多，可以以新物种定义。<br>而HTTPS和HTTP，就像戴不戴口罩，戴个口罩就TM不是人了？除了戴个口罩，你的衣食住行哪一样不是人。<br>你不戴口罩进不了小区，那你就戴口罩就能进去了啊，就像HTTPS(HTTP基础上加SSL协议就可以访问了啊)<br>HTTP不加SSL访问不了HTTPS，你就说HTTPS不属于HTTP，这和不戴口罩不让进小区，就说你不是人一样<br>本质是因为你不是人而不让你进吗？而是你不戴口罩，并不是说你不是人所以不让你出入，概念不一样。<br>所以说我们通常只说TCP协议、HTTP协议(因为已包含HTTPS在内)，至少10几年来很少听到有人说HTTPS马<br>最多只是听说这款http马也支持https，或这个webshell工具支持https站点，这个EXP支持HTTPS站点等</p>
+<h3 id="CS心跳包"><a href="#CS心跳包" class="headerlink" title="CS心跳包"></a>CS心跳包</h3><p>一般在设计远控时，我们都会对机器进行标记，比如上线特征为A<br>A对应信息已保存在本地数据库，因此想要确认机器是否还在控<br>我们只需要发送A标识给客户端，告诉它机器还在控制,即心跳包<br>而没实战过的人是每次都发送目标信息，这样很容易被目标发现</p>
+<p>下面配置好CS让其上线后，我们对服务端进行抓包，其心跳包如下<br>CS也是一样，因为是BS模式HTTP协议，它的心跳特征存在Cookie里<br>非正常cookie写法，一段很长的加密数据，可以止来判断是否中招</p>
+<p><img alt="img" data-original="http://k8gege.org/k8img/csonline/cscheat1.PNG"></p>
+<h3 id="上线验证"><a href="#上线验证" class="headerlink" title="上线验证"></a>上线验证</h3><p>使用Ladon Exp生成器可以提交WEB数据包，类似Firefox上的HackBar但更高级<br>区别在于可生成Ladon插件或独立EXE，对于不懂编程的人来说也可“编写”EXP<br><img alt="img" data-original="http://k8gege.org/k8img/csonline/cscheat2.PNG"></p>
+<p>运行LadonPoc.exe发现CS上线，执行一次就上线一次，说明思路没错<br><img alt="img" data-original="http://k8gege.org/k8img/csonline/cscheat3.gif"></p>
+<h3 id="欺骗入侵者"><a href="#欺骗入侵者" class="headerlink" title="欺骗入侵者"></a>欺骗入侵者</h3><p>假设我们在内网中发现别人的CS流量或者抓到样本，给他模拟上线，让他有得看没得吃<br>他在客户端那边只会看到机器在线，就是死活控不了，然后他就想是不是目标环境奇葩<br>还是说网络太卡或有什么问题,能上线就是不能操作，哈哈，一直在上线却啥事也不能做</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="comment">### Cobalt Strike Cheat by K8gege</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cscheat</span><span class="params">()</span>:</span></span><br><span class="line">	opener = urllib2.build_opener()</span><br><span class="line">	opener.addheaders.append((<span class="string">'Cookie'</span>, <span class="string">'Qk1UsVjTNpW6aR0327yD57Zkt1m6XWurvM+bR0xqOqGnXsatzGHpnccfgqmruH6dnJudEzijQhC0NCtoAxdA90rso7NAfBrfRrktO5B4FjZX6LEBxIyzEwQ71Jk1ttM8VY6luE5k+PMLk6DAmWUoGoJmvAl/qp4qreuWumv52TM='</span>))</span><br><span class="line">	res = opener.open(<span class="string">"http://192.168.1.102:800/dpixel"</span>)</span><br><span class="line">	content = res.read()</span><br><span class="line">	<span class="keyword">print</span> content</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:    </span><br><span class="line">	print(time.strftime(<span class="string">'%Y-%m-%d %X'</span>,time.localtime()))    </span><br><span class="line">	cscheat()</span><br><span class="line">	time.sleep(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
 
-<p>Ladon EnumShare<br>因为崇尚极简主义，所以Ladon无需填写域名以及参数，参数多也很烦，全自动获取，一步到位。<br><img alt="img" data-original="https://k8gege.org/k8img/Ladon/exe/EnumShare.PNG"></p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a></p>
-<p><a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.directoryservices.directoryentry?view=netframework-4.8" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/dotnet/api/system.directoryservices.directoryentry?view=netframework-4.8</a></p>
+<p><img alt="img" data-original="http://k8gege.org/k8img/csonline/cscheat4.gif"></p>
+<h3 id="读取CMD指令"><a href="#读取CMD指令" class="headerlink" title="读取CMD指令"></a>读取CMD指令</h3><p>当客户端下达CMD命令时，中转TeamServer会将命令放在心跳包中，返回的结果如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">^Zd........N...&amp;....%COMSPEC%.... /C net user k8gege..AAAAAAAAAA.&lt;....g..I9.....</span><br><span class="line"></span><br><span class="line">5e5a69740000002e0000004e000000260000000925434f4d535045432500000013202f43206e6574</span><br><span class="line">2075736572206b387465616d00004141414141414141414100e488fc2a22f737b0067ac4384c4971</span><br></pre></td></tr></table></figure>
+
+<p>测试多次发现不管执行多长的命令 都会出现/C空格 和两个00加至少一个A<br>所以我们截取 2F4320 和 000041 之间的值，再解密即为CS下发的CMD命令</p>
+<p><img alt="img" data-original="http://k8gege.org/k8img/csonline/cscheat5.PNG"></p>
+<h3 id="返回CMD结果"><a href="#返回CMD结果" class="headerlink" title="返回CMD结果"></a>返回CMD结果</h3><p>将CS的命令执行结果提交到submit.php页面，即可实现回显,数据包如下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">POST /submit.php?id=60871 HTTP/1.1</span><br><span class="line">Accept: */*</span><br><span class="line">Content-Type: application/octet-stream</span><br><span class="line">User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)</span><br><span class="line">Host: 192.168.1.102:800</span><br><span class="line">Content-Length: 68</span><br><span class="line">Connection: Keep-Alive</span><br><span class="line">Cache-Control: no-cache</span><br><span class="line"></span><br><span class="line">...@...</span><br><span class="line">........win-60a3b595b7m\k8gege</span><br><span class="line">................0=W1..LGCN..</span><br></pre></td></tr></table></figure>
+
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>通过本文我们了解了CS心跳包机制、下达指令、回显等原理，并玩弄入侵者<br>有兴趣的话，可以自行抓包实现自己的CS服务端，甚至支持对Linux的控制<br>也可以实现CS远控的密罐，把CS下达的指令提取出来，返回假的CMD命令结果<br>即能收集目标证据以及意图，还能将他玩弄于鼓掌之中，搞死他，哈哈</p>
+<p>PS：之所以有这篇文章，是因为昨晚有人在群里讨论，CS能不能支不支持Linux<br>目前CS的shellcode以及beacon(核心功能DLL)都是WINDOWS系统才能执行。<br>而CS对于Linux的控制目前仅是SSH会话，想真正支持就得自己实现服务端<br>不要说让其支持Linux，用个GO来实现，兼容全平台都可以，只是很麻烦<br>因为不开源，每一个动作都要自己去分析它的数据包，很多功能也很费时<br>其实早在去年的这个时间就想实现Linux服务端，所以抓包研究了下。<br>当时就应该有这篇文章了，只是因为忙，懒得编辑文字，后面忘了发。</p>
 ]]></content>
       <categories>
-        <category>Ladon</category>
-        <category>.NET</category>
-        <category>内网</category>
-        <category>源码</category>
-        <category>编程</category>
+        <category>Cobalt Strike</category>
       </categories>
       <tags>
-        <tag>Ladon</tag>
-        <tag>.NET</tag>
+        <tag>Cobalt Strike</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -2274,8 +2286,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <category>密码</category>
       </categories>
       <tags>
-        <tag>Password</tag>
         <tag>Brute</tag>
+        <tag>Password</tag>
       </tags>
   </entry>
   <entry>
@@ -2493,8 +2505,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <category>密码</category>
       </categories>
       <tags>
-        <tag>Password</tag>
         <tag>Brute</tag>
+        <tag>Password</tag>
       </tags>
   </entry>
   <entry>
@@ -2811,11 +2823,12 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
 <p>获取网页标题、服务器Banner，例子仅探测80端口<br>大家可自行修改添加其它端口识别定制Web扫描功能<br>如识别出特定中间件或WEB后再检测是否存在漏洞等<br>编译后的netscan.dll可改成任意名称Ladon均可加载</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Text;</span><br><span class="line">using System.Net;</span><br><span class="line">using System.Text.RegularExpressions;</span><br><span class="line"></span><br><span class="line">namespace LadonDLL</span><br><span class="line">&#123;</span><br><span class="line">    public class scan</span><br><span class="line">    &#123;</span><br><span class="line">        public static string run(string ip)</span><br><span class="line">        &#123;</span><br><span class="line">            if (string.IsNullOrEmpty(ip))</span><br><span class="line">                return &quot;&quot;;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line"></span><br><span class="line">                &#x2F;&#x2F;192.11.22.10    Microsoft-IIS&#x2F;10.0      IIS Windows</span><br><span class="line">                &#x2F;&#x2F;192.11.22.1     H3C-Miniware-Webs       ER3200G2系统管理</span><br><span class="line">                return ip + &quot;\t&quot; + getURLbanner(ip) + &quot;\t&quot; + GetTitle(getHtml(&quot;http:&#x2F;&#x2F;&quot; + ip,2));</span><br><span class="line">            </span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private static string getURLbanner(string url)</span><br><span class="line">        &#123;</span><br><span class="line">            &#x2F;&#x2F;&#x2F;&#x2F;HttpWebResponse res;</span><br><span class="line">            if (!url.ToLower().Contains(&quot;https:&#x2F;&#x2F;&quot;) &amp;&amp; !url.ToLower().Contains(&quot;http:&#x2F;&#x2F;&quot;))</span><br><span class="line">                url &#x3D; &quot;http:&#x2F;&#x2F;&quot; + url;</span><br><span class="line"></span><br><span class="line">            try</span><br><span class="line">            &#123;</span><br><span class="line">                var req &#x3D; (HttpWebRequest)WebRequest.CreateDefault(new Uri(url));</span><br><span class="line">                req.Method &#x3D; &quot;HEAD&quot;;</span><br><span class="line">                req.Timeout &#x3D; 1000;</span><br><span class="line">                var res &#x3D; (HttpWebResponse)req.GetResponse();</span><br><span class="line"></span><br><span class="line">                if (res.StatusCode &#x3D;&#x3D; HttpStatusCode.OK || res.StatusCode &#x3D;&#x3D; HttpStatusCode.Forbidden || res.StatusCode &#x3D;&#x3D; HttpStatusCode.Redirect || res.StatusCode &#x3D;&#x3D; HttpStatusCode.MovedPermanently)</span><br><span class="line">                &#123;</span><br><span class="line">                    return res.Server;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                &#x2F;&#x2F;res.Close();</span><br><span class="line"></span><br><span class="line">                return res.Server;</span><br><span class="line">            &#125;</span><br><span class="line">            catch (WebException ex)</span><br><span class="line">            &#123;</span><br><span class="line">                return &quot;&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private static string GetTitle(string html)</span><br><span class="line">        &#123;</span><br><span class="line">            if (html.Contains(&quot;&lt;hTmlKErRor&gt;&quot;))</span><br><span class="line">            &#123;</span><br><span class="line">                &#x2F;&#x2F;return html.Replace(&quot;&lt;hTmlKErRor&gt;&quot;, &quot;&quot;);</span><br><span class="line">                return &quot;&quot;;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            html &#x3D; html.Replace(&quot;&lt;br&gt;&quot;, &quot;&quot;);</span><br><span class="line">            html &#x3D; html.Replace(&quot;&lt;BR&gt;&quot;, &quot;&quot;);</span><br><span class="line">            html &#x3D; html.Replace(&quot;\r\n&quot;, &quot;&quot;);</span><br><span class="line">            html &#x3D; html.Replace(&quot;&amp;nbsp;&quot;, &quot; &quot;);</span><br><span class="line">            html &#x3D; html.Replace(&quot;\n&quot;, &quot;&quot;).Trim();</span><br><span class="line"></span><br><span class="line">            String regex &#x3D; @&quot;&lt;title.+&lt;&#x2F;title&gt;&quot;;</span><br><span class="line"></span><br><span class="line">            String title &#x3D; Regex.Match(html, regex).ToString();</span><br><span class="line">            title &#x3D; Regex.Replace(title, @&quot;[\&quot;&quot;]+&quot;, &quot;&quot;);</span><br><span class="line"></span><br><span class="line">            title &#x3D; title.TrimStart(&#39;&lt;&#39;);</span><br><span class="line"></span><br><span class="line">            string regex2 &#x3D; @&quot;&gt;.+&lt;&#x2F;title&gt;&quot;;</span><br><span class="line"></span><br><span class="line">            string title2 &#x3D; Regex.Match(title, regex2).ToString();</span><br><span class="line">            title2 &#x3D; title2.TrimStart(&#39;&gt;&#39;).Replace(&quot;&lt;&#x2F;title&gt;&quot;, &quot;&quot;).Trim();</span><br><span class="line"></span><br><span class="line">            if (title2.Length &gt; 50)</span><br><span class="line">                return title2.Substring(0, 50);</span><br><span class="line"></span><br><span class="line">            return title2;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private static string getHtml(string url, int codingType)</span><br><span class="line">        &#123;</span><br><span class="line"></span><br><span class="line">            try</span><br><span class="line">            &#123;</span><br><span class="line">                if (!url.ToLower().Contains(&quot;https:&#x2F;&#x2F;&quot;) &amp;&amp; !url.ToLower().Contains(&quot;http:&#x2F;&#x2F;&quot;))</span><br><span class="line">                    url &#x3D; &quot;http:&#x2F;&#x2F;&quot; + url;</span><br><span class="line">                WebClient myWebClient &#x3D; new WebClient();</span><br><span class="line">                if (url.ToLower().Contains(&quot;https:&#x2F;&#x2F;&quot;))</span><br><span class="line">                &#123;</span><br><span class="line">                    System.Net.ServicePointManager.ServerCertificateValidationCallback +&#x3D;</span><br><span class="line">    delegate(object sender, System.Security.Cryptography.X509Certificates.X509Certificate certificate,</span><br><span class="line">             System.Security.Cryptography.X509Certificates.X509Chain chain,</span><br><span class="line">             System.Net.Security.SslPolicyErrors sslPolicyErrors)</span><br><span class="line">    &#123;</span><br><span class="line">        return true; &#x2F;&#x2F; **** Always accept</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                byte[] myDataBuffer &#x3D; myWebClient.DownloadData(url);</span><br><span class="line">                &#x2F;&#x2F;return Encoding.Default.GetString(myDataBuffer);</span><br><span class="line">                string strWebData &#x3D; System.Text.Encoding.Default.GetString(myDataBuffer);</span><br><span class="line"></span><br><span class="line">                &#x2F;&#x2F;自动识别编码  不一定有&lt;meta  比如 百度开放平台 content&#x3D;&quot;text&#x2F;html; charset&#x3D;gbk&quot;&gt;</span><br><span class="line">                &#x2F;&#x2F;Match charSetMatch &#x3D; Regex.Match(strWebData, &quot;&lt;meta([^&gt;]*)charset&#x3D;(\&quot;)?(.*)?\&quot;&quot;, RegexOptions.IgnoreCase | RegexOptions.Multiline);</span><br><span class="line">                Match charSetMatch &#x3D; Regex.Match(strWebData, &quot;(.*)charset&#x3D;(\&quot;)?(.*)?\&quot;&quot;, RegexOptions.IgnoreCase | RegexOptions.Multiline);</span><br><span class="line"></span><br><span class="line">                string webCharSet &#x3D; charSetMatch.Groups[3].Value.Trim().ToLower();</span><br><span class="line"></span><br><span class="line">                if (webCharSet !&#x3D; &quot;gb2312&quot; &amp;&amp; webCharSet !&#x3D; &quot;gbk&quot;)</span><br><span class="line">                &#123;</span><br><span class="line">                    webCharSet &#x3D; &quot;utf-8&quot;;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                if (System.Text.Encoding.GetEncoding(webCharSet) !&#x3D; System.Text.Encoding.Default)</span><br><span class="line">                &#123;</span><br><span class="line">                    strWebData &#x3D; System.Text.Encoding.GetEncoding(webCharSet).GetString(myDataBuffer);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                &#x2F;&#x2F;if (codingType &#x3D;&#x3D; 1)</span><br><span class="line">                &#x2F;&#x2F;    return Encoding.Unicode.GetString(myDataBuffer);</span><br><span class="line">                &#x2F;&#x2F;else if (codingType &#x3D;&#x3D; 2)</span><br><span class="line">                &#x2F;&#x2F;    return Encoding.Default.GetString(myDataBuffer);&#x2F;&#x2F;GBK 936</span><br><span class="line">                &#x2F;&#x2F;else if (codingType &#x3D;&#x3D; 3)</span><br><span class="line">                &#x2F;&#x2F;    return Encoding.UTF8.GetString(myDataBuffer);&#x2F;&#x2F;65501</span><br><span class="line"></span><br><span class="line">                return strWebData;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            catch (Exception ex)</span><br><span class="line">            &#123;</span><br><span class="line">                &#x2F;&#x2F;Console.WriteLine(url + &quot; &quot; + ex.Message);</span><br><span class="line">                return &quot;&lt;hTmlKErRor&gt;&quot; + ex.Message;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            return &quot;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>工具</category>
-        <category>Ladon</category>
         <category>.NET</category>
+        <category>Ladon</category>
         <category>源码</category>
+        <category>主机发现</category>
         <category>编程</category>
+        <category>信息收集</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -2833,8 +2846,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Text;</span><br><span class="line">using System.Net;</span><br><span class="line">using System.Text.RegularExpressions;</span><br><span class="line">using System.Net.Sockets;</span><br><span class="line">&#x2F;&#x2F;Ladon PortScan Moudle</span><br><span class="line">namespace LadonDLL</span><br><span class="line">&#123;</span><br><span class="line">    public class scan</span><br><span class="line">    &#123;</span><br><span class="line">        public static string run(string ip)</span><br><span class="line">        &#123;</span><br><span class="line">            if (string.IsNullOrEmpty(ip))</span><br><span class="line">                return &quot;&quot;;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                if (K8CheckPort(ip, 21))</span><br><span class="line">                    Console.Write(ip + &quot;\t21 Open\r\n&quot;);</span><br><span class="line">                if (K8CheckPort(ip, 80))</span><br><span class="line">                    Console.Write(ip + &quot;\t80 Open\r\n&quot;);</span><br><span class="line">                if (K8CheckPort(ip, 1433))</span><br><span class="line">                    Console.Write(ip + &quot;\t1433 Open\r\n&quot;);</span><br><span class="line">                if (K8CheckPort(ip, 3306))</span><br><span class="line">                    Console.Write(ip + &quot;\t3306 Open\r\n&quot;);</span><br><span class="line">                if (K8CheckPort(ip, 1521))</span><br><span class="line">                    Console.Write(ip + &quot;\t1521 Open\r\n&quot;);</span><br><span class="line">                if (K8CheckPort(ip, 3389))</span><br><span class="line">                    Console.Write(ip + &quot;\t3389 Open\r\n&quot;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            return &quot;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private static bool K8CheckPort(string ip, int Port)</span><br><span class="line">        &#123;</span><br><span class="line">            &#x2F;&#x2F;int Port &#x3D; 21;</span><br><span class="line">            IPAddress scanip &#x3D; IPAddress.Parse(ip);</span><br><span class="line">            IPEndPoint point &#x3D; new IPEndPoint(scanip, Port);</span><br><span class="line">            try</span><br><span class="line">            &#123;</span><br><span class="line">                TcpClient tcp &#x3D; new TcpClient();</span><br><span class="line">                tcp.Connect(point);</span><br><span class="line">                &#x2F;&#x2F;Console.WriteLine(scanip + &quot;\t&quot; + Port + &quot;\tOpen&quot;);</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">            catch (Exception ex)</span><br><span class="line">            &#123;</span><br><span class="line">                &#x2F;&#x2F;Console.WriteLine(scanip + &quot;\t&quot; + Port + &quot;\tClose&quot;);</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>工具</category>
-        <category>Ladon</category>
         <category>.NET</category>
+        <category>Ladon</category>
         <category>源码</category>
         <category>编程</category>
       </categories>
@@ -3788,10 +3801,12 @@ from pprint import pprint
 <p><a href="https://www.cnblogs.com/k8gege/p/10367844.html" target="_blank">https://www.cnblogs.com/k8gege/p/10367844.html</a></p>]]></content>
       <categories>
         <category>工具</category>
-        <category>内网</category>
+        <category>内网渗透</category>
         <category>Python</category>
         <category>源码</category>
+        <category>主机发现</category>
         <category>编程</category>
+        <category>信息收集</category>
         <category>嗅探</category>
       </categories>
       <tags>
