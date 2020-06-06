@@ -1,8 +1,14 @@
 Wiki: http://k8gege.org/Ladon
 
+6.6.2 20200606
+[+] SshScan & SshExec 无需额外DLL
+6.6.1 20200604
+[u] psexec 加密传输命令/结果
+[+] AllVer/AllVersion 获取已安装程序列表
+
 Ladon 6.6 SmbGhost 20200603
 ===========================================
-[+] Ver/Version 各种语言运行时或编译环境版本
+[+] Ver/Version .NET运行时或编译环境版本
 [+] SMBGhost CVE-2020-0796 RCE Vulnerable Scan
 
 Ladon 6.5 远程执行命令 20200530
