@@ -167,8 +167,13 @@ Visit <span id="busuanzi_value_page_pv"></span>
 <h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>1.浏览器0day漏洞测试或VPS上一键部署，无需安装配置Apache<br>2.内网HTTP协议文件传输，如内网目标不出网不允许其它协议通过<br>3.Office/Word/Pdf等漏洞或远程下载SCT、HTA等格式的CS Payload<br>4.IP追踪，在邮件里放任意URL，当目标查阅邮件时，可记录访问IP<br>5.系统探测，无论用于XSS或IP追踪都会记录UA，确认目标操作系统<br>6.出网探测，内网命令行访问VPS-WEB，看到IP证明可通过HTTP出网</p>
 <p>7.远控问题，内网可访问WEB，HTTP不上线，就不要甩锅网络或WAF<br>写个txt放CMD命令或结果，内网访问txt，若正常说明WAF根本不拦</p>
 <p>PS：第7点做点修改就可以得到简单的HTTP马了类似CS，读取TXT获取CMD命令，然后执行。</p>
-<h3 id="WebSer启动"><a href="#WebSer启动" class="headerlink" title="WebSer启动"></a>WebSer启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Ladon web 80</span><br><span class="line">Ladon webser 80</span><br></pre></td></tr></table></figure>
+<h3 id="WebSer启动"><a href="#WebSer启动" class="headerlink" title="WebSer启动"></a>WebSer启动</h3><p>为了安全起见，文件不存在返回404，默认不列目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Ladon web 80</span><br><span class="line">Ladon webser 80</span><br></pre></td></tr></table></figure>
 <p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/webser.PNG"></p>
+<h4 id="列目录"><a href="#列目录" class="headerlink" title="列目录"></a>列目录</h4><p>使用dir或dirlist参数，可返回WEB目录列表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Ladon web 80 dir</span><br><span class="line">Ladon webser 80 dir</span><br></pre></td></tr></table></figure>
+
+
 <h3 id="运行权限"><a href="#运行权限" class="headerlink" title="运行权限"></a>运行权限</h3><p>使用TCP SOCKET实现的HTTP服务器，任意权限下都可以，不像HTTPlisten需管理员权限<br>很多人常说TCPListen和HTTPLinsen有什么区别，都可以实现一模一样的WEB服务器<br>但权限不一样，实现过程也不一样，就像不同快递，包装材料不一样，送达时间也不一样<br>直接使用HTTP不需要自己构造协议包，而使用TCP得自己构造HTTP包，这就是区别之一</p>
 <h3 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h3><p>在Ladon同目录下放你想下载的文件，浏览器访问即可，命令行下载也可以</p>
 <p>Linux: Wget、curl等<br>Windows: 10几20多种，自行去网上搜索</p>
