@@ -1,5 +1,16 @@
 Wiki: http://k8gege.org/Ladon
 
+6.6.3 20200618
+[+] webser 访问ip.txt、ip.jgp返回浏览者IP
+[+] RegAuto 添加注册表RUN启动项
+[+] sc 服务加启动项(system权限)
+[+] sc 服务执行程序(system权限)
+[+] at 计划执行程序(无需时间)(system权限)
+[u] webser 支持列目录(Ladon web 80 dirlist)
+
+6.6.2 20200608
+[u] CS插件版 EXE完整版
+
 6.6.2 20200606
 [+] SshScan & SshExec 无需额外DLL
 6.6.1 20200604
