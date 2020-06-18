@@ -1,6 +1,7 @@
 Wiki: http://k8gege.org/Ladon
 
 6.6.3 20200618
+[+] webser 钩鱼攻击密码捕获(如Win登陆认证)
 [+] webser 访问ip.txt、ip.jgp返回浏览者IP
 [+] RegAuto 添加注册表RUN启动项
 [+] sc 服务加启动项(system权限)
