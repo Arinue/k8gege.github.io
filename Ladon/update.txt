@@ -1,5 +1,11 @@
 Wiki: http://k8gege.org/Ladon
 
+6.6.5 20200621
+[+] PowerCat TCP、UDP反弹SHELL
+[+] ReverseTcp MSF、NC反弹SHELL
+[+] recent  查看用户最近访问文件
+[+] sshexec 增加上传下载文件功能
+
 6.6.3 20200618
 [+] webser 钩鱼攻击密码捕获(如Win登陆认证)
 [+] webser 访问ip.txt、ip.jgp返回浏览者IP
