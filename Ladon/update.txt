@@ -1,6 +1,7 @@
 Wiki: http://k8gege.org/Ladon
 
-6.6.5 20200621
+6.6.5 20200622
+[+] WmiScan 记录RCP不可用正确密码
 [+] PowerCat TCP、UDP反弹SHELL
 [+] ReverseTcp MSF、NC反弹SHELL
 [+] recent  查看用户最近访问文件
