@@ -1,5 +1,10 @@
 Wiki: http://k8gege.org/Ladon
 
+6.6.6 20200701
+[+] OracleScan不指定帐密时探测Oracle服务
+[+] OracleScan支持自定义SID扫描(sid.txt)
+[u] WebSer 重新支持a_1.rar b-2.rar文件名
+
 6.6.6 20200628
 [+] ReverseHttps/MsfHttps 反弹MSF Met Https Shell
 [+] ReverseHttp/MsfHttp 反弹MSF Met Http Shell
