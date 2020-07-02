@@ -1,15 +1,18 @@
 Wiki: http://k8gege.org/Ladon
 
 6.6.6 20200701
+===========================================
 [+] OracleScan不指定帐密时探测Oracle服务
 [+] OracleScan支持自定义SID扫描(sid.txt)
 [u] WebSer 重新支持a_1.rar b-2.rar文件名
 
-6.6.6 20200628
+6.6.6 20200628 反弹Shell
+===========================================
 [+] ReverseHttps/MsfHttps 反弹MSF Met Https Shell
 [+] ReverseHttp/MsfHttp 反弹MSF Met Http Shell
 
-6.6.5 20200622
+6.6.5 20200622 反弹Shell
+===========================================
 [+] WmiScan 记录RCP不可用正确密码
 [+] PowerCat TCP、UDP反弹SHELL
 [+] ReverseTcp MSF、NC反弹SHELL
@@ -17,6 +20,7 @@ Wiki: http://k8gege.org/Ladon
 [+] sshexec 增加上传下载文件功能
 
 6.6.3 20200618
+===========================================
 [+] webser 钩鱼攻击密码捕获(如Win登陆认证)
 [+] webser 访问ip.txt、ip.jgp返回浏览者IP
 [+] RegAuto 添加注册表RUN启动项
