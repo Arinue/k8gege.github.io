@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://k8gege.org/Ladon/powerladon.html</loc>
+    <loc>http://k8gege.org/Ladon/index.html</loc>
     
-    <lastmod>2020-07-04T10:10:29.693Z</lastmod>
+    <lastmod>2020-07-04T10:15:27.598Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k8gege.org/Ladon/RemoteLadon.html</loc>
+    
+    <lastmod>2020-07-04T10:14:25.898Z</lastmod>
     
   </url>
   
@@ -222,13 +229,6 @@
     <loc>http://k8gege.org/Ladon/WinShell.html</loc>
     
     <lastmod>2020-06-04T12:29:18.241Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k8gege.org/Ladon/index.html</loc>
-    
-    <lastmod>2020-06-03T14:33:39.644Z</lastmod>
     
   </url>
   
