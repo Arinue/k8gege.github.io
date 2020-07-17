@@ -167,6 +167,10 @@ Visit <span id="busuanzi_value_page_pv"></span>
 
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>OXID Resolver是在支持COM +的每台计算机上运行的服务。它执行两项重要职责：<br>存储与远程对象连接所需的RPC字符串绑定，并将其提供给本地客户端。<br>将ping消息发送到本地计算机具有客户端的远程对象，并接收在本地计算机上运行的对象的ping消息。</p>
 <p><img alt="image" data-original="http://k8gege.org/k8img/Other/DCOM_OXID.PNG"></p>
+<p>我们只需要向远程主机发以下两个包，再解析返回结果即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"\x05\x00\x0c\x03\x10\x00\x00\x00\x3c\x00\x00\x00\x01\x00\x00\x00"</span> \</span><br><span class="line"><span class="string">"\xb8\x10\xb8\x10\x0a\x13\x00\x00\x04\x00\x31\x33\x35\x00\x00\x00"</span> \</span><br><span class="line"><span class="string">"\x01\x00\x00\x00\x00\x00\x00\x00\x04\x5d\x88\x8a\xeb\x1c\xc9\x11"</span> \</span><br><span class="line"><span class="string">"\x9f\xe8\x08\x00\x2b\x10\x48\x60\x02\x00\x00\x00"</span></span><br><span class="line"></span><br><span class="line"><span class="string">"\x05\x00\x00\x03\x10\x00\x00\x00\x18\x00\x00\x00\x01\x00\x00\x00"</span> \</span><br><span class="line"><span class="string">"\x00\x00\x00\x00\x00\x00\x05\x00"</span></span><br></pre></td></tr></table></figure>
+
+
 <h3 id="模块名称"><a href="#模块名称" class="headerlink" title="模块名称"></a>模块名称</h3><p>EthScan<br>OxidScan</p>
 <h3 id="模块说明"><a href="#模块说明" class="headerlink" title="模块说明"></a>模块说明</h3><p>通过Windows的一些DCOM接口进行网卡进行信息枚举，定位多网卡主机，当然也可以判定Windows主机。<br>K8抓包发现xp和03系统有一段相同特征，WIN7-WIN10等也是相同特征，所以可区分是否WIN7以上系统。</p>
 <h3 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h3><p>1.Windows主机<br>2.开放135端口<br>3.DCOM&gt;=5.6（老外原文说5.6版本才可用，可能他写错了）<br>4.dcomcnfg配置中的“面向连接的TCP/IP”协议没有被移除</p>
