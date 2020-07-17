@@ -168,9 +168,10 @@ Visit <span id="busuanzi_value_page_pv"></span>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>OXID Resolver是在支持COM +的每台计算机上运行的服务。它执行两项重要职责：<br>存储与远程对象连接所需的RPC字符串绑定，并将其提供给本地客户端。<br>将ping消息发送到本地计算机具有客户端的远程对象，并接收在本地计算机上运行的对象的ping消息。</p>
 <p><img alt="image" data-original="http://k8gege.org/k8img/Other/DCOM_OXID.PNG"></p>
 <h3 id="模块名称"><a href="#模块名称" class="headerlink" title="模块名称"></a>模块名称</h3><p>EthScan<br>OxidScan</p>
-<h3 id="模块说明"><a href="#模块说明" class="headerlink" title="模块说明"></a>模块说明</h3><p>通过Windows的一些DCOM接口进行网卡进行信息枚举，定位多网卡主机。</p>
-<h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><p>1.Windows主机<br>2.开放135端口<br>3.DCOM&gt;=5.6</p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>测试XP/Win7/Win8/Win10,2003/2008/2012均成功，2016和2019无环境未测，应该支持。</p>
+<h3 id="模块说明"><a href="#模块说明" class="headerlink" title="模块说明"></a>模块说明</h3><p>通过Windows的一些DCOM接口进行网卡进行信息枚举，定位多网卡主机，当然也可以判定Windows主机。<br>K8抓包发现xp和03系统有一段相同特征，WIN7-WIN10等也是相同特征，所以可区分是否WIN7以上系统。</p>
+<h3 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h3><p>1.Windows主机<br>2.开放135端口<br>3.DCOM&gt;=5.6（老外原文说5.6版本才可用，可能他写错了）<br>4.dcomcnfg配置中的“面向连接的TCP/IP”协议没有被移除</p>
+<p>PS: 由于有一定条件限制，若该模块无法定位多网卡主机，也可使用OnlinePC、OsScan、WebScan、WhatCMS等模块探测，如多个IP同一个机器名，网样的网站标题，或同样的网卡MAC地址，也可定位多网卡主机，只是没有通过该方法好，毕竟一个是100%，一个是90%，比如负载均横同样的网站却不在同一台机器上。</p>
+<h3 id="测试系统"><a href="#测试系统" class="headerlink" title="测试系统"></a>测试系统</h3><p>测试XP/Win7/Win8/Win10,2003/2008/2012均成功，2016和2019无环境未测，应该支持。</p>
 <h3 id="EthScan模块用法"><a href="#EthScan模块用法" class="headerlink" title="EthScan模块用法"></a>EthScan模块用法</h3><h4 id="扫描指定主机"><a href="#扫描指定主机" class="headerlink" title="扫描指定主机"></a>扫描指定主机</h4><p>Ladon 192.168.1.8 EthScan</p>
 <h4 id="扫描C段主机"><a href="#扫描C段主机" class="headerlink" title="扫描C段主机"></a>扫描C段主机</h4><p>Ladon 192.168.1.8/24 EthScan<br>Ladon 192.168.1.8/C EthScan</p>
 <p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/EthScan.PNG"></p>
