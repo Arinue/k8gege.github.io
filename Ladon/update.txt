@@ -1,5 +1,8 @@
 Wiki: http://k8gege.org/Ladon
 
+7.0.0 2020.7.17
+[+] EthScan OXID枚举远程主机网卡
+[+] RDPhijack 远程桌面会话劫持
 
 6.6.6 2020.7.3
 [u] PowerCat支持PowerShell版反弹
