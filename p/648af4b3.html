@@ -19,7 +19,7 @@
     <link rel="dns-prefetch" href="http://k8gege.org">
     <!--SEO-->
 
-<meta name="keywords" content="Tool,Ladon">
+<meta name="keywords" content="Ladon,Tool">
 
 
 <meta name="description" content="     
@@ -967,7 +967,7 @@ Ladon...">
 <h3 id="禁ping扫描"><a href="#禁ping扫描" class="headerlink" title="禁ping扫描"></a>禁ping扫描</h3><p>默认扫描会先通过icmp扫描主机是否存活，当使用工具转发内网<br>或者目标机器禁ping时,使用noping参数进行扫描,速度稍慢一点<br>Ladon noping<br>Ladon noping 192.168.1.8/24<br>Ladon noping 192.168.1.8/24 MS17010</p>
 <h3 id="Socks5代理扫描"><a href="#Socks5代理扫描" class="headerlink" title="Socks5代理扫描"></a>Socks5代理扫描</h3><p>详见：<a href="http://k8gege.org/Ladon/proxy.html">http://k8gege.org/Ladon/proxy.html</a></p>
 <h4 id="linux-macos下KaliLadon"><a href="#linux-macos下KaliLadon" class="headerlink" title="linux/macos下KaliLadon"></a>linux/macos下KaliLadon</h4><p>proxychains mono Ladon noping 192.168.1.8/24 MS17010<br>proxychains mono Ladon noping <a href="http://192.168.1.1" target="_blank" rel="noopener">http://192.168.1.1</a> WhatCMS</p>
-<h4 id="windows下Ladon-exe"><a href="#windows下Ladon-exe" class="headerlink" title="windows下Ladon.exe"></a>windows下Ladon.exe</h4><p>例子：扫描目标10.1.2段是否存在MS17010漏洞（必须加noping）<br>Ladon noping 10.1.2.8/24 MS17010</p>
+<h4 id="windows下Ladon-exe"><a href="#windows下Ladon-exe" class="headerlink" title="windows下Ladon.exe"></a>windows下Ladon.exe</h4><p>推荐proxifier 3.42及以上版本，最好是最新版4.0.1<br>例子：扫描目标10.1.2段是否存在MS17010漏洞（必须加noping）<br>Ladon noping 10.1.2.8/24 MS17010</p>
 <h3 id="配置INI调用任意程序、密码爆破"><a href="#配置INI调用任意程序、密码爆破" class="headerlink" title="配置INI调用任意程序、密码爆破"></a>配置INI调用任意程序、密码爆破</h3><p>适用场景，需调用相关命令或第三方工具进行批量操作<br>或者有新的POC，但来不及或无法写成DLL来调用时<br>很多第3方工具不支持批量或者说根本不支持批量网段<br>而Ladon不只限于批量IP、URL、IP段、任意内容等<br>是紧急情况下最适合用于验证内网是否存在漏洞工具<br>新的漏洞来时你能调好POC就不错了，批量更要时间</p>
 <h4 id="调用系统ping命令进行存活主机探测"><a href="#调用系统ping命令进行存活主机探测" class="headerlink" title="调用系统ping命令进行存活主机探测"></a>调用系统ping命令进行存活主机探测</h4><p>ping.ini<br>[Ladon]<br>exe=cmd.exe<br>arg=/c ping $ip$</p>
 <p>命令:  Ladon ping.ini<br>命令:  Ladon 192.168.1.8/24 ping.ini</p>
