@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://k8gege.org/p/648af4b3.html</loc>
+    <loc>http://k8gege.org/Ladon/proxy.html</loc>
     
-    <lastmod>2020-07-18T02:44:09.872Z</lastmod>
+    <lastmod>2020-07-18T03:54:57.413Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://k8gege.org/Ladon/example.html</loc>
     
-    <lastmod>2020-07-18T02:41:52.835Z</lastmod>
+    <lastmod>2020-07-18T03:00:55.996Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k8gege.org/p/648af4b3.html</loc>
+    
+    <lastmod>2020-07-18T02:44:09.872Z</lastmod>
     
   </url>
   
@@ -110,13 +117,6 @@
     <loc>http://k8gege.org/Ladon/SmbScan.html</loc>
     
     <lastmod>2020-07-04T15:53:14.943Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k8gege.org/Ladon/Socks5Proxy.html</loc>
-    
-    <lastmod>2020-07-04T15:41:22.323Z</lastmod>
     
   </url>
   
