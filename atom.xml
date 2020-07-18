@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://k8gege.org/"/>
-  <updated>2020-07-18T04:03:12.672Z</updated>
+  <updated>2020-07-18T04:07:00.638Z</updated>
   <id>http://k8gege.org/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>〖教程〗Ladon Socks代理扫描(附Proxifier4.0注册码)</title>
+    <link href="http://k8gege.org/p/proxy.html"/>
+    <id>http://k8gege.org/p/proxy.html</id>
+    <published>2020-07-18T03:40:00.000Z</published>
+    <updated>2020-07-18T04:07:00.638Z</updated>
+    
+    <content type="html"><![CDATA[<p>=============================================================================================<br>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p><script language="javascript" type="text/javascript">window.location.href="http://k8gege.org/Ladon/proxy.html";</script><h3 id="Socks代理工具"><a href="#Socks代理工具" class="headerlink" title="Socks代理工具"></a>Socks代理工具</h3><h4 id="windows平台"><a href="#windows平台" class="headerlink" title="windows平台"></a>windows平台</h4><p>Proxifier软件是一款极其强大的socks5客户端,同时也是一款强大的站长工具。Proxifier支持TCP，UDP协议，支持Xp，Vista，Win7，支持socks4，socks5，http代理协议可以让不支持通过代理服务器工作的网络程序能通过HTTPS或SOCKS代理或代理链。</p><p>2020年7月proxifier官方发布最新版4.0.1修复ipv6兼容问题，以及其它很多问题。 3.42支持类似chrome这样工作的69个应用程序，修复了一些第三方应用程序的兼容性。</p><p>以上更新日志，充分说明该代理工具不能保证兼容所有第3方程序，或者说兼容性不好，同样的3.31版本有人能代理Ladon，有人代理不了。 </p><p>官方下载: <a href="http://www.proxifier.com/download" target="_blank" rel="noopener">http://www.proxifier.com/download</a></p><h4 id="linux-mac平台"><a href="#linux-mac平台" class="headerlink" title="linux/mac平台"></a>linux/mac平台</h4><p>ProxyChains遵循GNU协议的一款适用于linux系统的网络代理设置工具。强制由任一程序发起的TCP连接请求必须通过诸如TOR 或 SOCKS4, SOCKS5 或HTTP(S) 代理。支持的认证方式包括：SOCKS4/5的用户/密码认证，HTTP的基本认证。允许TCP和DNS通过代理隧道，并且可配置多个代理。</p><p>ProxyChains代理工具非常好，真的可以兼容所有程序，不像proxifier好多程序还不定兼容，当然两者都有一定的丢包率，Ladon批量扫描功能过快超时短，可能会导致有些结果丢失，回头设置一个代理模式，提高超时放慢速度看看。</p><h3 id="代理支持协议"><a href="#代理支持协议" class="headerlink" title="代理支持协议"></a>代理支持协议</h3><p>通过以上两平台的代理工具简介，可以看出代理客户端并不支持ICMP协议。<br>所以使用它们代理，无法PING通内网主机。何况FRP、EW等也不支持ICMP。</p><h4 id="支持协议"><a href="#支持协议" class="headerlink" title="支持协议"></a>支持协议</h4><p>1.TCP<br>2.UDP</p><h4 id="代理协议"><a href="#代理协议" class="headerlink" title="代理协议"></a>代理协议</h4><p>1.SOCKS4<br>2.SOCKS5<br>3.HTTP(S)</p><h3 id="代理工具兼容性"><a href="#代理工具兼容性" class="headerlink" title="代理工具兼容性"></a>代理工具兼容性</h3><p>推荐proxifier 3.42及以上版本，最好是最新版，3.31及以前的兼容性极差，所以不推荐，我使用VM虚拟机12版本的时候，可以代理Ladon,但后面升级为15，发现很难代理，就连测试系统自带的telnet程序，都不行了。Ladon在多个虚拟机测试也是一样，但是有同事也是用3.31却可以代理使用，网上很多人也和我反应不能用。后来我看了下3.31是2016年的，就想看看官方有没更新，发现18年有个3.42版本，测试一下，兼容好多了，然后在星球发表，发表不久发现官方更新了4.0.1，只是他没写更新日志，还以为没有更新。</p><h3 id="Proxifier通用注册码"><a href="#Proxifier通用注册码" class="headerlink" title="Proxifier通用注册码"></a>Proxifier通用注册码</h3><p>4.0.1 (2020.7.7)<br>3.4.2 (2018.8.31)<br>3.3.1 (2016不推荐)<br>5EZ8G-C3WL5-B56YG-SCXM9-6QZAP（Standard Edition）</p><h3 id="Ladon工作原理"><a href="#Ladon工作原理" class="headerlink" title="Ladon工作原理"></a>Ladon工作原理</h3><p>由于proxifier客户端不支持ICMP或者说ew等代理工具也不支持ICMP协议，所以代理后探测存活主机就不要使用Ping或OnlinePC模块了，使用扫描模块需加noping参数，非扫描模块不需要noping。探测存活主机可使用osscan、webscan、urlscan、ms17010、smbghost等模块，他们能扫出东西不也意味着主机存活吗？ping不是唯一的探测存活主机存活方式，系统防火墙默认禁ping，使用ping探测本身就会错过很多存活主机，所以实战要结合多种方式探测。假设目标防火墙只允许smb协议通过，你用nmap端口扫描的TCP包被拦截显示成关的，但用ms17010，smbghost扫出漏洞或者用smbscan就显示密码错误拒绝访问等，这不就说明445确实开放吗？不要死板的老是停留在ping和单纯的端口扫描来探测存活主机，要考虑实际环境，OnlinePC可探测到大部分存活主机，但不等于能探测到全部存活主机，当你无法渗透已扫到的存活主机，就得尝试其它模块探测更多主机。</p><p>PS：如何验证代理是否支持ICMP协议，非常简单用系统自带命令PING目标内网IP（不要PING自己的内网哦），能PING通目标存活IP，说明代理支持ICMP协议，意味你可以像挂了目标VPN一样或者像本地一样随意扫描目标内网，如果根本PING不通，老老实实扫描时加上noping参数。</p><h3 id="Socks代理扫描"><a href="#Socks代理扫描" class="headerlink" title="Socks代理扫描"></a>Socks代理扫描</h3><p>例子：Socks5代理扫描目标10.1.2段是否存在MS17010漏洞<br>Ladon noping 10.1.2.8/24 MS17010</p><p>PS：再次强调，由于代理工具不支持ICMP，所以Ladon扫描类功能必须加noping参数，非扫描模块不需要。</p><h3 id="实战扫描结果"><a href="#实战扫描结果" class="headerlink" title="实战扫描结果"></a>实战扫描结果</h3><p>Linux SSH服务识别之22端口扫描<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/proxy_porscan22.png"></p><p>WEB HttpBanner扫描<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/proxy_httpscan.png"></p><p>永恒之默漏洞 SMBghost CVE-2020-0796<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/proxy_smbghost.png"></p><p>OSSCAN探测目标操作系统<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/proxy_osscan.png"></p><p>ProtScan端口扫描<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/proxy_porscan.png"></p><h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;=============================================================================================&lt;br&gt;++++++++++++++++++++++++++++++++++++++++
+      
+    
+    </summary>
+    
+    
+      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
+    
+    
+      <category term="Proxy" scheme="http://k8gege.org/tags/Proxy/"/>
+    
+  </entry>
   
   <entry>
     <title>Ladon枚举远程主机网卡信息(OXID定位多网卡主机)</title>
@@ -603,36 +629,6 @@
       <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
     
       <category term="Cobalt Strike" scheme="http://k8gege.org/tags/CS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ladon 6.2自定义密码爆破</title>
-    <link href="http://k8gege.org/p/53177.html"/>
-    <id>http://k8gege.org/p/53177.html</id>
-    <published>2020-03-29T16:10:00.000Z</published>
-    <updated>2020-06-06T02:32:58.214Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>内置密码爆破模块还不够全面，研发其它协议认证需要时间。<br>先不说功能实现，首先搭建各种协议认证环境就不少时间吧。<br>还有别人的工具不开源的情况，而且它只能支持单个IP爆破。<br>这时候我们需要批量爆破整个C段、多个网段、或批量列表。<br>批量包括但不限于IP、URL、机器名、CIDR格式、任意XX等。</p><h3 id="INI配置插件"><a href="#INI配置插件" class="headerlink" title="INI配置插件"></a>INI配置插件</h3><p>适用场景，需调用相关命令或第三方工具进行批量操作<br>或者有新的POC，但来不及或无法写成DLL来调用时<br>很多第3方工具不支持批量或者说根本不支持批量网段<br>而Ladon不只限于批量IP、URL、IP段、任意内容等<br>是紧急情况下最适合用于验证内网是否存在漏洞工具<br>新的漏洞来时你能调好POC就不错了，批量更要时间</p><h3 id="自定义密码爆破"><a href="#自定义密码爆破" class="headerlink" title="自定义密码爆破"></a>自定义密码爆破</h3><p>例子：调用修改过的smbexec.exe进行HASH密码验证，原版不退出无法爆破<br>根目录下放4个文件，smbexec.exe、smbhash.ini、user.txt、pass.txt。</p><p>smbhash.ini</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line">exe=smbexec.exe</span><br><span class="line">arg=-hashes <span class="variable">$pass</span>$ <span class="variable">$user</span><span class="variable">$@</span><span class="variable">$ip</span>$</span><br><span class="line">isok=Launching semi-interactive shell</span><br><span class="line">port=445</span><br><span class="line"><span class="built_in">log</span>=<span class="literal">true</span></span><br></pre></td></tr></table></figure><h3 id="INI插件用法"><a href="#INI插件用法" class="headerlink" title="INI插件用法"></a>INI插件用法</h3><p>命令：Ladon 192.168.1.1/24 smbhash.ini</p><h3 id="INI参数说明"><a href="#INI参数说明" class="headerlink" title="INI参数说明"></a>INI参数说明</h3><p>exe:  程序名称，必填项。不指定路径优先加载SYSTEM32目录或当前目录下程序<br>arg:  程序参数，必填项。其中$ip$、$user$、$pass$变量为字典文件替换变量<br>isok：成功标志，必填项。如smbexec成功时返回”Launching semi-interactive shell”<br>port：对应端口，非必填。如SMB为445，Ladon先检测到端口开放，才进行密码爆破<br>log:  程序日志，非必填。如有些程序返回一堆错误结果，我们不想看，可不显示</p><p>检测内网C段是否使用同一个密码,命令：Ladon 192.168.1.1/24 smbhash.ini<br>截图为6.1，大家记得把ret改成isok就行了。<br><img alt data-original="http://k8gege.org/k8img/Ladon/exe/DiyIniPwd.PNG"></p><h3 id="功能多余？"><a href="#功能多余？" class="headerlink" title="功能多余？"></a>功能多余？</h3><p>有人可能会说，功能用不到，批量用自己的程序就可以了。<br>1.不是所有人都会编程，INI配置的目的主要是给这些人用的。<br>2.据我所知市面上的批量，仅支持批量单一列表，如IP列表、URL列表等，且不支持模块化。</p><p>举个例子：CVE-2019-0708原版漏洞检测批量支持C段扫描，但不支持批量C段甚至批量B段扫描。<br>没错它是开源的，但有几个人去实现修改让它支持更多实战环境的批量需求？<br>C语言的多线程操作可和Python这种小学生都能轻松学会的人随便写的啊。<br>如果别的Poc，用其它你不懂的语言来写，你需要急用，你还会慢慢去学？<br>当然你不觉得麻烦，也可以另外用自己会的语言写个批量调用工具，哈哈</p><h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;内置密码爆破模块还不够全面，研发其它协议认证需要时间。&lt;br&gt;先不说功能实现，首先搭建各种协议认证环境就不少时间吧。&lt;br&gt;还有别人的工具不
-      
-    
-    </summary>
-    
-    
-      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
-    
-      <category term="密码爆破" scheme="http://k8gege.org/categories/Brute-Force/"/>
-    
-    
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
-    
-      <category term="Brute" scheme="http://k8gege.org/tags/Brute/"/>
     
   </entry>
   
