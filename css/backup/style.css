@@ -1,4 +1,4 @@
-/*! style.css v1.2.0 | MIT License | github.com/shenliyang */
+/*! style.css v1.2.0 | MIT License | github.com/k8gege */
 /*====================================================
     COLOR VARIABLE FOR THEME
 ====================================================*/
@@ -514,6 +514,8 @@ pre {
   color: #666666;
 }
 .post .post-body {
+  font: 200 14.5px/1.5 "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+  color: #333;
   margin-top: 15px;
   padding: 25px 0;
   border-top: 1px solid #eee;
@@ -527,6 +529,89 @@ pre {
 .post .post-body p img {
   max-width: 100%;
 }
+
+.post .post-body h1 {
+  font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", "SimSun", sans-serif;
+  color: #333;
+  font-size: 1.8em;
+  font-weight: bold;
+  margin: 0.67em 0;
+}
+.post .post-body h2 {
+  font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", "SimSun", sans-serif;
+  color: #333;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0.83em 0;
+}
+.post .post-body h3 {
+
+  font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", "SimSun", sans-serif;
+  color: #333;
+
+  font-weight: bold;
+  margin: 1em 0;
+  
+  padding: 5px 10px;
+
+  height:35px;
+  background:#26A65B;
+  border-radius:5px; 
+
+   
+}
+.post .post-body h4 {
+  font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", "SimSun", sans-serif;
+  color: #333;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 1.6em 0 1em 0;
+  
+  padding: 3px 10px;
+  
+  height:22px;
+  background:#AEDD81;
+  border-radius:4px; 
+}
+.post .post-body h5 {
+  font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", "SimSun", sans-serif;
+  color: #333;
+  font-size: 0.9em;
+  font-weight: bold;
+  margin: 1.6em 0 1em 0;
+  
+  padding: 3px 10px;
+  
+  height:22px;
+  background:#84AF9B;
+  border-radius:4px; 
+}
+.post .post-body h6 {
+  font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", "SimSun", sans-serif;
+  color: #333;
+  font-size: 0.8em;
+  font-weight: bold;
+  margin: 1.6em 0 1em 0;
+  font-weight: 500;
+}
+
+
+.post .post-body table,
+th,
+td {
+    padding: 12px 13px;
+    border: 1px solid #dfe2e5;
+}
+
+.post .post-body table th {
+    background-color: #f2f2f2;
+    min-width: 80px;
+}
+
+.post .post-body table td {
+    min-width: 80px;
+}
+
 .post .post-footer {
   margin-top: 15px;
   padding-top: 15px;
@@ -568,7 +653,7 @@ pre {
   main post content
 ====================================================*/
 .post-content {
-  font: 400 16px/1.62 "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+  font: 200 14.5px/1.5 "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
   color: #333;
 }
 .post-content h1 {
@@ -794,32 +879,25 @@ pre {
   background: none;
   padding: 0;
 }
-.post-content table {
-  width: 100%;
-  max-width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
-  margin-bottom: 1.5em;
-  font-size: 0.96em;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+.post-content table,
+th,
+td {
+    padding: 12px 13px;
+    border: 1px solid #dfe2e5;
+}
 
-  word-wrap: break-word;
+table tr:nth-child(2n),
+thead {
+    background-color: #fafafa;
 }
-.post-content th {
-  text-align: left;
-  padding: 4px 8px 4px 10px;
-  border: 1px solid #dfe2e5;
+
+.post-content table th {
+    background-color: #f2f2f2;
+    min-width: 80px;
 }
-.post-content td {
-  text-align: left;
-  padding: 4px 8px 4px 10px;
-  border: 1px solid #dfe2e5;
-  vertical-align: top;
-}
-.post-content tr:nth-child(even) {
-  background-color: #fafafa;
+
+.post-content table td {
+    min-width: 80px;
 }
 .post-content iframe {
   display: block;
