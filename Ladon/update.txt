@@ -1,5 +1,19 @@
 Wiki: http://k8gege.org/Ladon
 
+
+2020.7.22
+[+] OSSCAN新增5985 http识别win7+系统(2012后默认开启) 
+[+] OSSCAN新增49152-65535等服务识别win7+系统(默认开启)
+
+2020.7.21
+[+] OSSCAN新增5357 http识别Win7
+[u] PortScan 优化&Banner 139/5357
+
+2020.7.20
+[+] OSSCAN新增135 oxid识别win系统
+[+] OSSCAN新增139 Banner识别win系统
+[u] Banner  为空或SSH-或HTTP 无需返回HEX
+
 7.0.0 2020.7.17
 [+] EthScan OXID枚举远程主机网卡
 [+] RDPhijack 远程桌面会话劫持
