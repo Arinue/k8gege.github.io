@@ -37,7 +37,7 @@
 
 <title>
     
-    〖教程〗RDP会话劫持-Ladon无密码登陆管理员桌面 |
+    〖教程〗RDP会话劫持-Ladon无密码登陆管理员桌面会话 |
     
     K8哥哥’s Blog
 </title>
@@ -153,7 +153,7 @@
     
     <article class="post">
     <h1 class="post-head">
-        〖教程〗RDP会话劫持-Ladon无密码登陆管理员桌面
+        〖教程〗RDP会话劫持-Ladon无密码登陆管理员桌面会话
     </h1>
     <div class="post-body">
         <p style="color:#fff;"> 
@@ -166,8 +166,7 @@ Visit <span id="busuanzi_value_page_pv"></span>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Windows系统下，tscon或任务管理器右键可被用来切换远程桌面的会话。正常情况下，切换会话时需要提供登录密码，但在SYSTEM权限下可够绕过验证，无密码实现未授权登录。该漏洞在2017年由以色列安全研究员Alexander Korznikov在个人博客中披露，mimikat里面也有该功能，为了方便Ladon也添加了该功能。</p>
 <p><img alt="image" data-original="http://k8gege.org/k8img/Other/rdp_task.PNG"></p>
 <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>实战中某个项目的内网HTTPS证书有问题，特别奇葩不知为何，代理或CMD下无法连WEBSHELL，还有些远程连接程序管理员连着远程机器，特别是连着数据库的在自动处理数据，当管理员不在时我们只要接管他的会话就很香了。</p>
-<p>漏洞细节</p>
-<p>本地用户若能获取NT AUTHORITY/SYSTEM权限执行命令，就能够劫持任何处于已登录用户的会话，而无需获得该用户的登录凭证。终端服务会话可以是连接状态也可以是未连接状态。</p>
+<h3 id="漏洞细节"><a href="#漏洞细节" class="headerlink" title="漏洞细节"></a>漏洞细节</h3><p>本地用户若能获取NT AUTHORITY/SYSTEM权限执行命令，就能够劫持任何处于已登录用户的会话，而无需获得该用户的登录凭证。终端服务会话可以是连接状态也可以是未连接状态。</p>
 <p>Korznikov认为这是个高危漏洞，可允许任何本地管理员劫持会话并访问：</p>
 <pre><code>1. 域管理员会话；
 
@@ -190,7 +189,7 @@ Visit <span id="busuanzi_value_page_pv"></span>
 <li>启动服务</li>
 </ol>
 <p>net setart sesshijack</p>
-<p>PS：该方法比较麻烦</p>
+<p>PS：该方法优点系统自带，但稍威麻烦一点</p>
 <h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><p>1.管理员权限<br>2.用户桌面（RDP、终端）</p>
 <h3 id="强大之处"><a href="#强大之处" class="headerlink" title="强大之处"></a>强大之处</h3><p>1.它可以登录到离线的机器。如果机器是在3天之内注销的，尽管它现在是离线状态，我们也可以进行登录。</p>
 <p>2.它可以解锁会话。如果一个用户暂时离开他的计算机并且对他的机器，你可以使用这个漏洞进行解锁登录。</p>
