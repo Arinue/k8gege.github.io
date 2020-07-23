@@ -22,12 +22,12 @@
 <meta name="keywords" content=",">
 
 
-<meta name="description" content="
+<meta name="description" content="Ladon无密码登陆RDP会话
+
 
 
 RDP会话却持
-强大之处1.它可以登录到离线的机器。如果机器是在3天之内注销的，尽管它现在是离线状态，我们也可以进行登录。
-2.它可以解锁会话。如果一个用户暂时离开他的计算机并且对他的机器...">
+前言Windows系统下，tscon或任务管理器右键可被用来切换远程桌面的会话。正常情况下，切换会话时需要提供登录密码，但在SYSTEM权限...">
 
 
 <meta name="robots" content="all">
@@ -157,13 +157,24 @@ RDP会话却持
         〖教程〗Ladon RDP远程桌面会话劫持
     </h1>
     <div class="post-body">
-        <a id="more"></a>
+        <p>Ladon无密码登陆RDP会话</p>
+<a id="more"></a>
 
 
 <p>RDP会话却持<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/RdpHijack.PNG"></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Windows系统下，tscon或任务管理器右键可被用来切换远程桌面的会话。正常情况下，切换会话时需要提供登录密码，但在SYSTEM权限下可够绕过验证，无密码实现未授权登录。该漏洞在2017年由以色列安全研究员Alexander Korznikov在个人博客中披露，使用的是系统命令tscon，为了方便Ladon也添加了该功能，当然mimikat里面也有该功能。</p>
+<p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/RdpHijack.PNG"></p>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>实战中某个项目的内网HTTPS证书有问题，特别奇葩不知为何，代理或CMD下无法连WEBSHELL，还有些远程连接程序管理员连着远程机器，特别是连着数据库的在自动处理数据，当管理员不在时我们只要接管他的会话就很香了。</p>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Load RDPhijack</span><br><span class="line">Usage:</span><br><span class="line">Ladon RDPHijack sessionID</span><br><span class="line">Ladon RDPHijack <span class="built_in">type</span> or password</span><br><span class="line">Example:</span><br><span class="line">Ladon RDPHijack 3</span><br><span class="line">Ladon RDPHijack 3 console</span><br><span class="line">Ladon RDPHijack 3 P@ssw0rd</span><br><span class="line">Ladon RDPHijack 3 disconnect</span><br></pre></td></tr></table></figure>
+
+<p>首先query user查看会话ID，然后使用Ladon接管会话即可，操作完成后disconnect即可，或者再连回原先会话。</p>
+<h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><p>1.管理员权限<br>2.用户桌面（RDP、终端）</p>
 <h3 id="强大之处"><a href="#强大之处" class="headerlink" title="强大之处"></a>强大之处</h3><p>1.它可以登录到离线的机器。如果机器是在3天之内注销的，尽管它现在是离线状态，我们也可以进行登录。</p>
 <p>2.它可以解锁会话。如果一个用户暂时离开他的计算机并且对他的机器，你可以使用这个漏洞进行解锁登录。</p>
 <p>3.他同样适用于终端。所以，你可以劫持RDP，同样可以劫持终端。</p>
+<p>4.当前用户切换至域控桌面，直接即可获取域控权限</p>
+<p>5.特殊程序只能指定用户访问（如证书站点、Firefox、Chrome等使用DBAPI的密码读取）</p>
+<p>6.配合SHIFT或放大镜等类似后门，可以在不登陆远程机器的情况下访问管理员会话。</p>
 <h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>
 
     </div>
