@@ -168,11 +168,12 @@ Visit <span id="busuanzi_value_page_pv"></span>
 <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>实战中某个项目的内网HTTPS证书有问题，特别奇葩不知为何，代理或CMD下无法连WEBSHELL，还有些远程连接程序管理员连着远程机器，特别是连着数据库的在自动处理数据，当管理员不在时我们只要接管他的会话就很香了。</p>
 <h3 id="漏洞细节"><a href="#漏洞细节" class="headerlink" title="漏洞细节"></a>漏洞细节</h3><p>本地用户若能获取NT AUTHORITY/SYSTEM权限执行命令，就能够劫持任何处于已登录用户的会话，而无需获得该用户的登录凭证。终端服务会话可以是连接状态也可以是未连接状态。</p>
 <p>Korznikov认为这是个高危漏洞，可允许任何本地管理员劫持会话并访问：</p>
-<pre><code>1. 域管理员会话；
-
-2. 被劫持用户正在处理的任何未保存文件；
-
-3. 被劫持用户先前登录的任何其他系统或应用（可能包括其他远程桌面会话、网络共享映射、需要其他登录凭证的应用、邮箱等）</code></pre><h3 id="Ladon用法"><a href="#Ladon用法" class="headerlink" title="Ladon用法"></a>Ladon用法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Load RDPhijack</span><br><span class="line">Usage:</span><br><span class="line">Ladon RDPHijack sessionID</span><br><span class="line">Ladon RDPHijack <span class="built_in">type</span> or password</span><br><span class="line">Example:</span><br><span class="line">Ladon RDPHijack 3</span><br><span class="line">Ladon RDPHijack 3 console</span><br><span class="line">Ladon RDPHijack 3 P@ssw0rd</span><br><span class="line">Ladon RDPHijack 3 disconnect</span><br></pre></td></tr></table></figure>
+<ol>
+<li>域管理员会话；</li>
+<li>被劫持用户正在处理的任何未保存文件；</li>
+<li>被劫持用户先前登录的任何其他系统或应用（可能包括其他远程桌面会话、网络共享映射、需要其他登录凭证的应用、邮箱等）</li>
+</ol>
+<h3 id="Ladon用法"><a href="#Ladon用法" class="headerlink" title="Ladon用法"></a>Ladon用法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Load RDPhijack</span><br><span class="line">Usage:</span><br><span class="line">Ladon RDPHijack sessionID</span><br><span class="line">Ladon RDPHijack <span class="built_in">type</span> or password</span><br><span class="line">Example:</span><br><span class="line">Ladon RDPHijack 3</span><br><span class="line">Ladon RDPHijack 3 console</span><br><span class="line">Ladon RDPHijack 3 P@ssw0rd</span><br><span class="line">Ladon RDPHijack 3 disconnect</span><br></pre></td></tr></table></figure>
 
 <p>首先query user查看会话ID，然后使用Ladon接管会话即可，操作完成后disconnect即可，或者再连回原先会话。<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/RdpHijack.PNG"></p>
 <p>PS: 用这个技术去劫持，系统不会请求合法用户登出，而是在没有任何通知的情况下，直接将用户踢出。</p>
