@@ -1050,7 +1050,13 @@
   <entry>
     <title>〖教程〗NbtScan 139端口弱口令/Netbios密码爆破</title>
     <url>/p/NbtScan.html</url>
-    <content><![CDATA[<h3 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h3><p>Ladon &gt;= 7.1</p>
+    <content><![CDATA[<p>=============================================================================================<br>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p>
+<script language="javascript" type="text/javascript">
+window.location.href="http://k8gege.org/Ladon/NbtScan.html";
+</script>
+
+
+<h3 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h3><p>Ladon &gt;= 7.1</p>
 <h3 id="139端口"><a href="#139端口" class="headerlink" title="139端口"></a>139端口</h3><p>NetBIOS File and Print Sharing 通过这个端口进入的连接试图获得NetBIOS/SMB服务。这个协议被用于Windows”文件和打印机共享”和SAMBA。</p>
 <h3 id="IPC-通信"><a href="#IPC-通信" class="headerlink" title="IPC$通信"></a>IPC$通信</h3><p>Windows系统中的net use ipc$整个通信过程，先445-&gt;137-&gt;139验证，当你开启防火墙禁用445，发现系统命令就无法连接IPC了，根本没机会走到139，所以使用系统自带命令连接的ipc$需要同时开启这些端口。说入侵139就是IPC$的说法是错误的，就像说wmiexec.vbs可完全替代PSEXEC工具一样，这个脚本需要目标开启135和445，因为它通过445来传输结果，意味着目标只开放135这个VBS的回显就没有了，其实假设目标只开放445，这个VBS脚本还能执行命令吗？哪来的替代或扔掉？这个系统的IPC$连接也是同理，测试首先得把其它端口禁了再说话。虽然系统自带命令需要同时开启，但是 自己实现SMB服务器的话是可以只使用139或只用445端口的，详情参考impacket。</p>
 <h3 id="Nbt爆破"><a href="#Nbt爆破" class="headerlink" title="Nbt爆破"></a>Nbt爆破</h3><p>系统自带命令需要同时开启139和445，但是 自己实现SMB服务器的话是可以只使用139或只用445端口的。系统的IPC$就像读取系统密码一样，可以先植入CS再用MIMI插件读取，但是我们也可以不使用CS，直接MIMI读取密码啊。基于和MIMI可以独立读取密码的原理，反向思路我们也可以完全不走445，直接通过139验证WINDOWS密码，所以这个和IPC$不一样(指的是系统命令连接的ipc)，所以为了防止大家误解，起名为NbtScan。毕竟走的也是Netbios，系统IPC$验证一是时间非常久，且必须开启445，如果445都开了为何不用SmbScan验证密码呢？但是由于近几年勒索病毒横行，可能很多机器默认会关闭445，所以会导致无法通过445验证密码，但是没关系还有139啊。</p>
