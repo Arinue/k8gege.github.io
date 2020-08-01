@@ -1362,8 +1362,8 @@ padding: 0 5px 0 5px;
   position: relative;
   display: block;
   font-size: 30px;
-  width: 62px;
-  height: 62px;
+  width: 180px;
+  height: 180px;
   line-height: 60px;
   margin: 0 auto;
   cursor: pointer;
@@ -1371,7 +1371,7 @@ padding: 0 5px 0 5px;
   vertical-align: middle;
   color: #ff8140;
   -webkit-user-select: none;
-  border: 1px solid #d9d9d9;
+  border: 0px solid #d9d9d9;
   -webkit-box-shadow: 0 0 2px #d9d9d9;
   -moz-box-shadow: 0 0 2px #d9d9d9;
   box-shadow: 0 0 2px #d9d9d9;
@@ -1381,10 +1381,10 @@ padding: 0 5px 0 5px;
 }
 .reward .reward-wrap .reward-box {
   position: absolute;
-  top: -220px;
+  top: -200px;
   left: 50%;
   display: none;
-  width: 350px;
+  width: 200px;
   height: 200px;
   margin-left: -175px;
   padding: 15px;
@@ -1443,6 +1443,7 @@ padding: 0 5px 0 5px;
   display: block;
 }
 .reward .reward-tip {
+  left: 30px;
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 1px;
