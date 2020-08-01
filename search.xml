@@ -1048,14 +1048,12 @@
       </tags>
   </entry>
   <entry>
-    <title>NbtScan 139端口弱口令/Netbios密码爆破</title>
+    <title>〖教程〗NbtScan 139端口弱口令/Netbios密码爆破</title>
     <url>/p/NbtScan.html</url>
-    <content><![CDATA[<p style="color:#fff;"> 
-<% <span class="archive-article-date">
-Visit <span id="busuanzi_value_page_pv"></span>
-
-%>
-</%></p>
+    <content><![CDATA[<p>=============================================================================================<br>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p>
+<script language="javascript" type="text/javascript">
+window.location.href="http://k8gege.org/Ladon/NbtScan.html";
+</script>
 
 <h3 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h3><p>Ladon &gt;= 7.1</p>
 <h3 id="139端口"><a href="#139端口" class="headerlink" title="139端口"></a>139端口</h3><p>NetBIOS File and Print Sharing 通过这个端口进入的连接试图获得NetBIOS/SMB服务。这个协议被用于Windows”文件和打印机共享”和SAMBA。</p>
