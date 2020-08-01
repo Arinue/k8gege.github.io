@@ -1,5 +1,10 @@
 Wiki: http://k8gege.org/Ladon
 
+7.1.0 2020.8.1
+[+] NbtScan 139端口Netbios协议Windows密码爆破
+[+] GetPipe 查看本机命名管道
+
+=========================================
 2020.7.25
 [+] MS16135提权(CVE-2016-7255|Vulnerable: Vista/Win7/2008/Win8.1/2012/Win10/2016)
 2020.7.23
