@@ -37,7 +37,7 @@
 
 <title>
     
-    〖教程〗LadonExp使用IIS Webdav写权限漏洞GetShell |
+    〖教程〗LadonExp使用IIS写权限Webdav漏洞GetShell |
     
     K8哥哥’s Blog
 </title>
@@ -153,7 +153,7 @@
     
     <article class="post">
     <h1 class="post-head">
-        〖教程〗LadonExp使用IIS Webdav写权限漏洞GetShell
+        〖教程〗LadonExp使用IIS写权限Webdav漏洞GetShell
     </h1>
     <div class="post-body">
         <p style="color:#fff;"> 
@@ -164,7 +164,7 @@ Visit <span id="busuanzi_value_page_pv"></span>
 </%></p>
 
 <h3 id="漏洞成因"><a href="#漏洞成因" class="headerlink" title="漏洞成因"></a>漏洞成因</h3><p>该漏洞的产生原因来源于服务器配置不当造成，此漏洞主要是因为服务器开启了webdav的组件导致的可以扫描到当前的操作，具体操作其实是通过webdav的OPTION来查询是否支持PUT。</p>
-<h3 id="IIS配置"><a href="#IIS配置" class="headerlink" title="IIS配置"></a>IIS配置</h3><p>1 启用webdav,<br>2 目录给写权限(为了方便直接eveyone完全写入权限)<br>3 脚本资源访问权限(不然MOVE失败)</p>
+<h3 id="IIS配置"><a href="#IIS配置" class="headerlink" title="IIS配置"></a>IIS配置</h3><p>1 启用webdav组件<br>2 目录给写权限(为了方便直接eveyone完全写入权限)<br>3 脚本资源访问权限(不然MOVE失败即无法GetShell)</p>
 <p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exp/iis/iis_cfg.PNG"></p>
 <p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exp/iis/iis_cfg2.PNG"></p>
 <h3 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h3><p>使用LadonEXP可轻松复现此类漏洞，在Ladon改名前(Cscan)已复现过Tomcat</p>
