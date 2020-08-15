@@ -1,5 +1,23 @@
 Wiki: http://k8gege.org/Ladon
 
+7.2.1 2020.8.13
+[+] SweetPotato Win7-2019提权(服务用户权限提到system)
+
+7.2.0 2020.8.10
+[+] BadPotato  PrintSpoofer/PipePotato提权(Win8-Win10/Win2012-2019)
+[+] Open3389 一键开启3389
+[+] RdpLog   查看3389连接记录
+[+] QueryAdmin 查看管理员组用户
+[+] ActiveAdmin 激活内置用户Administrator
+[+] ActiveGuest 激活内置用户Guest
+
+7.1.1 2020.8.5
+[+] whoami 当前用户与权限(紫色=高权限)
+[u] 修复sshexec远程查看"wget"命令的BUG
+
+7.1 2020.8.3
+[+] 修复CS无法加载的Bug
+
 7.1.0 2020.8.1
 [+] NbtScan 139端口Netbios协议Windows密码爆破
 [+] GetPipe 查看本机命名管道
