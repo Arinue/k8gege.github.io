@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://k8gege.org/Ladon/index.html</loc>
+    <loc>http://k8gege.org/Ladon/potato.html</loc>
     <lastmod>2020-08-15</lastmod>
   </url>  <url>
     <loc>http://k8gege.org/Ladon/iisput.html</loc>
     <lastmod>2020-08-15</lastmod>
   </url>  <url>
-    <loc>http://k8gege.org/Download/index.html</loc>
+    <loc>http://k8gege.org/p/GetWinAuth.html</loc>
     <lastmod>2020-08-15</lastmod>
   </url>  <url>
-    <loc>http://k8gege.org/p/GetWinAuth.html</loc>
-    <lastmod>2020-08-11</lastmod>
+    <loc>http://k8gege.org/Ladon/index.html</loc>
+    <lastmod>2020-08-15</lastmod>
+  </url>  <url>
+    <loc>http://k8gege.org/Download/index.html</loc>
+    <lastmod>2020-08-15</lastmod>
   </url>  <url>
     <loc>http://k8gege.org/Ladon/GetWinAuth.html</loc>
     <lastmod>2020-08-11</lastmod>
