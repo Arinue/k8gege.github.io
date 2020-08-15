@@ -1,5 +1,9 @@
 Wiki: http://k8gege.org/Ladon
 
+7.2.2 2020.8.15
+[u] whoami增加特权信息(如果你了解提权工具原理可查看特权)
+[+] 检测SeImpersonatePrivilege特权(很多提权工具需要用到)
+
 7.2.1 2020.8.13
 [+] SweetPotato Win7-2019提权(服务用户权限提到system)
 
