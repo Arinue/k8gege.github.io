@@ -171,62 +171,22 @@ Visit <span id="busuanzi_value_page_pv"></span>
 <h3 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h3><p>&gt;= Ladon 7.2.0<br>Update: 20200810</p>
 <h3 id="Potato提权原理"><a href="#Potato提权原理" class="headerlink" title="Potato提权原理"></a>Potato提权原理</h3><p>通过各种方法在本地NTLM中继获取SYSTEM令牌，再通过模拟令牌执行命令，所以这就是为什么有各种Potato提权工具的原因。</p>
 <p>PS：就像SQL注入，通过特定SQL语句注入获取特定数据库信息统称为SQL注入，按数据库分可称为Oracle注入、MYSQL注入等。</p>
-<h3 id="SweetPotato"><a href="#SweetPotato" class="headerlink" title="SweetPotato"></a>SweetPotato</h3><pre><code class="Bash">Load SweetPotato
-Local Privilege Escalation from Windows Service Accounts to SYSTEM
-Vulnerable: Win7-Win10/Win2008-2019
-Usage:
-Ladon SweetPotato cmdline
-```Bash
+<h3 id="SweetPotato"><a href="#SweetPotato" class="headerlink" title="SweetPotato"></a>SweetPotato</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Load SweetPotato</span><br><span class="line">Local Privilege Escalation from Windows Service Accounts to SYSTEM</span><br><span class="line">Vulnerable: Win7-Win10/Win2008-2019</span><br><span class="line">Usage:</span><br><span class="line">Ladon SweetPotato cmdline</span><br></pre></td></tr></table></figure>
 
-<span class="comment">### PrintSpoofer</span>
+<h3 id="PrintSpoofer"><a href="#PrintSpoofer" class="headerlink" title="PrintSpoofer"></a>PrintSpoofer</h3><p>pipePotato:一种新型的通用提权漏洞，PrintSpoofer是一个利用打印机PIPE提权的方法，国人写了个工具叫BadPotato。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Load BadPotato</span><br><span class="line">Local Privilege Escalation from Windows Service Accounts to SYSTEM</span><br><span class="line">PrintSpoofer Abusing Impersonate Privileges.</span><br><span class="line">Vulnerable: Win8-Win10/Win2012-2019</span><br><span class="line">Usage:</span><br><span class="line">Ladon BadPotato cmdline</span><br></pre></td></tr></table></figure>
 
-网上有几个说法PrintSpoofer/PipePotato/BadPotato，确却的说第一个才是最准确的，发现国内很多人误解了PipePotato，以为PipePotato是PrintSpoofer的另一种叫法。打个比方PrintSpoofer是苹果，你说苹果是水果没错，但是说水果是苹果这是错的。通过PIPE获取SYSTEM令牌属于一类，而不是只属于打印机一个，如果有其它程序的PIPE也可模拟提权，发现后也叫它PipePotato，不理解的人就以为这玩意不就是打印机吗？就像有人发现西瓜可以吃，然后告诉大家说我发现了一种水果，误为水果是苹果的另一种叫法的人就会觉得，不就是苹果嘛，我们都吃了好几年了你才发现？西瓜等于苹果吗？不等于，不要误解水果(PipePotato)
-
-
-https://itm4n.github.io/printspoofer-abusing-impersonate-privileges/
-
-```Bash
-Load BadPotato
-Local Privilege Escalation from Windows Service Accounts to SYSTEM
-PrintSpoofer Abusing Impersonate Privileges.
-Vulnerable: Win8-Win10/Win2012-2019
-Usage:
-Ladon BadPotato cmdline
-```Bash
-
-<span class="comment">### 测试环境</span>
-1 Win7 IIS 应用池用户权限
-2 Win7 本地管理员用户权限
-2 Win2012 IIS 应用池权限
-3 Win7 本地服务用户权限
-4 Win8 本地服务用户权限
-
-<span class="comment">#### Win7管理员提权至SYSTEM</span>
-![image](http://k8gege.org/k8img/Ladon/exp/lpe/Win7_Admin_SweetPotato.PNG)
-
-<span class="comment">#### Win7 IIS应用池提权至SYSTEM</span>
-![image](http://k8gege.org/k8img/Ladon/exp/lpe/IIS_Win7_SweetPotato.PNG)
-
-<span class="comment">#### 2008 R2 IIS应用池提权至SYSTEM</span>
-![image](http://k8gege.org/k8img/Ladon/exp/lpe/IIS8_2012_PR.PNG)
-
-<span class="comment">#### WIN7服务用户CS提权至SYSTEM</span>
-![image](http://k8gege.org/k8img/Ladon/exp/lpe/CS_PR_SweetPotato.PNG)
-
-<span class="comment">#### WIN8服务用户提权至SYSTEM</span>
-![image](http://k8gege.org/k8img/Ladon/exp/lpe/BadPotato.PNG)
-
-
-
-<span class="comment">### 工具下载</span>
-
-最新版本：https://k8gege.org/Download
-历史版本: https://github.com/k8gege/Ladon/releases
-
-
-&lt;div style=<span class="string">"text-align: center; width: 710px; border: green solid 0px;"</span>&gt;
-&lt;img alt=<span class="string">""</span> src=<span class="string">"http://k8gege.org/img/k8team.jpg"</span> style=<span class="string">"display: inline-block;width: 250px;height: 300px;"</span> /&gt;
-&lt;/div&gt;</code></pre>
+<h3 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h3><p>1 Win7 IIS 应用池用户权限<br>2 Win7 本地管理员用户权限<br>2 Win2012 IIS 应用池权限<br>3 Win7 本地服务用户权限<br>4 Win8 本地服务用户权限</p>
+<p>PS：由于Badpotato</p>
+<h4 id="Win7管理员提权至SYSTEM"><a href="#Win7管理员提权至SYSTEM" class="headerlink" title="Win7管理员提权至SYSTEM"></a>Win7管理员提权至SYSTEM</h4><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exp/lpe/Win7_Admin_SweetPotato.PNG"></p>
+<h4 id="Win7-IIS应用池提权至SYSTEM"><a href="#Win7-IIS应用池提权至SYSTEM" class="headerlink" title="Win7 IIS应用池提权至SYSTEM"></a>Win7 IIS应用池提权至SYSTEM</h4><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exp/lpe/IIS_Win7_SweetPotato.PNG"></p>
+<h4 id="2008-R2-IIS应用池提权至SYSTEM"><a href="#2008-R2-IIS应用池提权至SYSTEM" class="headerlink" title="2008 R2 IIS应用池提权至SYSTEM"></a>2008 R2 IIS应用池提权至SYSTEM</h4><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exp/lpe/IIS8_2012_PR.PNG"></p>
+<h4 id="WIN7服务用户CS提权至SYSTEM"><a href="#WIN7服务用户CS提权至SYSTEM" class="headerlink" title="WIN7服务用户CS提权至SYSTEM"></a>WIN7服务用户CS提权至SYSTEM</h4><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exp/lpe/CS_PR_SweetPotato.PNG"></p>
+<h4 id="WIN8服务用户提权至SYSTEM"><a href="#WIN8服务用户提权至SYSTEM" class="headerlink" title="WIN8服务用户提权至SYSTEM"></a>WIN8服务用户提权至SYSTEM</h4><p><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exp/lpe/BadPotato.PNG"></p>
+<h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>
+<div style="text-align: center; width: 710px; border: green solid 0px;">
+<img alt style="display: inline-block;width: 250px;height: 300px;" data-original="http://k8gege.org/img/k8team.jpg">
+</div>
 
     </div>
 </article>
