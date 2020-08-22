@@ -832,8 +832,8 @@
         <category>Ladon</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
       </tags>
   </entry>
   <entry>
@@ -1055,7 +1055,7 @@
       </tags>
   </entry>
   <entry>
-    <title>〖教程〗K8飞刀-网络安全CTF解题Web篇</title>
+    <title>〖教程〗K8飞刀-网络安全CTF解题Web篇共10题</title>
     <url>/p/ctf_k8fly.html</url>
     <content><![CDATA[<p>前段时间有人和我说什么时候有空出些CTF用的工具，实际上CTF考查的内容，实战中用到的很多工具都可以使用，关键在于你懂不懂用。也看到有人搜索如何使用K8飞刀，在此以CTF题为例，教大家如何使用K8飞刀的HackerIE功能（相当于Hackbar插件的高级版），以及编码解码功能的使用（模块涉及多种编码以及加密解密算法），除了实战会用到以外，CTF也可以用到，不过CTF中常见的应该是BASE64、HTML编码、SQL注入编码之类的，实战中密码除了MD5、SHA1以外最常见的莫过于BASE64了，XSS里HTML编码等也会经常用到，至于什么栅栏密码之类的实战几乎很少遇到，所以有些CTF出题和实战还是两回事，虽然说栅栏算法也非常简单，但从实战角度来说，考查用处不大，实战几乎不见的有必要考吗？如同书呆子考试靠死记硬背靠运气拿高分，拿了高分实际工作解决不了新问题，这种就是没用。</p>
 <h3 id="考查知识点"><a href="#考查知识点" class="headerlink" title="考查知识点"></a>考查知识点</h3><p>1.查看HTML代码<br>2.GET提交<br>3.POST提交<br>4.伪造IP<br>5.Base64解密<br>6.HTML实体解密<br>7.PUT/MOVE漏洞<br>8.URL编码<br>9.目录扫描<br>10.Cookie欺骗</p>
@@ -1104,7 +1104,7 @@
 <p>K8扫到robots.txt访问发现result.php,下面提示x=密码就出现flag<br><img alt="image" data-original="http://k8gege.org/k8img/k8fly/ctf/ctf_scandir1.PNG"></p>
 <p><a href="http://123.206.87.240:8002/web13/resusl.php?x=admin" target="_blank" rel="noopener">http://123.206.87.240:8002/web13/resusl.php?x=admin</a></p>
 <p><img alt="image" data-original="http://k8gege.org/k8img/k8fly/ctf/ctf_scandir2.PNG"></p>
-<h3 id="关于解题速度"><a href="#关于解题速度" class="headerlink" title="关于解题速度"></a>关于解题速度</h3><p>天下武功唯快不破，只有解题速度快，才有机会做更多的题，同样能全解的情况下，自然也是速度快的拿第一。</p>
+<h3 id="解题速度"><a href="#解题速度" class="headerlink" title="解题速度"></a>解题速度</h3><p>天下武功唯快不破，只有解题速度快，才有机会做更多的题，同样能全解的情况下，自然也是速度快的拿第一。</p>
 <p>网上有不少教程对于，PUT提交或IP这种简单修改使用BURP来解题，这个也没什么问题，问题在于有些人并不熟悉相关工具。最怕的是你也熟悉该工具，但打CTF时，环境因素或自己不细心少了哪一步，会浪费掉很多时间，我们都知道如果几分钟就能把前面简单的FLAG提交，那么就会有更多的时间去解难题拿更高分。所以对于考查HTTP参数提交的知识点，可以完全使用K8飞刀或LadonExp这种一键的工具，不要使用Burp这种步骤多的工具，钥题时间越快对你越有利。实战也是一样，你早一天拿到目标，和只做到一半就被发现然后管理员打补丁，没办法再通过该漏洞GetShell甚至也无其它漏洞时你就知道错了。如果你多次提交失败管理员还是没发现，只能说明他很蠢，你运气好可以随便搞。</p>
 <h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p><a href="https://k8gege.org/Download">https://k8gege.org/Download</a></p>
 <div style="text-align: center; width: 710px; border: green solid 0px;">
@@ -1508,8 +1508,8 @@ window.location.href="http://k8gege.org/Ladon/WinrmScan.html";
 ]]></content>
       <categories>
         <category>Ladon</category>
-        <category>密码爆破</category>
         <category>远程执行</category>
+        <category>密码爆破</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -1663,8 +1663,8 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
         <category>Ladon</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
       </tags>
   </entry>
   <entry>
@@ -1926,8 +1926,8 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
         <category>密码</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Kali</tag>
         <tag>Scanner</tag>
       </tags>
@@ -2106,8 +2106,8 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
         <category>Kali</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Kali</tag>
         <tag>Scanner</tag>
       </tags>
@@ -2156,8 +2156,8 @@ window.location.href="http://k8gege.org/Ladon/sshscan.html";
         <category>Cobalt Strike</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Cobalt Strike</tag>
       </tags>
   </entry>
@@ -2238,13 +2238,13 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
 <p><a href="https://github.com/k8gege/K8tools/raw/master/Comahawk.rar" target="_blank" rel="noopener">https://github.com/k8gege/K8tools/raw/master/Comahawk.rar</a></p>
 ]]></content>
       <categories>
-        <category>提权</category>
         <category>Exp</category>
+        <category>提权</category>
       </categories>
       <tags>
+        <tag>Exp</tag>
         <tag>Tool</tag>
         <tag>LPE</tag>
-        <tag>Exp</tag>
       </tags>
   </entry>
   <entry>
@@ -2356,8 +2356,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <category>嗅探</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Sniffer</tag>
         <tag>FtpSniffer</tag>
         <tag>HttpSniffer</tag>
@@ -2407,32 +2407,6 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       </tags>
   </entry>
   <entry>
-    <title>利用DirectoryEntry获取域内计算机以及共享资源</title>
-    <url>/p/54132.html</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>System.DirectoryServices.DirectoryEntry组件提供了对Active Directory的访问。本文以两个简单的小程序为例，阐述了如何利用此组件查看网络的各节点的信息。 DirectoryEntry组件提供了Path属性，根据文档，此属性指定了目录服务中用来访问对象的对象名，其格式如下：<br>protocol://servername:port number/distinguished name<br>此语句的第一部分定义了访问将使用的协议，如<br>LDAP: (Lightweight Directory Access Protocol)<br>IIS: (提供IIS元数据来读及配置Internet Infomation Server)<br>WinNT: (提供在非常有限的性能下对Windows NT域的访问)<br>NDS: (提供对Novell Directory Service的访问)<br>等等（详细信息清参考MSDN）。 </p>
-<p>因此我们构造一个DirectoryEntry实例，将它的Path设为”WinNT:”，以通过对它的所有子项的枚举来发现网络上的所有域（以及工作组）。这样，再对所发现的域（以及工作组）的子项进行枚举，就可以发现网络上的所有计算机，结合WMI发现机器上的共享资源。</p>
-<h3 id="C-实现代码"><a href="#C-实现代码" class="headerlink" title="C#实现代码"></a>C#实现代码</h3><p>以下为Ladon的EnumShare代码,自动获取当前域，并枚举域内计算机以及获取机器开放共享资源。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">string strDomain;</span><br><span class="line">string strComputer;</span><br><span class="line">string strShare;</span><br><span class="line">Console.WriteLine(&quot;Load EnumShare&quot;);</span><br><span class="line"></span><br><span class="line">DirectoryEntry root &#x3D; new DirectoryEntry(&quot;WinNT:&quot;);</span><br><span class="line">foreach (DirectoryEntry Domain in root.Children)</span><br><span class="line">&#123;</span><br><span class="line">    strDomain &#x3D; Domain.Name;</span><br><span class="line">    Console.WriteLine(&quot;Domain: &quot; + strDomain);</span><br><span class="line">    foreach (DirectoryEntry Computer in Domain.Children)</span><br><span class="line">    &#123;</span><br><span class="line">        if (Computer.SchemaClassName.Equals(&quot;Computer&quot;))</span><br><span class="line">        &#123;</span><br><span class="line">            strComputer &#x3D; Computer.Name;</span><br><span class="line">            ManagementObjectSearcher searcher &#x3D; new ManagementObjectSearcher(&quot;select * from win32_share&quot;);</span><br><span class="line">            foreach (ManagementObject share in searcher.Get())</span><br><span class="line">            &#123;</span><br><span class="line">                strShare &#x3D; share[&quot;Name&quot;].ToString();</span><br><span class="line">                Console.WriteLine(strComputer + &quot;\\&quot; + strShare);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Ladon EnumShare<br>因为崇尚极简主义，所以Ladon无需填写域名以及参数，参数多也很烦，全自动获取，一步到位。<br><img alt="img" data-original="https://k8gege.org/k8img/Ladon/exe/EnumShare.PNG"></p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a></p>
-<p><a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.directoryservices.directoryentry?view=netframework-4.8" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/dotnet/api/system.directoryservices.directoryentry?view=netframework-4.8</a></p>
-]]></content>
-      <categories>
-        <category>Ladon</category>
-        <category>.NET</category>
-        <category>主机发现</category>
-        <category>源码</category>
-        <category>内网渗透</category>
-        <category>信息收集</category>
-        <category>编程</category>
-      </categories>
-      <tags>
-        <tag>Ladon</tag>
-        <tag>.NET</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>看我如何模拟Cobalt Strike上线欺骗入侵者</title>
     <url>/p/40523.html</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>不知道你有没有遇到过马上线却不能操作的情况，我猜当你网络卡或马写得不好时会出现这个问题<br>但是人为的你可能没遇到过，首先要欺骗你的远控，得分析你的协议，如果你的马根本不是公开的<br>网络又是好的，你刚往人家机器里种马，发现马只能上线不能操作，绝对是马有问题，不能甩锅我<br>人家都不知道你的马的通信原理，流量特征，不可能事先准备好一个程序，让你一发就欺骗你的马<br>本文主要研究CS这个APT很喜欢用的马，当然TCP的也一样原理，只要构造对应的数据包就可欺骗</p>
@@ -2469,6 +2443,32 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       <tags>
         <tag>Cobalt Strike</tag>
         <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>利用DirectoryEntry获取域内计算机以及共享资源</title>
+    <url>/p/54132.html</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>System.DirectoryServices.DirectoryEntry组件提供了对Active Directory的访问。本文以两个简单的小程序为例，阐述了如何利用此组件查看网络的各节点的信息。 DirectoryEntry组件提供了Path属性，根据文档，此属性指定了目录服务中用来访问对象的对象名，其格式如下：<br>protocol://servername:port number/distinguished name<br>此语句的第一部分定义了访问将使用的协议，如<br>LDAP: (Lightweight Directory Access Protocol)<br>IIS: (提供IIS元数据来读及配置Internet Infomation Server)<br>WinNT: (提供在非常有限的性能下对Windows NT域的访问)<br>NDS: (提供对Novell Directory Service的访问)<br>等等（详细信息清参考MSDN）。 </p>
+<p>因此我们构造一个DirectoryEntry实例，将它的Path设为”WinNT:”，以通过对它的所有子项的枚举来发现网络上的所有域（以及工作组）。这样，再对所发现的域（以及工作组）的子项进行枚举，就可以发现网络上的所有计算机，结合WMI发现机器上的共享资源。</p>
+<h3 id="C-实现代码"><a href="#C-实现代码" class="headerlink" title="C#实现代码"></a>C#实现代码</h3><p>以下为Ladon的EnumShare代码,自动获取当前域，并枚举域内计算机以及获取机器开放共享资源。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">string strDomain;</span><br><span class="line">string strComputer;</span><br><span class="line">string strShare;</span><br><span class="line">Console.WriteLine(&quot;Load EnumShare&quot;);</span><br><span class="line"></span><br><span class="line">DirectoryEntry root &#x3D; new DirectoryEntry(&quot;WinNT:&quot;);</span><br><span class="line">foreach (DirectoryEntry Domain in root.Children)</span><br><span class="line">&#123;</span><br><span class="line">    strDomain &#x3D; Domain.Name;</span><br><span class="line">    Console.WriteLine(&quot;Domain: &quot; + strDomain);</span><br><span class="line">    foreach (DirectoryEntry Computer in Domain.Children)</span><br><span class="line">    &#123;</span><br><span class="line">        if (Computer.SchemaClassName.Equals(&quot;Computer&quot;))</span><br><span class="line">        &#123;</span><br><span class="line">            strComputer &#x3D; Computer.Name;</span><br><span class="line">            ManagementObjectSearcher searcher &#x3D; new ManagementObjectSearcher(&quot;select * from win32_share&quot;);</span><br><span class="line">            foreach (ManagementObject share in searcher.Get())</span><br><span class="line">            &#123;</span><br><span class="line">                strShare &#x3D; share[&quot;Name&quot;].ToString();</span><br><span class="line">                Console.WriteLine(strComputer + &quot;\\&quot; + strShare);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Ladon EnumShare<br>因为崇尚极简主义，所以Ladon无需填写域名以及参数，参数多也很烦，全自动获取，一步到位。<br><img alt="img" data-original="https://k8gege.org/k8img/Ladon/exe/EnumShare.PNG"></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://github.com/k8gege/Ladon" target="_blank" rel="noopener">https://github.com/k8gege/Ladon</a></p>
+<p><a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.directoryservices.directoryentry?view=netframework-4.8" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/dotnet/api/system.directoryservices.directoryentry?view=netframework-4.8</a></p>
+]]></content>
+      <categories>
+        <category>Ladon</category>
+        <category>.NET</category>
+        <category>主机发现</category>
+        <category>源码</category>
+        <category>内网渗透</category>
+        <category>信息收集</category>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>Ladon</tag>
+        <tag>.NET</tag>
       </tags>
   </entry>
   <entry>
@@ -2625,9 +2625,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <category>Ladon</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Exp</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>GetShell</tag>
         <tag>ActiveMQ</tag>
         <tag>CVE-2016-3088</tag>
@@ -2649,9 +2649,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <category>Ladon</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Exp</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>GetShell</tag>
         <tag>ThinkPHP</tag>
       </tags>
@@ -2674,9 +2674,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <category>Ladon</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Exp</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>GetShell</tag>
         <tag>PhpStudy</tag>
       </tags>
@@ -2705,9 +2705,9 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <category>Ladon</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Exp</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>GetShell</tag>
         <tag>PhpStudy</tag>
       </tags>
@@ -2798,8 +2798,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <category>PowerShell</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>PowerShell</tag>
       </tags>
   </entry>
@@ -2841,10 +2841,10 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <category>工具</category>
       </categories>
       <tags>
-        <tag>Exp</tag>
-        <tag>Ladon</tag>
         <tag>Apache</tag>
         <tag>Solr</tag>
+        <tag>Exp</tag>
+        <tag>Ladon</tag>
         <tag>0day</tag>
       </tags>
   </entry>
@@ -3127,8 +3127,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
         <category>Kali</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Kali</tag>
         <tag>Scanner</tag>
       </tags>
@@ -3290,9 +3290,9 @@ Microsoft Windows 10 for 32-bit Systems 0
         <category>工具</category>
       </categories>
       <tags>
+        <tag>Exp</tag>
         <tag>Tool</tag>
         <tag>LPE</tag>
-        <tag>Exp</tag>
       </tags>
   </entry>
   <entry>
@@ -3385,8 +3385,8 @@ Microsoft Windows 10 for 32-bit Systems 0
         <category>工具</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Exp</tag>
+        <tag>Tool</tag>
         <tag>Struts2</tag>
         <tag>GetShell</tag>
       </tags>
@@ -3403,8 +3403,8 @@ Microsoft Windows 10 for 32-bit Systems 0
         <category>工具</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Exp</tag>
+        <tag>Tool</tag>
       </tags>
   </entry>
   <entry>
@@ -3477,12 +3477,12 @@ Microsoft Windows 10 for 32-bit Systems 0
         <category>工具</category>
         <category>Ladon</category>
         <category>源码</category>
-        <category>编程</category>
         <category>Python</category>
+        <category>编程</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Ladon</tag>
+        <tag>Tool</tag>
         <tag>Python</tag>
       </tags>
   </entry>
@@ -3657,12 +3657,12 @@ ptr = ctypes.windll.kernel32.VirtualAlloc(ctypes.c_int(0),
 <p>&nbsp;</p>
 <p>链接: <a href="https://github.com/k8gege/K8tools" target="_blank">https://github.com/k8gege/K8tools/blob/master/k8zzz.rar</a></p>]]></content>
       <categories>
-        <category>提权</category>
         <category>Exp</category>
+        <category>提权</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Exp</tag>
+        <tag>Tool</tag>
         <tag>MS17010</tag>
         <tag>SMB</tag>
       </tags>
@@ -3760,8 +3760,8 @@ payload5='\x23\x64\x61\x74\x65\x3A\x20\x32\x30\x31\x39\x30\x36\x32\x36\x20\x23\x
         <category>工具</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Exp</tag>
+        <tag>Tool</tag>
         <tag>Code</tag>
         <tag>GetShell</tag>
       </tags>
@@ -3918,10 +3918,33 @@ xxe_data = r"""&lt;!DOCTYPE Autodiscover [
         <category>Ladon</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Exp</tag>
+        <tag>Tool</tag>
         <tag>GetShell</tag>
         <tag>Zimbra</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>K8uac bypassUAC(Win7/Wi8/Win10) 过46款杀软影响所有Windows版本</title>
+    <url>/p/41e1c61c.html</url>
+    <content><![CDATA[<p>[原创]K8uac bypassUAC(Win7/Wi8/Win10) 过46款杀软影响所有Windows版本</p>
+<p>工具: k8uac<br>编译: VC++</p>
+<p>作者:K8哥哥<br>发布:&nbsp;2018/11/25 1:30</p>
+<p>这是一个旧方法，近两年很多APT都有在使用，前几天测试发现依然可用。</p>
+<p>不但支持全系统而且还免杀,你让我上哪说理去。</p>
+<p>免杀报告:<a href="http://r.virscan.org/language/en/report/2b1a19189b37d4f605b564c4e71227f6" target="_blank">http://r.virscan.org/language/en/report/2b1a19189b37d4f605b564c4e71227f6</a></p>
+<p>示例如下:</p>
+<p>C:\Users\K8team\Desktop&gt;k8uac<br>BypassUAC (Win7/Win8/Win10) by K8哥哥<br>useage:k8uac cmdline<br><br>C:\Users\K8team\Desktop&gt;k8uac "net user k8test k8test /add"<br>BypassUAC (Win7/Win8/Win10) by K8哥哥<br>success!<br>0操作成功完成。</p>
+<p><img alt data-original="http://k8gege.org/k8img/posts/k8uac.png"></p>
+<p>&nbsp;下载：<a href="https://files.cnblogs.com/files/k8gege/k8uac_20181125%5BK8%5D.rar" target="_blank">https://files.cnblogs.com/files/k8gege/k8uac_20181125%5BK8%5D.rar</a></p>]]></content>
+      <categories>
+        <category>提权</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Exp</tag>
+        <tag>Tool</tag>
+        <tag>BypassUAC</tag>
       </tags>
   </entry>
   <entry>
@@ -3945,29 +3968,6 @@ xxe_data = r"""&lt;!DOCTYPE Autodiscover [
         <tag>Tool</tag>
         <tag>PowerShell</tag>
         <tag>mimikatz</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>K8uac bypassUAC(Win7/Wi8/Win10) 过46款杀软影响所有Windows版本</title>
-    <url>/p/41e1c61c.html</url>
-    <content><![CDATA[<p>[原创]K8uac bypassUAC(Win7/Wi8/Win10) 过46款杀软影响所有Windows版本</p>
-<p>工具: k8uac<br>编译: VC++</p>
-<p>作者:K8哥哥<br>发布:&nbsp;2018/11/25 1:30</p>
-<p>这是一个旧方法，近两年很多APT都有在使用，前几天测试发现依然可用。</p>
-<p>不但支持全系统而且还免杀,你让我上哪说理去。</p>
-<p>免杀报告:<a href="http://r.virscan.org/language/en/report/2b1a19189b37d4f605b564c4e71227f6" target="_blank">http://r.virscan.org/language/en/report/2b1a19189b37d4f605b564c4e71227f6</a></p>
-<p>示例如下:</p>
-<p>C:\Users\K8team\Desktop&gt;k8uac<br>BypassUAC (Win7/Win8/Win10) by K8哥哥<br>useage:k8uac cmdline<br><br>C:\Users\K8team\Desktop&gt;k8uac "net user k8test k8test /add"<br>BypassUAC (Win7/Win8/Win10) by K8哥哥<br>success!<br>0操作成功完成。</p>
-<p><img alt data-original="http://k8gege.org/k8img/posts/k8uac.png"></p>
-<p>&nbsp;下载：<a href="https://files.cnblogs.com/files/k8gege/k8uac_20181125%5BK8%5D.rar" target="_blank">https://files.cnblogs.com/files/k8gege/k8uac_20181125%5BK8%5D.rar</a></p>]]></content>
-      <categories>
-        <category>提权</category>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>Tool</tag>
-        <tag>Exp</tag>
-        <tag>BypassUAC</tag>
       </tags>
   </entry>
   <entry>
@@ -4013,8 +4013,8 @@ exploit(dip, dport, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;)</cod
         <category>工具</category>
       </categories>
       <tags>
-        <tag>Tool</tag>
         <tag>Exp</tag>
+        <tag>Tool</tag>
         <tag>GetShell</tag>
         <tag>Weblogic</tag>
       </tags>
@@ -4040,9 +4040,9 @@ exploit(dip, dport, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;)</cod
         <category>工具</category>
       </categories>
       <tags>
+        <tag>Exp</tag>
         <tag>Tool</tag>
         <tag>LPE</tag>
-        <tag>Exp</tag>
         <tag>IIS</tag>
       </tags>
   </entry>
@@ -4111,11 +4111,11 @@ from pprint import pprint
         <category>工具</category>
         <category>主机发现</category>
         <category>源码</category>
-        <category>嗅探</category>
         <category>内网渗透</category>
         <category>信息收集</category>
-        <category>编程</category>
         <category>Python</category>
+        <category>编程</category>
+        <category>嗅探</category>
       </categories>
       <tags>
         <tag>Tool</tag>
