@@ -22,7 +22,7 @@
 <meta name="keywords" content="K8飞刀,CTF">
 
 
-<meta name="description" content="前断时间有人和我说什么时候有空出些CTF用的工具，实际上CTF考察的内容，实战中用到的很多工具都可以使用，关键在于你懂不懂用。也看到有人搜索如何使用K8飞刀，在此以CTF题为例，教大家如何使用K...">
+<meta name="description" content="前断时间有人和我说什么时候有空出些CTF用的工具，实际上CTF考查的内容，实战中用到的很多工具都可以使用，关键在于你懂不懂用。也看到有人搜索如何使用K8飞刀，在此以CTF题为例，教大家如何使用K...">
 
 
 <meta name="robots" content="all">
@@ -190,28 +190,31 @@
     </div>
     
     <div class="post-body post-content">
-        <p>前断时间有人和我说什么时候有空出些CTF用的工具，实际上CTF考察的内容，实战中用到的很多工具都可以使用，关键在于你懂不懂用。也看到有人搜索如何使用K8飞刀，在此以CTF题为例，教大家如何使用K8飞刀的HackerIE功能（相当于Hackbar插件的高级版），以及编码解码功能的使用（模块涉及多种编码以及加密解密算法），除了实战会用到以外，CTF也可以用到，不过CTF中常见的应该是BASE64、HTML编码、SQL注入编码之类的，实战中密码除了MD5、SHA1以外最常见的莫过于BASE64了，XSS里HTML编码等也会经常用到，至于什么栅栏密码之类的实战几乎很少遇到，所以有些CTF出题和实战还是两回事，虽然说栅栏算法也非常简单，但从实战角度来说，考察用处不大，实战几乎不见的有必要考吗？如同书呆子考试靠死记硬背靠运气拿高分，拿了高分实际工作解决不了新问题，这种就是没用。</p>
-<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><p>1.查看HTML代码<br>2.GET提交<br>3.POST提交<br>4.伪造IP<br>5.Base64解密<br>6.HTML实体解密</p>
+        <p>前断时间有人和我说什么时候有空出些CTF用的工具，实际上CTF考查的内容，实战中用到的很多工具都可以使用，关键在于你懂不懂用。也看到有人搜索如何使用K8飞刀，在此以CTF题为例，教大家如何使用K8飞刀的HackerIE功能（相当于Hackbar插件的高级版），以及编码解码功能的使用（模块涉及多种编码以及加密解密算法），除了实战会用到以外，CTF也可以用到，不过CTF中常见的应该是BASE64、HTML编码、SQL注入编码之类的，实战中密码除了MD5、SHA1以外最常见的莫过于BASE64了，XSS里HTML编码等也会经常用到，至于什么栅栏密码之类的实战几乎很少遇到，所以有些CTF出题和实战还是两回事，虽然说栅栏算法也非常简单，但从实战角度来说，考查用处不大，实战几乎不见的有必要考吗？如同书呆子考试靠死记硬背靠运气拿高分，拿了高分实际工作解决不了新问题，这种就是没用。</p>
+<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><p>CTF常见考查方法</p>
+<p>1.查看HTML代码<br>2.GET提交<br>3.POST提交<br>4.伪造IP<br>5.Base64解密<br>6.HTML实体解密</p>
 <h3 id="题目1-HTML查看"><a href="#题目1-HTML查看" class="headerlink" title="题目1 HTML查看"></a>题目1 HTML查看</h3><p>网址： <a href="http://123.206.87.240:8002/web2/" target="_blank" rel="noopener">http://123.206.87.240:8002/web2/</a></p>
-<p>直接访问会看到一堆表情，浏览器右键查看HTML代码即可，（但实战遇到屏蔽右键查看就无效）</p>
-<p>解题：K8飞刀–HackerIE–Get方式–网址web2–结果选”文本”–提交，即可看到注释中的Flag</p>
+<p>分析：<br>直接访问会看到一堆表情，浏览器右键查看HTML代码即可，（但实战遇到屏蔽右键查看就无效）</p>
+<p>解题：</p>
+<p>K8飞刀–HackerIE–Get方式–网址web2–结果选”文本”–提交，即可看到注释中的Flag</p>
 <p><img alt="image" data-original="http://k8gege.org/k8img/k8fly/ctf/ctf_html1.PNG"></p>
-<p>PS：K8飞刀可以无视”网站屏蔽查看HTML代码“功能，现实这样的网页很多，很多CTF不考察，所以CTF和实战是有区别的。</p>
+<p>PS：K8飞刀可以无视”网站屏蔽查看HTML代码“功能，现实这样的网页很多，很多CTF不考查，所以CTF和实战是有区别的。</p>
 <h3 id="题目2-HTML实体"><a href="#题目2-HTML实体" class="headerlink" title="题目2 HTML实体"></a>题目2 HTML实体</h3><p>网址： <a href="http://123.206.87.240:8002/web3/" target="_blank" rel="noopener">http://123.206.87.240:8002/web3/</a></p>
-<p>直接访问会无限弹框，提示FLAG就在这里，所以这里我们选择”文本”模式查看，浏览器模式会无限弹框。</p>
-<p>解题：K8飞刀–HackerIE–Get方式–网址web3–结果选”文本”–提交，看到一串可疑的HTML实体字符串，<br>      编码解码–粘贴加密的Flag–右键选中Flag–编码转换–XSS跨站–HTML实体(Dec),解密获取Falg</p>
+<p>分析：<br>直接访问会无限弹框，提示FLAG就在这里，所以这里我们选择”文本”模式查看，浏览器模式会无限弹框。</p>
+<p>解题：</p>
+<p>K8飞刀–HackerIE–Get方式–网址web3–结果选”文本”–提交，看到一串可疑的HTML实体字符串，<br>编码解码–粘贴加密的Flag–右键选中Flag–编码转换–XSS跨站–HTML实体(Dec),解密获取Falg</p>
 <p><img alt="image" data-original="http://k8gege.org/k8img/k8fly/ctf/ctf_html2.PNG"></p>
 <h3 id="题目3-GET提交"><a href="#题目3-GET提交" class="headerlink" title="题目3 GET提交"></a>题目3 GET提交</h3><p>网址：<a href="http://123.206.87.240:8002/get/" target="_blank" rel="noopener">http://123.206.87.240:8002/get/</a></p>
 <p>$what=$_GET[‘what’];<br><br>echo $what;<br><br>if($what==’flag’)<br><br>echo ‘flag{****}’;<br></p>
-<p>从页面代码看出，要求通过GET方式提交what=flag</p>
-<p>网址 <a href="http://123.206.87.240:8002/get?what=flag" target="_blank" rel="noopener">http://123.206.87.240:8002/get?what=flag</a></p>
-<p>解题：K8飞刀–HackerIE–Get方式–网址get–结果选”文本”–提交，可看到返回flag<br><img alt="image" data-original="http://k8gege.org/k8img/k8fly/ctf/ctf_get.PNG"></p>
+<p>分析：<br>从页面代码看出，要求通过GET方式提交what=flag</p>
+<p>解题：<br>网址 <a href="http://123.206.87.240:8002/get?what=flag" target="_blank" rel="noopener">http://123.206.87.240:8002/get?what=flag</a><br>K8飞刀–HackerIE–Get方式–网址get–结果选”文本”–提交，可看到返回flag</p>
+<p><img alt="image" data-original="http://k8gege.org/k8img/k8fly/ctf/ctf_get.PNG"></p>
 <h3 id="题目4-POST提交"><a href="#题目4-POST提交" class="headerlink" title="题目4 POST提交"></a>题目4 POST提交</h3><p>网址: <a href="http://123.206.87.240:8002/post/" target="_blank" rel="noopener">http://123.206.87.240:8002/post/</a></p>
 <p>$what=$_POST[‘what’];<br><br>echo $what;<br><br>if($what==’flag’)<br><br>echo ‘flag{****}’;<br></p>
-<pre><code>从页面代码看出，要求通过GET方式提交what=flag</code></pre><p>网址：    <a href="http://123.206.87.240:8002/post/" target="_blank" rel="noopener">http://123.206.87.240:8002/post/</a>  提交数据：what=flag</p>
-<p>解题：K8飞刀–HackerIE–Post方式–网址post–结果选”文本”–提交，可看到返回flag</p>
+<p>分析：<br>从页面代码看出，要求通过GET方式提交what=flag</p>
+<p>解题：<br>K8飞刀–HackerIE–Post方式–网址post–结果选”文本”–提交，可看到返回flag<br>网址：<a href="http://123.206.87.240:8002/post/" target="_blank" rel="noopener">http://123.206.87.240:8002/post/</a>  提交数据：what=flag</p>
 <p><img alt="image" data-original="http://k8gege.org/k8img/k8fly/ctf/ctf_post.PNG"></p>
-<h3 id="题目5-伪造IP"><a href="#题目5-伪造IP" class="headerlink" title="题目5 伪造IP"></a>题目5 伪造IP</h3><p>伪造IP这个考察点非常不错，因为现实中确实有很多网站后台存在IP限制。</p>
+<h3 id="题目5-伪造IP"><a href="#题目5-伪造IP" class="headerlink" title="题目5 伪造IP"></a>题目5 伪造IP</h3><p>伪造IP这个考查点非常不错，因为现实中确实有很多网站后台存在IP限制。</p>
 <p><a href="http://123.206.31.85:1003/" target="_blank" rel="noopener">http://123.206.31.85:1003/</a></p>
 <p>使用K8飞刀访问提示“IP禁止访问”，切换文本看到注释中含有Base64字符串,编码解密得到test123</p>
 <p>K8飞刀–HackerIE–Post方式–提交,返回Flag<br>提交数据：user=admin&amp;pass=test123</p>
