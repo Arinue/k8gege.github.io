@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://k8gege.org/"/>
-  <updated>2020-08-15T16:36:34.794Z</updated>
+  <updated>2020-08-22T14:51:07.971Z</updated>
   <id>http://k8gege.org/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>〖教程〗K8飞刀-网络安全CTF解题Web篇</title>
+    <link href="http://k8gege.org/p/ctf_k8fly.html"/>
+    <id>http://k8gege.org/p/ctf_k8fly.html</id>
+    <published>2020-08-22T14:00:00.000Z</published>
+    <updated>2020-08-22T14:51:07.971Z</updated>
+    
+    <content type="html"><![CDATA[<p>前断时间有人和我说什么时候有空出些CTF用的工具，实际上CTF考察的内容，实战中用到的很多工具都可以使用，关键在于你懂不懂用。也看到有人搜索如何使用K8飞刀，在此以CTF题为例，教大家如何使用K8飞刀的HackerIE功能（相当于Hackbar插件的高级版），以及编码解码功能的使用（模块涉及多种编码以及加密解密算法），除了实战会用到以外，CTF也可以用到，不过CTF中常见的应该是BASE64、HTML编码、SQL注入编码之类的，实战中密码除了MD5、SHA1以外最常见的莫过于BASE64了，XSS里HTML编码等也会经常用到，至于什么栅栏密码之类的实战几乎很少遇到，所以有些CTF出题和实战还是两回事，虽然说栅栏算法也非常简单，但从实战角度来说，考察用处不大，实战几乎不见的有必要考吗？如同书呆子考试靠死记硬背靠运气拿高分，拿了高分实际工作解决不了新问题，这种就是没用。</p><h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><p>1.查看HTML代码<br>2.GET提交<br>3.POST提交<br>4.伪造IP<br>5.Base64解密<br>6.HTML实体解密</p><h3 id="题目1-HTML查看"><a href="#题目1-HTML查看" class="headerlink" title="题目1 HTML查看"></a>题目1 HTML查看</h3><p>网址： <a href="http://123.206.87.240:8002/web2/" target="_blank" rel="noopener">http://123.206.87.240:8002/web2/</a></p><p>直接访问会看到一堆表情，浏览器右键查看HTML代码即可，（但实战遇到屏蔽右键查看就无效）</p><p>解题：K8飞刀–HackerIE–Get方式–网址web2–结果选”文本”–提交，即可看到注释中的Flag</p><p><img alt="image" data-original="http://k8gege.org/k8img/k8fly/ctf/ctf_html1.PNG"></p><p>PS：K8飞刀可以无视”网站屏蔽查看HTML代码“功能，现实这样的网页很多，很多CTF不考察，所以CTF和实战是有区别的。</p><h3 id="题目2-HTML实体"><a href="#题目2-HTML实体" class="headerlink" title="题目2 HTML实体"></a>题目2 HTML实体</h3><p>网址： <a href="http://123.206.87.240:8002/web3/" target="_blank" rel="noopener">http://123.206.87.240:8002/web3/</a></p><p>直接访问会无限弹框，提示FLAG就在这里，所以这里我们选择”文本”模式查看，浏览器模式会无限弹框。</p><p>解题：K8飞刀–HackerIE–Get方式–网址web3–结果选”文本”–提交，看到一串可疑的HTML实体字符串，<br>      编码解码–粘贴加密的Flag–右键选中Flag–编码转换–XSS跨站–HTML实体(Dec),解密获取Falg</p><p><img alt="image" data-original="http://k8gege.org/k8img/k8fly/ctf/ctf_html2.PNG"></p><h3 id="题目3-GET提交"><a href="#题目3-GET提交" class="headerlink" title="题目3 GET提交"></a>题目3 GET提交</h3><p>网址：<a href="http://123.206.87.240:8002/get/" target="_blank" rel="noopener">http://123.206.87.240:8002/get/</a></p><p>$what=$_GET[‘what’];<br><br>echo $what;<br><br>if($what==’flag’)<br><br>echo ‘flag{****}’;<br></p><p>从页面代码看出，要求通过GET方式提交what=flag</p><p>网址 <a href="http://123.206.87.240:8002/get?what=flag" target="_blank" rel="noopener">http://123.206.87.240:8002/get?what=flag</a></p><p>解题：K8飞刀–HackerIE–Get方式–网址get–结果选”文本”–提交，可看到返回flag<br><img alt="image" data-original="http://k8gege.org/k8img/k8fly/ctf/ctf_get.PNG"></p><h3 id="题目4-POST提交"><a href="#题目4-POST提交" class="headerlink" title="题目4 POST提交"></a>题目4 POST提交</h3><p>网址: <a href="http://123.206.87.240:8002/post/" target="_blank" rel="noopener">http://123.206.87.240:8002/post/</a></p><p>$what=$_POST[‘what’];<br><br>echo $what;<br><br>if($what==’flag’)<br><br>echo ‘flag{****}’;<br></p><pre><code>从页面代码看出，要求通过GET方式提交what=flag</code></pre><p>网址：    <a href="http://123.206.87.240:8002/post/" target="_blank" rel="noopener">http://123.206.87.240:8002/post/</a>  提交数据：what=flag</p><p>解题：K8飞刀–HackerIE–Post方式–网址post–结果选”文本”–提交，可看到返回flag</p><p><img alt="image" data-original="http://k8gege.org/k8img/k8fly/ctf/ctf_post.PNG"></p><h3 id="题目5-伪造IP"><a href="#题目5-伪造IP" class="headerlink" title="题目5 伪造IP"></a>题目5 伪造IP</h3><p>伪造IP这个考察点非常不错，因为现实中确实有很多网站后台存在IP限制。</p><p><a href="http://123.206.31.85:1003/" target="_blank" rel="noopener">http://123.206.31.85:1003/</a></p><p>使用K8飞刀访问提示“IP禁止访问”，切换文本看到注释中含有Base64字符串,编码解密得到test123</p><p>K8飞刀–HackerIE–Post方式–提交,返回Flag<br>提交数据：user=admin&amp;pass=test123</p><p>X-Forwarded-For 值为 127.0.0.1</p><p><img alt="image" data-original="http://k8gege.org/k8img/k8fly/ctf/ctf_xorip.PNG"></p><h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>历史版本: <a href="https://github.com/k8gege/K8tools" target="_blank" rel="noopener">https://github.com/k8gege/K8tools</a></p><div style="text-align: center; width: 710px; border: green solid 0px;"><img alt style="display: inline-block;width: 250px;height: 300px;" data-original="http://k8gege.org/img/k8team.jpg"></div>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;前断时间有人和我说什么时候有空出些CTF用的工具，实际上CTF考察的内容，实战中用到的很多工具都可以使用，关键在于你懂不懂用。也看到有人搜索如何使用K8飞刀，在此以CTF题为例，教大家如何使用K8飞刀的HackerIE功能（相当于Hackbar插件的高级版），以及编码解码功
+      
+    
+    </summary>
+    
+    
+      <category term="CTF" scheme="http://k8gege.org/categories/CTF/"/>
+    
+    
+      <category term="K8飞刀" scheme="http://k8gege.org/tags/K8fly/"/>
+    
+      <category term="CTF" scheme="http://k8gege.org/tags/CTF/"/>
+    
+  </entry>
   
   <entry>
     <title>Ladon大型内网渗透扫描器&amp;Cobalt Strike</title>
@@ -477,9 +505,9 @@
     
       <category term="Ladon" scheme="http://k8gege.org/tags/Ladon/"/>
     
-      <category term="ssh" scheme="http://k8gege.org/tags/ssh/"/>
-    
       <category term="brute force" scheme="http://k8gege.org/tags/brute-force/"/>
+    
+      <category term="ssh" scheme="http://k8gege.org/tags/ssh/"/>
     
   </entry>
   
@@ -557,34 +585,6 @@
       
       
         &lt;h3 id=&quot;DLL劫持-amp-白加黑&quot;&gt;&lt;a href=&quot;#DLL劫持-amp-白加黑&quot; class=&quot;headerlink&quot; title=&quot;DLL劫持&amp;amp;白加黑&quot;&gt;&lt;/a&gt;DLL劫持&amp;amp;白加黑&lt;/h3&gt;&lt;p&gt;DLL劫持在白加黑里最常见，07、08年开始在国内才
-      
-    
-    </summary>
-    
-    
-      <category term="持久化" scheme="http://k8gege.org/categories/Persistence/"/>
-    
-      <category term="DLL劫持" scheme="http://k8gege.org/categories/DllHijack/"/>
-    
-    
-      <category term="DllHijack" scheme="http://k8gege.org/tags/DllHijack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>持久化后门之加密工具TrueCrypt DLL劫持</title>
-    <link href="http://k8gege.org/p/26141.html"/>
-    <id>http://k8gege.org/p/26141.html</id>
-    <published>2020-04-22T15:55:00.000Z</published>
-    <updated>2020-04-23T10:22:25.180Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>TrueCrypt，是一款免费开源的加密软件，同时支持Windows Vista,7/XP, Mac OS X, Linux 等操作系统。TrueCrypt不需要生成任何文件即可在硬盘上建立虚拟磁盘，用户可以按照盘符进行访问，所有虚拟磁盘上的文件都被自动加密，需要通过密码来进行访问。TrueCrypt 提供多种加密算法，包括：AES-256, Blowfish (448-bit key), CAST5, Serpent, Triple DES, and Twofish，其他特性还有支持FAT32和NTFS分区、隐藏卷标、热键启动等。 </p><h3 id="软件荣誉"><a href="#软件荣誉" class="headerlink" title="软件荣誉"></a>软件荣誉</h3><p>FBI在经过一年的尝试后，还是未能破译被巴西执法机构指控金融犯罪的巴西银行家的加密文件。巴西一家葡萄牙语报纸报道（葡萄牙语），巴西联邦警察在2008年7月展开的Satyagraha行动中，在银行家Daniel Dantas位于里约热内卢的公寓内收缴了5个硬盘。文章提到硬盘使用了两种加密程序，一种是TrueCrypt，另一种是不知名的256位AES加密软件。在专家未能破解密码后，巴西政府在2009年初请求美国提供帮助，然而美国联邦警察在一年不成功的尝试后，退还了硬盘。巴西现有的法律中不存在强制要求Dantas交出密码的规定。</p><h3 id="TC劫持"><a href="#TC劫持" class="headerlink" title="TC劫持"></a>TC劫持</h3><p>将K8测试专用DLL劫持工具里的DLL改名成RichEd20.dll后放入TC目录<br>运行TrueCrypt目录下的3个EXE均会被劫持，成功弹出被劫持相关信息<br><img alt="image" data-original="http://k8gege.org/k8img/dllhijack/TC_DllHijack.PNG"></p><h3 id="POC"><a href="#POC" class="headerlink" title="POC"></a>POC</h3><p><a href="https://github.com/k8gege/K8tools/raw/master/K8dllhijack.rar" target="_blank" rel="noopener">https://github.com/k8gege/K8tools/raw/master/K8dllhijack.rar</a></p><h3 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h3><p>如CobalStrike生成DLL改名为RichEd20.dll，用户打开TC时即可上线</p><p>PS: 2016年在网易有发过，发现网上已搜不到，重新发一下，除了让别人知道，<br>也防止自己未来老年痴呆，被刚入门的利用TC持久化就蛋疼了，因为我喜欢用。<br>他搞你后还来一句，你看这SB这么简单的东西，他天天用都不知道我加了后门</p><p>Notepad++ DLL劫持<br><img alt="image" data-original="http://k8gege.org/k8img/dllhijack/notepad++.png"></p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>Notepad++ 修复被 CIA 利用的 DLL 劫持<br><a href="https://www.sohu.com/a/129080133_466846" target="_blank" rel="noopener">https://www.sohu.com/a/129080133_466846</a><br>[提权]Notepad++ DLL劫持漏洞<br><a href="https://bbs.mayidui.net/t219-e.html" target="_blank" rel="noopener">https://bbs.mayidui.net/t219-e.html</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;p&gt;TrueCrypt，是一款免费开源的加密软件，同时支持Windows Vista,7/XP, Mac OS X, Linux 等操作系统。T
       
     
     </summary>
