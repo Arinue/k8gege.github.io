@@ -1098,10 +1098,10 @@
 <p>解题：K8飞刀设置Referer为google即可<br>Referer: <a href="https://www.google.com" target="_blank" rel="noopener">https://www.google.com</a></p>
 <p><img alt="image" data-original="http://k8gege.org/k8img/k8fly/ctf/ctf_referer.PNG"></p>
 <h3 id="题目9-PHP-post"><a href="#题目9-PHP-post" class="headerlink" title="题目9 PHP post"></a>题目9 PHP post</h3><p><a href="http://123.206.87.240:8002/web7/?uname[]=1&amp;id=margin" target="_blank" rel="noopener">http://123.206.87.240:8002/web7/?uname[]=1&amp;id=margin</a><br>post：passwd[]=2</p>
-<p><img alt="image" data-original="http://k8gege.org/k8img/k8fly/ctf/ctf_php_post.PNG"></p>
+<p><img alt="image" data-original="http://k8gege.org/k8img/k8fly/ctf/ctf_phppost.PNG"></p>
 <h3 id="题目10-目录扫描"><a href="#题目10-目录扫描" class="headerlink" title="题目10 目录扫描"></a>题目10 目录扫描</h3><p><a href="http://123.206.87.240:8002/web13/" target="_blank" rel="noopener">http://123.206.87.240:8002/web13/</a><br>404 Not Found</p>
 <p>分析：访问提示404，本页不存在，那我们扫目录看有哪些页面可访问</p>
-<p>K8扫到robots.txt访问发现result.php,下面提示x=密码就出现flag<br><img alt="image" data-original="http://k8gege.org/k8img/k8fly/ctf/ctf_scandir1.PNG"></p>
+<p>K8扫到robots.txt访问发现result.php,下面提示x=密码就出现flag<br><img alt="image" data-original="http://k8gege.org/k8img/k8fly/ctf/ctf_scandir.PNG"></p>
 <p><a href="http://123.206.87.240:8002/web13/resusl.php?x=admin" target="_blank" rel="noopener">http://123.206.87.240:8002/web13/resusl.php?x=admin</a></p>
 <p><img alt="image" data-original="http://k8gege.org/k8img/k8fly/ctf/ctf_scandir2.PNG"></p>
 <h3 id="解题速度"><a href="#解题速度" class="headerlink" title="解题速度"></a>解题速度</h3><p>天下武功唯快不破，只有解题速度快，才有机会做更多的题，同样能全解的情况下，自然也是速度快的拿第一。</p>
