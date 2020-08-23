@@ -49,6 +49,10 @@ Kali或Win最好安装jdk1.8.5或之后版本设置环境变量...">
     
 
 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+
+
+
 <link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
 <link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
 <link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
@@ -228,40 +232,36 @@ Kali或Win最好安装jdk1.8.5或之后版本设置环境变量...">
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/p/fa25cc9b.html" class="pre-post btn btn-default" title="CVE-2019-0803提权工具">
+    <a href="/p/9cffe32c.html" class="pre-post btn btn-default" title="CobaltStrike & Metasploit Shellcode一键免杀工具">
         <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
         <span class="hidden-xs">
-            CVE-2019-0803提权工具</span>
+            CobaltStrike & Metasploit Shellcode一键免杀工具</span>
     </a>
     
     
-    <a href="/p/9cffe32c.html" class="next-post btn btn-default" title="CobaltStrike & Metasploit Shellcode一键免杀工具">
+    <a href="/p/ab3e87f7.html" class="next-post btn btn-default" title="K8 Struts2 EXP 综合漏洞利用工具">
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            CobaltStrike & Metasploit Shellcode一键免杀工具</span><i class="fa fa-angle-right fa-fw"></i>
+            K8 Struts2 EXP 综合漏洞利用工具</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
 
 <div id="comments">
     
-<link rel="stylesheet" href="https://cdn.bootcss.com/gitalk/1.4.1/gitalk.min.css">
-<script src="//cdn.bootcss.com/gitalk/1.4.1/gitalk.min.js"></script>
-<script src="//cdn.bootcss.com/blueimp-md5/2.9.0/js/md5.min.js"></script>
-<div id="gitalk-container"></div>
-<script type="text/javascript">
-var gitalk = new Gitalk({
-    // Gitalk配置
-    language: "en",
-    clientID: "b2247720d5b50a30fbe7",
-    clientSecret: "fbd720b7c84bea4de2ac3bef40b37509ccca0267",
-    repo: "k8gege.github.io",
+<script type="text/javascript" src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+    id: window.location.pathname,
     owner: "k8gege",
-    admin: ["k8gege"],
-    id: md5(location.pathname),
-    distractionFreeMode: true
+    repo: "k8gege.github.io",
+    oauth: {
+        client_id: "b2247720d5b50a30fbe7",
+        client_secret: "fbd720b7c84bea4de2ac3bef40b37509ccca0267"
+    },
+    perPage: "10",
 });
-gitalk.render('gitalk-container');
+gitment.render('comments');
 </script>
 
 </div>
