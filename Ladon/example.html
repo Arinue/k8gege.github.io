@@ -168,6 +168,7 @@ Visit <span id="busuanzi_value_page_pv"></span>
 
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本文仅是Ladon简单使用例子，Cobalt Strike、PowerShell、KaliLadon跨平台版等用法一致。</p>
 <p>完整文档：<a href="http://k8gege.org/Ladon">http://k8gege.org/Ladon</a></p>
+<h3 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h3><p>Ladon7.2 20200815</p>
 <h3 id="Socks5代理扫描"><a href="#Socks5代理扫描" class="headerlink" title="Socks5代理扫描"></a>Socks5代理扫描</h3><p>例子：扫描目标10.1.2段是否存在MS17010漏洞（必须加noping）<br>Ladon noping 10.1.2.8/24 MS17010</p>
 <p>详见：<a href="http://k8gege.org/Ladon/proxy.html">http://k8gege.org/Ladon/proxy.html</a></p>
 <h3 id="资产扫描、指纹识别、服务识别、存活主机、端口扫描"><a href="#资产扫描、指纹识别、服务识别、存活主机、端口扫描" class="headerlink" title="资产扫描、指纹识别、服务识别、存活主机、端口扫描"></a>资产扫描、指纹识别、服务识别、存活主机、端口扫描</h3><h5 id="001-多协议探测存活主机-（IP、机器名、MAC地址、制造商）"><a href="#001-多协议探测存活主机-（IP、机器名、MAC地址、制造商）" class="headerlink" title="001 多协议探测存活主机 （IP、机器名、MAC地址、制造商）"></a>001 多协议探测存活主机 （IP、机器名、MAC地址、制造商）</h5><p>Ladon 192.168.1.8/24 OnlinePC</p>
@@ -260,6 +261,14 @@ Visit <span id="busuanzi_value_page_pv"></span>
 <h4 id="084-MS16135提权至SYSTEM"><a href="#084-MS16135提权至SYSTEM" class="headerlink" title="084 MS16135提权至SYSTEM"></a>084 MS16135提权至SYSTEM</h4><p>Ladon ms16135 whoami</p>
 <h5 id="085-BadPotato服务用户提权至SYSTEM"><a href="#085-BadPotato服务用户提权至SYSTEM" class="headerlink" title="085 BadPotato服务用户提权至SYSTEM"></a>085 BadPotato服务用户提权至SYSTEM</h5><p>Ladon BadPotato cmdline</p>
 <h5 id="086-SweetPotato服务用户提权至SYSTEM"><a href="#086-SweetPotato服务用户提权至SYSTEM" class="headerlink" title="086 SweetPotato服务用户提权至SYSTEM"></a>086 SweetPotato服务用户提权至SYSTEM</h5><p>Ladon SweetPotato cmdline</p>
+<h5 id="087-whoami查看当前用户权限以及特权"><a href="#087-whoami查看当前用户权限以及特权" class="headerlink" title="087 whoami查看当前用户权限以及特权"></a>087 whoami查看当前用户权限以及特权</h5><p>Ladon whoami</p>
+<h5 id="088-Open3389一键开启3389"><a href="#088-Open3389一键开启3389" class="headerlink" title="088 Open3389一键开启3389"></a>088 Open3389一键开启3389</h5><p>Ladon Open3389</p>
+<h5 id="089-RdpLog查看3389连接记录"><a href="#089-RdpLog查看3389连接记录" class="headerlink" title="089 RdpLog查看3389连接记录"></a>089 RdpLog查看3389连接记录</h5><p>Ladon RdpLog</p>
+<h5 id="090-QueryAdmin查看管理员用户"><a href="#090-QueryAdmin查看管理员用户" class="headerlink" title="090 QueryAdmin查看管理员用户"></a>090 QueryAdmin查看管理员用户</h5><p>Ladon QueryAdmin</p>
+<h5 id="091-激活内置管理员Administrator"><a href="#091-激活内置管理员Administrator" class="headerlink" title="091 激活内置管理员Administrator"></a>091 激活内置管理员Administrator</h5><p>Ladon ActiveAdmin</p>
+<h5 id="092-激活内置用户Guest"><a href="#092-激活内置用户Guest" class="headerlink" title="092 激活内置用户Guest"></a>092 激活内置用户Guest</h5><p>Ladon ActiveGuest</p>
+<h5 id="093-查看本机命名管道"><a href="#093-查看本机命名管道" class="headerlink" title="093 查看本机命名管道"></a>093 查看本机命名管道</h5><p>Ladon GetPipe</p>
+<h5 id="094-139端口Netbios协议Windows密码爆破"><a href="#094-139端口Netbios协议Windows密码爆破" class="headerlink" title="094 139端口Netbios协议Windows密码爆破"></a>094 139端口Netbios协议Windows密码爆破</h5><p>Ladon 192.168.1.8/24 NbtScan</p>
 <h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a></p>
 <div style="text-align: center; width: 710px; border: green solid 0px;">
 <img alt style="display: inline-block;width: 250px;height: 300px;" data-original="http://k8gege.org/img/k8team.jpg">
