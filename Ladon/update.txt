@@ -1,5 +1,10 @@
 Wiki: http://k8gege.org/Ladon
 
+7.3.0 2020.9.1
+[+] WinrmScan 5985端口密码爆破（支持System权限）
+[+] WinrmExec远程执行命令无回显（支持System权限）
+
+
 7.2.2 2020.8.15
 [u] whoami增加特权信息(如果你了解提权工具原理可查看特权)
 [+] 检测SeImpersonatePrivilege特权(很多提权工具需要用到)
