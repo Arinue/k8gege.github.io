@@ -1105,7 +1105,7 @@ Windows Server, version 2004 (Server Core installation)</code></pre><h3 id="模�
 <p>如图：批量C段<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exp/Ladon_cve-2020-1472.PNG"></p>
 <h4 id="批量IP"><a href="#批量IP" class="headerlink" title="批量IP"></a>批量IP</h4><p>目录下放ip.txt，里面放入已知ip即可<br>192.168.1.8<br>10.23.4.56</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Ladon cve-2020-1472.ini</span><br></pre></td></tr></table></figure>
-
+<h3 id="读取HASH"><a href="#读取HASH" class="headerlink" title="读取HASH"></a>读取HASH</h3><p>读取HASH后就不用我说了吧，WCE、WMI、SMB、PSEXEC等HASH注入执行<br><img alt="image" data-original="http://k8gege.org/k8img/Ladon/exp/EmptyDumpHash.PNG"></p>
 <h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>最新版本：<a href="https://k8gege.org/Download">https://k8gege.org/Download</a><br>历史版本: <a href="https://github.com/k8gege/Ladon/releases" target="_blank" rel="noopener">https://github.com/k8gege/Ladon/releases</a><br>插件源码：小密圈可下载</p>
 <div style="text-align: center; width: 710px; border: green solid 0px;">
 <img alt style="display: inline-block;width: 250px;height: 300px;" data-original="http://k8gege.org/img/k8team.jpg">
@@ -2617,8 +2617,8 @@ WIN-OLDM1T2H9M4                     WIN-OLDM1T2H9M4          </code></pre>
       <categories>
         <category>Ladon</category>
         <category>.NET</category>
-        <category>源码</category>
         <category>主机发现</category>
+        <category>源码</category>
         <category>内网渗透</category>
         <category>信息收集</category>
         <category>编程</category>
@@ -3634,8 +3634,8 @@ Microsoft Windows 10 for 32-bit Systems 0
         <category>工具</category>
         <category>Ladon</category>
         <category>源码</category>
-        <category>编程</category>
         <category>Python</category>
+        <category>编程</category>
       </categories>
       <tags>
         <tag>Ladon</tag>
@@ -4266,13 +4266,13 @@ from pprint import pprint
 <p><a href="https://www.cnblogs.com/k8gege/p/10367844.html" target="_blank">https://www.cnblogs.com/k8gege/p/10367844.html</a></p>]]></content>
       <categories>
         <category>工具</category>
-        <category>源码</category>
         <category>主机发现</category>
-        <category>内网渗透</category>
+        <category>源码</category>
         <category>嗅探</category>
+        <category>内网渗透</category>
         <category>信息收集</category>
-        <category>编程</category>
         <category>Python</category>
+        <category>编程</category>
       </categories>
       <tags>
         <tag>Tool</tag>
